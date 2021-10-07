@@ -1,0 +1,211 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>Luka.tw</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/widget-post-list.css"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><span>Archives · 2020</span></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><article class="post-container is-flex is-justify-content-center section container is-max-widescreen pt-4 px-2"><div class="columns is-variable is-1-tablet is-3-desktop-only is-2-widescreen is-full-width"><section class="column"><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://cdn-images-1.medium.com/max/12032/0*EkacF0gY7pC8VNHP" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2020/11/15/2020-11-15-wsl/"><img class="post-cover-img js-img-fadeIn" src="https://cdn-images-1.medium.com/max/12032/0*EkacF0gY7pC8VNHP" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2020/11/15/2020-11-15-wsl/">WSL - 在 Windows 上打造 Linux 的開發體驗</a></h2><time class="has-text-grey" datetime="2020-11-15T12:50:00.000Z">2020-11-15</time><p class="is-flex-grow-2 mt-2">在 Windows 上打造 Linux 的開發體驗 WSL是關鍵
+延續上一篇，打造舒適的 Windows ＋ Mac 雙系統開發環境，打算用一系列的文章，一一來介紹開發各種環境。打造舒適的雙系統開發環境 Windows + Mac 雙刀流
+重度 Mac / Linux 開發者，嘗試 Windows 開發先來說說我是個怎麼樣的人，我是個 Mac / Linux 重度使用者，學生時期使用 Windows 開發實在雷，光是搞環境平均就要花一個禮拜以上。再換成一台二手的 Macbook 之後就一路大順暢，從此只用 Mac / Linux 環境開發。
+直到最近看到強者我朋友用 Windows 用得滿順的，不僅 Web 這些比較通用的東西跑得順，連 Linux 套件和 Docker 甚至 K8S 都可以順利執行。於是我..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2020/11/15/2020-11-15-wsl/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://cdn-images-1.medium.com/max/2000/1*4Ggl4UF7SjZk4qoapcDBnA.jpeg" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2020/09/21/2020-09-21-introduction-to-gitops-via-argocd/"><img class="post-cover-img js-img-fadeIn" src="https://cdn-images-1.medium.com/max/2000/1*4Ggl4UF7SjZk4qoapcDBnA.jpeg" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2020/09/21/2020-09-21-introduction-to-gitops-via-argocd/">ArgoCD — 透過 ArgoCD 認識 GitOps</a></h2><time class="has-text-grey" datetime="2020-09-21T12:50:00.000Z">2020-09-21</time><p class="is-flex-grow-2 mt-2">
+什麼是 GitOps ?兩年前初次聽到 GitOps 的時候，我想說是不是只要 Git tag 觸發一些部屬相關的事情，像是下了某個 tag，就會觸發某 Ansible 的工作，部屬某一台伺服器。很遺憾，完全不是我想的那樣。
+在最近實際將 GitOps 整合進開發流程的過程中，深入研究了一下 GitOps。對 GitOps 有了多一點的了解，趁這個機會來跟大家分享一下。
+GitOps 是 Weaveworks 提出的一種持續交付(CD)的概念，透過 Git 來聲明基礎設施(infrastructure)希望的狀態。什麼是聲明基礎設施希望的狀態？
+從聲明基礎設施希望的狀態談到 K8S說到聲明希望的狀態，這就要來了解一下屬於 Cloud Native 體系的 Kubernetes 了。
+因為 Kubernet..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2020/09/21/2020-09-21-introduction-to-gitops-via-argocd/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://cdn-images-1.medium.com/max/7872/0*8Mqb8j7gMZ3_R-UI" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2020/08/15/2020-08-05-introduction-to-open-source-guild/"><img class="post-cover-img js-img-fadeIn" src="https://cdn-images-1.medium.com/max/7872/0*8Mqb8j7gMZ3_R-UI" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Github"><i class="tag post-item-tag">Github</i></a><a href="/tags/Open-Source"><i class="tag post-item-tag">Open Source</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2020/08/15/2020-08-05-introduction-to-open-source-guild/">從 Github 開源指南｜學習如何貢獻開源專案</a></h2><time class="has-text-grey" datetime="2020-08-15T12:50:00.000Z">2020-08-15</time><p class="is-flex-grow-2 mt-2">
+本週我們來讀一下「如何為開源做貢獻」。這份文件是 Github 的 Open Source Guide 開源指南，約莫兩年前剛出的時候全部是英文版的，已經三年了，拖到現在才讀（汗）。
+
+ （這篇是閱讀開源指南的筆記，原創內容偏少，原文在下方連結）如何為開源做貢獻？透過為開源貢獻力量，能從中學習、幫助他人並且從中累積相關技能的經驗 - 任何你能想像得到的技能。 為什麼會有人為開源做出貢獻？有數不清的原因！…opensource.guide
+
+是 Github 7000 顆星星的開源專案github/opensource.guideOpen Source Guides ( https://opensource.guide/) are a collection of resources for individu..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2020/08/15/2020-08-05-introduction-to-open-source-guild/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://cdn-images-1.medium.com/max/4000/0*UzoUjUPMJFmux31Z" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2020/07/28/2020-07-28-tldr/"><img class="post-cover-img js-img-fadeIn" src="https://cdn-images-1.medium.com/max/4000/0*UzoUjUPMJFmux31Z" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2020/07/28/2020-07-28-tldr/">TLDR 命令列神兵｜Linux 入門必裝</a></h2><time class="has-text-grey" datetime="2020-07-28T08:01:00.000Z">2020-07-28</time><p class="is-flex-grow-2 mt-2">TL;DR 的意思是：哩供蝦？講重點好嘛？
+TLDR 能夠讓初學程式的新手 ，輕鬆了解命令列工具的各種 Linux 指令，並且自由運用。本篇文章分成幾個兩個部分：
+
+命令列工具 Command line tool 到底是什麼東西？
+
+TLDR 是什麼東西？它如何幫助我們快速適應 Linux 命令列工具？
+
+
+話不多說，我們開始吧。
+命令列工具 Command line tool 到底是什麼？命令列工具的英文是 Command Line Tool。下圖就是常見的命令列工具。那麼他的作用是什麼呢？
+
+
+ 命令列工具的作用是「透過下指令的方式來做到你想做的事情」
+
+這是什麼意思？為什麼要透過下指令的方式讓做事？原因是：
+
+ 用命令列工具的來做事情非常有效率。
+
+試想如果你想要安裝一個知名影音播放軟體 VLC，你會..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2020/07/28/2020-07-28-tldr/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://cdn-images-1.medium.com/max/2400/0*P3QeV7d9iPBNeOCr.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2020/06/30/2020-06-30-lens-the-ide-for-kubernetes/"><img class="post-cover-img js-img-fadeIn" src="https://cdn-images-1.medium.com/max/2400/0*P3QeV7d9iPBNeOCr.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2020/06/30/2020-06-30-lens-the-ide-for-kubernetes/">Kubernetes IDE | Lens 用圖形化介面管理 K8S</a></h2><time class="has-text-grey" datetime="2020-06-30T09:01:00.000Z">2020-06-30</time><p class="is-flex-grow-2 mt-2">
+以往我們在管理 Kubernetes 集群的時候，需要大量的命令列操作，需要去四處找尋需要的資訊，例如你想看 Node 的狀態你可能需要在 AWS Console 上面看，如果你用的是 GKE 的話你就需要到的 GCP 的後台上看。你想要進入 Pod 你需要先下 kubectl get pods取得 pod 列表，接著再下 kubectl exec -it pod/xxxpod – bash 進入。
+這些功能現在 Lens 全部幫你整合進去了。它能夠讓你快速的瀏覽你的 K8S 集群狀況，並且即時反應 K8S 集群的狀態讓你可以做相對應的反應。我們就來看看 Lens 有哪些殺手級的功能吧！
+Lens 有哪些殺手級功能1. 實時監控 pod 的狀態 (realtime monitoring)可以實時監控 po..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2020/06/30/2020-06-30-lens-the-ide-for-kubernetes/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://cdn-images-1.medium.com/max/2000/0*wJrJdR3tFO84Tdsd.jpg" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2020/06/02/2020-06-02-tmp-let-your-tmux-better/"><img class="post-cover-img js-img-fadeIn" src="https://cdn-images-1.medium.com/max/2000/0*wJrJdR3tFO84Tdsd.jpg" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2020/06/02/2020-06-02-tmp-let-your-tmux-better/">TPM — 套件管理工具 ，讓你的 TMUX 更好用</a></h2><time class="has-text-grey" datetime="2020-06-02T11:51:00.000Z">2020-06-02</time><p class="is-flex-grow-2 mt-2">最近因為工作上需要用到開很多個視窗的情景，研究了一下如何把 tmux 變得更具有生產力。
+
+tmux 是什麼？tmux 是一個很好用的遠端 session 管理套件，兼具效能與功能性，可以讓你在遠端伺服器中，輕易管理背景執行程式。
+Larry 在 **終端機 session 管理神器 — tmux **文章中介紹了基本的概念、使用方式與經典的使用情景。如果沒有看過的話，請看文章了解一下。終端機 session 管理神器 — tmux身為一名開發者對終端機應該不陌生，不管是要執行腳本、ssh 到遠端伺服器都會用到終端機。這邊要介紹給大家一個工具 tmux，tmux 是個 terminal multiplexer，可以讓你的終端機更好用larrylu.blogt
+不過其實不看也沒什麼關係啦，看我寫得就好。
+He..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2020/06/02/2020-06-02-tmp-let-your-tmux-better/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://cdn-images-1.medium.com/max/2000/0*Xn1CY4WKjOu3AdhL.jpeg" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2020/05/05/2020-05-05-unit-test/"><img class="post-cover-img js-img-fadeIn" src="https://cdn-images-1.medium.com/max/2000/0*Xn1CY4WKjOu3AdhL.jpeg" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Unit-Test"><i class="tag post-item-tag">Unit Test</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2020/05/05/2020-05-05-unit-test/">Unit Test 中的替身：搞不清楚的Dummy 、Stub、Spy、Mock、Fake</a></h2><time class="has-text-grey" datetime="2020-05-05T11:50:00.000Z">2020-05-05</time><p class="is-flex-grow-2 mt-2">
+最近開始接觸單元測試，一堆名詞看不懂，來狠狠地 K 一下。而單元測試中的最佳男配角，就是替身 Double。藉由寫一篇文章的方式來讓自己更了解單元測試中的重要部分。一起來學寫測試，Go Go !!
+
+ 註：接觸時間還很短，有錯還請不吝指正，如果之後發現我有理解錯誤再回來更正。
+
+單元測試是什麼？單元測試可以讓你快速驗證程式的行為。了解單元測的話首先來介紹一下 SUT 目標對象。
+舉個例子：你想要測試一台車是不是可以開，那麼 SUT 目標對象就是這台車。
+為了確保這台車可以開，那麼就可以寫一個「這台車應該要可以開」的測試。如果這台車發生了故障，測試就會告訴你，這台車是壞掉的。
+單元測試讓你的程式更容易維護。原因在於你能夠對程式寫測試，代表你寫的程式的「使用說明書」清楚易懂。使用說明書很容易懂，就可以直接拿來..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2020/05/05/2020-05-05-unit-test/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://cdn-images-1.medium.com/max/2088/0*BVfI3gXXICtmPkCu.jpeg" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2020/03/10/2020-03-20-running-flask-on-minikube/"><img class="post-cover-img js-img-fadeIn" src="https://cdn-images-1.medium.com/max/2088/0*BVfI3gXXICtmPkCu.jpeg" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Kubernetes"><i class="tag post-item-tag">Kubernetes</i></a><a href="/tags/Minikube"><i class="tag post-item-tag">Minikube</i></a><a href="/tags/Python"><i class="tag post-item-tag">Python</i></a><a href="/tags/Flask"><i class="tag post-item-tag">Flask</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2020/03/10/2020-03-20-running-flask-on-minikube/">Kubernetes 教學 02 — 在 Minikube 上部屬 Python Flask 應用程式</a></h2><time class="has-text-grey" datetime="2020-03-10T11:50:00.000Z">2020-03-10</time><p class="is-flex-grow-2 mt-2">
+Minikube、kubectl 終於派上用場囉
+
+
+前情提要在 前一篇 中我們弄懂了 K8S Cluster、Node、Pod 與 Container 的關係，並且在文章末段介紹了能夠與 kubectl -「能夠與 K8S 溝通的命令列工具」。這次我們用實際的操作，來認識容器化的實際過程，並把它部屬到本地的 Kubernetes 上面。
+什麼是 Minikube ？Minikube 是一個單節點的 Kubernetes Cluster，可以安裝在本機上，支援 Windows 與 Mac Minikube 只有一個 Node (節點)。
+還記得 Node 是什麼嘛？來複習一下，Node 是一台實體機器，一個工作者 (worker)。上面可以搭載許多個 Pod，而 Pod 是 Kubernetes 的最小部..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2020/03/10/2020-03-20-running-flask-on-minikube/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://cdn-images-1.medium.com/max/3840/0*CmyuLdGdOQJLKS5t.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2020/02/11/2020-02-11-kubernetes-tutorial-01/"><img class="post-cover-img js-img-fadeIn" src="https://cdn-images-1.medium.com/max/3840/0*CmyuLdGdOQJLKS5t.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Kubernetes"><i class="tag post-item-tag">Kubernetes</i></a><a href="/tags/Minikube"><i class="tag post-item-tag">Minikube</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2020/02/11/2020-02-11-kubernetes-tutorial-01/">Kubernetes 教學 01 - 概念與架構</a></h2><time class="has-text-grey" datetime="2020-02-11T02:32:00.000Z">2020-02-11</time><p class="is-flex-grow-2 mt-2">為什麼該學 K8S ？ Pod、Node 是什麼？搞的我好亂呀！
+適合讀者：
+
+已經會使用 Docker，但是不知道 Kubernetes 是什麼。
+
+想看看 Kubernetes 到底在幹嘛的人。
+
+
+為什麼該用 Kubernetes?Kubernetes 中間共有八個字母有點長，所以大家就將他簡稱為 K8S。但使用 K8S 有什麼好處？
+1. 可以更好的運用雲端或是實體資源所有的資源集中成了一個大平台，所以調度上更靈活，以往我們以實體機為單位的方式很沒有效率，要調度資源的時候需要開一台實體機器，或是虛擬機器，都很耗費 CPU、記憶體等等的資源。
+而 K8S 內所有的東西都是容器，可以很快啟動，很快的刪除，並且靈活部屬在 Kubernetes 所擁有的資源上。
+2. 讓一切的基礎設施都寫成程式碼應用程式容..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2020/02/11/2020-02-11-kubernetes-tutorial-01/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://cdn-images-1.medium.com/max/10340/0*JN9t3uzpnpf0KCnz" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2020/01/14/2020-01-14-drone/"><img class="post-cover-img js-img-fadeIn" src="https://cdn-images-1.medium.com/max/10340/0*JN9t3uzpnpf0KCnz" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/DevOps"><i class="tag post-item-tag">DevOps</i></a><a href="/tags/DroneCI"><i class="tag post-item-tag">DroneCI</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2020/01/14/2020-01-14-drone/">從零開始學 DevOps — 那就選擇最簡單的 Drone CI 開始吧！</a></h2><time class="has-text-grey" datetime="2020-01-14T02:32:00.000Z">2020-01-14</time><p class="is-flex-grow-2 mt-2">
+目前 DevOps 已經是 Backend 或 Frontend 多多少少都會碰到的部份。而 Drone，正可以讓開發者專心開發自己的專案，每個專案獨立設定需要的 CI / CD 流程，解放前端、後端工程師的戰鬥力，將測試與部屬結合在開發流程中，降低手動測試需要的時間。話不多說，趕快開始架設第一個 Drone CI 伺服器吧。
+本篇文章分為兩個部分，第一個部分來聊聊，為什麼從 Jenkins -&amp;gt; CircleCI -&amp;gt; Drone ，的過程。第二部分則是架設 Drone 的教學。
+為什麼從 Jenkins -&amp;gt; CircleCI -&amp;gt; Drone第一次接觸 Drone 已經是兩年前，當時的 Drone 是 0.x 版，跟現在的 1.0 版本有不少的差異。那時候玩了一陣子 Dron..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2020/01/14/2020-01-14-drone/">Read more</a></section></article></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><style>.search-widget .search-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--second-text-color);
+}
+.search-widget .search-content {
+    position: absolute;
+    left: 0;
+    top: calc(100% - 3px);
+    z-index: 2;
+
+    width: 100%;
+    height: 0;
+    max-height: 550px;
+
+    overflow: auto;
+    box-sizing: border-box;
+
+    background: var(--top-bar-bg-color);
+    backdrop-filter: blur(var(--backdropFilter));
+    -webkit-backdrop-filter: blur(var(--backdropFilter));
+
+    border-bottom-left-radius: var(--borderRadius);
+    border-bottom-right-radius: var(--borderRadius);
+    box-shadow: 0 12px 15px rgba(0, 0, 0, 0.08);
+}
+
+.search-widget .search-content a:hover h5 {
+    color: #3273dc!important;
+}
+</style><main class="aside-card-container search-widget is-relative"><label for="searchInput"><div class="is-flex px-4" id="searchButton"><i class="iconfont icon--search1 mr-1"></i><input class="search-input is-flex-grow-1" id="searchInput" placeholder="Search everything.."></div></label><section class="search-content content" id="searchContent"></section></main><script>var searchDatabase = []
+var searchInputEl = document.getElementById('searchInput')
+var searchButtonEl = document.getElementById('searchButton')
+var searchResultEl = document.getElementById('searchContent')
+
+searchInputEl.oninput = function (evt) {
+    var searchValue = evt.srcElement.value
+    var haveSearchValue = Boolean(searchValue.trim())
+    if (!haveSearchValue) {
+        searchResultEl.style.height = 0
+        searchResultEl.innerHTML = null
+        return
+    }
+
+    var searchResults = searching(searchValue)
+
+    if (searchResults.length > 0) {
+        renderSearchResults(searchResults)
+    }
+}
+
+function renderSearchResults(results) {
+    searchResultEl.innerHTML = null
+    var fragment = document.createDocumentFragment()
+
+    results.forEach(function (item) {
+        var link = document.createElement('a')
+        var title = document.createElement('h5')
+        var content = document.createElement('p')
+
+        title.className = 'mb-1'
+        title.innerText = item.title
+        content.innerText = item.content
+
+        link.href = item.link
+        link.appendChild(title)
+        link.appendChild(content)
+        link.className = 'p-4 is-block'
+
+        fragment.appendChild(link)
+    })
+
+    searchResultEl.appendChild(fragment)
+    searchResultEl.style.height = 'auto'
+}
+
+function searching(inputText) {
+    var inputTexts = inputText.split(' ')
+    var searchResults = []
+    inputTexts.forEach(function (searchKey) {
+        var haveSearchValue = Boolean(searchKey.trim())
+        if (!haveSearchValue) return
+
+        var key = searchKey.toLowerCase()
+
+        for (var entry of searchDatabase) {
+            var title = entry.getElementsByTagName('title')[0].textContent
+            var link = entry.getElementsByTagName('link')[0].getAttribute('href')
+            var contentWithTags = entry.getElementsByTagName('content')[0].textContent
+            var rawContent = contentWithTags.trim().replace(/<[^>]+>/g, '').toLowerCase()
+
+            var LENGTH = 80
+            var finalContent = ''
+            var contentLength = rawContent.length
+            var searchResultIdx = rawContent.indexOf(key)
+
+            var startIdx = searchResultIdx - 20,
+                endIdx = startIdx + LENGTH
+
+            if (startIdx < 0) {
+                startIdx = 0
+                endIdx = 100
+            }
+
+            endIdx > contentLength && (endIdx = contentLength)
+
+            finalContent = rawContent.substring(startIdx, endIdx)
+
+            if (title.indexOf(key) > -1 || searchResultIdx > -1) {
+                searchResults.push({
+                    link: link,
+                    title: title,
+                    content: finalContent
+                })
+            }
+        }
+    })
+    return searchResults
+}
+
+searchButtonEl.onclick = function () {
+    if (searchDatabase.length > 0) return;
+
+    fetch(window.location.href + '/search.xml').then(res => res.text()).then(res => {
+        var domparser = new DOMParser
+        var doc = domparser.parseFromString(res, 'application/xml')
+        searchDatabase = doc.getElementsByTagName('search')[0].children
+    })
+}</script><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><main class="aside-card-container archives-widget is-in-archive-page"><h3>Archives</h3><section><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a><span class="archive-list-count">2</span></li></ul></section></main><main class="aside-card-container recent-widget"><h3>Recent</h3><ul><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://cdn-images-1.medium.com/max/12032/0*EkacF0gY7pC8VNHP" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2020/11/15/2020-11-15-wsl/">WSL - 在 Windows 上打造 Linux 的開發體驗</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2020-11-15T12:50:00.000Z">2020-11-15</time></section></li><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://cdn-images-1.medium.com/max/2000/1*4Ggl4UF7SjZk4qoapcDBnA.jpeg" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2020/09/21/2020-09-21-introduction-to-gitops-via-argocd/">ArgoCD — 透過 ArgoCD 認識 GitOps</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2020-09-21T12:50:00.000Z">2020-09-21</time></section></li><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://cdn-images-1.medium.com/max/7872/0*8Mqb8j7gMZ3_R-UI" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2020/08/15/2020-08-05-introduction-to-open-source-guild/">從 Github 開源指南｜學習如何貢獻開源專案</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2020-08-15T12:50:00.000Z">2020-08-15</time></section></li><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://cdn-images-1.medium.com/max/4000/0*UzoUjUPMJFmux31Z" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2020/07/28/2020-07-28-tldr/">TLDR 命令列神兵｜Linux 入門必裝</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2020-07-28T08:01:00.000Z">2020-07-28</time></section></li><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://cdn-images-1.medium.com/max/2400/0*P3QeV7d9iPBNeOCr.png" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2020/06/30/2020-06-30-lens-the-ide-for-kubernetes/">Kubernetes IDE | Lens 用圖形化介面管理 K8S</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2020-06-30T09:01:00.000Z">2020-06-30</time></section></li><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://cdn-images-1.medium.com/max/2000/0*wJrJdR3tFO84Tdsd.jpg" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2020/06/02/2020-06-02-tmp-let-your-tmux-better/">TPM — 套件管理工具 ，讓你的 TMUX 更好用</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2020-06-02T11:51:00.000Z">2020-06-02</time></section></li></ul></main></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+
+window.addEventListener('resize', $claudia.throttle(function () {
+    var images = document.querySelectorAll('.js-img-fadeIn')
+
+    images.forEach($claudia.blurBackdropImg)
+}, 150))</script></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+
+window.addEventListener('resize', $claudia.throttle(function () {
+    var images = document.querySelectorAll('.js-img-fadeIn')
+
+    images.forEach($claudia.blurBackdropImg)
+}, 150))</script></body></html>

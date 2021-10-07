@@ -1,0 +1,115 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>jQuery Return Flight Ch1 ( 1 )：Ajax Basics</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="這是之前在try jQuery做過的例子。
+
+之前我們只能顯示localhost的圖片，現在我們要從server載圖片下來，並顯示之。接下來來完成我們第一個Ajax程式。
+$(&amp;#39;.confirmation&amp;#39;).on(&amp;#39;click&amp;#39;, &amp;#39;button&amp;#39;, function()&amp;#123;
+  $.ajax(&amp;#39;http://example.org/confirmation.html&amp;#39;,  &amp;#123;
+     success: function(response) &amp;#123;
+       $(&amp;#39;.ticket&amp;#39;).html(response).slideDown();
+       &amp;#125;
+    &amp;#125;);
+&amp;#.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">jQuery Return Flight Ch1 ( 1 )：Ajax Basics</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Aax%E4%BD%BF%E7%94%A8%E7%9A%84%E6%98%AF%E7%9B%B8%E5%B0%8D%E7%B6%B2%E5%9D%80-relative-URL"><span class="toc-text">Aax使用的是相對網址(relative URL)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-get%E6%B8%9B%E5%B0%91%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="toc-text">使用$.get減少程式碼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sending-parameters-with-requests"><span class="toc-text">Sending parameters with requests</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-Ajax-Data"><span class="toc-text">1.6 Ajax Data</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ajax-options"><span class="toc-text">Ajax options</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8error%E8%99%95%E7%90%86%E5%A4%B1%E6%95%97%E7%9A%84request"><span class="toc-text">使用error處理失敗的request</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8beforeSend%E5%92%8CComplete%E8%A3%BD%E4%BD%9CLoading%E6%95%88%E6%9E%9C"><span class="toc-text">使用beforeSend和Complete製作Loading效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8delegation%E8%A7%A3%E6%B1%BA%E9%8C%AF%E8%AA%A4"><span class="toc-text">使用delegation解決錯誤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-8-%E5%9C%A8-photos%E5%85%A7%E9%A1%AF%E7%A4%BA%E6%96%B0%E7%9A%84-lt-li-gt"><span class="toc-text">1.8 在.photos內顯示新的&lt;li&gt;</span></a></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/javascript"><i class="tag post-item-tag">javascript</i></a><a href="/tags/Ajax"><i class="tag post-item-tag">Ajax</i></a><a href="/tags/jQuery"><i class="tag post-item-tag">jQuery</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">jQuery Return Flight Ch1 ( 1 )：Ajax Basics</h1><time class="has-text-grey" datetime="2014-08-24T17:26:00.000Z">2014-08-25</time><article class="mt-2 post-content"><p>這是之前在try jQuery做過的例子。</p>
+<p><img src="https://lh6.googleusercontent.com/-HjoupHhCEzM/U_qSn5aBcsI/AAAAAAAACxQ/tnBo1gSjLCM/w1755-h860-no/Screen%2BShot%2B2014-08-25%2Bat%2B09.33.46.png"></p>
+<p>之前我們只能顯示localhost的圖片，現在我們要從server載圖片下來，並顯示之。<br>接下來來完成我們第一個Ajax程式。</p>
+<pre><code class="js">$(&#39;.confirmation&#39;).on(&#39;click&#39;, &#39;button&#39;, function()&#123;
+  $.ajax(&#39;http://example.org/confirmation.html&#39;,  &#123;
+     success: function(response) &#123;
+       $(&#39;.ticket&#39;).html(response).slideDown();
+       &#125;
+    &#125;);
+&#125;);
+</code></pre>
+<p>使用Ajax回傳的網頁並不是完整的網頁，而是只有局部更新。</p>
+<pre><code class="html">&lt;div&gt; ...
+  &lt;strong&gt;Boarding Pass: &lt;/strong&gt;
+  &lt;a href=&#39;#&#39; class=&#39;view-boarding-pass&#39;&gt;View Boarding Pass&lt;/a&gt;
+  &lt;img src=&#39;ticket.png&#39; alt=&#39;Your boarding pass&#39; class=&#39;boarding-pass&#39; /&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="Aax使用的是相對網址-relative-URL"><a href="#Aax使用的是相對網址-relative-URL" class="headerlink" title="Aax使用的是相對網址(relative URL)"></a>Aax使用的是相對網址(relative URL)</h2><pre><code class="js">$(&#39;.confirmation&#39;).on(&#39;click&#39;, &#39;button&#39;, function()&#123; $.ajax(&#39;confirmation.html&#39;, &#123;
+     success: function(response) &#123;
+         $(&#39;.ticket&#39;).html(response).slideDown();
+     &#125; &#125;);
+&#125;);
+</code></pre>
+<p>跟<a target="_blank" rel="noopener" href="http://example.org/confirmation.html%E4%B8%80%E6%A8%A3%E7%9A%84%E6%95%88%E6%9E%9C%E3%80%82">http://example.org/confirmation.html一樣的效果。</a></p>
+<h2 id="使用-get減少程式碼"><a href="#使用-get減少程式碼" class="headerlink" title="使用$.get減少程式碼"></a>使用$.get減少程式碼</h2><p>使用$.ajax</p>
+<pre><code class="js">$.ajax(&#39;confirmation.html&#39;, &#123;
+     success: function(response) &#123;
+      $(&#39;.ticket&#39;).html(response).slideDown();
+    &#125;
+&#125;);
+</code></pre>
+<p>使用$.get</p>
+<pre><code class="js">$.get(&#39;confirmation.html&#39;, function(response) &#123;
+   $(&#39;.ticket&#39;).html(response).slideDown();
+&#125;);
+</code></pre>
+<p>兩種方法效果完全一樣，用get的寫法比較精簡。格式是<code>$.get(url, success callback)</code></p>
+<h2 id="Sending-parameters-with-requests"><a href="#Sending-parameters-with-requests" class="headerlink" title="Sending parameters with requests"></a>Sending parameters with requests</h2><p>有兩種寫法，作用是相等的。<br>第一種把網址填入url</p>
+<pre><code class="js">$.ajax(&#39;confirmation.html?confNum=1234&#39;, &#123; success: function(response) &#123;
+     $(&#39;.ticket&#39;).html(response).slideDown();
+   &#125;
+&#125;);
+</code></pre>
+<p>第二種將網址寫在data項目之下</p>
+<pre><code class="js">$.ajax(&#39;confirmation.html&#39;, &#123;
+   success: function(response) &#123;
+     $(&#39;.ticket&#39;).html(response).slideDown();
+   &#125;,
+   data: &#123; &quot;confNum&quot;: 1234 &#125;
+   &#125;
+&#125;);
+</code></pre>
+<p>這兩種方法都是寫死的，正常來說資料是會變動的，所以應該要用以下寫法。</p>
+<pre><code class="html">&lt;div class=&#39;ticket&#39; data-confNum=&#39;1234&#39;&gt;
+</code></pre>
+<pre><code class="js">$.ajax(&#39;confirmation.html&#39;, &#123;
+     success: function(response) &#123;
+       $(&#39;.ticket&#39;).html(response).slideDown();
+     &#125;,
+     data: &#123; &quot;confNum&quot;: $(&quot;.ticket&quot;).data(&quot;confNum&quot;)
+     &#125;
+&#125;);
+</code></pre>
+<h3 id="1-6-Ajax-Data"><a href="#1-6-Ajax-Data" class="headerlink" title="1.6 Ajax Data"></a>1.6 Ajax Data</h3><p>原本會顯示全部的圖片，透過修改data對應的url，變成只顯示london這張圖片<br>我的答案是這樣</p>
+<pre><code class="js">$(document).ready(function() &#123;
+  $(&quot;#tour&quot;).on(&quot;click&quot;, &quot;button&quot;, function() &#123;
+    $.ajax(&#39;/photos.html&#39;, &#123;
+      data: &#123;location:&#39;london&#39;&#125;,
+      success: function(response) &#123;
+        $(&#39;.photos&#39;).html(response).fadeIn();
+      &#125;
+
+    &#125;);
+  &#125;);
+&#125;);
+</code></pre>
+<p>這時候出現了以下的錯誤<br><img src="https://lh6.googleusercontent.com/zmzYKG0zPFrQtQuetAmUASzkGppMbCiTAMpblaBAhcY=w1748-h223-no"></p>
+<p>因為我把值寫死了，使用data來對應是比較好的作法。</p>
+<pre><code class="js">$(document).ready(function() &#123;
+  $(&quot;#tour&quot;).on(&quot;click&quot;, &quot;button&quot;, function() &#123;
+    var el = $(&quot;#tour&quot;);
+    $.ajax(&#39;/photos.html&#39;, &#123;
+      data: &#123;location: el.data(&#39;location&#39;)&#125;,
+      success: function(response) &#123;
+        $(&#39;.photos&#39;).html(response).fadeIn();
+      &#125;
+    &#125;);
+  &#125;);
+&#125;);
+</code></pre>
+<h1 id="Ajax-options"><a href="#Ajax-options" class="headerlink" title="Ajax options"></a>Ajax options</h1><h2 id="使用error處理失敗的request"><a href="#使用error處理失敗的request" class="headerlink" title="使用error處理失敗的request"></a>使用error處理失敗的request</h2><p><img src="https://lh5.googleusercontent.com/-Ho8DXLjqFms/U_qfnpPOAOI/AAAAAAAACyU/0Bm0X2lg8zI/w1755-h885-no/Screen%2BShot%2B2014-08-25%2Bat%2B10.24.28.png"></p>
+<h2 id="使用beforeSend和Complete製作Loading效果"><a href="#使用beforeSend和Complete製作Loading效果" class="headerlink" title="使用beforeSend和Complete製作Loading效果"></a>使用beforeSend和Complete製作Loading效果</h2><p><img src="https://lh6.googleusercontent.com/-CiUYsr6XJpg/U_qfny5n5vI/AAAAAAAACyk/pxPMu-k_URk/w1755-h925-no/Screen%2BShot%2B2014-08-25%2Bat%2B10.23.49.png"></p>
+<h2 id="使用delegation解決錯誤"><a href="#使用delegation解決錯誤" class="headerlink" title="使用delegation解決錯誤"></a>使用delegation解決錯誤</h2><p>因為DOM在一進入頁面的時候就載入，所以如果用第一個寫法會發生錯誤，因為根本就還沒有這個物件。<br><img src="https://lh4.googleusercontent.com/-F0Ta3-SweHU/U_qfowcrybI/AAAAAAAACys/nwHPzkl773c/w1755-h875-no/Screen%2BShot%2B2014-08-25%2Bat%2B10.28.02.png"><br>這時候需要delegate，在觸發事件的後面跟著設定一個selector，符合這個selector才會執行。<br><img src="https://lh4.googleusercontent.com/-U03mkyStXcs/U_qfpEdT5FI/AAAAAAAACyo/pth2HCRfKFM/w1753-h423-no/Screen%2BShot%2B2014-08-25%2Bat%2B10.28.33.png"><br><a target="_blank" rel="noopener" href="http://api.jquery.com/delegate/">delegate官方文件</a></p>
+<h2 id="1-8-在-photos內顯示新的-lt-li-gt"><a href="#1-8-在-photos內顯示新的-lt-li-gt" class="headerlink" title="1.8 在.photos內顯示新的&lt;li&gt;"></a>1.8 在.photos內顯示新的<code>&lt;li&gt;</code></h2><pre><code class="html">&lt;div id=&quot;tour&quot; data-location=&quot;london&quot;&gt;
+  &lt;button&gt;Get Photos&lt;/button&gt;
+  &lt;ul class=&quot;photos&quot;&gt;
+
+  &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="js"> $(&#39;.photos&#39;).html(&#39;&lt;li&gt;There was a problem fetching the latest photos. Please try again.&lt;/li&gt;&#39;);
+</code></pre>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2014/09/03/old%20posts/2014-09-03-ruby-bits-1-expression/" title="Ruby bits ( 1 ) : Expression"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Ruby bits ( 1 ) : Expression</span></a><a class="button is-default" href="/2014/08/11/old%20posts/2014-08-11-sitcon-git-workshop/" title="Sitcon workshop：Git 入門到進階與實務經驗談"><span class="has-text-weight-semibold">Next: Sitcon workshop：Git 入門到進階與實務經驗談</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

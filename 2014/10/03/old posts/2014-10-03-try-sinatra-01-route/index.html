@@ -1,0 +1,111 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>Sinatra 初體驗(1) - Route</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="First Sinatra App輸入gem install sinatra安裝gem
+建立app.rb檔
+require &amp;quot;sinatra/base&amp;quot;
+
+class App &amp;lt; Sinatra::Base
+    get &amp;#39;/&amp;#39; do
+        &amp;quot;Hello World!!&amp;quot;
+    end
+end
+
+建立config.ru
+    require &amp;quot;./app&amp;quot; # relative file path
+
+    run App   #class Name
+
+輸入rackup啟動server，在 http://localhost:9292 即可看到Hello World
+使用curl來模仿HTTP Verb - GE.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Sinatra 初體驗(1) - Route</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#First-Sinatra-App"><span class="toc-text">First Sinatra App</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8curl%E4%BE%86%E6%A8%A1%E4%BB%BFHTTP-Verb-GET"><span class="toc-text">使用curl來模仿HTTP Verb - GET</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B9%E5%AF%ABapp%E7%82%BApost"><span class="toc-text">改寫app為post</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP-verb-%E9%83%BD%E4%BE%86%E4%B8%80%E6%AC%A1"><span class="toc-text">HTTP verb 都來一次</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%E5%AE%8C%E6%95%B4%E7%9A%84POST"><span class="toc-text">解析完整的POST</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E4%B8%8B%E4%BE%86"><span class="toc-text">接下來</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%99%E6%A8%A3%E5%AF%AB%E7%9A%84%E7%BC%BA%E9%BB%9E"><span class="toc-text">這樣寫的缺點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%AD%A3%E9%81%B8%E6%93%87%E6%80%A7%E6%AC%84%E4%BD%8D%E7%9A%84%E5%95%8F%E9%A1%8C"><span class="toc-text">修正選擇性欄位的問題</span></a></li></ol></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/Ruby"><i class="tag post-item-tag">Ruby</i></a><a href="/tags/Sinatra"><i class="tag post-item-tag">Sinatra</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Sinatra 初體驗(1) - Route</h1><time class="has-text-grey" datetime="2014-10-03T04:04:00.000Z">2014-10-03</time><article class="mt-2 post-content"><h1 id="First-Sinatra-App"><a href="#First-Sinatra-App" class="headerlink" title="First Sinatra App"></a>First Sinatra App</h1><p>輸入<code>gem install sinatra</code>安裝gem</p>
+<p>建立app.rb檔</p>
+<pre><code class="rb">require &quot;sinatra/base&quot;
+
+class App &lt; Sinatra::Base
+    get &#39;/&#39; do
+        &quot;Hello World!!&quot;
+    end
+end
+</code></pre>
+<p>建立config.ru</p>
+<pre><code class="rb">    require &quot;./app&quot; # relative file path
+
+    run App   #class Name
+</code></pre>
+<p>輸入<code>rackup</code>啟動server，在 <code>http://localhost:9292</code> 即可看到Hello World</p>
+<h2 id="使用curl來模仿HTTP-Verb-GET"><a href="#使用curl來模仿HTTP-Verb-GET" class="headerlink" title="使用curl來模仿HTTP Verb - GET"></a>使用curl來模仿HTTP Verb - GET</h2><pre><code>curl -v &quot;http://localhost:9292&quot;
+</code></pre>
+<p>RESTful HTTP Post:</p>
+<pre><code>curl -X POST -d &quot;http://localhost:9292&quot;
+</code></pre>
+<p><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/14978411/http-post-and-get-using-curl-in-linux">http-post-and-get-using-curl-in-linux</a></p>
+<p><a target="_blank" rel="noopener" href="http://evelynnote.blogspot.tw/2011/03/curl.html">curl指令用法</a></p>
+<h2 id="改寫app為post"><a href="#改寫app為post" class="headerlink" title="改寫app為post"></a>改寫app為post</h2><pre><code class="rb">require &quot;sinatra/base&quot;
+
+class App &lt; Sinatra::Base
+    post &#39;/&#39; do
+        &quot;Hello World!!&quot;
+    end
+end
+</code></pre>
+<p>輸入<code>curl -X Post -v -d &quot;&quot; http://localhost:9292</code><br>這邊分號沒有寫錯，因為就是要傳一個空字串給server。<br>這樣server就會傳回http response</p>
+<h2 id="HTTP-verb-都來一次"><a href="#HTTP-verb-都來一次" class="headerlink" title="HTTP verb 都來一次"></a>HTTP verb 都來一次</h2><pre><code class="rb"># app.rb
+require &quot;sinatra/base&quot;
+
+class App &lt; Sinatra::Base
+    get &#39;/&#39; do
+        &quot;Hello World!!&quot;
+    end
+
+    post &#39;/&#39; do
+        &quot;Hello World via POST!!&quot;
+    end
+
+    put &#39;/&#39; do
+        &quot;Hello World via PUT!!&quot;
+    end
+
+    delete &#39;/&#39; do
+        &quot;Hello World via DELETE!!&quot;
+    end
+end
+</code></pre>
+<p>輸入<code>curl -X POST -v -d &quot;&quot; http://localhost:9292</code><br>回應<code>Hello World via POST!!</code><br>輸入<code>curl -X PUT -v -d &quot;&quot; http://localhost:9292</code><br>回應<code>Hello World via PUT!!</code><br>輸入<code>curl -X DELETE -v -d &quot;&quot; http://localhost:9292</code><br>回應<code>Hello World via DELETE!!</code></p>
+<h2 id="解析完整的POST"><a href="#解析完整的POST" class="headerlink" title="解析完整的POST"></a>解析完整的POST</h2><pre><code>    &gt; POST / HTTP/1.1
+    &gt; User-Agent: curl/7.30.0
+    &gt; Host: localhost:9292
+    &gt; Accept: */*
+    &gt; Content-Length: 0
+    &gt; Content-Type: application/x-www-form-urlencoded
+    &gt;
+    &lt; HTTP/1.1 200 OK
+    &lt; Content-Type: text/html;charset=utf-8
+    &lt; Content-Length: 22
+    &lt; X-Xss-Protection: 1; mode=block
+    &lt; X-Content-Type-Options: nosniff
+    &lt; X-Frame-Options: SAMEORIGIN
+    * Server WEBrick/1.3.1 (Ruby/2.0.0/2013-11-22) is not blacklisted
+    &lt; Server: WEBrick/1.3.1 (Ruby/2.0.0/2013-11-22)
+    &lt; Date: Fri, 03 Oct 2014 07:58:10 GMT
+    &lt; Connection: Keep-Alive
+    &lt;
+    * Connection #0 to host localhost left intact
+    Hello World via POST!!%
+</code></pre>
+<p>比較重要的欄位有</p>
+<ol>
+<li>第一行，說明是使用哪種http動詞</li>
+<li><code>Content-Type: text/html;charset=utf-8</code> 說明是html</li>
+<li>最後輸出的就是route相對輸出的內容</li>
+</ol>
+<h2 id="接下來"><a href="#接下來" class="headerlink" title="接下來"></a>接下來</h2><pre><code class="rb">get &quot;/hello/:first_name/:last_name&quot; do |first, last|
+  &quot;hello#&#123;first&#125;#&#123;last&#125;&quot;
+end
+</code></pre>
+<p>在網址列輸入<code>http://0.0.0.0:9292/hello/steven/huang</code><br>網頁上就會印出 hellostevenhuang</p>
+<h2 id="這樣寫的缺點"><a href="#這樣寫的缺點" class="headerlink" title="這樣寫的缺點"></a>這樣寫的缺點</h2><p>這樣寫的話有如果網址列輸入<code>http://0.0.0.0:9292/hello/test</code><br>就會出現 <code>Sinatra doesn’t know this ditty</code> 的錯誤，因為這樣的寫法比較沒有彈性，route並沒有match到網址。</p>
+<h2 id="修正選擇性欄位的問題"><a href="#修正選擇性欄位的問題" class="headerlink" title="修正選擇性欄位的問題"></a>修正選擇性欄位的問題</h2><pre><code class="rb">get &quot;/hello/:first_name/?:last_name?&quot; do |first, last|
+  &quot;hello#&#123;first&#125;#&#123;last&#125;&quot;
+end
+</code></pre>
+<p>這樣的話 last_name 就變成了選擇性欄位<br>有沒有輸入都會進入這個 route<br>來測試看看：<br>輸入 <code>http://0.0.0.0:9292/hello/steven</code><br>果然輸出了 hellosteven</p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2014/10/03/old%20posts/2014-10-03-try-sinatra-02/" title="Sinatra 初體驗(2) template與layout"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Sinatra 初體驗(2) template與layout</span></a><a class="button is-default" href="/2014/10/01/old%20posts/2014-10-01-techday-videos/" title="Techdays Videos 釋出"><span class="has-text-weight-semibold">Next: Techdays Videos 釋出</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

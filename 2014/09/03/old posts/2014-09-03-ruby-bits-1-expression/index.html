@@ -1,0 +1,91 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>Ruby bits ( 1 ) : Expression</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="UnlessUnless is more intuitive用 unless 代替 if! 更加直覺
+Unless with else is confusingunless 和 else 一起用的時候令人困惑
+NILNIL IS FALSE因為 nil 的值等於 false 所以上面的程式可以簡化成下面這樣。
+ONLY NIL IS FALSERails 世界中只有 nil 的值是 false（除了 False 本身的值當然是 False 以外）。
+inline condition
+short circuit assignment指的是使用 and(&amp;amp;&amp;amp;) 和 or(||)來縮減 if-else
+Ex1 : if nil, default to empty array
+Ex2 : sign .."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Ruby bits ( 1 ) : Expression</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Unless"><span class="toc-text">Unless</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Unless-is-more-intuitive"><span class="toc-text">Unless is more intuitive</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Unless-with-else-is-confusing"><span class="toc-text">Unless with else is confusing</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NIL"><span class="toc-text">NIL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NIL-IS-FALSE"><span class="toc-text">NIL IS FALSE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ONLY-NIL-IS-FALSE"><span class="toc-text">ONLY NIL IS FALSE</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#inline-condition"><span class="toc-text">inline condition</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#short-circuit-assignment"><span class="toc-text">short circuit assignment</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Ex1-if-nil-default-to-empty-array"><span class="toc-text">Ex1 : if nil, default to empty array</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ex2-sign-in"><span class="toc-text">Ex2 : sign in</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conditional-assignment"><span class="toc-text">conditional assignment</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conditional-return-values"><span class="toc-text">conditional return values</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conditional-return-values-ex2"><span class="toc-text">conditional return values (ex2)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CASE"><span class="toc-text">CASE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CASE-RANGES"><span class="toc-text">CASE RANGES</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CASE-REGEXPS"><span class="toc-text">CASE - REGEXPS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CASE-WHEN-THEN"><span class="toc-text">CASE - WHEN&#x2F;THEN</span></a></li></ol></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/Ruby"><i class="tag post-item-tag">Ruby</i></a><a href="/tags/Ruby-Bit"><i class="tag post-item-tag">Ruby Bit</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Ruby bits ( 1 ) : Expression</h1><time class="has-text-grey" datetime="2014-09-03T01:10:00.000Z">2014-09-03</time><article class="mt-2 post-content"><h2 id="Unless"><a href="#Unless" class="headerlink" title="Unless"></a>Unless</h2><h3 id="Unless-is-more-intuitive"><a href="#Unless-is-more-intuitive" class="headerlink" title="Unless is more intuitive"></a>Unless is more intuitive</h3><p>用 unless 代替 if! 更加直覺<br><img src="https://lh6.googleusercontent.com/-5bBGYT1k2-A/VJ6nejJKOhI/AAAAAAAADSo/1-o4flu-7Ys/w1753-h923-no/Screen%2BShot%2B2014-12-27%2Bat%2B20.21.26.png"></p>
+<h3 id="Unless-with-else-is-confusing"><a href="#Unless-with-else-is-confusing" class="headerlink" title="Unless with else is confusing"></a>Unless with else is confusing</h3><p>unless 和 else 一起用的時候令人困惑<br><img src="https://lh6.googleusercontent.com/-5bBGYT1k2-A/VJ6nejJKOhI/AAAAAAAADSo/1-o4flu-7Ys/w1753-h923-no/Screen%2BShot%2B2014-12-27%2Bat%2B20.21.26.png"></p>
+<h2 id="NIL"><a href="#NIL" class="headerlink" title="NIL"></a>NIL</h2><h3 id="NIL-IS-FALSE"><a href="#NIL-IS-FALSE" class="headerlink" title="NIL IS FALSE"></a>NIL IS FALSE</h3><p>因為 nil 的值等於 false 所以上面的程式可以簡化成下面這樣。<br><img src="https://lh5.googleusercontent.com/-d-D-pBa2YDg/VJ6nep0yXhI/AAAAAAAADS0/0Xxjj3Nio6s/w1755-h913-no/Screen%2BShot%2B2014-12-27%2Bat%2B20.26.07.png"></p>
+<h3 id="ONLY-NIL-IS-FALSE"><a href="#ONLY-NIL-IS-FALSE" class="headerlink" title="ONLY NIL IS FALSE"></a>ONLY NIL IS FALSE</h3><p>Rails 世界中只有 nil 的值是 false（除了 False 本身的值當然是 False 以外）。<br><img src="https://lh3.googleusercontent.com/-mdIOdhlh8D4/VJ6nevdeyvI/AAAAAAAADSw/1BiBgZAB4EQ/w1650-h900-no/Screen%2BShot%2B2014-12-27%2Bat%2B20.29.07.png"></p>
+<h2 id="inline-condition"><a href="#inline-condition" class="headerlink" title="inline condition"></a>inline condition</h2><p><img src="https://lh5.googleusercontent.com/-6w8mJFsayEk/VJ6nfsNXD6I/AAAAAAAADS4/cCaNA4Tc9AU/w1648-h870-no/Screen%2BShot%2B2014-12-27%2Bat%2B20.33.55.png"></p>
+<h2 id="short-circuit-assignment"><a href="#short-circuit-assignment" class="headerlink" title="short circuit assignment"></a>short circuit assignment</h2><p>指的是使用 and(&amp;&amp;) 和 or(||)來縮減 if-else</p>
+<h3 id="Ex1-if-nil-default-to-empty-array"><a href="#Ex1-if-nil-default-to-empty-array" class="headerlink" title="Ex1 : if nil, default to empty array"></a>Ex1 : if nil, default to empty array</h3><p><img src="https://lh6.googleusercontent.com/-VGNyfeQzJ9o/VJ6tympvnJI/AAAAAAAADTc/lspZVQXK6cU/w1753-h805-no/Screen%2BShot%2B2014-12-27%2Bat%2B20.47.18.png"></p>
+<h3 id="Ex2-sign-in"><a href="#Ex2-sign-in" class="headerlink" title="Ex2 : sign in"></a>Ex2 : sign in</h3><p>一個常見的例子是用在「判斷使用者有沒有登入」，如果 session 中有 user_id 就去找到相對的 user。 session 中沒有找不到 user_id 時才導向登入畫面。</p>
+<pre><code class="ruby">def sign_in
+  current_session || sign_user_in
+end
+</code></pre>
+<h2 id="conditional-assignment"><a href="#conditional-assignment" class="headerlink" title="conditional assignment"></a>conditional assignment</h2><p><img src="https://lh5.googleusercontent.com/N9asEu-OunIOpgTfsZhXbHzp9ryQbRF2T5cYHb--Xos=w1650-h813-no"></p>
+<p>現在有一個敘述<code>i_was_set ||= 2</code>它的意思是如果 i_was_set 這個變數還沒被 assign 值，那就設定為2(下方的例子)。如果已經被 assign了值，i_was_set 的值保持原來 assign 的值（上方的例子）。</p>
+<p><img src="https://lh3.googleusercontent.com/0BVEMiPeVwoOckMffgOffI50f7cPgrCeM81PXWn74SI=w1755-h783-no"></p>
+<p>再看一個例子，如果變數未指定的話就會設成後面的值。</p>
+<h2 id="conditional-return-values"><a href="#conditional-return-values" class="headerlink" title="conditional return values"></a>conditional return values</h2><p>利用 =if 來減少重複的程式碼。原理是再function中裸寫出一個值時，其實意義上等於 return 剛剛寫下的那個值。舉例來說</p>
+<pre><code class="rb">if list_name
+  &quot;/#&#123;user_name&#125;/#&#123;list_name&#125;&quot;
+else
+  &quot;/#&#123;user_name&#125;&quot;
+end
+</code></pre>
+<p>會回傳<code>&quot;/#&#123;user_name&#125;/#&#123;list_name&#125;&quot;</code>或<code>&quot;/#&#123;user_name&#125;&quot;</code>，所以如果寫下</p>
+<pre><code class="ruby">options[:path] = if list_name
+  &quot;/#&#123;user_name&#125;/#&#123;list_name&#125;&quot;
+else
+  &quot;/#&#123;user_name&#125;&quot;
+end
+</code></pre>
+<p>其實就等於</p>
+<pre><code class="ruby">if list_name
+  options[:path] = &quot;/#&#123;user_name&#125;/#&#123;list_name&#125;&quot;
+else
+  options[:path] = &quot;/#&#123;user_name&#125;&quot;
+end
+</code></pre>
+<p>上式先判斷listname的值，再指定給option[:path]，下式也是先判斷list_name的值，再指定給 option[:path]。可以發現兩者邏輯是相同的，只是書寫的方式看起來不同。</p>
+<h2 id="conditional-return-values-ex2"><a href="#conditional-return-values-ex2" class="headerlink" title="conditional return values (ex2)"></a>conditional return values (ex2)</h2><pre><code class="rb">def list_url(user_name, list_name)
+  if list_name
+    url = &quot;https://twitter.com/#&#123;user_name&#125;/#&#123;list_name&#125;&quot;
+  else
+    url = &quot;https://twitter.com/#&#123;user_name&#125;&quot;
+  end
+  url
+end
+</code></pre>
+<pre><code class="rb">def list_url(user_name, list_name)
+  if list_name
+      &quot;https://twitter.com/#&#123;user_name&#125;/#&#123;list_name&#125;&quot;
+  else
+      &quot;https://twitter.com/#&#123;user_name&#125;&quot;
+  end
+end
+</code></pre>
+<h2 id="CASE"><a href="#CASE" class="headerlink" title="CASE"></a>CASE</h2><p>case 的用法跟java不太一樣，但是其實意義上有點類似，ruby裡面的case流程判斷的else就是java裡面switch流程判斷的default。然後java設定條件的地方用關鍵字 case 而 ruby 用關鍵字 when。</p>
+<h3 id="CASE-RANGES"><a href="#CASE-RANGES" class="headerlink" title="CASE RANGES"></a>CASE RANGES</h3><pre><code class="rb">popularity = case tweet.retweet_count
+  when 0..9
+    nil
+  when 10..99
+    &quot;trending&quot;
+  else
+    &quot;hot&quot;
+end
+</code></pre>
+<h3 id="CASE-REGEXPS"><a href="#CASE-REGEXPS" class="headerlink" title="CASE - REGEXPS"></a>CASE - REGEXPS</h3><pre><code class="rb">tweet_type = case tweet.status
+    when /\A@\w+/
+        :mention
+    when /\Ad\s+\w+/
+        :direct_message
+    else
+        :public
+end
+</code></pre>
+<h3 id="CASE-WHEN-THEN"><a href="#CASE-WHEN-THEN" class="headerlink" title="CASE - WHEN/THEN"></a>CASE - WHEN/THEN</h3><pre><code class="rb">tweet_type = case tweet.status
+    when /\A@\w+/    then :mention
+    when/\Ad\s+\w+/  then :direct_message
+    else                  :public
+  end
+</code></pre>
+<p>這個設定滿方便，用java寫至少要拆成兩個物件才能夠取得return的值。(看不懂不要緊，我沒有說的很清楚，總之就記得ruby這樣的寫法是比較簡潔的即可)。</p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2014/09/04/old%20posts/2014-09-04-ruby-bits-2-methods-and-classes/" title="Ruby bits ( 2 ) : Methods and Classes"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Ruby bits ( 2 ) : Methods and Classes</span></a><a class="button is-default" href="/2014/08/25/old%20posts/2014-08-25-javascript-return-flight/" title="jQuery Return Flight Ch1 ( 1 )：Ajax Basics"><span class="has-text-weight-semibold">Next: jQuery Return Flight Ch1 ( 1 )：Ajax Basics</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

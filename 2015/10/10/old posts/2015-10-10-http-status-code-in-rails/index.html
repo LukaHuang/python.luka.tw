@@ -1,0 +1,95 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>HTTP Status Code In Rails</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="Rails將這些HTTP Status定義成有意義的單字。讓我們可以在使用的時候減少因為背錯而發生錯誤的機率。
+使用方式用symbol加上單字即可取代原本的HTTP Status Code(500)
+render status: 500
+render status: :forbidden
+
+這些Symbol其實定義在Rack中原始碼 rack/utils.rb
+    HTTP_STATUS_CODES = &amp;#123;
+
+    # Informational
+      100 =&amp;gt; &amp;#39;Continue&amp;#39;,
+      101 =&amp;gt; &amp;#39;Switching Protocols&amp;#39;,
+      102 =&amp;gt; &amp;#39;Processing&amp;#39;,
+
+  .."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">HTTP Status Code In Rails</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-text">使用方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%99%E4%BA%9BSymbol%E5%85%B6%E5%AF%A6%E5%AE%9A%E7%BE%A9%E5%9C%A8Rack%E4%B8%AD"><span class="toc-text">這些Symbol其實定義在Rack中</span></a></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/Rails"><i class="tag post-item-tag">Rails</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">HTTP Status Code In Rails</h1><time class="has-text-grey" datetime="2015-10-10T03:22:00.000Z">2015-10-10</time><article class="mt-2 post-content"><p>Rails將這些HTTP Status定義成有意義的單字。讓我們可以在使用的時候減少因為背錯而發生錯誤的機率。</p>
+<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><p>用symbol加上單字即可取代原本的HTTP Status Code(500)</p>
+<pre><code class="rb">render status: 500
+render status: :forbidden
+</code></pre>
+<h3 id="這些Symbol其實定義在Rack中"><a href="#這些Symbol其實定義在Rack中" class="headerlink" title="這些Symbol其實定義在Rack中"></a>這些Symbol其實定義在Rack中</h3><p><a target="_blank" rel="noopener" href="https://github.com/rack/rack/blob/master/lib/rack/utils.rb#L452-L515">原始碼 rack/utils.rb</a></p>
+<pre><code class="rb">    HTTP_STATUS_CODES = &#123;
+
+    # Informational
+      100 =&gt; &#39;Continue&#39;,
+      101 =&gt; &#39;Switching Protocols&#39;,
+      102 =&gt; &#39;Processing&#39;,
+
+    # Success
+      200 =&gt; &#39;OK&#39;,
+      201 =&gt; &#39;Created&#39;,
+      202 =&gt; &#39;Accepted&#39;,
+      203 =&gt; &#39;Non-Authoritative Information&#39;,
+      204 =&gt; &#39;No Content&#39;,
+      205 =&gt; &#39;Reset Content&#39;,
+      206 =&gt; &#39;Partial Content&#39;,
+      207 =&gt; &#39;Multi-Status&#39;,
+      208 =&gt; &#39;Already Reported&#39;,
+      226 =&gt; &#39;IM Used&#39;,
+
+    # Redirection
+      300 =&gt; &#39;Multiple Choices&#39;,
+      301 =&gt; &#39;Moved Permanently&#39;,
+      302 =&gt; &#39;Found&#39;,
+      303 =&gt; &#39;See Other&#39;,
+      304 =&gt; &#39;Not Modified&#39;,
+      305 =&gt; &#39;Use Proxy&#39;,
+      307 =&gt; &#39;Temporary Redirect&#39;,
+      308 =&gt; &#39;Permanent Redirect&#39;,
+
+    # Client Error
+      400 =&gt; &#39;Bad Request&#39;,
+      401 =&gt; &#39;Unauthorized&#39;,
+      402 =&gt; &#39;Payment Required&#39;,
+      403 =&gt; &#39;Forbidden&#39;,
+      404 =&gt; &#39;Not Found&#39;,
+      405 =&gt; &#39;Method Not Allowed&#39;,
+      406 =&gt; &#39;Not Acceptable&#39;,
+      407 =&gt; &#39;Proxy Authentication Required&#39;,
+      408 =&gt; &#39;Request Timeout&#39;,
+      409 =&gt; &#39;Conflict&#39;,
+      410 =&gt; &#39;Gone&#39;,
+      411 =&gt; &#39;Length Required&#39;,
+      412 =&gt; &#39;Precondition Failed&#39;,
+      413 =&gt; &#39;Payload Too Large&#39;,
+      414 =&gt; &#39;URI Too Long&#39;,
+      415 =&gt; &#39;Unsupported Media Type&#39;,
+      416 =&gt; &#39;Range Not Satisfiable&#39;,
+      417 =&gt; &#39;Expectation Failed&#39;,
+      421 =&gt; &#39;Misdirected Request&#39;,
+      422 =&gt; &#39;Unprocessable Entity&#39;,
+      423 =&gt; &#39;Locked&#39;,
+      424 =&gt; &#39;Failed Dependency&#39;,
+      426 =&gt; &#39;Upgrade Required&#39;,
+      428 =&gt; &#39;Precondition Required&#39;,
+      429 =&gt; &#39;Too Many Requests&#39;,
+      431 =&gt; &#39;Request Header Fields Too Large&#39;,
+
+    # Server Error
+      500 =&gt; &#39;Internal Server Error&#39;,
+      501 =&gt; &#39;Not Implemented&#39;,
+      502 =&gt; &#39;Bad Gateway&#39;,
+      503 =&gt; &#39;Service Unavailable&#39;,
+      504 =&gt; &#39;Gateway Timeout&#39;,
+      505 =&gt; &#39;HTTP Version Not Supported&#39;,
+      506 =&gt; &#39;Variant Also Negotiates&#39;,
+      507 =&gt; &#39;Insufficient Storage&#39;,
+      508 =&gt; &#39;Loop Detected&#39;,
+      510 =&gt; &#39;Not Extended&#39;,
+      511 =&gt; &#39;Network Authentication Required&#39;
+    &#125;
+</code></pre>
+<p>還是不知道從何下手記憶嘛？來看保哥已經整理好一篇完整的HTTP Status Code文章囉^^</p>
+<p><a target="_blank" rel="noopener" href="http://blog.miniasp.com/post/2009/01/16/Web-developer-should-know-about-HTTP-Status-Code.aspx">The Will Will Web 網頁開發人員應了解的 HTTP 狀態碼</a></p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2015/10/12/old%20posts/2015-10-12-practice-using-the-matirialize-framework-parallax-scrolling/" title="Demo：使用Matirialize框架實現視差滾動"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Demo：使用Matirialize框架實現視差滾動</span></a><a class="button is-default" href="/2015/07/22/old%20posts/2015-07-22-introduce-atoms-killer-packages/" title="Atom殺手級套件介紹"><span class="has-text-weight-semibold">Next: Atom殺手級套件介紹</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

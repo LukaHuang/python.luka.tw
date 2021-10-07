@@ -1,0 +1,79 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>Ruby metaprogramming - Open Class and Refine </title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="簡介Open Class 是 Ruby 常用的技巧，指的是我們可以覆寫已經存在的方法，來修改物件或類別的行為。在這邊我沒有要講詳細的作法，要介紹的是在 Ruby 2.0 中新增的 refine
+RefineRefine 是 ruby 2.0 之後加入的元素。會使用 Refine 的原因是使用一般 Open Class 的技巧時並不會有明顯的提示。所以我們如果沒有用比較清楚的方法標示 Open Class 作用的地方，造成的後果是非常難以維護且可怕的。透過 refine 我們可以更安全的覆寫原本的 Class，尤其是系統中本來存在的一些方法。用法是先定義一個 Module ，Module 裡面寫下你要覆寫的 Class 與要覆寫的方法。並且用 Using 決定在何時使用。
+class Cat
+  def me.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Ruby metaprogramming - Open Class and Refine </p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B0%A1%E4%BB%8B"><span class="toc-text">簡介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Refine"><span class="toc-text">Refine</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Method-Lookup"><span class="toc-text">Method Lookup</span></a></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/Ruby"><i class="tag post-item-tag">Ruby</i></a><a href="/tags/Metaprogramming"><i class="tag post-item-tag">Metaprogramming</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Ruby metaprogramming - Open Class and Refine </h1><time class="has-text-grey" datetime="2016-09-11T05:49:00.000Z">2016-09-11</time><article class="mt-2 post-content"><h3 id="簡介"><a href="#簡介" class="headerlink" title="簡介"></a>簡介</h3><p>Open Class 是 Ruby 常用的技巧，指的是我們可以覆寫已經存在的方法，來修改物件或類別的行為。<br>在這邊我沒有要講詳細的作法，要介紹的是在 Ruby 2.0 中新增的 <code>refine</code></p>
+<h3 id="Refine"><a href="#Refine" class="headerlink" title="Refine"></a>Refine</h3><p>Refine 是 ruby 2.0 之後加入的元素。<br>會使用 Refine 的原因是使用一般 Open Class 的技巧時並不會有明顯的提示。<br>所以我們如果沒有用比較清楚的方法標示 Open Class 作用的地方，造成的後果是非常難以維護且可怕的。<br>透過 refine 我們可以更安全的覆寫原本的 Class，尤其是系統中本來存在的一些方法。<br>用法是先定義一個 Module ，Module 裡面寫下你要覆寫的 Class 與要覆寫的方法。<br>並且用 Using 決定在何時使用。</p>
+<pre><code class="rb">class Cat
+  def meow
+    puts &quot;Meow&quot;
+  end
+end
+
+module IAmRefineModule
+  refine Cat do
+    def meow
+      puts &quot;meow in Refine Module&quot;
+    end
+  end
+end
+
+c = Cat.new
+c.meow
+
+using IAmRefineModule
+
+c = Cat.new
+c.meow
+</code></pre>
+<p>執行結果：</p>
+<pre><code>$ ruby refine_ex.rb
+-&gt; Meow
+-&gt; meow in Refine Module
+</code></pre>
+<p>要呼叫<code>using IAmRefineModule</code>後，我們定義的 refine Module，那麼 Class 方法才會被覆寫到原有的 class。</p>
+<h3 id="Method-Lookup"><a href="#Method-Lookup" class="headerlink" title="Method Lookup"></a>Method Lookup</h3><p>接下來我們來跟 Module 的 Prepend 來比較看看，看看 refine 定義的方法，是否會優先於 prepend module 所引入的方法。</p>
+<pre><code class="rb">module IAmModuleInclude
+  def meow
+    puts &quot;Module include Meow&quot;
+  end
+end
+
+module IAmModulePrepend
+  def meow
+    puts &quot;Module prepend Meow&quot;
+  end
+end
+
+class Cat
+  prepend IAmModulePrepend
+  # include IAmModuleInclude
+  def meow
+    puts &quot;Meow&quot;
+  end
+end
+
+module IAmRefineModule
+  refine Cat do
+    def meow
+      puts &quot;meow in Refine Module&quot;
+    end
+  end
+end
+
+c = Cat.new
+c.meow
+
+using IAmRefineModule
+
+c = Cat.new
+c.meow
+</code></pre>
+<p>來執行看看</p>
+<pre><code class="rb">$ ruby refine_prepend_compare.rb
+-&gt; Module prepend Meow
+-&gt; meow in Refine Module
+</code></pre>
+<p>我們發現，即使 prepend Module 之後，只要我們使用 refine，就會優先使用 refine 所定義的方法。<br>實際上使用 refine 的時候，因為語意上非常明顯，作為 open class 的選擇我覺得是很棒的。</p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2016/10/24/old%20posts/2016-10-24-let-irb-better/" title="Ruby - 讓 irb 更好用"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Ruby - 讓 irb 更好用</span></a><a class="button is-default" href="/2016/09/11/old%20posts/2016-09-11-Elastic%20Search%20Note/" title="Elasticsearch 筆記"><span class="has-text-weight-semibold">Next: Elasticsearch 筆記</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

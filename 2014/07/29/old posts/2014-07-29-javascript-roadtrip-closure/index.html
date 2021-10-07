@@ -1,0 +1,82 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>Javascript Roadtrip 3 Closure</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="這一章講的是closure，很奇妙的東西。JavaScript学习总结(十六)——Javascript闭包（Closure）這個網站寫的不錯，看來以後要拜讀一下他的文章。
+2.1 影片￼￼function buildCoveTicketMaker( transport ) &amp;#123;
+         return function ( name ) &amp;#123;
+alert(&amp;quot;Here is your transportation ticket via the &amp;quot; + transport + &amp;quot;.\n&amp;quot; +
+      &amp;quot;Welcome to the Cold Closures Cove, &amp;quot; + name + &amp;quot;!&amp;quot;);
+.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Javascript Roadtrip 3 Closure</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%BD%B1%E7%89%87"><span class="toc-text">2.1 影片</span></a></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/javascript"><i class="tag post-item-tag">javascript</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Javascript Roadtrip 3 Closure</h1><time class="has-text-grey" datetime="2014-07-28T20:12:00.000Z">2014-07-29</time><article class="mt-2 post-content"><p>這一章講的是closure，很奇妙的東西。<br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/xdp-gacl/p/3703876.html">JavaScript学习总结(十六)——Javascript闭包（Closure）</a><br>這個網站寫的不錯，看來以後要拜讀一下他的文章。</p>
+<h2 id="2-1-影片"><a href="#2-1-影片" class="headerlink" title="2.1 影片"></a>2.1 影片</h2><pre><code class="js">￼￼function buildCoveTicketMaker( transport ) &#123;
+         return function ( name ) &#123;
+alert(&quot;Here is your transportation ticket via the &quot; + transport + &quot;.\n&quot; +
+      &quot;Welcome to the Cold Closures Cove, &quot; + name + &quot;!&quot;);
+￼￼&#125; &#125;
+```￼
+
+```js￼
+var getSubmarineTicket = buildCoveTicketMaker(&quot;Submarine&quot;);
+var getBattleshipTicket = buildCoveTicketMaker(&quot;Battleship&quot;);
+var getGiantSeagullTicket = buildCoveTicketMaker(&quot;Giant Seagull&quot;);
+</code></pre>
+<p>第一次呼叫的時候先初始化transport，<br>因為回傳的是一個function，這時候getSubmarineTicket儲存的已經是內部的inner function，又稱為closure。<br>下次可以直接使用closure這個內部函式，如下</p>
+<pre><code class="js￼">getSubmarineTicket(&quot;Mario&quot;);
+￼￼￼￼￼￼getBattleshipTicket(&quot;Luigi&quot;);
+getGiantSeagullTicket(&quot;Bowser&quot;);
+```￼
+
+即會顯示出
+
+![Screen Shot 2014-07-29 at 13.19.36.png](http://user-image.logdown.io/user/6619/blog/6590/post/211815/AprhkyhjSF6LexQr6iGl_Screen%20Shot%202014-07-29%20at%2013.19.36.png)
+
+## 2.8
+呼叫closure顯示訊息。
+
+## 2.11
+將location存進陣列中。這題滿值得做的，能夠利用closure來儲存陣列，給五顆星。
+
+## 2.12
+比想像中的複雜，先記錄起來。
+
+```js
+function warningMaker( obstacle )&#123;
+  var count = 0;
+  var zones = [];
+  return function ( number, location ) &#123;
+    count++;
+    var isThere = false;
+    for (var ii = 0;ii&lt;zones.length;ii++)&#123;
+      if(zones[ii][0]==location)&#123;
+        zones[ii][1]=zones[ii][1]+number;
+        isThere = true;
+        break;
+      &#125;&#125;
+      if (!isThere)&#123;
+        zones.push([location,number]);
+      &#125;
+    var list = &quot;&quot;;
+    for(var i = 0; i&lt;zones.length; i++)&#123;
+        list = list + &quot;\n&quot; + zones[i][0] +
+          &quot; (&quot; +zones[i][1]+&quot;)&quot;;
+    &#125;
+
+    alert(&quot;Beware! There have been &quot; +
+          obstacle +
+          &quot; sightings in the Cove today!\n&quot; +
+          number +
+          &quot; &quot; +
+          obstacle +
+          &quot;(s) spotted at the &quot; +
+          location +
+          &quot;!\n&quot; +
+          &quot;This is Alert #&quot; +
+          count +
+          &quot; today for &quot; +
+          obstacle +
+          &quot; danger.\n&quot; +
+          &quot;Current danger zones are: &quot; +
+          list
+         );
+  &#125;;
+&#125;
+</code></pre>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2014/08/03/old%20posts/2014-08-03-css-dinner/" title="CSS Dinner - 好玩又有效的 CSS 教學"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: CSS Dinner - 好玩又有效的 CSS 教學</span></a><a class="button is-default" href="/2014/07/23/old%20posts/2014-07-23-tools-meteor-sublime-suites/" title="Meteor專用的Sublime套件：TernJs"><span class="has-text-weight-semibold">Next: Meteor專用的Sublime套件：TernJs</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

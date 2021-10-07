@@ -1,0 +1,106 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>Javascript核心筆記：this</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="call可以讓你決定this的參考對象在 JavaScript 中，函式是 Function 的實例，Function 都會有個 call 方法，可以讓你決定 this 的參考對象。舉例來說，你可以如下呼叫：
+function toString()&amp;#123;
+    return &amp;#39;[&amp;#39; + this.name + &amp;#39;,&amp;#39; + this.age + &amp;#39;,&amp;#39;;
+&amp;#125;
+
+var p1 = &amp;#123;
+    name:&amp;#39;Justin&amp;#39;,
+    age :35
+&amp;#125;;
+
+var p2 = &amp;#123;
+    name : &amp;#39;momor&amp;#39;,
+    age : 32
+&amp;#125;;
+
+console.log( t.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Javascript核心筆記：this</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#call%E5%8F%AF%E4%BB%A5%E8%AE%93%E4%BD%A0%E6%B1%BA%E5%AE%9Athis%E7%9A%84%E5%8F%83%E8%80%83%E5%B0%8D%E8%B1%A1"><span class="toc-text">call可以讓你決定this的參考對象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%95%B6call%E9%81%87%E5%88%B0%E6%9C%89%E5%8F%83%E6%95%B8%E7%9A%84%E5%87%BD%E5%BC%8F%E6%99%82"><span class="toc-text">當call遇到有參數的函式時</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8C%E6%A8%A3%E6%B1%BA%E5%AE%9Athis%E7%9A%84%E5%8F%83%E8%80%83%E5%B0%8D%E8%B1%A1%E9%82%84%E6%9C%89apply%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%E6%B1%BA%E5%AE%9A"><span class="toc-text">同樣決定this的參考對象還有apply可以使用決定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#this%E8%88%87%E5%85%A8%E5%9F%9F%E7%89%A9%E4%BB%B6"><span class="toc-text">this與全域物件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#this%E5%8F%83%E8%80%83%E7%9A%84%E5%B0%8D%E8%B1%A1%E4%B8%A6%E9%9D%9E%E4%BB%A5%E9%99%84%E5%B1%AC%E5%9C%A8%E5%93%AA%E5%80%8B%E7%89%A9%E4%BB%B6%E8%80%8C%E5%AE%9A"><span class="toc-text">this參考的對象並非以附屬在哪個物件而定</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99-amp-%E5%BB%B6%E4%BC%B8%E9%96%B1%E8%AE%80"><span class="toc-text">參考資料 &amp; 延伸閱讀</span></a></li></ol></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/javascript"><i class="tag post-item-tag">javascript</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Javascript核心筆記：this</h1><time class="has-text-grey" datetime="2015-02-26T20:14:00.000Z">2015-02-27</time><article class="mt-2 post-content"><h3 id="call可以讓你決定this的參考對象"><a href="#call可以讓你決定this的參考對象" class="headerlink" title="call可以讓你決定this的參考對象"></a>call可以讓你決定this的參考對象</h3><p>在 JavaScript 中，函式是 Function 的實例，Function 都會有個 call 方法，可以讓你決定 this 的參考對象。舉例來說，你可以如下呼叫：</p>
+<pre><code class="js">function toString()&#123;
+    return &#39;[&#39; + this.name + &#39;,&#39; + this.age + &#39;,&#39;;
+&#125;
+
+var p1 = &#123;
+    name:&#39;Justin&#39;,
+    age :35
+&#125;;
+
+var p2 = &#123;
+    name : &#39;momor&#39;,
+    age : 32
+&#125;;
+
+console.log( toString.call(p1) ); //[Justin, 35]
+console.log( toString.call(p2) ); //[momor, 32]
+</code></pre>
+<p>妳可以覆寫call方法，讓this參考別的物件。</p>
+<pre><code class="js">function toString() &#123;
+    return this.name;
+&#125;
+
+var p1 = &#123;
+    name     : &#39;Justin&#39;,
+    toString : toString
+&#125;;
+
+var p2 = &#123;
+    name     : &#39;momor&#39;,
+    toString : toString
+&#125;;
+
+console.log(p1.toString());        // Justin
+console.log(p2.toString());        // momor
+console.log(p1.toString.call(p2)); // momor
+</code></pre>
+<h3 id="當call遇到有參數的函式時"><a href="#當call遇到有參數的函式時" class="headerlink" title="當call遇到有參數的函式時"></a>當call遇到有參數的函式時</h3><p>call 方法的第一個參數就是用來指定函式中的 this 所參考的物件。如果函式原本具有參數，則可接續在第一個參數之後。例如：</p>
+<pre><code class="js">function add(num1, num2) &#123;
+    return this.num + num1 + num2;
+&#125;
+
+var o = &#123;num : 10&#125;;
+
+console.log(add.call(o, 20, 30)); // 60
+</code></pre>
+<h3 id="同樣決定this的參考對象還有apply可以使用決定"><a href="#同樣決定this的參考對象還有apply可以使用決定" class="headerlink" title="同樣決定this的參考對象還有apply可以使用決定"></a>同樣決定this的參考對象還有apply可以使用決定</h3><p>差別在於apply必須將引數蒐集起成陣列，做為第二個參數來呼叫函數。</p>
+<pre><code class="js">function add(num1, num2) &#123;
+    return this.num + num1 + num2;
+&#125;
+
+var o1 = &#123;num : 10&#125;;
+var o2 = &#123;num : 100&#125;;
+var args = [20, 30];
+
+console.log(add.apply(o1, args)); // 60
+console.log(add.apply(o2, args)); // 150
+</code></pre>
+<h3 id="this與全域物件"><a href="#this與全域物件" class="headerlink" title="this與全域物件"></a>this與全域物件</h3><p>如果呼叫函式時，無法透過 . 運算、call、apply 等方法確定 this 的對象，如果不是嚴格模式，那麼 this 會直接轉為參考全域物件（Global object）。</p>
+<p>全域物件是 JavaScript 執行時期全域可見的物件，在不同的環境中想要取得全域物件，會透過不同的名稱，像是 Node.js 中可以使用 global，瀏覽器中可以透過 window 或在全域範圍使用 this，Rhino（或 JDK8 的 Nashorn）可以在全域範圍使用 this 取得。</p>
+<p>因此，如果你想統一全域物件的變數名稱，例如統一使用 global，可以透過類似以下的方式：</p>
+<pre><code class="js">var global = global || (function() &#123;
+    return this;
+&#125;)();
+</code></pre>
+<h2 id="this參考的對象並非以附屬在哪個物件而定"><a href="#this參考的對象並非以附屬在哪個物件而定" class="headerlink" title="this參考的對象並非以附屬在哪個物件而定"></a>this參考的對象並非以附屬在哪個物件而定</h2><p>this 實際參考的對象，是以呼叫方式而定，而不是它是否附屬在哪個物件而定。例如就算函式是附屬在函式上的某個特性，也可以這麼改變 this 所參考的對象：</p>
+<pre><code class="js">function toString() &#123;
+    return this.name;
+&#125;
+
+var p1 = &#123;
+    name: &#39;Justin&#39;,
+    toString: toString
+&#125;;
+
+var p2 = &#123;
+    name: &#39;momor&#39;,
+    toString: toString
+&#125;;
+
+console.log(p1.toString()); // Justin
+console.log(p2.toString()); // momor
+console.log(p1.toString.call(p2)); // momor
+</code></pre>
+<h4 id="參考資料-amp-延伸閱讀"><a href="#參考資料-amp-延伸閱讀" class="headerlink" title="參考資料 &amp; 延伸閱讀"></a>參考資料 &amp; 延伸閱讀</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.codedata.com.tw/javascript/essential-javascript-11-what-is-this/">JavaScript 語言核心（11）this 是什麼？ by caterpillar - CodeData</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Function/call">Function.prototype.call - JavaScript - MDN</a></li>
+</ul>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2015/02/27/old%20posts/2015-02-27-javascript-core-note-callback/" title="Javascript核心筆記：callback"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Javascript核心筆記：callback</span></a><a class="button is-default" href="/2015/02/24/old%20posts/2015-02-24-javascript-core-note/" title="javascript核心筆記：Object"><span class="has-text-weight-semibold">Next: javascript核心筆記：Object</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

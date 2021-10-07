@@ -1,0 +1,80 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>Go - 在 OSX 安裝 GVM</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="前言之前有寫過一篇用 Brew 安裝 GO，因為習慣上會用 rvm、nvm 來管理程式語言的版本，所以心血來潮也想試試看安裝 GVM 在作業環境，不過如標題所示，gvm Bug 滿多，而且跟我慣用的 Fish shell 不太相容。總結下來，如果使用 OSX 環境推薦大家使用 Brew 來安裝。
+安裝 GVM安裝 gvm 完成後會跳出錯誤，沒有 gcc，所以我們來裝 gcc 。
+安裝 gccbrew install gcc
+
+安裝完成後輸入 gcc，結果：
+&amp;gt; Unknown command &amp;#39;gcc&amp;#39;
+
+brew 安裝的 gcc 並不能讓你直接用指令使用。安裝完成後切換至 /usr/local/bin  資料夾，輸入 ls 查看資料夾。
+
+並沒有直接對應到 gcc，而是 gcc-4..."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Go - 在 OSX 安裝 GVM</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-GVM"><span class="toc-text">安裝 GVM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-gcc"><span class="toc-text">安裝 gcc</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-GO-1-4"><span class="toc-text">安裝 GO 1.4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-GO-1-8"><span class="toc-text">安裝 GO 1.8</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%87-gvm-%E6%8C%87%E5%AE%9A%E5%8A%A0%E5%88%B0-shell"><span class="toc-text">將 gvm 指定加到 shell</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bash"><span class="toc-text">bash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fish"><span class="toc-text">fish</span></a></li></ol></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/Golang"><i class="tag post-item-tag">Golang</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Go - 在 OSX 安裝 GVM</h1><time class="has-text-grey" datetime="2017-05-21T14:34:00.000Z">2017-05-21</time><article class="mt-2 post-content"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前有寫過一篇用 Brew 安裝 GO，因為習慣上會用 rvm、nvm 來管理程式語言的版本，<br>所以心血來潮也想試試看安裝 GVM 在作業環境，不過如標題所示，<br>gvm Bug 滿多，而且跟我慣用的 Fish shell 不太相容。<br>總結下來，如果使用 OSX 環境推薦大家使用 Brew 來安裝。</p>
+<h2 id="安裝-GVM"><a href="#安裝-GVM" class="headerlink" title="安裝 GVM"></a>安裝 GVM</h2><p>安裝 gvm 完成後會跳出錯誤，沒有 gcc，所以我們來裝 gcc 。</p>
+<h3 id="安裝-gcc"><a href="#安裝-gcc" class="headerlink" title="安裝 gcc"></a>安裝 gcc</h3><pre><code>brew install gcc
+</code></pre>
+<p>安裝完成後輸入 gcc，結果：</p>
+<pre><code>&gt; Unknown command &#39;gcc&#39;
+</code></pre>
+<p>brew 安裝的 gcc 並不能讓你直接用指令使用。<br>安裝完成後切換至 <code>/usr/local/bin </code> 資料夾，輸入 <code>ls</code> 查看資料夾。</p>
+<p><img src="media/14951665132417/14951747217993.jpg"></p>
+<p>並沒有直接對應到 gcc，而是 gcc-4.9，來測試看看 gcc-4.9 能否正常動作：</p>
+<pre><code>$ /usr/local/bin/gcc-4.9 -v
+
+Using built-in specs.
+COLLECT_GCC=/usr/local/bin/gcc-4.9
+COLLECT_LTO_WRAPPER=/usr/local/Cellar/gcc@4.9/4.9.3/bin/../libexec/gcc/x86_64-apple-darwin15.0.0/4.9.3/lto-wrapper
+Target: x86_64-apple-darwin15.0.0
+Configured with: ../configure --build=x86_64-apple-darwin15.0.0 --prefix=/usr/local/Cellar/gcc49/4.9.3 --libdir=/usr/local/Cellar/gcc49/4.9.3/lib/gcc/4.9 --enable-languages=c,c++,objc,obj-c++ --program-suffix=-4.9 --with-gmp=/usr/local/opt/gmp4 --with-mpfr=/usr/local/opt/mpfr2 --with-mpc=/usr/local/opt/libmpc08 --with-cloog=/usr/local/opt/cloog018 --with-isl=/usr/local/opt/isl011 --with-system-zlib --enable-libstdcxx-time=yes --enable-stage1-checking --enable-checking=release --enable-lto --with-build-config=bootstrap-debug --disable-werror --with-pkgversion=&#39;Homebrew gcc49 4.9.3&#39; --with-bugurl=https://github.com/Homebrew/homebrew-versions/issues --enable-plugin --disable-nls --enable-multilib
+Thread model: posix
+gcc version 4.9.3 (Homebrew gcc49 4.9.3)
+</code></pre>
+<p>OK 看來沒問題！<br>剩下的是把 <code>gcc</code> 指令對應 <code>/usr/local/bin/gcc-4.9</code>，輸入以下指令：</p>
+<pre><code>ln -s /usr/local/bin/gcc-4.9 gcc
+</code></pre>
+<p>來測試看看 gcc 指令：</p>
+<pre><code>$ gcc -v
+Using built-in specs.
+COLLECT_GCC=gcc
+COLLECT_LTO_WRAPPER=/usr/local/Cellar/gcc@4.9/4.9.3/bin/../libexec/gcc/x86_64-apple-darwin15.0.0/4.9.3/lto-wrapper
+Target: x86_64-apple-darwin15.0.0
+Configured with: ../configure --build=x86_64-apple-darwin15.0.0 --prefix=/usr/local/Cellar/gcc49/4.9.3 --libdir=/usr/local/Cellar/gcc49/4.9.3/lib/gcc/4.9 --enable-languages=c,c++,objc,obj-c++ --program-suffix=-4.9 --with-gmp=/usr/local/opt/gmp4 --with-mpfr=/usr/local/opt/mpfr2 --with-mpc=/usr/local/opt/libmpc08 --with-cloog=/usr/local/opt/cloog018 --with-isl=/usr/local/opt/isl011 --with-system-zlib --enable-libstdcxx-time=yes --enable-stage1-checking --enable-checking=release --enable-lto --with-build-config=bootstrap-debug --disable-werror --with-pkgversion=&#39;Homebrew gcc49 4.9.3&#39; --with-bugurl=https://github.com/Homebrew/homebrew-versions/issues --enable-plugin --disable-nls --enable-multilib
+Thread model: posix
+gcc version 4.9.3 (Homebrew gcc49 4.9.3)
+</code></pre>
+<p>It’s working!!</p>
+<p><a target="_blank" rel="noopener" href="https://apple.stackexchange.com/questions/99077/how-to-set-gcc-4-8-as-default-gcc-compiler">lion - How to set gcc 4.8 as default gcc compiler - Ask Different</a></p>
+<h2 id="安裝-GO-1-4"><a href="#安裝-GO-1-4" class="headerlink" title="安裝 GO 1.4"></a>安裝 GO 1.4</h2><p>要安裝 go 1.4 以上的版本前，你得先安裝 go 1.4。<br>而安裝 go 1.4 的時候會遇到以下的 bug:</p>
+<pre><code>$ gvm install go1.4
+Installing go1.4...
+ * Compiling...
+ERROR: Failed to compile. Check the logs at /Users/andrew/.gvm/logs/go-go1.4-compile.log
+ERROR: Failed to use installed version
+</code></pre>
+<p>這邊有個 work around 的方式，使用 binary 檔安裝。</p>
+<pre><code>gvm install go1.4 --binary
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://github.com/moovweb/gvm/issues/217">go1.4 compile error in Mac OS 10.11 · Issue #217 · moovweb/gvm</a></p>
+<h2 id="安裝-GO-1-8"><a href="#安裝-GO-1-8" class="headerlink" title="安裝 GO 1.8"></a>安裝 GO 1.8</h2><p>安裝完成後要設定 GOROOT_BOOTSTRAP 變數，這樣就可以安裝 go 1.4 以上的版本了</p>
+<pre><code>gvm install go1.4
+gvm use go1.4
+export GOROOT_BOOTSTRAP=$GOROOT
+gvm install go1.8
+</code></pre>
+<p>expo</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/moovweb/gvm/issues/155">Error with go1.5 install · Issue #155 · moovweb/gvm</a></p>
+<h2 id="將-gvm-指定加到-shell"><a href="#將-gvm-指定加到-shell" class="headerlink" title="將 gvm 指定加到 shell"></a>將 gvm 指定加到 shell</h2><h3 id="bash"><a href="#bash" class="headerlink" title="bash"></a>bash</h3><p>要將 gvm 指令加到 bash，將以下指令加到 <code>~/.bashsrc</code></p>
+<pre><code># added gvm command to shell
+source &quot;$HOME/.gvm/scripts/gvm&quot;
+# directory path for GO
+export GOPATH=$HOME/gopath
+export GOROOT=$HOME/go
+export PATH=$PATH:$GOROOT/bin
+</code></pre>
+<h3 id="fish"><a href="#fish" class="headerlink" title="fish"></a>fish</h3><p>要將 gvm 指令加到 fish shell，把以下指令加到 <code>~/.config/fish/config.fish</code></p>
+<pre><code>function gvm
+   bass source ~/.gvm/scripts/gvm &#39;;&#39; gvm $argv
+end
+</code></pre>
+<p><a target="_blank" rel="noopener" href="http://hsuzuki.hatenablog.com/entry/2017/03/01/165708">Fish shell環境でgvmを導入する - メンチカツ</a></p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2017/10/23/old%20posts/2017-10-23-time-in-rails/" title="Time in Rails"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Time in Rails</span></a><a class="button is-default" href="/2017/05/20/old%20posts/2017-05-20-cors-in-rails/" title="CORS in Rails"><span class="has-text-weight-semibold">Next: CORS in Rails</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

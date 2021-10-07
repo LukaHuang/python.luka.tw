@@ -1,0 +1,87 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>Landing Page 實作：來做個簡單的Jumbotron</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="製作jumbotron有兩個重點
+
+垂直置中
+設定背景。
+
+Background
+設定position: center bottom讓圖片顯示出需要的區塊
+使用background-size: cover;讓圖片滿版
+
+section.intro&amp;#123;
+  padding: $baseline * 2;
+  background-image: url(&amp;#39;../images/intro-bg.jpg&amp;#39;) ;
+  background-position: center bottom;
+  height: 100%;
+  width: 100%;
+  -moz-background-size :cover ;
+  -webkit-background-size :cover ;
+  back.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Landing Page 實作：來做個簡單的Jumbotron</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Background"><span class="toc-text">Background</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A4%87%E7%BF%92%E8%83%8C%E6%99%AF%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-text">複習背景的用法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Table-cell%E6%B0%B4%E5%B9%B3%E7%BD%AE%E4%B8%AD"><span class="toc-text">使用Table-cell水平置中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%AE%E4%B8%AD%E5%B0%8F%E6%95%B4%E7%90%86"><span class="toc-text">置中小整理</span></a></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/HTML"><i class="tag post-item-tag">HTML</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Landing Page 實作：來做個簡單的Jumbotron</h1><time class="has-text-grey" datetime="2015-10-19T11:53:00.000Z">2015-10-19</time><article class="mt-2 post-content"><p>製作jumbotron有兩個重點</p>
+<ol>
+<li>垂直置中</li>
+<li>設定背景。</li>
+</ol>
+<h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><ul>
+<li>設定<code>position: center bottom</code>讓圖片顯示出需要的區塊</li>
+<li>使用<code>background-size: cover;</code>讓圖片滿版</li>
+</ul>
+<pre><code class="css">section.intro&#123;
+  padding: $baseline * 2;
+  background-image: url(&#39;../images/intro-bg.jpg&#39;) ;
+  background-position: center bottom;
+  height: 100%;
+  width: 100%;
+  -moz-background-size :cover ;
+  -webkit-background-size :cover ;
+  background-size: cover;
+  background-attachment: scroll;
+&#125;
+</code></pre>
+<h3 id="複習背景的用法"><a href="#複習背景的用法" class="headerlink" title="複習背景的用法"></a>複習背景的用法</h3><p>背景的屬性：</p>
+<ul>
+<li>background-repeat，常用的是<code>no-repeat</code></li>
+<li>background-attachment，有fixed和scroll兩種，fixed圖片不會動，只有轉的空間會動。</li>
+<li>background-position</li>
+</ul>
+<p>left 為水平靠左， right 為水平靠右， top 為垂直置頂， bottom 為垂直置底center 則是水平或垂直都置中。</p>
+<p>前後需設定兩組，若是數字或百分比前為水平後為垂直，若是關鍵字則順序無關，例如</p>
+<pre><code class="css">background-position: 25% 50%;      /* 水平 25% ，垂直 50% */
+background-position: 50px 25px;    /* 水平 50px ，垂直 25px */
+background-position: center;       /* 水平垂直都 50% */
+background-position: bottom right; /* 水平 100% ，垂直 100% */
+</code></pre>
+<h2 id="使用Table-cell水平置中"><a href="#使用Table-cell水平置中" class="headerlink" title="使用Table-cell水平置中"></a>使用Table-cell水平置中</h2><ol>
+<li>外層display設成table</li>
+<li>內層display設成table-cell，並加上<code>vertical-align: middel</code>即可</li>
+</ol>
+<p>這種方法的優點是用起來很簡單，缺點是會增加html複雜度。</p>
+<pre><code class="html">&lt;section class=&quot;intro&quot;&gt;
+  &lt;div class=&quot;intro-body&quot;&gt;
+    &lt;div class=&quot;container t-padding&quot;&gt;
+      &lt;div class=&quot;row text-center&quot;&gt;
+        &lt;div class=&quot;col-md-8 col-md-offset-2&quot;&gt;
+          &lt;h1&gt;welcome&lt;/h1&gt;
+          &lt;h3&gt;&lt;strong&gt;Digital Agency&lt;/strong&gt; is here all of your technology, advertising, SEO and marketing needs.&lt;/h3&gt;
+        &lt;/div&gt;&lt;!-- col-md-8 offset-2 --&gt;
+      &lt;/div&gt;&lt;!-- row --&gt;
+    &lt;/div&gt;&lt;!-- container --&gt;
+  &lt;/div&gt;&lt;!-- intro-body --&gt;
+&lt;/section&gt;&lt;!-- intro --&gt;
+</code></pre>
+<pre><code class="css">.intro&#123;
+  display: table;
+&#125;
+
+.intro-body&#123;
+  display: table-cell;
+  vertical-align: middle;
+&#125;
+</code></pre>
+<h2 id="置中小整理"><a href="#置中小整理" class="headerlink" title="置中小整理"></a>置中小整理</h2><ol>
+<li>table-cell可以用在jumbotron這種結構較單純的區塊上，因為使用這種方式會增加html的複雜度。</li>
+<li>單行多個置中可以使用偽元素的技巧</li>
+<li>css3的技巧雖然很方便，但支援度可以能沒那麼高。</li>
+<li>行高的技巧簡單易用，但只能用在文字上。</li>
+</ol>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2015/10/19/old%20posts/2015-10-19-landing-page-implements-a/" title="Demo：使用scrollspy讓畫面更生動"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Demo：使用scrollspy讓畫面更生動</span></a><a class="button is-default" href="/2015/10/12/old%20posts/2015-10-12-use-github-show-static-pages/" title="使用Github展示靜態網頁"><span class="has-text-weight-semibold">Next: 使用Github展示靜態網頁</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

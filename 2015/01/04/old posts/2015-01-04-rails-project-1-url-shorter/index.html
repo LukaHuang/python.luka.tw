@@ -1,0 +1,120 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>Rails Project 1 URL Shortener</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="前言接下來我要藉由實作一些比較小型的Rails Project，來練習工程師必備的技能，其中最主要訓練的目標是能抓出需要實作的use case與如何從use case中實踐功能。因為沒有網頁的相關背景，如何磨練Html css javascript的基本實作能力也是這一階段的重點。
+熟悉了如何使用Rails完成所要的需求與一些常見功能的開發之後，下一階段可以是學習Rails如何跟API互動或是開始學習Design Patterns。學習Dessign Pattern的原因有：一是可以讀的懂程式碼，二是了解為什麼要這麼寫。anyway，先把眼前的事情做好最重要let’s do it！
+Use Case , Page Flow and Data在練習實作Project的過程中，我會格外地注意Use Case、P.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Rails Project 1 URL Shortener</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Use-Case-Page-Flow-and-Data"><span class="toc-text">Use Case , Page Flow and Data</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Use-Case"><span class="toc-text">Use Case</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Page-Flow"><span class="toc-text">Page Flow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Data"><span class="toc-text">Data</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#URL-Shortener-in-Rails"><span class="toc-text">URL Shortener in Rails</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88"><span class="toc-text">1. 建立專案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-route%E4%B8%AD%E5%8A%A0%E5%85%A5url%E7%9A%84resource%EF%BC%8C%E4%B8%A6%E6%8C%87%E5%AE%9A%E9%A6%96%E9%A0%81%E7%82%BAurl-new"><span class="toc-text">2. route中加入url的resource，並指定首頁為url#new</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%BB%BA%E7%AB%8Bcontroller%EF%BC%8Ccontroller%E8%A6%81%E5%8A%A0s"><span class="toc-text">3. 建立controller，controller要加s</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Model"><span class="toc-text">Model</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Controller"><span class="toc-text">Controller</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Index"><span class="toc-text">Index</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Show"><span class="toc-text">Show</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#New"><span class="toc-text">New</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Create"><span class="toc-text">Create</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Views"><span class="toc-text">Views</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#index-html-erb"><span class="toc-text">index.html.erb</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#new-html-erb"><span class="toc-text">new.html.erb</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Summary"><span class="toc-text">Summary</span></a></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/Rails"><i class="tag post-item-tag">Rails</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Rails Project 1 URL Shortener</h1><time class="has-text-grey" datetime="2015-01-03T17:02:00.000Z">2015-01-04</time><article class="mt-2 post-content"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>接下來我要藉由實作一些比較小型的Rails Project，來練習工程師必備的技能，其中最主要訓練的目標是能抓出需要實作的use case與如何從use case中實踐功能。因為沒有網頁的相關背景，如何磨練Html css javascript的基本實作能力也是這一階段的重點。</p>
+<p>熟悉了如何使用Rails完成所要的需求與一些常見功能的開發之後，下一階段可以是學習Rails如何跟API互動或是開始學習Design Patterns。學習Dessign Pattern的原因有：一是可以讀的懂程式碼，二是了解為什麼要這麼寫。anyway，先把眼前的事情做好最重要let’s do it！</p>
+<h2 id="Use-Case-Page-Flow-and-Data"><a href="#Use-Case-Page-Flow-and-Data" class="headerlink" title="Use Case , Page Flow and Data"></a>Use Case , Page Flow and Data</h2><p>在練習實作Project的過程中，我會格外地注意Use Case、Page Flow和Data。一個網站從無到有，便是先抓出使用者的需求，也就是Use Case，可以表達出身為不同的使用者，各需要哪些需求。</p>
+<h3 id="Use-Case"><a href="#Use-Case" class="headerlink" title="Use Case"></a>Use Case</h3><p>Url Shortener顧名思義要能夠縮減網址，我們可以抓出幾個需求。</p>
+<ul>
+<li>使用者可以使用URL Shortener縮短網址</li>
+<li>輸入URL Shortener產生的網址時必須連接到原網址。</li>
+</ul>
+<h3 id="Page-Flow"><a href="#Page-Flow" class="headerlink" title="Page Flow"></a>Page Flow</h3><h3 id="Data"><a href="#Data" class="headerlink" title="Data"></a>Data</h3><h1 id="URL-Shortener-in-Rails"><a href="#URL-Shortener-in-Rails" class="headerlink" title="URL Shortener in Rails"></a>URL Shortener in Rails</h1><h2 id="1-建立專案"><a href="#1-建立專案" class="headerlink" title="1. 建立專案"></a>1. 建立專案</h2><pre><code>rails new url_shortener
+</code></pre>
+<h2 id="2-route中加入url的resource，並指定首頁為url-new"><a href="#2-route中加入url的resource，並指定首頁為url-new" class="headerlink" title="2. route中加入url的resource，並指定首頁為url#new"></a>2. route中加入url的resource，並指定首頁為<code>url#new</code></h2><pre><code class="rb">root to: :redirect(&#39;/urls/new&#39;)
+resources :urls
+</code></pre>
+<h2 id="3-建立controller，controller要加s"><a href="#3-建立controller，controller要加s" class="headerlink" title="3. 建立controller，controller要加s"></a>3. 建立controller，controller要加s</h2><pre><code>rails generate controller urls
+</code></pre>
+<h2 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h2><ol>
+<li><p>建立model，名詞是單數。要使用的Model有兩個欄位，original用來記錄原始網址，random_id用來記錄縮址。</p>
+<pre><code>rails g model url original:string random_id:string
+</code></pre>
+</li>
+<li><p>在model加上validates，這邊的意思是儲存時一定要有「原網址」的欄位。</p>
+<pre><code class="rb">validates :original, presence: true
+</code></pre>
+</li>
+</ol>
+<h2 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h2><h3 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h3><p>繼續完成controller，從index開始著手，在index我們希望可以看到全部儲存的連結。</p>
+<pre><code class="ruby">class UrlsController &lt; ApplicationController
+  def  index
+      @urls = Url.all
+  end
+end
+</code></pre>
+<h3 id="Show"><a href="#Show" class="headerlink" title="Show"></a>Show</h3><p>在action show我們希望可以做到的功能是「當使用者輸入縮址時，會轉址到原網址」，這也是也這個URL Shortener的核心功能。</p>
+<pre><code class="rb">class UrlsController &lt; ApplicationController
+
+  .
+  .
+  .
+
+  def show
+      url = Url.where( random_id: params[:id] ).first
+
+    if url
+        redirect_to url.original
+    else
+        render &quot;index&quot;
+    end
+  end
+
+end
+</code></pre>
+<h4 id="New"><a href="#New" class="headerlink" title="New"></a>New</h4><p> 在action new要做的事情是「當使用者輸入原始網址，會產生相對應的縮網址」</p>
+<pre><code class="rb">class UrlsController &lt; ApplicationController
+
+  .
+  .
+  .
+
+  def new
+      @url = Url.new
+
+    letters = [(&#39;a&#39;..&#39;z&#39;),(&#39;A&#39;..&#39;Z&#39;)].map&#123;|i| i.to_a&#125;.flatten
+    @url.random_id = (0...8).map&#123; letters[rand(letters.length)]&#125;.join
+  end
+end
+</code></pre>
+<p>letter陣列用來裝所有的字母包含大寫A-Z與小寫a-z。flatten使屬於Array的method是用來把許多陣列合併成單一的陣列。第二行</p>
+<p><a target="_blank" rel="noopener" href="http://railsfun.tw/t/and/46">產生隨機小寫英數字 幾種方法 and 效能</a></p>
+<h4 id="Create"><a href="#Create" class="headerlink" title="Create"></a>Create</h4><p>儲存一筆url資料，記得要使用strong parameter核對欄位。</p>
+<pre><code class="rb">class UrlsController &lt; ApplicationController
+    .
+  .
+  .
+  def urls_params
+    params.require(:url).permit(:original, :random_id)
+  end
+
+  def create
+    @url = Url.new(urls_parmas)
+    if @url.save
+      redirect_to url_path
+    else
+      render &quot;new&quot;
+    end
+    end
+end
+</code></pre>
+<p>比較show與new可以發現，前面有加@的變數，是view會使用到的變數。如果view不會用到，那就不要添加@，以免造成混淆，這樣在閱讀程式碼的時候，可以更清楚的知道這些變數作用在哪些地方。</p>
+<p>來複習一下render的用法主要有四種：第一種是直接回傳結果，回傳的格式可以是xml,json,text…等等檔案格式。範例：<code>render text: &quot;hello world&quot;</code>、<code>render json: @event.to_json</code>。第二種是render template。可以直接指定template的路徑如：<code>render &quot;/events/index.html.erb&quot;</code>。如果是同controller的action可以寫成<code>render &quot;index&quot;</code>。第三種是回傳status code例如：<code>render status: 500</code>。第四種是回傳某template使用的layout，例如：<code>render layout: &quot;special_layout&quot;</code>。</p>
+<p>其他用法請參考：<a target="_blank" rel="noopener" href="http://guides.rubyonrails.org/layouts_and_rendering.html#using-render">Layouts and Rendering in Rails</a></p>
+<h2 id="Views"><a href="#Views" class="headerlink" title="Views"></a>Views</h2><p>因為URL Shortener的action show是轉址，並不需要view，所以我們要實作的view只有index.html.erb和new.html.erb。</p>
+<h3 id="index-html-erb"><a href="#index-html-erb" class="headerlink" title="index.html.erb"></a>index.html.erb</h3><pre><code class="html.erb">&lt;h1&gt;Url Shortener&lt;/h1&gt;
+&lt;% @urls.each do |url| %&gt;
+  &lt;p&gt;
+    &lt;%= link_to url.random_id, url_path(id: url.random_id) %&gt; --&gt; &lt;%= url.original %&gt;
+  &lt;/p&gt;
+&lt;% end %&gt;
+
+&lt;%= link_to &quot;Shorten another URL&quot;, new_url_path %&gt;
+</code></pre>
+<h3 id="new-html-erb"><a href="#new-html-erb" class="headerlink" title="new.html.erb"></a>new.html.erb</h3><pre><code>&lt;h1&gt;Shorten a URL&lt;/h1&gt;
+erb
+&lt;% @url.errors.each do|attr,msg| %&gt;
+  &lt;%= msg %&gt; on &lt;%= attr %&gt;
+&lt;% end %&gt;
+
+&lt;%= form_for @url do |f| %&gt;
+  &lt;p&gt;
+    &lt;%= f.label :original %&gt; : &lt;%= f.text_field :original %&gt;
+  &lt;/p&gt;
+  &lt;%= f.hidden_field :random_id, value: @url.random_id %&gt;
+  &lt;%= f.submit &quot;Shorten my URL&quot; %&gt;
+&lt;% end %&gt;
+</code></pre>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>URL Shortener這個小Project需求上跟一般實作的留言板有點不一樣，但還是可以用new和index兩個action來達成了Use Case所抓出來的需求。這非常有趣，多做點不同專案的好處就是能夠用不同的角度來累積經驗。</p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2015/01/10/old%20posts/2015-01-10-atom-shortcuts/" title="Atom 常用快速鍵"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Atom 常用快速鍵</span></a><a class="button is-default" href="/2014/10/29/old%20posts/2014-10-29-atom-prevent-snippet-package-updates/" title="Atom 防止 Snippet Package 更新"><span class="has-text-weight-semibold">Next: Atom 防止 Snippet Package 更新</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

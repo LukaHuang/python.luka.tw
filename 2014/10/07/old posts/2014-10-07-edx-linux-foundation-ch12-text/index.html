@@ -1,0 +1,165 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>EDX Linux Foundation Ch13 Manipulating Text</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="Section 1 cat and echocat(concatenate)cat file
+
+顯示檔案，按空白鍵可以捲動
+cat file1 file2
+
+把file1和file2接起來顯示
+cat file1 file2 &amp;gt; newfile
+
+把file1和file2接起來並且存成newfile。
+cat &amp;gt; filename
+
+可以自行輸入內容，輸入完跳出後存成file(可輸入多行)。
+cat &amp;gt;&amp;gt; existingfile
+
+代表在檔案後端插入( append )檔案，可以自行輸入內容，輸入完跳出後存成file(可輸入多行)。
+cat &amp;gt; filename &amp;lt;&amp;lt; EOF
+
+新增檔案的另一個方法，可以自行輸入內容，要離開的時候在句首輸入EOF。
+taccat反.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">EDX Linux Foundation Ch13 Manipulating Text</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Section-1-cat-and-echo"><span class="toc-text">Section 1 cat and echo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#cat-concatenate"><span class="toc-text">cat(concatenate)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tac"><span class="toc-text">tac</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#echo"><span class="toc-text">echo</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Section-2-sed-and-awk"><span class="toc-text">Section 2 sed and awk</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#sed"><span class="toc-text">sed</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sed-%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="toc-text">sed 的格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#awk"><span class="toc-text">awk</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Section-3-File-Manipulation"><span class="toc-text">Section 3 File Manipulation</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#sort"><span class="toc-text">sort</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#uniq"><span class="toc-text">uniq</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#paste"><span class="toc-text">paste</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#join"><span class="toc-text">join</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#split"><span class="toc-text">split</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Section-4-grep"><span class="toc-text">Section 4 grep</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#grep"><span class="toc-text">grep</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Section-5"><span class="toc-text">Section 5</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#tr"><span class="toc-text">tr</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tee"><span class="toc-text">tee</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wc"><span class="toc-text">wc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cut"><span class="toc-text">cut</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Section-6"><span class="toc-text">Section 6</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E6%A5%AD%E6%9B%B4%E5%A5%BD%E7%9A%84%E8%A7%A3%E6%B3%95-By-Carl"><span class="toc-text">作業更好的解法(By Carl)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%80%E5%BE%8C%E5%BF%83%E5%BE%97"><span class="toc-text">讀後心得</span></a></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/Linux"><i class="tag post-item-tag">Linux</i></a><a href="/tags/EDX-Linux-Foundation"><i class="tag post-item-tag">EDX Linux Foundation</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">EDX Linux Foundation Ch13 Manipulating Text</h1><time class="has-text-grey" datetime="2014-10-07T06:59:00.000Z">2014-10-07</time><article class="mt-2 post-content"><h1 id="Section-1-cat-and-echo"><a href="#Section-1-cat-and-echo" class="headerlink" title="Section 1 cat and echo"></a>Section 1 cat and echo</h1><h2 id="cat-concatenate"><a href="#cat-concatenate" class="headerlink" title="cat(concatenate)"></a>cat(concatenate)</h2><pre><code>cat file
+</code></pre>
+<p>顯示檔案，按空白鍵可以捲動</p>
+<pre><code>cat file1 file2
+</code></pre>
+<p>把file1和file2接起來顯示</p>
+<pre><code>cat file1 file2 &gt; newfile
+</code></pre>
+<p>把file1和file2接起來並且存成newfile。</p>
+<pre><code>cat &gt; filename
+</code></pre>
+<p>可以自行輸入內容，輸入完跳出後存成file(可輸入多行)。</p>
+<pre><code>cat &gt;&gt; existingfile
+</code></pre>
+<p>代表在檔案後端插入( append )檔案，可以自行輸入內容，輸入完跳出後存成file(可輸入多行)。</p>
+<pre><code>cat &gt; filename &lt;&lt; EOF
+</code></pre>
+<p>新增檔案的另一個方法，可以自行輸入內容，要離開的時候在句首輸入EOF。</p>
+<h2 id="tac"><a href="#tac" class="headerlink" title="tac"></a>tac</h2><p>cat反過來 ，效果是從檔案的後面幾行開始顯示，用法跟cat相同<br>tac file<br>tac file file2 &gt; newfile</p>
+<h2 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h2><p>跟cat不同是的是echo預設插入或新增一行。<br>加上<code>-e</code>後允許使用<code>\n</code>或<code>\t</code>…等等的的特殊字元</p>
+<pre><code>echo string &gt; newfile
+echo string &gt;&gt; existingfile
+echo $variable
+</code></pre>
+<p>印出變數。</p>
+<h1 id="Section-2-sed-and-awk"><a href="#Section-2-sed-and-awk" class="headerlink" title="Section 2 sed and awk"></a>Section 2 sed and awk</h1><h2 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h2><pre><code>sed Command Syntax
+sed -e command &lt;filename&gt;
+sed -f scriptfile &lt;filename&gt;
+</code></pre>
+<h2 id="sed-的格式"><a href="#sed-的格式" class="headerlink" title="sed 的格式"></a>sed 的格式</h2><pre><code>sed s/pattern/replace_string/ file
+sed s/pattern/replace_string/g file
+sed 1,3s/pattern/replace_string/g file
+sed -i s/pattern/replace_string/g file
+</code></pre>
+<blockquote>
+<p>如果需要寫入檔案，建議直接輸出，不要使用 <code>-i</code> 參數，會比較安全。例如：<code>$ sed s/pattern/replace_string/g file &gt; file2</code></p>
+</blockquote>
+<h2 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h2><pre><code>awk ‘command’ var=value file
+awk -f scriptfile var=value file
+</code></pre>
+<p>Examples:</p>
+<pre><code>awk &#39;&#123; print $0 &#125;&#39; /etc/passwd
+awk -F: &#39;&#123; print $1 &#125;&#39; /etc/passwd
+awk -F: &#39;&#123; print $1 $6 &#125;&#39; /etc/passwd
+</code></pre>
+<h1 id="Section-3-File-Manipulation"><a href="#Section-3-File-Manipulation" class="headerlink" title="Section 3 File Manipulation"></a>Section 3 File Manipulation</h1><h2 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h2><pre><code>sort filename
+sort -u
+sort -r
+</code></pre>
+<p><code>sort -u</code> 將重複的資料僅列出一個(這邊不太確定)<br><code>sort -k pos1[,pos2]</code> 指定排序的key</p>
+<h2 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h2><p>刪除檔案中重複的資料，並儲存到另一個檔案，可以使用以下兩個方法。</p>
+<pre><code>sort file1 file2 | uniq &gt; file3
+sort -u file1 file2 &gt; file3
+</code></pre>
+<p>使用<code>-u</code>比較好，因為<code>uniq</code>本身有bug，只有在兩個相同的東西相鄰時才會合併。</p>
+<pre><code>uniq -c filename
+</code></pre>
+<p>計算重複的entry數量</p>
+<h2 id="paste"><a href="#paste" class="headerlink" title="paste"></a>paste</h2><p>想要把兩張表合併起來可以用paste來做到，輸出的結果依照delimiters來區分欄位，delimiter可以是tab、空格, comma,  ‘|’等等。paste並不是很嚴謹的合併，需要先進行set且資料欄位齊全才可以使用。常用在user與group的對應。</p>
+<pre><code>paste -d
+</code></pre>
+<p>使用<code> -d</code>可以自訂delimiter。</p>
+<pre><code>paste -s
+paste file1 file2
+paste -d, file1 file2
+paste -d &#39;:&#39; names phone
+</code></pre>
+<h2 id="join"><a href="#join" class="headerlink" title="join"></a>join</h2><p>$ cat phonebook</p>
+<pre><code>555-123-4567 Bob
+555-231-3325 Carol
+555-340-5678 Ted
+555-289-6193 Alice
+</code></pre>
+<p>$ cat directory</p>
+<pre><code>555-123-4567 Anytown
+555-231-3325 Mytown
+555-340-5678 Yourtown
+555-289-6193 Youngstown
+</code></pre>
+<p>The result of joining<br>$ join phonebook directory</p>
+<pre><code>555-123-4567 Bob Anytown
+555-231-3325 Carol Mytown
+555-340-5678 Ted Yourtown
+555-289-6193 Alice Youngstown
+</code></pre>
+<h2 id="split"><a href="#split" class="headerlink" title="split"></a>split</h2><pre><code>split infile &lt;Prefix&gt;
+</code></pre>
+<p>範例：把一個字典檔切成99000行<br>wc可以用來查看檔案的行數或字數<br>$ wc -l american-english</p>
+<pre><code>99171 american-english
+</code></pre>
+<p>$ split american-english dictionary</p>
+<p>$ ls -l dictionary*</p>
+<pre><code>-rw-rw-r 1 me me 8552 Mar 23 20:19 dictionaryab
+-rw-rw-r 1 me me 8653 Mar 23 20:19 dictionaryaa
+. . .
+</code></pre>
+<h1 id="Section-4-grep"><a href="#Section-4-grep" class="headerlink" title="Section 4 grep"></a>Section 4 grep</h1><p>用來搜尋文字的工具，會依照設定的pattern來搜尋，pattern中可以使用regular experssion</p>
+<h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><pre><code>grep [pattern] &lt;filename&gt;
+grep -v [pattern] &lt;filename&gt;
+grep [0-9] &lt;filename&gt;
+grep -C 3 [pattern] &lt;filename&gt;
+grep -A 3 [pattern] &lt;filename&gt;
+grep -B 3 [pattern] &lt;filename&gt;
+</code></pre>
+<h1 id="Section-5"><a href="#Section-5" class="headerlink" title="Section 5"></a>Section 5</h1><h2 id="tr"><a href="#tr" class="headerlink" title="tr"></a>tr</h2><p>用來刪除一段文字，或者替換一段文字。</p>
+<p>Command    Usage</p>
+<pre><code>$ tr abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ
+</code></pre>
+<p>Convert lower case to upper case</p>
+<pre><code>$ tr &#39;&#123;&#125;&#39; &#39;()&#39; &lt; inputfile &gt;
+</code></pre>
+<p>outputfile    Translate braces into parenthesis</p>
+<pre><code>$ echo &quot;This is for testing&quot; | tr [:space:] &#39;\t&#39;
+</code></pre>
+<p>Translate white-space to tabs</p>
+<pre><code>$ echo &quot;This is for testing&quot; | tr -s [:space:]
+</code></pre>
+<p>Squeeze repetition of characters using -s</p>
+<pre><code>$ echo &quot;the geek stuff&quot; | tr -d &#39;t&#39;
+</code></pre>
+<p>Delete specified characters using -d option</p>
+<pre><code>$ echo &quot;my username is 432234&quot; | tr -cd [:digit:]
+</code></pre>
+<p>Complement the sets using -c option</p>
+<pre><code>$ tr -cd [:print:] &lt; file.txt
+</code></pre>
+<p>Remove all non-printable character from a file</p>
+<pre><code>$ tr -s &#39;\n&#39; &#39; &#39; &lt; file.txt
+</code></pre>
+<p>Join all the lines in a file into a single line</p>
+<h2 id="tee"><a href="#tee" class="headerlink" title="tee"></a>tee</h2><p>想要將這個資料流的處理過程中將某段訊息存下來，就使用tee指令。</p>
+<pre><code>ls -l | tee newfile
+</code></pre>
+<h2 id="wc"><a href="#wc" class="headerlink" title="wc"></a>wc</h2><p>word count<br>計算line的數量或字數</p>
+<h2 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h2><p>這個指令可以將一段訊息的某一段給他『切』出來</p>
+<h1 id="Section-6"><a href="#Section-6" class="headerlink" title="Section 6"></a>Section 6</h1><p>使用 <code>strings</code> 需安裝 <code>binutils</code>。string可以用來</p>
+<h2 id="作業更好的解法-By-Carl"><a href="#作業更好的解法-By-Carl" class="headerlink" title="作業更好的解法(By Carl)"></a>作業更好的解法(By Carl)</h2><p>Lab 2</p>
+<pre><code>awk -F: &#39;&#123; print $7 &#125;&#39; /etc/passwd | sort -u | sed &#39;/^$/d&#39;
+</code></pre>
+<p>or</p>
+<pre><code>awk -F: &#39;&#123; print $7 &#125;&#39; /etc/passwd | sort -u | grep -v &#39;^$&#39;
+</code></pre>
+<p>Lab 3<br>解答的做法不好，應該單獨對 <code>$7</code> 做處理。</p>
+<h1 id="讀後心得"><a href="#讀後心得" class="headerlink" title="讀後心得"></a>讀後心得</h1><p>課程中對awk sed等強大的指令只有輕輕帶過，但這次的範圍跟之後要學的shell script有密切的關係，開啟了</p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2014/10/10/old%20posts/2014-10-10-jquery-return-flight-4/" title="jQuery Return Flight Ch4：Utility Methods"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: jQuery Return Flight Ch4：Utility Methods</span></a><a class="button is-default" href="/2014/10/06/old%20posts/2014-10-06-jquery-return-flight-2/" title="jQuery Returm Flight Ch2：Javascript Object &amp; Function"><span class="has-text-weight-semibold">Next: jQuery Returm Flight Ch2：Javascript Object &amp; Function</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

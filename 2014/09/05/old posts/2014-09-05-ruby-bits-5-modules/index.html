@@ -1,0 +1,207 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>Ruby bits ( 5 )：Modules</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="Ruby bits的課程真的很不錯，講到的主題都是很重要的東西。有點相見恨晚的感覺，趕快把它做完吧!
+本節學習目標
+module
+activesupport ::Concern
+了解self的意義
+
+part1: moduleclass method與instance methoduse extend to expose methods as class methodclass Tweet
+  extend Searchable
+end
+
+使用的時候，直接呼叫class（開頭大寫）。
+Tweet.find_all_from(&amp;#39;@GreggPollack&amp;#39;)
+
+use include to expose methods as instance methodsinstance method用in.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Ruby bits ( 5 )：Modules</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E7%AF%80%E5%AD%B8%E7%BF%92%E7%9B%AE%E6%A8%99"><span class="toc-text">本節學習目標</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#part1-module"><span class="toc-text">part1: module</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#class-method%E8%88%87instance-method"><span class="toc-text">class method與instance method</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#use-extend-to-expose-methods-as-class-method"><span class="toc-text">use extend to expose methods as class method</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#use-include-to-expose-methods-as-instance-methods"><span class="toc-text">use include to expose methods as instance methods</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#part2-how-to-include-class-method-and-instance-method-in-the-same-time"><span class="toc-text">part2 :how to include class method and instance method in the same time</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%A8%AE%E6%96%B9%E6%B3%95%EF%BC%9A%E4%BE%9D%E7%85%A7%E7%9B%B4%E8%A6%BA%E8%A9%B2%E6%80%8E%E9%BA%BC%E5%AF%AB"><span class="toc-text">第一種方法：依照直覺該怎麼寫</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%A8%AE%E6%96%B9%E6%B3%95-method-hooks"><span class="toc-text">第二種方法:method hooks</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#part3-%E4%BD%BF%E7%94%A8Activesupport-Concern%E8%A7%A3%E6%B1%BA%E7%9B%B8%E4%BE%9D%E6%80%A7%E5%95%8F%E9%A1%8C"><span class="toc-text">part3: 使用Activesupport :: Concern解決相依性問題</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-text">使用方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Acitvesupport-concern%E8%A6%81%E8%A7%A3%E6%B1%BA%E7%9A%84%E5%95%8F%E9%A1%8C"><span class="toc-text">Acitvesupport::concern要解決的問題</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#part4-%E4%BD%9C%E7%AD%94%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%95%8F%E9%A1%8C"><span class="toc-text">part4 作答中遇到的問題</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-%E5%AE%A3%E5%91%8A%E6%88%90class-method"><span class="toc-text">5.1 宣告成class method</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-reopen-game-and-include-the-gameutil-module"><span class="toc-text">5.2 reopen game and include the gameutil module</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-reopen-Game-and-expose-the-method-from-module-as-class-method-of-Game-class"><span class="toc-text">5.3 reopen Game and expose the method from module as class method of Game class</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-extend-the-single-game-object-with-Playable-module"><span class="toc-text">5.4 extend the single game object with Playable module</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-5"><span class="toc-text">5.5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-6"><span class="toc-text">5.6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-7-AcitveSupport-Concern-part-II"><span class="toc-text">5.7 AcitveSupport::Concern part II</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-8-AcitveSupport-Concern-part-III"><span class="toc-text">5.8 AcitveSupport::Concern part III</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%B6%E4%BC%B8%E9%96%B1%E8%AE%80%EF%BC%9A"><span class="toc-text">延伸閱讀：</span></a></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/Ruby"><i class="tag post-item-tag">Ruby</i></a><a href="/tags/Ruby-Bit"><i class="tag post-item-tag">Ruby Bit</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Ruby bits ( 5 )：Modules</h1><time class="has-text-grey" datetime="2014-09-05T00:52:00.000Z">2014-09-05</time><article class="mt-2 post-content"><p>Ruby bits的課程真的很不錯，講到的主題都是很重要的東西。有點相見恨晚的感覺，趕快把它做完吧!</p>
+<h2 id="本節學習目標"><a href="#本節學習目標" class="headerlink" title="本節學習目標"></a>本節學習目標</h2><ol>
+<li>module</li>
+<li>activesupport ::Concern</li>
+<li>了解self的意義</li>
+</ol>
+<h1 id="part1-module"><a href="#part1-module" class="headerlink" title="part1: module"></a>part1: module</h1><h2 id="class-method與instance-method"><a href="#class-method與instance-method" class="headerlink" title="class method與instance method"></a>class method與instance method</h2><h3 id="use-extend-to-expose-methods-as-class-method"><a href="#use-extend-to-expose-methods-as-class-method" class="headerlink" title="use extend to expose methods as class method"></a>use extend to expose methods as class method</h3><pre><code class="rb">class Tweet
+  extend Searchable
+end
+</code></pre>
+<p>使用的時候，直接呼叫class（開頭大寫）。</p>
+<pre><code class="rb">Tweet.find_all_from(&#39;@GreggPollack&#39;)
+</code></pre>
+<h3 id="use-include-to-expose-methods-as-instance-methods"><a href="#use-include-to-expose-methods-as-instance-methods" class="headerlink" title="use include to expose methods as instance methods"></a>use include to expose methods as instance methods</h3><p>instance method用include引進module</p>
+<pre><code class="rb">class Image
+  include ImageUtils
+end
+</code></pre>
+<pre><code class="rb">image = user.image
+image.preview
+</code></pre>
+<h1 id="part2-how-to-include-class-method-and-instance-method-in-the-same-time"><a href="#part2-how-to-include-class-method-and-instance-method-in-the-same-time" class="headerlink" title="part2 :how to include class method and instance method in the same time"></a>part2 :how to include class method and instance method in the same time</h1><h2 id="第一種方法：依照直覺該怎麼寫"><a href="#第一種方法：依照直覺該怎麼寫" class="headerlink" title="第一種方法：依照直覺該怎麼寫"></a>第一種方法：依照直覺該怎麼寫</h2><p>第一種方法是在class中includ module並且extend classmothods。<br>下例中Image想要使用ImageUtils這個module的class method與instance method，所以用兩種方式各自引用。</p>
+<pre><code class="rb">class Image
+  include ImageUtils
+  extend ImageUtils::ClassMethods
+end
+</code></pre>
+<pre><code class="rb">module ImageUtils
+
+  def preview
+  end
+
+  def transfer(destination)
+  end
+
+  module ClassMethods
+    def fetch_from_twitter(user)
+    end
+  end
+
+end
+</code></pre>
+<p>使用上可以按照之前所學的來呼叫class method與instance method</p>
+<pre><code class="rb">image = user.image
+image.preview
+Image.fetch_from_twitter(&#39;gregg&#39;)
+</code></pre>
+<h2 id="第二種方法-method-hooks"><a href="#第二種方法-method-hooks" class="headerlink" title="第二種方法:method hooks"></a>第二種方法:method hooks</h2><p>這樣每次使用module的時候都需要explore兩種module實在太麻煩了，引入class module這個動作在module完成，這樣我們就不需要每次都引入兩種method，只要引入module就可以了。於是第二種方法method hook產生了：</p>
+<pre><code class="rb">class Image
+  include ImageUtils
+  #extend ImageUtils::ClassMethods       刪除掉引入class method的這一行
+end
+</code></pre>
+<pre><code class="rb">module ImageUtils
+  def self.included(base)  #加入self.include （self就是ImageUtils這個module）
+    base.extend(ClassMethods)
+  end
+  def preview
+  end
+  def transfer(destination)
+  end
+  module ClassMethods
+    def fetch_from_twitter(user)
+    end
+  end
+end
+</code></pre>
+<h1 id="part3-使用Activesupport-Concern解決相依性問題"><a href="#part3-使用Activesupport-Concern解決相依性問題" class="headerlink" title="part3: 使用Activesupport :: Concern解決相依性問題"></a>part3: 使用Activesupport :: Concern解決相依性問題</h1><blockquote>
+<p>Activesupport :: Concern代表什麼意思<br>:: is basically a namespace resolution operator. It allows you to access items in modules, or class-level items in classes. For example, say you had this setup:<br>關鍵字double colon ruby<br><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/3009477/what-is-rubys-double-colon-all-about">What is Ruby’s double-colon (::) all about?</a></p>
+</blockquote>
+<h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h2><p>在terminal下<code>gem install activesupport</code>安裝activesupport<br>在module檔中(xxx.rb)中require ‘active_support/concern’</p>
+<pre><code class="rb">require &#39;active_support/concern&#39; module ImageUtils
+
+  extend ActiveSupport::Concern
+
+  included do
+    clean_up
+    end
+
+  module ClassMethods
+    def fetch_from_twitter(user)
+    end
+
+    def clean_up
+    end
+  end
+end
+</code></pre>
+<p>這樣就可以直接include ImageUtil的ClassMethods</p>
+<pre><code class="rb">class Image
+    include ImageUtils
+end
+</code></pre>
+<p>這樣看起來沒什麼了不起的對吧？只是換個寫法。實際上cocern的出現是為了解決更重要的問題，讓我們看下去。</p>
+<h2 id="Acitvesupport-concern要解決的問題"><a href="#Acitvesupport-concern要解決的問題" class="headerlink" title="Acitvesupport::concern要解決的問題"></a>Acitvesupport::concern要解決的問題</h2><pre><code class="rb">module ImageUtils
+  def self.included(base)      #base is ImageProcessing module
+    base.extend(ClassMethods)
+  end
+  module ClassMethods
+    def clean_up; end
+    end
+end
+</code></pre>
+<pre><code class="rb">module ImageProcessing
+
+    include ImageUtils
+
+  def self.included(base)
+    base.clean_up                #undefined method error
+  end
+end
+</code></pre>
+<pre><code class="rb">class Image
+   include ImageProcessing
+end
+</code></pre>
+<p>這樣乍看之下好像沒問題，但是卻有個嚴重的問題導致無法執行，因為ImageUtils變成是由ImageProcessing所 include，所以對 ImageUtils 的 self.included 來說，他的參數 base 變成了 ImageProcessing 了，所以他就沒辦法存取到宿主 Host 的任何函式及變數，do_host_something 時就會失敗。</p>
+<p>Okay，ActiveSupport::Concern 就是來幫助解決這個難題，我們希望宿主可以不需要知道 modules 之間的 dependencies 關係。dependencies 關係寫在 module 裡面就好了。</p>
+<pre><code class="rb">module ImageUtils
+
+  extend ActiveSupport::Concern
+
+  module ClassMethods
+    def clean_up; end
+  end
+end
+</code></pre>
+<pre><code class="rb">module ImageProcessing
+
+  extend ActiveSupport::Concern
+  include ImageUtils
+
+  included do
+    clean_up
+  end
+end
+</code></pre>
+<pre><code class="rb">class Image
+  include ImageProcessing
+end
+</code></pre>
+<p>Dependencies are properly resolved！！</p>
+<h1 id="part4-作答中遇到的問題"><a href="#part4-作答中遇到的問題" class="headerlink" title="part4 作答中遇到的問題"></a>part4 作答中遇到的問題</h1><h2 id="5-1-宣告成class-method"><a href="#5-1-宣告成class-method" class="headerlink" title="5.1 宣告成class method"></a>5.1 宣告成class method</h2><p>原本的</p>
+<pre><code class="rb">module GameUtils
+  def lend_to_friend(game, friend_email)
+  end
+end
+</code></pre>
+<p>改成</p>
+<pre><code class="rb">module GameUtils
+  def self.lend_to_friend(game, friend_email)
+  end
+end
+</code></pre>
+<p>這樣呼叫時就會從原本的</p>
+<pre><code class="rb">game = Game.new(&quot;Contra&quot;)
+game.lend_to_friend(game, &quot;gregg@codeschool.com&quot;)
+</code></pre>
+<p>變成</p>
+<pre><code class="rb">game = Game.new(&quot;Contra&quot;)
+GameUtils.lend_to_friend(game, &quot;gregg@codeschool.com&quot;)
+</code></pre>
+<h2 id="5-2-reopen-game-and-include-the-gameutil-module"><a href="#5-2-reopen-game-and-include-the-gameutil-module" class="headerlink" title="5.2 reopen game and include the gameutil module"></a>5.2 reopen game and include the gameutil module</h2><h2 id="5-3-reopen-Game-and-expose-the-method-from-module-as-class-method-of-Game-class"><a href="#5-3-reopen-Game-and-expose-the-method-from-module-as-class-method-of-Game-class" class="headerlink" title="5.3 reopen Game and expose the method from module as class method of Game class"></a>5.3 reopen Game and expose the method from module as class method of Game class</h2><p>原本</p>
+<pre><code class="rb">class Game
+end
+</code></pre>
+<p>加上GameUtils的class method</p>
+<pre><code class="rb">class Game
+  extend GameUtils
+end
+</code></pre>
+<h2 id="5-4-extend-the-single-game-object-with-Playable-module"><a href="#5-4-extend-the-single-game-object-with-Playable-module" class="headerlink" title="5.4 extend the single game object with Playable module"></a>5.4 extend the single game object with Playable module</h2><p>原本</p>
+<pre><code class="rb">game = Game.new(&quot;Contra&quot;)
+game.play
+</code></pre>
+<p>加入module Playable的method到game這個instance中。</p>
+<pre><code class="rb">game = Game.new(&quot;Contra&quot;)
+game.extend(Playable)
+game.play
+</code></pre>
+<p>module長這樣</p>
+<pre><code class="rb">module Playable
+  def play
+  end
+end
+</code></pre>
+<p>這個用法讓我有點困惑，特地查了一下<a target="_blank" rel="noopener" href="http://ruby-doc.org/core-2.1.2/Object.html#method-i-extend">ruby-doc</a><br>extend的解釋如下<br>Adds to obj the instance methods from each module given as a parameter.<br>雖然是用extend這個字，但並非是繼承的意思，而是加入instance method。</p>
+<h2 id="5-5"><a href="#5-5" class="headerlink" title="5.5"></a>5.5</h2><p>使用self.include初始化class method</p>
+<h2 id="5-6"><a href="#5-6" class="headerlink" title="5.6"></a>5.6</h2><p>使用ActiveSupport::Concern代替self.included</p>
+<h2 id="5-7-AcitveSupport-Concern-part-II"><a href="#5-7-AcitveSupport-Concern-part-II" class="headerlink" title="5.7 AcitveSupport::Concern part II"></a>5.7 AcitveSupport::Concern part II</h2><p>使用included class method</p>
+<h2 id="5-8-AcitveSupport-Concern-part-III"><a href="#5-8-AcitveSupport-Concern-part-III" class="headerlink" title="5.8 AcitveSupport::Concern part III"></a>5.8 AcitveSupport::Concern part III</h2><h2 id="延伸閱讀："><a href="#延伸閱讀：" class="headerlink" title="延伸閱讀："></a>延伸閱讀：</h2><p><a target="_blank" rel="noopener" href="http://ihower.tw/blog/archives/3949">深入Rails3: ActiveSupport::Concern</a><br><a target="_blank" rel="noopener" href="http://rubylearning.com/satishtalim/ruby_self.html">Self - The current/default object</a><br><a target="_blank" rel="noopener" href="http://api.rubyonrails.org/classes/ActiveSupport/Concern.html">ActiveSupport::Concern</a></p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2014/09/06/old%20posts/2014-09-06-ruby-bits-6-blocks/" title="Ruby bits ( 6 )：Blocks 學習筆記"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Ruby bits ( 6 )：Blocks 學習筆記</span></a><a class="button is-default" href="/2014/09/05/old%20posts/2014-09-05-ruby-bits-4-active-support/" title="Ruby bits ( 4 )：ActiveSupport"><span class="has-text-weight-semibold">Next: Ruby bits ( 4 )：ActiveSupport</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

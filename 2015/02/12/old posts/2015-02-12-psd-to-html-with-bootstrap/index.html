@@ -1,0 +1,59 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>排版練習2：PSD to html with Bootstrap</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="第二個練習一樣學習tuts的課程，選擇課程的好處是做到一半不知道該怎麼做時，有video解答可以看。看看高手怎麼做總是比自己亂弄的好的多。我選擇的課程是需要付費的，tuts還有一些免費的教材可以學習，影片或是文章教學都有，有興趣的自己發掘囉。第二個練習跟第一個練習不同之處在於本練習會使用bootstrap的grid system來排版，並且icon與logo會使用sprite css的方式來製作。
+Sprite sheetssprite 說的是利用將 icon 集中在一張圖片上，藉由CSS設定不同顯示區域，來實現每一個不同的icon。這樣的好處是很可降低圖片request數，減少server負擔。現在我們要使用sprite的方法實作的是右上角的五個social-icon和左上角的mumbo logo。
+Cr.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">排版練習2：PSD to html with Bootstrap</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sprite-sheets"><span class="toc-text">Sprite sheets</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-Sprite-Sheets"><span class="toc-text">Create Sprite Sheets</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98"><span class="toc-text">學習筆記</span></a></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/HTML"><i class="tag post-item-tag">HTML</i></a><a href="/tags/Bootstrap"><i class="tag post-item-tag">Bootstrap</i></a><a href="/tags/PSD-to-HTML"><i class="tag post-item-tag">PSD to HTML</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">排版練習2：PSD to html with Bootstrap</h1><time class="has-text-grey" datetime="2015-02-12T04:33:00.000Z">2015-02-12</time><article class="mt-2 post-content"><p>第二個練習一樣學習tuts的課程，選擇課程的好處是做到一半不知道該怎麼做時，有video解答可以看。看看高手怎麼做總是比自己亂弄的好的多。我選擇的課程是需要付費的，tuts還有一些免費的教材可以學習，影片或是文章教學都有，有興趣的自己發掘囉。第二個練習跟第一個練習不同之處在於本練習會使用bootstrap的grid system來排版，並且icon與logo會使用sprite css的方式來製作。</p>
+<h2 id="Sprite-sheets"><a href="#Sprite-sheets" class="headerlink" title="Sprite sheets"></a>Sprite sheets</h2><p>sprite 說的是利用將 icon 集中在一張圖片上，藉由CSS設定不同顯示區域，來實現每一個不同的icon。這樣的好處是很可降低圖片request數，減少server負擔。現在我們要使用sprite的方法實作的是右上角的五個social-icon和左上角的mumbo logo。</p>
+<h2 id="Create-Sprite-Sheets"><a href="#Create-Sprite-Sheets" class="headerlink" title="Create Sprite Sheets"></a>Create Sprite Sheets</h2><ol>
+<li>首先在photoshop中用方框工具圈選5個icon</li>
+<li>點選<code>file &gt; copy merge</code>複製五個icon</li>
+<li><code>file &gt; new</code> 建立新檔案，圖像大小設定為250 X 250。</li>
+<li>開啟ruler(view &gt; ruler)</li>
+<li>從左側ruler拉進隔線每50px拉一條，這是為了等等區隔複製過來的icon，每個間隔會是50px。</li>
+<li>使用方框工具(第二個工具)選取後，用移動工具(第一個工具)將icon對齊左上角(如果右下角的layer選錯的話，方框工具會選不到圖案）。</li>
+<li>接著將mumbo logo也複製進來，放在第二排，對齊左上角，製作好的photoshop檔案會是長得像這樣。<br>註:<br><img src="https://lh5.googleusercontent.com/-kZxU_a73YTk/VNyjQ0_8wfI/AAAAAAAAE6g/LXCLe6pwyL4/w1410-h628-no/sprite.jpg"></li>
+<li>將photoshop檔案 save for web，存成檔名為sprite.png的檔案。放在imgs資料夾下。</li>
+<li>製作好圖片之後來實際做做看social-list，關鍵是將background設成sprite.png。再利用個別的class鎖定不同的位置，這樣就會顯示不同的icon。<pre><code class="css">.social-list li&#123;
+display: inline-block;
+margin: 0 2px;
+&#125;
+.social-list li a &#123;
+display: inline-block;
+width: 37px;
+height: 37px;
+background: url(../imgs/sprite.png) no-repeat 0 0;
+&#125;
+.social-list li a.vimeo &#123;
+background-position: -50px 0;
+&#125;
+.social-list li a.lastfm &#123;
+background-position: -100px 0;
+&#125;
+.social-list li a.linkedin &#123;
+background-position: -152px 0;
+&#125;
+.social-list li a.dribble &#123;
+background-position: -200px 0;
+&#125;
+</code></pre>
+</li>
+<li>這樣就完成social-icon了。<br><img src="https://lh5.googleusercontent.com/-uBsU7-pyW8U/VNy7yRTObPI/AAAAAAAAE7A/DMfdyVFwG1w/w734-h198-no/02mumbo.jpg"></li>
+<li>接著要把左上方的logo用sprite的手法改寫。<pre><code class="css">header hgroup h1 a&#123;
+display: block;
+width: 172px;
+height: 25px;
+background: url(../imgs/sprite.png) no-repeat 0 -50px;
+&#125;
+</code></pre>
+</li>
+<li>如此一來便大功告成。使用photoshop手動製作sprite是比較沒效率的作法，現在已經有很多方便的工具可以使用，藉由這個練習了解sprite的原理，之後再學習快速開發的工具便容易許多。<br><img src="https://lh4.googleusercontent.com/-4Np5E53Y3Bs/VNy7xCZCx8I/AAAAAAAAE60/EcqUdwQ5P30/w992-h219-no/01mumbo.jpg"></li>
+</ol>
+<h2 id="學習筆記"><a href="#學習筆記" class="headerlink" title="學習筆記"></a>學習筆記</h2><ol>
+<li><p>先來進行header的h1與h2排版，要達成的效果如下圖。還在苦惱怎麼使用純CSS設定長寬和box-model讓他服服貼貼的時候，突然發現有<code>.pull-left</code>可以用。真是太方便了。<br><img src="https://lh4.googleusercontent.com/-4Np5E53Y3Bs/VNy7xCZCx8I/AAAAAAAAE60/EcqUdwQ5P30/w992-h219-no/01mumbo.jpg"></p>
+</li>
+<li><p>使用<code>font-style: italic;</code>就可以讓標題有傾斜的效果。<br><img src="https://lh3.googleusercontent.com/-SJrEQRDSV8k/VN2vuvZQLeI/AAAAAAAAE7U/k4DQG9hf34U/w738-h118-no/titile.jpg"></p>
+</li>
+<li><p>如何讓li前面的dot變色？對li加上<code>color: #ff6b39;</code>就可以將dot一同變色。<br><img src="https://lh6.googleusercontent.com/ORaHhrfnK-RVQ7sUVN_6HgtGUMoww-gRJ5a8hFXqgPY=w733-h138-no"></p>
+</li>
+</ol>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2015/02/22/old%20posts/2015-02-22-bogut-javascript-practical-notes/" title="保哥 javascript 實戰課程筆記"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: 保哥 javascript 實戰課程筆記</span></a><a class="button is-default" href="/2015/02/12/old%20posts/2015-02-12-psd-to-html-porfolio/" title="排版練習1：PSD to HTML Porfolio"><span class="has-text-weight-semibold">Next: 排版練習1：PSD to HTML Porfolio</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

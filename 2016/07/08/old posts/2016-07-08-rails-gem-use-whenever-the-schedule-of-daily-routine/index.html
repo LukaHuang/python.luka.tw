@@ -1,0 +1,66 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>Rails: 使用 Whenever 產生 Cronjob </title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="Part 1 - Crontab 介紹Crontab 是 Linux 中用來管理例行事務的程式，而 whenever 實際上的作用就是用來產生 cronjob 的，所以先介紹一下 Linux 系統中的 crontab 如何操作。
+crontab 指令比較常用指令的有以下幾項：
+crontab -l 顯示目前排程 (list cron)crontab -e 編輯排程 (edit cron)crontab -r 移除排程 (remove cron)crontab -u 改變排程的執行身分: crontab -u user filename
+crontab 的欄位與對應的意義整個指令會長得像樣子，這個指令做的事情是先移動到某個資料夾後執行User.delete_three_day_ago!。
+0 4 * * * .."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Rails: 使用 Whenever 產生 Cronjob </p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Part-1-Crontab-%E4%BB%8B%E7%B4%B9"><span class="toc-text">Part 1 - Crontab 介紹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#crontab-%E6%8C%87%E4%BB%A4"><span class="toc-text">crontab 指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#crontab-%E7%9A%84%E6%AC%84%E4%BD%8D%E8%88%87%E5%B0%8D%E6%87%89%E7%9A%84%E6%84%8F%E7%BE%A9"><span class="toc-text">crontab 的欄位與對應的意義</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-crontab-%E7%94%A2%E7%94%9F%E5%99%A8%E7%94%A2%E7%94%9F-cronjob"><span class="toc-text">使用 crontab 產生器產生 cronjob</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Part-2-%E4%BD%BF%E7%94%A8-Whenver-%E7%94%A2%E7%94%9F-cronjob"><span class="toc-text">Part 2 - 使用 Whenver 產生 cronjob</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D"><span class="toc-text">安裝</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%8A-whenever-%E4%B8%AD%E7%9A%84%E5%85%A7%E5%85%A7%E5%AE%B9%E8%BD%89%E7%82%BA-crontab"><span class="toc-text">把 whenever 中的內內容轉為 crontab</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%86%E7%9C%8B%E7%9C%8B-whenever-%E6%80%8E%E9%BA%BC%E6%92%B0%E5%AF%AB"><span class="toc-text">來看看 whenever 怎麼撰寫</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="toc-text">參考資料</span></a></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/Rails"><i class="tag post-item-tag">Rails</i></a><a href="/tags/Cronjob"><i class="tag post-item-tag">Cronjob</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Rails: 使用 Whenever 產生 Cronjob </h1><time class="has-text-grey" datetime="2016-07-07T20:53:00.000Z">2016-07-08</time><article class="mt-2 post-content"><h3 id="Part-1-Crontab-介紹"><a href="#Part-1-Crontab-介紹" class="headerlink" title="Part 1 - Crontab 介紹"></a>Part 1 - Crontab 介紹</h3><p>Crontab 是 Linux 中用來管理例行事務的程式，而 whenever 實際上的作用就是用來產生 cronjob 的，所以先介紹一下 Linux 系統中的 crontab 如何操作。</p>
+<h3 id="crontab-指令"><a href="#crontab-指令" class="headerlink" title="crontab 指令"></a>crontab 指令</h3><p>比較常用指令的有以下幾項：</p>
+<p><code>crontab -l</code> 顯示目前排程 (list cron)<br><code>crontab -e</code> 編輯排程 (edit cron)<br><code>crontab -r</code> 移除排程 (remove cron)<br><code>crontab -u</code> 改變排程的執行身分: crontab -u user filename</p>
+<h3 id="crontab-的欄位與對應的意義"><a href="#crontab-的欄位與對應的意義" class="headerlink" title="crontab 的欄位與對應的意義"></a>crontab 的欄位與對應的意義</h3><p>整個指令會長得像樣子，這個指令做的事情是先移動到某個資料夾後執行<code>User.delete_three_day_ago!</code>。</p>
+<pre><code>0 4 * * * /bin/bash -l -c &#39;cd /Users/oceanttd/rails_whenerver &amp;&amp; bundle exec bin/rails runner -e development &#39;\&#39;&#39;Users.delete_three_day_ago!&#39;\&#39;&#39;&#39;
+</code></pre>
+<p>第一到六項分別是：</p>
+<ol>
+<li>分鐘 1～59</li>
+<li>小時 0～23</li>
+<li>日 1～31</li>
+<li>月 1～12</li>
+<li>0～6（0表示星期天）</li>
+<li>要運行的命令</li>
+</ol>
+<p>需要注意的是<code>6</code>要運行的命令必須輸入<code>絕對路徑</code>，輸入相對路徑是沒有任何效果的。</p>
+<h4 id="使用-crontab-產生器產生-cronjob"><a href="#使用-crontab-產生器產生-cronjob" class="headerlink" title="使用 crontab 產生器產生 cronjob"></a>使用 crontab 產生器產生 cronjob</h4><p>看完上面規則後一定覺得很難撰寫，不直覺。來推薦一個網站 <a target="_blank" rel="noopener" href="http://crontab.guru/">crontab.guru - the cron schedule expression editor</a>輸入 cronjob 後可以立即顯示正確時間。</p>
+<h3 id="Part-2-使用-Whenver-產生-cronjob"><a href="#Part-2-使用-Whenver-產生-cronjob" class="headerlink" title="Part 2 - 使用 Whenver 產生 cronjob"></a>Part 2 - 使用 Whenver 產生 cronjob</h3><p>Whenever 是一個 Ruby 的 Gem，沒錯，你不在 Rails 環境下也可以使用。他的功能是讓 cronjob 變得很好撰寫。</p>
+<h4 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h4><p>在 Gemfile 中加入<code>whenever</code></p>
+<p>或是輸入<code>gem install whenever</code></p>
+<h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><p>移動到 Rails 資料夾輸入  <code>wheneverize .</code>，會幫你建立<code>config/schedule.rb</code>，如果你要建在非 Rails 的資料夾，可能需要自己創一個 config 資料夾來避免發生錯誤。</p>
+<h4 id="把-whenever-中的內內容轉為-crontab"><a href="#把-whenever-中的內內容轉為-crontab" class="headerlink" title="把 whenever 中的內內容轉為 crontab"></a>把 whenever 中的內內容轉為 crontab</h4><p>後面可以指定環境</p>
+<pre><code>whenever --update-crontab --set environment=development
+</code></pre>
+<p>接著用<code>crontab -l</code>指令就可以查看創建的 cronjobs。</p>
+<h4 id="來看看-whenever-怎麼撰寫"><a href="#來看看-whenever-怎麼撰寫" class="headerlink" title="來看看 whenever 怎麼撰寫"></a>來看看 whenever 怎麼撰寫</h4><p>原本難以閱讀的 crontab 與 cronjob，變得很容易閱讀，很且可以跟 rake 或是 ActiveRecord 一起作用。這邊在 Rails 環境下為例。他的原理就是先幫你 cd 到 Rails 資料夾後，再執行 Rake 指令，或是執行 model 的方法。</p>
+<p>rake 就直接用 <code>rake</code> 指令執行就好</p>
+<pre><code class="rb"># run this task only on servers with the :app role in Capistrano
+# see Capistrano roles section below
+every :day, :at =&gt; &#39;12:20am&#39;, :roles =&gt; [:app] do
+  rake &quot;app_server:task&quot;
+end
+</code></pre>
+<pre><code class="rb">every 3.hours do
+  runner &quot;MyModel.some_process&quot;
+  rake &quot;my:rake:task&quot;
+  command &quot;/usr/bin/my_great_command&quot;
+end
+</code></pre>
+<p>如果是執行 model 方法要用 <code>runner</code></p>
+<pre><code class="rb">every 1.day, :at =&gt; &#39;4:30 am&#39; do
+  runner &quot;MyModel.task_to_run_at_four_thirty_in_the_morning&quot;
+end
+
+every :hour do # Many shortcuts available: :hour, :day, :month, :year, :reboot
+  runner &quot;SomeModel.ladeeda&quot;
+end
+
+every :sunday, :at =&gt; &#39;12pm&#39; do # Use any day of the week or :weekend, :weekday
+  runner &quot;Task.do_something_great&quot;
+end
+</code></pre>
+<p>call system</p>
+<pre><code class="rb">every &#39;0 0 27-31 * *&#39; do
+  command &quot;echo &#39;you can use raw cron syntax too&#39;&quot;
+end
+</code></pre>
+<p>如此一來 cronjob 是不是變得很好寫了呢:D</p>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><p><a target="_blank" rel="noopener" href="https://github.com/javan/whenever">javan/whenever: Cron jobs in Ruby</a><br><a target="_blank" rel="noopener" href="http://www.cyberciti.biz/faq/where-is-the-crontab-file/">Linux / UNIX Crontab File Location</a></p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2016/07/29/old%20posts/2016-07-29-linux-how-to-check-os/" title="Linux - 如何查詢 OS 版本"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Linux - 如何查詢 OS 版本</span></a><a class="button is-default" href="/2016/07/07/old%20posts/2016-07-07-security-of-raw-sql-in-ruby/" title="Generate Safety Query String In ActiveRecord "><span class="has-text-weight-semibold">Next: Generate Safety Query String In ActiveRecord </span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

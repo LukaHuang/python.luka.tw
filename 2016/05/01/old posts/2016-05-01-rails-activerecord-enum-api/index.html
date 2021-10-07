@@ -1,0 +1,61 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>Rails 筆記 - 使用 ActiveRecord::Enum 設定狀態</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="使用 Array 表達狀態class Order
+    KIND = [ [&amp;#39;未付款&amp;#39;, 0], [&amp;#39;已付款&amp;#39;, 1], [&amp;#39;已出貨&amp;#39;,2] ]
+end
+
+代表 orders 這張表中的 kind 欄位如果是 1 ，則此訂單狀態是未付款的。寫成這樣的好處是在使用 select view helper 的時候可以直接丟進去
+&amp;lt;%= select_tag &amp;quot;訂單狀態&amp;quot;, options_for_select( Order::KIND ) %&amp;gt;
+
+把 KIND 打成這樣是 OK 的，但是我想把它打的好看一點。今天發現了有 ActiveRecord Enum 可以讓他變得有趣點。而且是只要有 ActiveRecord 就可以用，不需要.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Rails 筆記 - 使用 ActiveRecord::Enum 設定狀態</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Array-%E8%A1%A8%E9%81%94%E7%8B%80%E6%85%8B"><span class="toc-text">使用 Array 表達狀態</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ActiveRecord-Enum-%E4%BB%8B%E7%B4%B9"><span class="toc-text">ActiveRecord::Enum 介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8-Hash-%E5%84%B2%E5%AD%98-enum"><span class="toc-text">用 Hash 儲存 enum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%96%E5%BE%97-options-for-select-%E6%89%80%E9%9C%80%E7%9A%84%E9%99%A3%E5%88%97"><span class="toc-text">取得 options_for_select 所需的陣列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="toc-text">參考資料</span></a></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/Rails"><i class="tag post-item-tag">Rails</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Rails 筆記 - 使用 ActiveRecord::Enum 設定狀態</h1><time class="has-text-grey" datetime="2016-05-01T04:05:00.000Z">2016-05-01</time><article class="mt-2 post-content"><h2 id="使用-Array-表達狀態"><a href="#使用-Array-表達狀態" class="headerlink" title="使用 Array 表達狀態"></a>使用 Array 表達狀態</h2><pre><code class="rb">class Order
+    KIND = [ [&#39;未付款&#39;, 0], [&#39;已付款&#39;, 1], [&#39;已出貨&#39;,2] ]
+end
+</code></pre>
+<p>代表 orders 這張表中的 kind 欄位如果是 1 ，則此訂單狀態是未付款的。<br>寫成這樣的好處是在使用 select view helper 的時候可以直接丟進去</p>
+<pre><code class="erb">&lt;%= select_tag &quot;訂單狀態&quot;, options_for_select( Order::KIND ) %&gt;
+</code></pre>
+<p>把 KIND 打成這樣是 OK 的，但是我想把它打的好看一點。今天發現了有 ActiveRecord Enum 可以讓他變得有趣點。而且是只要有 ActiveRecord 就可以用，不需要裝其他的 gem。</p>
+<h2 id="ActiveRecord-Enum-介紹"><a href="#ActiveRecord-Enum-介紹" class="headerlink" title="ActiveRecord::Enum 介紹"></a>ActiveRecord::Enum 介紹</h2><p>首先需要宣告對應 DB 裡面的值，第一個就代表對應 0 , 第二個就代表對應 1。</p>
+<pre><code class="rb">class Conversation &lt; ActiveRecord::Base
+  enum status: [ :active, :archived ]
+end
+</code></pre>
+<p>除了可以用文字表示原本是數字的 conversation 的狀態以外，也加了 <code>active!</code> 和 <code>active? </code>這種方便的方法，<code>active!</code>用來改變 conversation 的狀態為 active ，而 <code>active?</code> 則用來辨識 conversation 狀態是否為 active。這樣寫語意上更棒，更好讀。</p>
+<pre><code class="rb">
+# conversation.update! status: 0
+conversation.active!
+conversation.active? # =&gt; true
+conversation.status  # =&gt; &quot;active&quot;
+
+# conversation.update! status: 1
+conversation.archived!
+conversation.archived? # =&gt; true
+conversation.status    # =&gt; &quot;archived&quot;
+</code></pre>
+<p>當然你也可以直接指定值給 <code>conversation.status</code></p>
+<pre><code class="rb"># conversation.status = 1
+conversation.status = &quot;archived&quot;
+
+conversation.status = nil
+conversation.status.nil? # =&gt; true
+conversation.status      # =&gt; nil
+</code></pre>
+<h2 id="用-Hash-儲存-enum"><a href="#用-Hash-儲存-enum" class="headerlink" title="用 Hash 儲存 enum"></a>用 Hash 儲存 enum</h2><p>宣告成 hash 型態的話，我們可以用 status 的複數型態 statuses 來取得這個 Hash，之後的取值也從 Conversation.active 變成了 Conversation.statuses[:active]，兩個得到的結果是一樣的。不過使用 Hash 時可以明確知道我現在在修改的是 status，屬性一多的時候不會造成混淆。</p>
+<pre><code class="rb">class Conversation &lt; ActiveRecord::Base
+  enum status: &#123; active: 0, archived: 1 &#125;
+end
+
+Conversation.statuses[:active]    # =&gt; 0
+Conversation.statuses[&quot;archived&quot;] # =&gt; 1
+</code></pre>
+<h2 id="取得-options-for-select-所需的陣列"><a href="#取得-options-for-select-所需的陣列" class="headerlink" title="取得 options_for_select 所需的陣列"></a>取得 options_for_select 所需的陣列</h2><p>這樣宣告後，使用 status 的複數型態 <code>statuses</code> 可以取得剛剛輸入的陣列</p>
+<pre><code>[5] pry(main)&gt; Conversation.statuses
+=&gt; &#123;&quot;active&quot;=&gt;0, &quot;archived&quot;=&gt;1&#125;
+</code></pre>
+<p>OK 現在要的東西很接近我們要的了，再做一點加工。</p>
+<pre><code>[11] pry(main)&gt; Conversation.statuses.invert.to_a
+=&gt; [[0, &quot;active&quot;], [1, &quot;archived&quot;]]
+</code></pre>
+<p>done! 現在用 enum 也可以製作 options_for_select 專屬的陣列了。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a target="_blank" rel="noopener" href="http://edgeapi.rubyonrails.org/classes/ActiveRecord/Enum.html">ActiveRecord::Enum</a><br><a target="_blank" rel="noopener" href="https://robots.thoughtbot.com/whats-new-in-edge-rails-active-record-enum">What’s new in edge Rails: Active Record enums</a></p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2016/05/31/old%20posts/2016-05-31-jquery-notes-get-last-element/" title="jQuery vs Ruby - 取得倒數的元素並組成字串"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: jQuery vs Ruby - 取得倒數的元素並組成字串</span></a><a class="button is-default" href="/2016/02/13/old%20posts/2016-02-13-deploy-redmine-to-vps-by-rails-way-in-ubuntu-14-04/" title="Deploy Redmine to VPS by Rails way in Ubuntu 14.04"><span class="has-text-weight-semibold">Next: Deploy Redmine to VPS by Rails way in Ubuntu 14.04</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

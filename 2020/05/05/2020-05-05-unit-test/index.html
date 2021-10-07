@@ -1,0 +1,85 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>Unit Test 中的替身：搞不清楚的Dummy 、Stub、Spy、Mock、Fake</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="
+最近開始接觸單元測試，一堆名詞看不懂，來狠狠地 K 一下。而單元測試中的最佳男配角，就是替身 Double。藉由寫一篇文章的方式來讓自己更了解單元測試中的重要部分。一起來學寫測試，Go Go !!
+
+ 註：接觸時間還很短，有錯還請不吝指正，如果之後發現我有理解錯誤再回來更正。
+
+單元測試是什麼？單元測試可以讓你快速驗證程式的行為。了解單元測的話首先來介紹一下 SUT 目標對象。
+舉個例子：你想要測試一台車是不是可以開，那麼 SUT 目標對象就是這台車。
+為了確保這台車可以開，那麼就可以寫一個「這台車應該要可以開」的測試。如果這台車發生了故障，測試就會告訴你，這台車是壞掉的。
+單元測試讓你的程式更容易維護。原因在於你能夠對程式寫測試，代表你寫的程式的「使用說明書」清楚易懂。使用說明書很容易懂，就可以直接拿來.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Unit Test 中的替身：搞不清楚的Dummy 、Stub、Spy、Mock、Fake</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F"><span class="toc-text">單元測試是什麼？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%BF%E8%BA%AB%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F"><span class="toc-text">替身是什麼？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E5%9C%A8%E7%A8%8B%E5%BC%8F%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%9B%BF%E8%BA%AB-Double-%E5%91%A2%EF%BC%9F"><span class="toc-text">為什麼要在程式中使用替身 Double 呢？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%AC%E8%A9%A6%E4%B8%AD%E7%9A%84%E4%BA%94%E7%A8%AE%E6%9B%BF%E8%BA%AB"><span class="toc-text">測試中的五種替身</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dummy-Object"><span class="toc-text">Dummy Object</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Test-Stub"><span class="toc-text">Test Stub</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Test-Spy"><span class="toc-text">Test Spy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mock-Object"><span class="toc-text">Mock Object</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fake-Object"><span class="toc-text">Fake Object</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E4%B8%8D%E9%8C%AF%E7%9A%84%E8%B3%87%E6%BA%90"><span class="toc-text">其他不錯的資源</span></a></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/Unit-Test"><i class="tag post-item-tag">Unit Test</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Unit Test 中的替身：搞不清楚的Dummy 、Stub、Spy、Mock、Fake</h1><time class="has-text-grey" datetime="2020-05-05T11:50:00.000Z">2020-05-05</time><article class="mt-2 post-content"><p><img src="https://cdn-images-1.medium.com/max/2000/0*Xn1CY4WKjOu3AdhL.jpeg"></p>
+<p>最近開始接觸單元測試，一堆名詞看不懂，來狠狠地 K 一下。而單元測試中的最佳男配角，就是替身 Double。藉由寫一篇文章的方式來讓自己更了解單元測試中的重要部分。一起來學寫測試，Go Go !!</p>
+<blockquote>
+<p> <em>註：接觸時間還很短，有錯還請不吝指正，如果之後發現我有理解錯誤再回來更正。</em></p>
+</blockquote>
+<h2 id="單元測試是什麼？"><a href="#單元測試是什麼？" class="headerlink" title="單元測試是什麼？"></a>單元測試是什麼？</h2><p>單元測試可以讓你快速驗證程式的行為。了解單元測的話首先來介紹一下 SUT 目標對象。</p>
+<p>舉個例子：你想要測試一台車是不是可以開，那麼 SUT 目標對象就是這台車。</p>
+<p>為了確保這台車可以開，那麼就可以寫一個「這台車應該要可以開」的測試。如果這台車發生了故障，測試就會告訴你，這台車是壞掉的。</p>
+<p>單元測試讓你的程式更容易維護。原因在於你能夠對程式寫測試，代表你寫的程式的「使用說明書」清楚易懂。使用說明書很容易懂，就可以直接拿來用，減少重複的程式碼，符合 DRY (Don’t Repeat Yourself) 原則。</p>
+<p>寫程式最大的成本在於維護，寫很簡單，但是要維護可就是個不容易的事情了。為了降低維護的成本，導入單元測試可以大大降低出錯的可能性，並且快樂地重構。</p>
+<h2 id="替身是什麼？"><a href="#替身是什麼？" class="headerlink" title="替身是什麼？"></a>替身是什麼？</h2><p>下圖是火影忍者的替身之術，替身之術的原理是：當敵人對你發動攻擊時，你使用替身之術，就可以讓替身承受敵人的攻擊，而自己不會受到傷害。圖中的木頭就是呼叫替身之術後，用來承受敵人攻擊的替身。</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*j4xWCtfCJnjEpjvR.png"></p>
+<p>所以火影忍者替身之術跟 Unit Test 的替身有什麼關係？你在程式中使出替身之術的時候，替身 Double 就會出現在你的程式裡面了。</p>
+<h2 id="為什麼要在程式中使用替身-Double-呢？"><a href="#為什麼要在程式中使用替身-Double-呢？" class="headerlink" title="為什麼要在程式中使用替身 Double 呢？"></a>為什麼要在程式中使用替身 Double 呢？</h2><p>原因在於你想要測試的 SUT 目標對象通常會有很多「依賴」DOC。一樣舉個例子：剛剛的 SUT 目標對象是「一台車」很容易寫測試，只要測試這台車可以開就好。</p>
+<p>但是如果一台車停在停車場，然後又爆胎。或是一台車掉到海裡。這些情況，一台車的 DOC 依賴變多了，造成你的測試更加複雜，越多的 DOC 依賴會造成你的測試越難寫，也造成你的程式行為更加複雜，難以預測。</p>
+<p>那麼就進入正題來介紹測試中的幾種替身吧</p>
+<h2 id="測試中的五種替身"><a href="#測試中的五種替身" class="headerlink" title="測試中的五種替身"></a>測試中的五種替身</h2><p>測試中的 Double 替身分為五種：Dummy Object、Test Stub、Test Spy、Mock Object、Fake Object。先來介紹第一種 Dummy Object 冒牌貨</p>
+<h2 id="Dummy-Object"><a href="#Dummy-Object" class="headerlink" title="Dummy Object"></a>Dummy Object</h2><p>Dummy Object 英文直譯冒牌貨，顧名思義就是個冒牌貨。他的用途是用來填充 SUT 目標測試對象中需要的物件。而 Dummy 不會對 SUT 測試目標造成任何的影響。純粹的填充物件，讓測試程式能夠運行。</p>
+<h2 id="Test-Stub"><a href="#Test-Stub" class="headerlink" title="Test Stub"></a>Test Stub</h2><p>我們想要驗證的 SUT 回傳值，這時候 Stub 就可以派上用場啦。聽起來有點玄，一樣舉個例子：例如：現在我們的測試目標 SUT 是一個手電桶，我們想要驗證呼叫打開 on 方法的結果，而一個手電筒裡面需要裝電池，電池可能會沒電，但是我不想讓電池沒電這個因素影響我的測試。所以我做了一組替身電池 (Stub Object) 塞進這個手電筒裡面。讓我可以輕鬆驗證 SUT 的回傳值。</p>
+<pre><code>class Flashlight
+  attr :battery  
+
+  def initialize(battery)
+    @battery = battery
+  end  
+
+  def on
+    battery.have_energy? ? &#39;flashlight is turn on!&#39; : &#39;no energy&#39;
+  end
+
+end
+
+Flashlight.new(StubBattery.new).on # 電池有沒有電不會影響結果。
+</code></pre>
+<h2 id="Test-Spy"><a href="#Test-Spy" class="headerlink" title="Test Spy"></a>Test Spy</h2><p>Spy 用來驗證 SUT 與對其他 DOC 物件造成的效果，例如：今天阿牛去找朋友聊天的時候，朋友物件內部的聊天次數就會加一，而當我們想想要驗證朋友物件的聊天次數是不是如我們所預期的增長時，我們就可以派出間諜朋友，來驗證「 SUT 阿牛是否有跟朋友聊三次天」之類的期待。</p>
+<pre><code class="ruby">    class 阿牛  
+
+      def initialize(friend)
+        @friend = friend
+      end  
+
+      def chat_to_friends
+        friend.chat!
+      end
+
+    end
+
+    class Friend 
+      attr: chat_count  
+
+      def chat
+        @chat_count ||= 0
+        @chat_count += 1
+      end
+    end
+
+    cow = 阿牛.new(spy_friend)
+
+    cow.chat_to_friends
+    cow.chat_to_friends
+    cow.chat_to_friends
+
+    expect(spy_friend.chat_count).to eq(3)
+</code></pre>
+<h2 id="Mock-Object"><a href="#Mock-Object" class="headerlink" title="Mock Object"></a>Mock Object</h2><p>Mock 是一個能夠判斷 SUT 是不是有正確使用 DOC 的替身。Mock 跟 Spy 的最大差別是，Mock 用來驗證 SUT 的行為，而 Spy 用來驗證 SUT 對 DOC 狀態的改變。</p>
+<h2 id="Fake-Object"><a href="#Fake-Object" class="headerlink" title="Fake Object"></a>Fake Object</h2><p>Fake Object 假物件是一個簡化的 DOC (依賴元件)，例如：一台真實的飛機有很多零件，但是我們其實只需要他有外殼，並且可以飛，可以降落 … 等等的行為。所以做一個簡單版的假物件。假物件不需要考慮跟 SUT 目標對象的間接互動(Indirect input , indirect output)。</p>
+<h2 id="其他不錯的資源"><a href="#其他不錯的資源" class="headerlink" title="其他不錯的資源"></a>其他不錯的資源</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://blog.pragmatists.com/test-doubles-fakes-mocks-and-stubs-1a7491dfa3da">Test Doubles — Fakes, Mocks and Stubs.</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://julianchu.net/2018/08/16-test.html">測試中常見的名詞：Stub, Dummy, Mock..等等</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.jyt0532.com/2018/01/04/test-double-spy/">測試替身(5) — Spy</a></p>
+</li>
+</ul>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2020/06/02/2020-06-02-tmp-let-your-tmux-better/" title="TPM — 套件管理工具 ，讓你的 TMUX 更好用"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: TPM — 套件管理工具 ，讓你的 TMUX 更好用</span></a><a class="button is-default" href="/2020/03/10/2020-03-20-running-flask-on-minikube/" title="Kubernetes 教學 02 — 在 Minikube 上部屬 Python Flask 應用程式"><span class="has-text-weight-semibold">Next: Kubernetes 教學 02 — 在 Minikube 上部屬 Python Flask 應用程式</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

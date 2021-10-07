@@ -1,0 +1,179 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>Luka.tw</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/widget-post-list.css"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><span>Archives · All</span></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><article class="post-container is-flex is-justify-content-center section container is-max-widescreen pt-4 px-2"><div class="columns is-variable is-1-tablet is-3-desktop-only is-2-widescreen is-full-width"><section class="column"><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://cdn-images-1.medium.com/max/3840/0*CmyuLdGdOQJLKS5t.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2020/02/11/2020-02-11-kubernetes-tutorial-01/"><img class="post-cover-img js-img-fadeIn" src="https://cdn-images-1.medium.com/max/3840/0*CmyuLdGdOQJLKS5t.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Kubernetes"><i class="tag post-item-tag">Kubernetes</i></a><a href="/tags/Minikube"><i class="tag post-item-tag">Minikube</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2020/02/11/2020-02-11-kubernetes-tutorial-01/">Kubernetes 教學 01 - 概念與架構</a></h2><time class="has-text-grey" datetime="2020-02-11T02:32:00.000Z">2020-02-11</time><p class="is-flex-grow-2 mt-2">為什麼該學 K8S ？ Pod、Node 是什麼？搞的我好亂呀！
+適合讀者：
+
+已經會使用 Docker，但是不知道 Kubernetes 是什麼。
+
+想看看 Kubernetes 到底在幹嘛的人。
+
+
+為什麼該用 Kubernetes?Kubernetes 中間共有八個字母有點長，所以大家就將他簡稱為 K8S。但使用 K8S 有什麼好處？
+1. 可以更好的運用雲端或是實體資源所有的資源集中成了一個大平台，所以調度上更靈活，以往我們以實體機為單位的方式很沒有效率，要調度資源的時候需要開一台實體機器，或是虛擬機器，都很耗費 CPU、記憶體等等的資源。
+而 K8S 內所有的東西都是容器，可以很快啟動，很快的刪除，並且靈活部屬在 Kubernetes 所擁有的資源上。
+2. 讓一切的基礎設施都寫成程式碼應用程式容..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2020/02/11/2020-02-11-kubernetes-tutorial-01/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://cdn-images-1.medium.com/max/10340/0*JN9t3uzpnpf0KCnz" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2020/01/14/2020-01-14-drone/"><img class="post-cover-img js-img-fadeIn" src="https://cdn-images-1.medium.com/max/10340/0*JN9t3uzpnpf0KCnz" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/DevOps"><i class="tag post-item-tag">DevOps</i></a><a href="/tags/DroneCI"><i class="tag post-item-tag">DroneCI</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2020/01/14/2020-01-14-drone/">從零開始學 DevOps — 那就選擇最簡單的 Drone CI 開始吧！</a></h2><time class="has-text-grey" datetime="2020-01-14T02:32:00.000Z">2020-01-14</time><p class="is-flex-grow-2 mt-2">
+目前 DevOps 已經是 Backend 或 Frontend 多多少少都會碰到的部份。而 Drone，正可以讓開發者專心開發自己的專案，每個專案獨立設定需要的 CI / CD 流程，解放前端、後端工程師的戰鬥力，將測試與部屬結合在開發流程中，降低手動測試需要的時間。話不多說，趕快開始架設第一個 Drone CI 伺服器吧。
+本篇文章分為兩個部分，第一個部分來聊聊，為什麼從 Jenkins -&amp;gt; CircleCI -&amp;gt; Drone ，的過程。第二部分則是架設 Drone 的教學。
+為什麼從 Jenkins -&amp;gt; CircleCI -&amp;gt; Drone第一次接觸 Drone 已經是兩年前，當時的 Drone 是 0.x 版，跟現在的 1.0 版本有不少的差異。那時候玩了一陣子 Dron..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2020/01/14/2020-01-14-drone/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://cdn-images-1.medium.com/max/2000/1*zYNBpVXtxGID9rttcSYklQ.jpeg" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2019/12/17/2019-12-17-harbor/"><img class="post-cover-img js-img-fadeIn" src="https://cdn-images-1.medium.com/max/2000/1*zYNBpVXtxGID9rttcSYklQ.jpeg" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Harbor"><i class="tag post-item-tag">Harbor</i></a><a href="/tags/Docker"><i class="tag post-item-tag">Docker</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2019/12/17/2019-12-17-harbor/">用 Harbor 架設 Private Docker Registry</a></h2><time class="has-text-grey" datetime="2019-12-17T02:32:00.000Z">2019-12-17</time><p class="is-flex-grow-2 mt-2">
+什麼是 Docker Registry？顧名思義就是用來儲存鏡像檔 (Image) 的地方。例如：DockerHub 就是 Docker 官方提供的 Docker Registry，你可以把你自己編寫的 Dockerfile 編譯之後上傳到 Dockerhub ，讓網路上的其他人自由的下載，讓大家站在你的肩膀上寫程式。
+
+
+為什麼要架設私有的 Docker Registry？在這個容器化的時代， 要使用 Kubernetes 生態系，第一步是將原本的實體機器的配置轉換成程式碼，轉換完成後變成 Dockerfile，Dockerfile 編寫著這台機器上所有的配置。
+我們需要找一個地方存放由這些 Dockerfile 建立 (build) 出來的 Docker 鏡像檔，這些鏡像檔總不能放在 Dockerhu..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2019/12/17/2019-12-17-harbor/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://cdn-images-1.medium.com/max/12048/1*ge80giZjL7EGHSLU5v00eQ.jpeg" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2019/11/19/2019-11-19/"><img class="post-cover-img js-img-fadeIn" src="https://cdn-images-1.medium.com/max/12048/1*ge80giZjL7EGHSLU5v00eQ.jpeg" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Harbor"><i class="tag post-item-tag">Harbor</i></a><a href="/tags/Docker"><i class="tag post-item-tag">Docker</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2019/11/19/2019-11-19/">駭客是怎麼思考的？｜從 Devcore Conf 學駭客思維</a></h2><time class="has-text-grey" datetime="2019-11-19T02:32:00.000Z">2019-11-19</time><p class="is-flex-grow-2 mt-2">駭客是怎麼思考的？｜從 Devcore Conf 學駭客思維媽阿，原來電影裡演的都是真的
+Hello 大家好，我是 Luka，一名喜歡追新技術並喜歡做些有趣嘗試的工程師。這次來的是分享參加 DEVCORE CONF 2019 的心得與收獲。
+這篇以 Web 前端、後端工程師的角度來分享參加 DEVCORE CONF 2019 的心得。適合「 Web 工程師」或是「想要多了解一點資安觀念的人」閱讀。如果你本身已經是從事資安行業了，那麼這篇文章對你來說可能太淺，請到 DEVCORE 官網 觀看專業的技術文章。
+簡單介紹一下 DEVCORE 戴夫寇爾這家資安公司，在我參加 DEVCORE CONF 之前已耳聞 DEVCORE 的大名，但我一直搞不清楚資安公司的不同之處。
+參加完 DEVCORE CONF 之後，我..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2019/11/19/2019-11-19/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Database"><i class="tag post-item-tag">Database</i></a><a href="/tags/Mysql"><i class="tag post-item-tag">Mysql</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2018/03/04/old%20posts/2018-03-04-modify-and-restore-mysql-partition/">Mysql - 如何修改 partition 並還原資料</a></h2><time class="has-text-grey" datetime="2018-03-04T04:50:00.000Z">2018-03-04</time><p class="is-flex-grow-2 mt-2">在測試環境中我們想要置換 partition 的分區方式，而我們不想要遺失測試資料，所以需要備份 partition table 的資料。因為要修改的資料欄位很多，我不想要直接使用 alter table 的方式來修改 partition 分區，取而代之的是，我想要用 Migration 的方式來管理，所以會採用先備份 -&amp;gt; 修改 -&amp;gt; 接著再還原的方式。</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2018/03/04/old%20posts/2018-03-04-modify-and-restore-mysql-partition/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/AWS"><i class="tag post-item-tag">AWS</i></a><a href="/tags/S3"><i class="tag post-item-tag">S3</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2018/01/25/old%20posts/2018-01-25-use-aws-ruby-sdk-to-update-s3-metadata/">[譯] 使用 AWS Ruby SDK v2 更新 S3 物件 Metadata</a></h2><time class="has-text-grey" datetime="2018-01-25T07:32:00.000Z">2018-01-25</time><p class="is-flex-grow-2 mt-2">
+From: Updating S3 Object Metadata With the AWS Ruby SDK v2Author: Mattposted at: 2017/5/31
+
+今天我在 S3 就如同在玩火一樣 - 弄壞了一個網站. 我做了研究，徹底的測試了我的程式碼，接著按下了 enter. 之後沒多久，我的心掉落的和我的網站掛掉的速度一樣快。我決定寫下一篇速記來防止同樣的錯誤發生在其他人身上。</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2018/01/25/old%20posts/2018-01-25-use-aws-ruby-sdk-to-update-s3-metadata/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/AWS"><i class="tag post-item-tag">AWS</i></a><a href="/tags/S3"><i class="tag post-item-tag">S3</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2018/01/03/old%20posts/2018-01-03-aws-s3-delimiter-and-prefix/">[譯] Amazon S3 Delimiter and Prefix</a></h2><time class="has-text-grey" datetime="2018-01-03T04:50:00.000Z">2018-01-03</time><p class="is-flex-grow-2 mt-2">
+From: Amazon S3 Delimiter and Prefix - realguessposted at 2014/05/24
+
+AWS S3 是一個不昂貴的線上檔案儲存服務，我們可以透過 javascript SDK 來使用 S3。當我使 SDK 的時候有以下幾件令人疑惑的事情:</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2018/01/03/old%20posts/2018-01-03-aws-s3-delimiter-and-prefix/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://lh3.googleusercontent.com/-ivTQRwbrQzs/WjyiAfiRepI/AAAAAAAAK7Y/8pjRBORXGEIKxyP7bjFTiEHjPYroooXQwCHMYCw/I/15139142578413.jpg" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2017/12/22/old%20posts/2017-12-22-web-foundation-the-different-of-cookie-and-session/"><img class="post-cover-img js-img-fadeIn" src="https://lh3.googleusercontent.com/-ivTQRwbrQzs/WjyiAfiRepI/AAAAAAAAK7Y/8pjRBORXGEIKxyP7bjFTiEHjPYroooXQwCHMYCw/I/15139142578413.jpg" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Web-Foundation"><i class="tag post-item-tag">Web Foundation</i></a><a href="/tags/Coockie"><i class="tag post-item-tag">Coockie</i></a><a href="/tags/Session"><i class="tag post-item-tag">Session</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2017/12/22/old%20posts/2017-12-22-web-foundation-the-different-of-cookie-and-session/">Web 基本功 - Cookie 與 Session</a></h2><time class="has-text-grey" datetime="2017-12-22T06:11:00.000Z">2017-12-22</time><p class="is-flex-grow-2 mt-2">Cookie1.1 什麼是 Cookie ?Cookie 在使用者第一次進入網站的時候產生。Browser 記錄一些隱私性較低的資料。例如: 使用者第一次進入網站的時候會跳出教學視窗。當使用者點擊[關閉]後，Cookie內記錄使用者已經看過教學了。使用者在下次登入的時候因為 Cookie 內記錄著使用者已經看過教學，所以就不會跳出教學視窗。
+1.2 Cookie 的特性
+每個網站的 Cookie 是分開的, 例如: www.google.com 無法取得 www.yahoo.com 的 cookie。
+能夠設定失效的時間。比如說過一段時間你就需要重新登入，就是由設定 Cookie Expired Time 來完成。有時候為了方便，也可能將 Cookie 設定為永久不失效。
+
+1.3 Server 端如何讓 ..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2017/12/22/old%20posts/2017-12-22-web-foundation-the-different-of-cookie-and-session/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://lh3.googleusercontent.com/-_3M8urfGsMo/Wl8lC5-jcoI/AAAAAAAALBE/YIn4itw9oDAxRkQX0GOwY45PwU-dt4PEgCHMYCw/I/15142609010075.jpg" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2017/12/22/old%20posts/2017-12-29-oltp-vs-olap/"><img class="post-cover-img js-img-fadeIn" src="https://lh3.googleusercontent.com/-_3M8urfGsMo/Wl8lC5-jcoI/AAAAAAAALBE/YIn4itw9oDAxRkQX0GOwY45PwU-dt4PEgCHMYCw/I/15142609010075.jpg" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Database"><i class="tag post-item-tag">Database</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2017/12/22/old%20posts/2017-12-29-oltp-vs-olap/">OLTP 與 OLAP</a></h2><time class="has-text-grey" datetime="2017-12-22T06:11:00.000Z">2017-12-22</time><p class="is-flex-grow-2 mt-2">什麼是 OLTP?最近在讀資料庫文件的時候接觸到 OLTP 這個名詞，大致上理解並比記下來。數據處理大致可以分成兩類: OLTP 與 OLAP。OLTP (Online Analytical Processing)指的就是傳統式關聯式資料庫。用在日常的的事物處理，比如說資料庫的增、刪、查、改。有以下特性:</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2017/12/22/old%20posts/2017-12-29-oltp-vs-olap/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Rails"><i class="tag post-item-tag">Rails</i></a><a href="/tags/Time"><i class="tag post-item-tag">Time</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2017/12/06/old%20posts/2017-12-06-git-precommit-hooks-copy/">使用 GIT Precommit hooks 防止 Binding.pry 進入 Commit</a></h2><time class="has-text-grey" datetime="2017-12-06T14:34:00.000Z">2017-12-06</time><p class="is-flex-grow-2 mt-2">Problem如果不小心把 binding.pry commit 進 git 而且不幸的 push 的話, 勢必要使用另一個 commit 來修正。如果要讓這個 commit 不見可能就需要用 git push -f 來修改。這樣做很醜，不優雅。根治的方法是 - 根本不應該將 debug code 進入 commit 。但是人總是會有不小心的時候。最近發現一個工具可以做到這件事情: GIT Precommit hooks。
+What is GIT Precommit hooks?GIT Precommit hooks 是一種可以在你每次 Commit 之前的 Callback。每次 Commit 前都會執行。我們利用這個特性，可以用來檢查，防止如 Binding.pry 的 Debug Code    進入..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2017/12/06/old%20posts/2017-12-06-git-precommit-hooks-copy/">Read more</a></section></article><section class="paginator is-flex is-justify-content-flex-end is-flex-wrap-wrap mt-5"><a class="extend prev" rel="prev" href="/archives/"><i class="iconfont icon-prev has-text-grey"></i></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/15/">15</a><a class="extend next" rel="next" href="/archives/page/3/"><i class="iconfont icon-next has-text-grey"></i></a></section></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><style>.search-widget .search-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--second-text-color);
+}
+.search-widget .search-content {
+    position: absolute;
+    left: 0;
+    top: calc(100% - 3px);
+    z-index: 2;
+
+    width: 100%;
+    height: 0;
+    max-height: 550px;
+
+    overflow: auto;
+    box-sizing: border-box;
+
+    background: var(--top-bar-bg-color);
+    backdrop-filter: blur(var(--backdropFilter));
+    -webkit-backdrop-filter: blur(var(--backdropFilter));
+
+    border-bottom-left-radius: var(--borderRadius);
+    border-bottom-right-radius: var(--borderRadius);
+    box-shadow: 0 12px 15px rgba(0, 0, 0, 0.08);
+}
+
+.search-widget .search-content a:hover h5 {
+    color: #3273dc!important;
+}
+</style><main class="aside-card-container search-widget is-relative"><label for="searchInput"><div class="is-flex px-4" id="searchButton"><i class="iconfont icon--search1 mr-1"></i><input class="search-input is-flex-grow-1" id="searchInput" placeholder="Search everything.."></div></label><section class="search-content content" id="searchContent"></section></main><script>var searchDatabase = []
+var searchInputEl = document.getElementById('searchInput')
+var searchButtonEl = document.getElementById('searchButton')
+var searchResultEl = document.getElementById('searchContent')
+
+searchInputEl.oninput = function (evt) {
+    var searchValue = evt.srcElement.value
+    var haveSearchValue = Boolean(searchValue.trim())
+    if (!haveSearchValue) {
+        searchResultEl.style.height = 0
+        searchResultEl.innerHTML = null
+        return
+    }
+
+    var searchResults = searching(searchValue)
+
+    if (searchResults.length > 0) {
+        renderSearchResults(searchResults)
+    }
+}
+
+function renderSearchResults(results) {
+    searchResultEl.innerHTML = null
+    var fragment = document.createDocumentFragment()
+
+    results.forEach(function (item) {
+        var link = document.createElement('a')
+        var title = document.createElement('h5')
+        var content = document.createElement('p')
+
+        title.className = 'mb-1'
+        title.innerText = item.title
+        content.innerText = item.content
+
+        link.href = item.link
+        link.appendChild(title)
+        link.appendChild(content)
+        link.className = 'p-4 is-block'
+
+        fragment.appendChild(link)
+    })
+
+    searchResultEl.appendChild(fragment)
+    searchResultEl.style.height = 'auto'
+}
+
+function searching(inputText) {
+    var inputTexts = inputText.split(' ')
+    var searchResults = []
+    inputTexts.forEach(function (searchKey) {
+        var haveSearchValue = Boolean(searchKey.trim())
+        if (!haveSearchValue) return
+
+        var key = searchKey.toLowerCase()
+
+        for (var entry of searchDatabase) {
+            var title = entry.getElementsByTagName('title')[0].textContent
+            var link = entry.getElementsByTagName('link')[0].getAttribute('href')
+            var contentWithTags = entry.getElementsByTagName('content')[0].textContent
+            var rawContent = contentWithTags.trim().replace(/<[^>]+>/g, '').toLowerCase()
+
+            var LENGTH = 80
+            var finalContent = ''
+            var contentLength = rawContent.length
+            var searchResultIdx = rawContent.indexOf(key)
+
+            var startIdx = searchResultIdx - 20,
+                endIdx = startIdx + LENGTH
+
+            if (startIdx < 0) {
+                startIdx = 0
+                endIdx = 100
+            }
+
+            endIdx > contentLength && (endIdx = contentLength)
+
+            finalContent = rawContent.substring(startIdx, endIdx)
+
+            if (title.indexOf(key) > -1 || searchResultIdx > -1) {
+                searchResults.push({
+                    link: link,
+                    title: title,
+                    content: finalContent
+                })
+            }
+        }
+    })
+    return searchResults
+}
+
+searchButtonEl.onclick = function () {
+    if (searchDatabase.length > 0) return;
+
+    fetch(window.location.href + '/search.xml').then(res => res.text()).then(res => {
+        var domparser = new DOMParser
+        var doc = domparser.parseFromString(res, 'application/xml')
+        searchDatabase = doc.getElementsByTagName('search')[0].children
+    })
+}</script><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><main class="aside-card-container archives-widget is-in-archive-page"><h3>Archives</h3><section><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a><span class="archive-list-count">2</span></li></ul></section></main><main class="aside-card-container recent-widget"><h3>Recent</h3><ul><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://cdn-images-1.medium.com/max/3840/0*CmyuLdGdOQJLKS5t.png" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2020/02/11/2020-02-11-kubernetes-tutorial-01/">Kubernetes 教學 01 - 概念與架構</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2020-02-11T02:32:00.000Z">2020-02-11</time></section></li><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://cdn-images-1.medium.com/max/10340/0*JN9t3uzpnpf0KCnz" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2020/01/14/2020-01-14-drone/">從零開始學 DevOps — 那就選擇最簡單的 Drone CI 開始吧！</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2020-01-14T02:32:00.000Z">2020-01-14</time></section></li><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://cdn-images-1.medium.com/max/2000/1*zYNBpVXtxGID9rttcSYklQ.jpeg" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2019/12/17/2019-12-17-harbor/">用 Harbor 架設 Private Docker Registry</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2019-12-17T02:32:00.000Z">2019-12-17</time></section></li><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://cdn-images-1.medium.com/max/12048/1*ge80giZjL7EGHSLU5v00eQ.jpeg" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2019/11/19/2019-11-19/">駭客是怎麼思考的？｜從 Devcore Conf 學駭客思維</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2019-11-19T02:32:00.000Z">2019-11-19</time></section></li><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://ui-avatars.com/api/?background=f5f5f5&amp;name=My" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2018/03/04/old%20posts/2018-03-04-modify-and-restore-mysql-partition/">Mysql - 如何修改 partition 並還原資料</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2018-03-04T04:50:00.000Z">2018-03-04</time></section></li><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://ui-avatars.com/api/?background=f5f5f5&amp;name=[譯" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2018/01/25/old%20posts/2018-01-25-use-aws-ruby-sdk-to-update-s3-metadata/">[譯] 使用 AWS Ruby SDK v2 更新 S3 物件 Metadata</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2018-01-25T07:32:00.000Z">2018-01-25</time></section></li></ul></main></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+
+window.addEventListener('resize', $claudia.throttle(function () {
+    var images = document.querySelectorAll('.js-img-fadeIn')
+
+    images.forEach($claudia.blurBackdropImg)
+}, 150))</script></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+
+window.addEventListener('resize', $claudia.throttle(function () {
+    var images = document.querySelectorAll('.js-img-fadeIn')
+
+    images.forEach($claudia.blurBackdropImg)
+}, 150))</script></body></html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>SASS 的 @import @mixin @content @extend 與 @function</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="1.ImportSASS在檔名前面加上底線時，不會直接編譯成CSS，使用@import引入後，才會編譯。
+2. Mixins常見的mixin作法，要傳入的引數前面需加上$字號。
+/* Mixins */
+@mixin border-radius($radius: 10px) &amp;#123;
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+&amp;#125;
+
+@mixin large-font &amp;#123;
+    font-size: 200%;
+&amp;#125;
+
+使用時，輸入@include mixins_name即可引入CSS程式碼。
+nested mixinmixi.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">SASS 的 @import @mixin @content @extend 與 @function</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Import"><span class="toc-text">1.Import</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Mixins"><span class="toc-text">2. Mixins</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#nested-mixin"><span class="toc-text">nested mixin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%92%B0%E5%AF%AB%E5%8F%AF%E4%BB%A5%E5%82%B3%E5%85%A5%E4%B8%8D%E5%AE%9A%E6%95%B8%E9%87%8F%E5%BC%95%E6%95%B8-arguments-%E7%9A%84mixin"><span class="toc-text">撰寫可以傳入不定數量引數(arguments)的mixin</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-content"><span class="toc-text">3. content</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Functions"><span class="toc-text">4. Functions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AB%96"><span class="toc-text">結論</span></a></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/HTML"><i class="tag post-item-tag">HTML</i></a><a href="/tags/SCSS"><i class="tag post-item-tag">SCSS</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">SASS 的 @import @mixin @content @extend 與 @function</h1><time class="has-text-grey" datetime="2015-06-01T01:24:00.000Z">2015-06-01</time><article class="mt-2 post-content"><h2 id="1-Import"><a href="#1-Import" class="headerlink" title="1.Import"></a>1.Import</h2><p>SASS在檔名前面加上底線時，不會直接編譯成CSS，使用@import引入後，才會編譯。</p>
+<h2 id="2-Mixins"><a href="#2-Mixins" class="headerlink" title="2. Mixins"></a>2. Mixins</h2><p>常見的mixin作法，要傳入的引數前面需加上<code>$</code>字號。</p>
+<pre><code class="scss">/* Mixins */
+@mixin border-radius($radius: 10px) &#123;
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+&#125;
+
+@mixin large-font &#123;
+    font-size: 200%;
+&#125;
+</code></pre>
+<p>使用時，輸入<code>@include mixins_name</code>即可引入CSS程式碼。</p>
+<h3 id="nested-mixin"><a href="#nested-mixin" class="headerlink" title="nested mixin"></a>nested mixin</h3><p>mixin中也可以＠include mixin</p>
+<pre><code class="scss">@mixin hero-unit &#123;
+    @include border-radius;
+    @include large-font;
+&#125;
+</code></pre>
+<p>實際來用用看</p>
+<pre><code class="scss">.box &#123;
+    @include hero-unit;
+&#125;
+
+.container &#123;
+    @include border-radius(5px);
+&#125;
+</code></pre>
+<h3 id="撰寫可以傳入不定數量引數-arguments-的mixin"><a href="#撰寫可以傳入不定數量引數-arguments-的mixin" class="headerlink" title="撰寫可以傳入不定數量引數(arguments)的mixin"></a>撰寫可以傳入不定數量引數(arguments)的mixin</h3><p>使用<code>$args...</code>作為參數就可以傳入不定數量的arguments。</p>
+<pre><code class="scss">/* Mixins with variable arguments... */
+@mixin box-shadow($args...) &#123;
+    -webkit-box-shadow: $args;
+    -moz-box-shadow: $args;
+    box-shadow: $args;
+&#125;
+</code></pre>
+<p>現在你可以用<code>@include mixin</code>來節省程式碼了:D</p>
+<pre><code class="scss">.box-2 &#123;
+    @include box-shadow(0 0 3px #333, inset 5px 5px 5px red);
+&#125;
+</code></pre>
+<h2 id="3-content"><a href="#3-content" class="headerlink" title="3. content"></a>3. content</h2><p><code>@content</code> 的功用讓mixin可以撰寫自定的程式碼</p>
+<h2 id="4-Functions"><a href="#4-Functions" class="headerlink" title="4. Functions"></a>4. Functions</h2><p><code>@function</code>與<code>@mixin</code>的不同之處在於<code>@function</code>只會回傳一個值，而<code>@mixin</code>是回傳一段CSS程式碼。宣告Function時以<code>@function開頭</code>：</p>
+<pre><code class="scss">@function pxToEm($px, $base: 16) &#123;
+  @return ($px / $base) * 1em;
+&#125;
+</code></pre>
+<p>使用Function時前面不需要加上<code>@</code>。</p>
+<pre><code class="scss">p&#123;
+    font-size:pxToEm(20);
+&#125;
+</code></pre>
+<p>編譯後</p>
+<pre><code class="css">p &#123;
+  font-size: 1.25em;
+&#125;
+</code></pre>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>幾點需要注意：</p>
+<ul>
+<li><code>@import</code>用來引入開頭為底線的SCSS檔案。如：_layout.scss。</li>
+<li>mixin可以傳入配變數，使用時語法為<code>@include mixins_name</code>使用。</li>
+<li>mixin搭配<code>@content</code>使用，讓mixin可以輸入自定的程式碼。</li>
+<li><code>@extend</code>用來讓重複的程式碼只需要撰寫一次，裡面不可以傳入變數。</li>
+<li>function使用時不需加上@，不熟悉的話可能會與CSS原本的property搞錯，需要特別注意。</li>
+</ul>
+<p>有了這些基本知識就可以進一步的學習SASS與Compass了！</p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2015/06/03/old%20posts/2015-06-03-making-a-button-by-using-sass/" title="使用 SMACSS 製作button"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: 使用 SMACSS 製作button</span></a><a class="button is-default" href="/2015/03/15/old%20posts/2015-03-15-bootstrap-note-preface-cheetsheet/" title="細讀 Bootstrap 3 文件"><span class="has-text-weight-semibold">Next: 細讀 Bootstrap 3 文件</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

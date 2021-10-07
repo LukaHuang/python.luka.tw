@@ -1,0 +1,126 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>Discover meteor Ch4：Collection</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="Collection新增一個collection
+collections/posts.js
+
+Posts = new Meteor.Collection(&amp;#39;posts&amp;#39;);
+
+除了client與server以外的資料夾會在兩者都執行。所以Posts collection在client和server都可以使用。這裡的Posts前面不加var，這樣整個app都可以存取到Posts。
+git commit -m &amp;quot;Added a posts collection&amp;quot;
+
+Collection的性質On the server, the collection has the job of talking to the Mongo database, and reading and wr.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Discover meteor Ch4：Collection</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Collection"><span class="toc-text">Collection</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Collection%E7%9A%84%E6%80%A7%E8%B3%AA"><span class="toc-text">Collection的性質</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Server-Side-Collection"><span class="toc-text">Server-Side Collection</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-5-Publications-and-Subscriptions"><span class="toc-text">4.5 Publications and Subscriptions</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Rails-App%E7%9A%84%E5%81%9A%E6%B3%95"><span class="toc-text">Rails App的做法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Meteor%E7%9A%84%E5%81%9A%E6%B3%95"><span class="toc-text">Meteor的做法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#This-has-two-big-implications"><span class="toc-text">This has two big implications:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Publishing"><span class="toc-text">Publishing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Whats-is-DDP"><span class="toc-text">Whats is DDP?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Subscribing"><span class="toc-text">Subscribing</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#how-you-make-a-meteor-app-scalable-in-client-side"><span class="toc-text">how you make a meteor app scalable in client-side</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Autopulish"><span class="toc-text">Autopulish</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%A6%E9%9A%9B%E9%81%8B%E4%BD%9C"><span class="toc-text">實際運作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#publishCursor-%E5%81%9A%E4%BA%86%E5%93%AA%E4%BA%9B%E4%BA%8B%EF%BC%9F"><span class="toc-text">_publishCursor() 做了哪些事？</span></a></li></ol></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/javascript"><i class="tag post-item-tag">javascript</i></a><a href="/tags/Meteor"><i class="tag post-item-tag">Meteor</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Discover meteor Ch4：Collection</h1><time class="has-text-grey" datetime="2014-08-04T19:04:00.000Z">2014-08-05</time><article class="mt-2 post-content"><h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h2><p>新增一個collection</p>
+<pre><code>collections/posts.js
+</code></pre>
+<pre><code class="js">Posts = new Meteor.Collection(&#39;posts&#39;);
+</code></pre>
+<p>除了client與server以外的資料夾會在兩者都執行。<br>所以Posts collection在client和server都可以使用。<br>這裡的Posts前面不加var，這樣整個app都可以存取到Posts。</p>
+<pre><code>git commit -m &quot;Added a posts collection&quot;
+</code></pre>
+<h3 id="Collection的性質"><a href="#Collection的性質" class="headerlink" title="Collection的性質"></a>Collection的性質</h3><p>On the server, the collection has the job of talking to the Mongo database, and reading and writing any changes. In this sense, it can be compared to a standard database library. On the client however, the collection is a secure copy of a subset of the real, canonical collection. The client-side collection is constantly and (mostly) transparently kept up to date with that subset in real-time.</p>
+<h2 id="Server-Side-Collection"><a href="#Server-Side-Collection" class="headerlink" title="Server-Side Collection"></a>Server-Side Collection</h2><p>On the server, the collection acts as an API into your Mongo database.</p>
+<p>##Client-Side Collection<br>client side Mongo稱為MiniMongo，如字面所述，它不支援所有的Mongo的特徵。<br>###三個理解重點</p>
+<ol>
+<li>we talk about a client-side collections being a “cache”, we mean it in the sense that it contains a subset of your data, and offers very quick access to this data.</li>
+<li>In general, a client side collection consists of a subset of all the documents stored in the Mongo collection</li>
+<li>Secondly, those documents are stored in browser memory, which means that accessing them is basically instantaneous.</li>
+</ol>
+<blockquote>
+<p>Mongo on Meteor.com<br>當你的app deploy上meteor之後，輸入<code>meteor mongo myApp</code>就可以存取網路上的mongodb。</p>
+</blockquote>
+<p>#正式開始</p>
+<ol>
+<li><p>輸入meteor reset重置資料庫。確保資料庫是乾淨的。</p>
+</li>
+<li><p>建立fixture.js</p>
+<pre><code>server/fixtures.js
+</code></pre>
+<pre><code class="js">if (Posts.find().count() === 0) &#123;
+   Posts.insert(&#123;
+     title: &#39;Introducing Telescope&#39;,
+     author: &#39;Sacha Greif&#39;,
+     url: &#39;http://sachagreif.com/introducing-telescope/&#39;
+   &#125;);
+   Posts.insert(&#123;
+     title: &#39;Meteor&#39;,
+     author: &#39;Tom Coleman&#39;, url: &#39;http://meteor.com&#39;
+   &#125;);
+   Posts.insert(&#123;
+     title: &#39;The Meteor Book&#39;, author: &#39;Tom Coleman&#39;,
+     url: &#39;http://themeteorbook.com&#39;
+   &#125;);
+&#125;
+</code></pre>
+</li>
+<li><p>Commit 4-2<br>Added data to the posts collection.</p>
+</li>
+<li><p>修改posts_list.js</p>
+<pre><code>client/views/posts/posts_list.js
+</code></pre>
+<pre><code class="js">Template.postsList.helpers(&#123; posts: function() &#123;
+     return Posts.find();
+
+   &#125;
+&#125;);
+</code></pre>
+</li>
+<li><p>Commit 4-3</p>
+<pre><code>git commit -m &quot;Wired collection into postsList template.&quot;
+</code></pre>
+<blockquote>
+<p>Inspecting DOM Changes這邊看不太懂</p>
+</blockquote>
+</li>
+<li><p> 刪除autopulish這個package</p>
+<pre><code>$ meteor remove autopublish
+</code></pre>
+</li>
+<li><p>新增publication.js</p>
+<pre><code>server/publications.js
+</code></pre>
+<pre><code class="js">Meteor.publish(&#39;posts&#39;, function() &#123;
+       return Posts.find();
+&#125;);
+</code></pre>
+</li>
+<li><p>在main.js中subscribe posts</p>
+<pre><code>client/main.js
+</code></pre>
+<pre><code class="js">Meteor.subscribe(&#39;posts&#39;);
+</code></pre>
+</li>
+<li><p>commit 4-4<br>Removed autopublich and set up a basic publication.</p>
+</li>
+</ol>
+<p>還是不懂在幹嘛？ 接著要解釋的就是publication與subscription</p>
+<h1 id="4-5-Publications-and-Subscriptions"><a href="#4-5-Publications-and-Subscriptions" class="headerlink" title="4.5 Publications and Subscriptions"></a>4.5 Publications and Subscriptions</h1><h2 id="Rails-App的做法"><a href="#Rails-App的做法" class="headerlink" title="Rails App的做法"></a>Rails App的做法</h2><ol>
+<li>當user造訪你的網頁，client送出一個request給server。</li>
+<li>你的app的第一個工作是找到user所需要的資料。</li>
+<li>當找到以後，server會把資料轉換成人類可讀的html。</li>
+<li>最後server會將html送給瀏覽器，也就是client。</li>
+<li>這樣一個動作就完成了，你的app繼續等待下一個request。</li>
+</ol>
+<h2 id="Meteor的做法"><a href="#Meteor的做法" class="headerlink" title="Meteor的做法"></a>Meteor的做法</h2><p>根據剛剛的介紹可以了解到Rails app只能在server處理資訊。而Meteor在Client也就是你的瀏覽器中就可以處理資訊。<br>這就像書店的店員不只是針對你的需求把書給你，而且他還跟著你回家把書的內容讀給妳聽。</p>
+<h3 id="This-has-two-big-implications"><a href="#This-has-two-big-implications" class="headerlink" title="This has two big implications:"></a>This has two big implications:</h3><p>first, instead of sending HTML code to the client, a Meteor app will send the actual, raw data and let the client deal with it (data on the wire).<br>Second, you’ll be able to access that data instantaneously without having to wait for a round-trip to the server (latency compensation).</p>
+<h2 id="Publishing"><a href="#Publishing" class="headerlink" title="Publishing"></a>Publishing</h2><p>We’ll need a way to tell Meteor which subset of data can be sent to the client, and we’ll accomplish this through a publication.</p>
+<h2 id="Whats-is-DDP"><a href="#Whats-is-DDP" class="headerlink" title="Whats is DDP?"></a>Whats is DDP?</h2><p>這種利用publication/subscription系統的protocol，就稱為Distributed Data Protocol。</p>
+<h2 id="Subscribing"><a href="#Subscribing" class="headerlink" title="Subscribing"></a>Subscribing</h2><h3 id="how-you-make-a-meteor-app-scalable-in-client-side"><a href="#how-you-make-a-meteor-app-scalable-in-client-side" class="headerlink" title="how you make a meteor app scalable in client-side"></a>how you make a meteor app scalable in client-side</h3><ol>
+<li>修改publication(server)</li>
+</ol>
+<pre><code class="js">Meteor.publish(&#39;posts&#39;, function(author) &#123;
+          return Posts.find(&#123;flagged: false, author: author&#125;);
+&#125;);
+</code></pre>
+<ol start="2">
+<li>在client subscribe</li>
+</ol>
+<pre><code class="js">// on the client
+Meteor.subscribe(&#39;posts&#39;, &#39;bob-smith&#39;);
+</code></pre>
+<h2 id="Autopulish"><a href="#Autopulish" class="headerlink" title="Autopulish"></a>Autopulish</h2><p>Automatically mirroring all data from the server on the client</p>
+<h3 id="實際運作"><a href="#實際運作" class="headerlink" title="實際運作"></a>實際運作</h3><p>如果你去看<a target="_blank" rel="noopener" href="http://docs.meteor.com/#publishandsubscribe">Publish and subscribe</a>的說明，你會發現實際使用的方法並不是那麼的簡潔，那是因為meteor提供了一個方變的method叫做_publishCursor()。當你在return一個cursor的時候，就會使用到它（例如：  return Posts.find({flagged: false, author: author});）。</p>
+<h3 id="publishCursor-做了哪些事？"><a href="#publishCursor-做了哪些事？" class="headerlink" title="_publishCursor() 做了哪些事？"></a>_publishCursor() 做了哪些事？</h3><ul>
+<li>It checks the name of the server-side collection.</li>
+<li>It pulls all matching documents from the cursor and sends it into a client-side collection of the same name. (It uses .added() to do this).</li>
+<li>Whenever a document is added, removed or changed, it sends those changes down to the client-side collection. (It uses .observe() on the cursor and .added(), .changed() and removed() to do this).</li>
+</ul>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2014/08/05/old%20posts/2014-08-05-discover-meteor-ch5-routing/" title="Discover Meteor Ch5：Routing"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Discover Meteor Ch5：Routing</span></a><a class="button is-default" href="/2014/08/03/old%20posts/2014-08-03-css-dinner/" title="CSS Dinner - 好玩又有效的 CSS 教學"><span class="has-text-weight-semibold">Next: CSS Dinner - 好玩又有效的 CSS 教學</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

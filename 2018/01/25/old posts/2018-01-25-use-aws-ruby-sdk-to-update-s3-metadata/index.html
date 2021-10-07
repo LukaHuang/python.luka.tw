@@ -1,0 +1,136 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>[譯] 使用 AWS Ruby SDK v2 更新 S3 物件 Metadata</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="
+From: Updating S3 Object Metadata With the AWS Ruby SDK v2Author: Mattposted at: 2017/5/31
+
+今天我在 S3 就如同在玩火一樣 - 弄壞了一個網站. 我做了研究，徹底的測試了我的程式碼，接著按下了 enter. 之後沒多久，我的心掉落的和我的網站掛掉的速度一樣快。我決定寫下一篇速記來防止同樣的錯誤發生在其他人身上。
+
+
+S3 不是資料庫不可能在 S3 中做到「更新」資料庫 - 在S3並沒有更新資料的方法。這在 Ruby SDK 與 AWS CLI 之中都是成立的。如果你項我一樣在找尋更新整個 Bucket 的物件來更新 metadata (舉例來說: 像是名為 Cache-Control 的 headers)，你將會.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">[譯] 使用 AWS Ruby SDK v2 更新 S3 物件 Metadata</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#S3-%E4%B8%8D%E6%98%AF%E8%B3%87%E6%96%99%E5%BA%AB"><span class="toc-text">S3 不是資料庫</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0-%E8%A4%87%E8%A3%BD%E7%89%A9%E4%BB%B6%E4%B8%A6%E4%B8%94%E4%BF%9D%E7%95%99%E5%8E%9F%E6%9C%89%E7%9A%84%E8%B3%87%E8%A8%8A"><span class="toc-text">更新 &#x2F; 複製物件並且保留原有的資訊</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%BE%8C"><span class="toc-text">最後</span></a></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/AWS"><i class="tag post-item-tag">AWS</i></a><a href="/tags/S3"><i class="tag post-item-tag">S3</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">[譯] 使用 AWS Ruby SDK v2 更新 S3 物件 Metadata</h1><time class="has-text-grey" datetime="2018-01-25T07:32:00.000Z">2018-01-25</time><article class="mt-2 post-content"><blockquote>
+<p>From: <a target="_blank" rel="noopener" href="https://mattboldt.com/updating-s3-object-metadata-in-ruby/">Updating S3 Object Metadata With the AWS Ruby SDK v2</a><br>Author: Matt<br>posted at: 2017/5/31</p>
+</blockquote>
+<p>今天我在 S3 就如同在玩火一樣 - 弄壞了一個網站. 我做了研究，徹底的測試了我的程式碼，接著按下了 enter. 之後沒多久，我的心掉落的和我的網站掛掉的速度一樣快。我決定寫下一篇速記來防止同樣的錯誤發生在其他人身上。</p>
+<span id="more"></span>
+
+<h2 id="S3-不是資料庫"><a href="#S3-不是資料庫" class="headerlink" title="S3 不是資料庫"></a>S3 不是資料庫</h2><p>不可能在 S3 中做到「更新」資料庫 - 在S3並沒有更新資料的方法。這在 Ruby SDK 與 AWS CLI 之中都是成立的。如果你項我一樣在找尋更新整個 Bucket 的物件來更新 metadata (舉例來說: 像是名為 <code>Cache-Control</code> 的 headers)，你將會需要使用 <code>copy_to</code> 方法。</p>
+<p>讓我們開始認證和攫取我們的 bucket。</p>
+<pre><code class="rb">require &#39;aws-sdk&#39;
+
+Aws.config.update(&#123;
+  region: &#39;us-east-1&#39;,
+  credentials: Aws::Credentials.new(&lt;AWS_ACCESS_KEY&gt;, &lt;AWS_SECRET_KEY&gt;)
+&#125;)
+s3 = Aws::S3::Resource.new
+bucket = s3.bucket(&#39;mattboldt-bucket&#39;)
+</code></pre>
+<p>現在我們可以透過每一個物件和複製它自己並且帶上一些新的 metadata. 注意我們使用 option <code>metadata_directive: &#39;REPLACE&#39;</code> - 這個將會以新的 metadata <em>取代</em>物件原有的 metadata。如果缺少它，我們將無法複製任何新的，而且會得到錯誤訊息如下：</p>
+<pre><code>This copy request is illegal because it is trying to copy an object to itself without changing the object&#39;s metadata, storage class, website redirect location or encryption attributes
+</code></pre>
+<p>然而，取代 metadata 將會取代其它屬於這個物件的所有東西，例如: 權限(permission). 請勿執行以下的代碼。</p>
+<pre><code># the WRONG way
+bucket.objects.each do |object_summary|
+  location = &quot;#&#123;bucket.name&#125;/#&#123;object_summary.key&#125;&quot;
+  options = &#123;
+    cache_control: &#39;public, max-age=60&#39;,
+    metadata_directive: &#39;REPLACE&#39; # options: &#39;COPY&#39; or &#39;REPLACE&#39;
+  &#125;
+  object_summary.copy_to(location, options)
+end
+</code></pre>
+<p>這是我所搞砸的。我更新的所有的 S3 物件因為缺少了讀的權限(read permissions)，接著 CDN 不再可以存取這些資料。現在看起來是一個很蠢的錯誤，但當時我對出錯的狀況沒有任何頭緒。</p>
+<h2 id="更新-複製物件並且保留原有的資訊"><a href="#更新-複製物件並且保留原有的資訊" class="headerlink" title="更新 / 複製物件並且保留原有的資訊"></a>更新 / 複製物件並且保留原有的資訊</h2><p>讓我們再試一次；這次我們確保 request 包含(include)所有物件的欄位。這邊是一個可能的選項清單( list of possible options)，用途是傳送到 <code>copy_to</code> 方法。</p>
+<pre><code class="rb">COPY_TO_OPTIONS = [:multipart_copy, :content_length, :copy_source_client, :copy_source_region, :acl, :cache_control, :content_disposition, :content_encoding, :content_language, :content_type, :copy_source_if_match, :copy_source_if_modified_since, :copy_source_if_none_match, :copy_source_if_unmodified_since, :expires, :grant_full_control, :grant_read, :grant_read_acp, :grant_write_acp, :metadata, :metadata_directive, :tagging_directive, :server_side_encryption, :storage_class, :website_redirect_location, :sse_customer_algorithm, :sse_customer_key, :sse_customer_key_md5, :ssekms_key_id, :copy_source_sse_customer_algorithm, :copy_source_sse_customer_key, :copy_source_sse_customer_key_md5, :request_payer, :tagging, :use_accelerate_endpoint]
+</code></pre>
+<p>用這個 List 武裝之後，我們抓取所有存在的資料並且 merge 到新的 option hash。我只想要加上驗證 (valid) 選項而不是使用 <code>get</code> 取得所有資訊，所以我使用 <code>Array#slice</code> 來對之前的清單做處理。</p>
+<p>也需要注意的是，我使用在下面 <code>object_summary.get</code> - 這是因為物件的摘要並不包含 metadata, permission … 之類的東西。這會造成額外的開銷，但是此時我不確定還有其他任何方法可以達到同樣的目的。</p>
+<pre><code class="rb">bucket.objects.each do |object_summary|
+  object = object_summary.get
+  location = &quot;#&#123;bucket.name&#125;/#&#123;object_summary.key&#125;&quot;
+
+  # Build a new options object
+  options = &#123;&#125;
+
+  # Merge in the object&#39;s existing properties
+  existing_options = object.to_h.slice(*COPY_TO_OPTIONS)
+  options.merge!(existing_options)
+
+  # Add our new updates
+  # The `acl` option here was very important in my case!
+  options.merge!(&#123;
+    acl: &#39;public-read&#39;, # private, public-read, public-read-write, authenticated-read, aws-exec-read, bucket-owner-read, bucket-owner-full-control
+    cache_control: &#39;public, max-age=60&#39;,
+    metadata_directive: &#39;REPLACE&#39;
+  &#125;)
+
+  # multipart_copy is necessary if the object is 5GB+
+  if object.size &gt;= 5_000_000_000
+    options.merge!(&#123;multipart_copy: true&#125;)
+  else
+    # Only used if multipart_copy is true
+    options.delete(:content_length)
+  end
+
+  # Execute the copy!
+  object_summary.copy_to(location, options)
+
+end
+</code></pre>
+<p>如果你的 bucket 的大小很大，這會用到一些時間。然而，你得知道 <code>copy_to</code> 方法發出請求至 S3 和不會從你的本地端上傳任何的資料。所以即使你複製到新的位置，你也不會重新上傳檔案。</p>
+<p><a target="_blank" rel="noopener" href="https://gist.githubusercontent.com/mattboldt/6052bac987c16b73563d4d6c56d7509b/raw/d317cde9653592d4553e7665e632937dffb327e8/s3-updater.rb">這邊</a>是完整的程式碼：</p>
+<pre><code class="rb">require &#39;aws-sdk&#39;
+require &#39;active_support&#39;
+require &#39;active_support/core_ext&#39;
+
+# http://docs.aws.amazon.com/sdkforruby/api/Aws/S3/Object.html#copy_to-instance_method
+COPY_TO_OPTIONS = [:multipart_copy, :content_length, :copy_source_client, :copy_source_region, :acl, :cache_control, :content_disposition, :content_encoding, :content_language, :content_type, :copy_source_if_match, :copy_source_if_modified_since, :copy_source_if_none_match, :copy_source_if_unmodified_since, :expires, :grant_full_control, :grant_read, :grant_read_acp, :grant_write_acp, :metadata, :metadata_directive, :tagging_directive, :server_side_encryption, :storage_class, :website_redirect_location, :sse_customer_algorithm, :sse_customer_key, :sse_customer_key_md5, :ssekms_key_id, :copy_source_sse_customer_algorithm, :copy_source_sse_customer_key, :copy_source_sse_customer_key_md5, :request_payer, :tagging, :use_accelerate_endpoint]
+
+Aws.config.update(&#123;
+  region: &#39;us-east-1&#39;,
+  credentials: Aws::Credentials.new(AWS_ACCESS_KEY, AWS_SECRET_KEY)
+&#125;)
+s3 = Aws::S3::Resource.new
+bucket = s3.bucket(&#39;mattboldt-bucket&#39;)
+objects_count = bucket.objects.count
+current_object = 0
+
+bucket.objects.each do |object_summary|
+
+  # Get the object and all its metadata, permissions, etc
+  object = object_summary.get
+  # Copy to the same location
+  location = &quot;#&#123;bucket.name&#125;/#&#123;object_summary.key&#125;&quot;
+
+  # Build a new options object
+  options = &#123;&#125;
+
+  # Merge in the object&#39;s existing properties, but only keeping valid attributes for the copy_to method
+  existing_options = object.to_h.slice(*COPY_TO_OPTIONS)
+  options.merge!(existing_options)
+
+  # Add our new updates
+  options.merge!(&#123;
+    acl: &#39;public-read&#39;, # private, public-read, public-read-write, authenticated-read, aws-exec-read, bucket-owner-read, bucket-owner-full-control
+    cache_control: &#39;public, max-age=60&#39;,
+    metadata_directive: &#39;REPLACE&#39;
+  &#125;)
+
+  # multipart_copy is necessary if the object is 5GB+
+  if object.size &gt;= 5_000_000_000
+    options.merge!(&#123;multipart_copy: true&#125;)
+  else
+    # Only used if multipart_copy is true
+    options.delete(:content_length)
+  end
+
+  begin
+    object_summary.copy_to(location, options)
+    current_object += 1
+    puts &quot;Copied #&#123;current_object&#125; of #&#123;objects_count&#125;&quot;
+  rescue =&gt; e
+    puts &quot;Excption Raised: #&#123;e&#125;&quot;
+  end
+
+end
+</code></pre>
+<h2 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h2><p>如果你覺得這對你有幫助, 請 <a target="_blank" rel="noopener" href="https://twitter.com/atmattb">tweet @atMattb</a>。謝謝閱讀。</p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2018/03/04/old%20posts/2018-03-04-modify-and-restore-mysql-partition/" title="Mysql - 如何修改 partition 並還原資料"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Mysql - 如何修改 partition 並還原資料</span></a><a class="button is-default" href="/2018/01/03/old%20posts/2018-01-03-aws-s3-delimiter-and-prefix/" title="[譯] Amazon S3 Delimiter and Prefix"><span class="has-text-weight-semibold">Next: [譯] Amazon S3 Delimiter and Prefix</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>jQuery Return Flight Ch1 ( 2 )：補充筆記</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="使用.html()插入元素要使用的ajax長這樣，點下#tour之下的button後，如果出現錯誤，就會顯示錯誤訊息。
+$(document).ready(function() &amp;#123;
+  var el = $(&amp;quot;#tour&amp;quot;);
+  el.on(&amp;quot;click&amp;quot;, &amp;quot;button&amp;quot;, function() &amp;#123;
+    $.ajax(&amp;#39;/photos.html&amp;#39;, &amp;#123;
+      data: &amp;#123;location: el.data(&amp;#39;location&amp;#39;)&amp;#125;,
+      success: function(response) &amp;#123;
+        $(&amp;#39;.ph.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">jQuery Return Flight Ch1 ( 2 )：補充筆記</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-html-%E6%8F%92%E5%85%A5%E5%85%83%E7%B4%A0"><span class="toc-text">使用.html()插入元素</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#event-delegate"><span class="toc-text">event delegate</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%81%9A%E5%87%BALoading%E7%89%B9%E6%95%88"><span class="toc-text">做出Loading特效</span></a></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/javascript"><i class="tag post-item-tag">javascript</i></a><a href="/tags/jQuery"><i class="tag post-item-tag">jQuery</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">jQuery Return Flight Ch1 ( 2 )：補充筆記</h1><time class="has-text-grey" datetime="2014-10-05T19:06:00.000Z">2014-10-06</time><article class="mt-2 post-content"><h2 id="使用-html-插入元素"><a href="#使用-html-插入元素" class="headerlink" title="使用.html()插入元素"></a>使用.html()插入元素</h2><p>要使用的ajax長這樣，點下#tour之下的button後，如果出現錯誤，就會顯示錯誤訊息。</p>
+<pre><code class="js">$(document).ready(function() &#123;
+  var el = $(&quot;#tour&quot;);
+  el.on(&quot;click&quot;, &quot;button&quot;, function() &#123;
+    $.ajax(&#39;/photos.html&#39;, &#123;
+      data: &#123;location: el.data(&#39;location&#39;)&#125;,
+      success: function(response) &#123;
+        $(&#39;.photos&#39;).html(response).fadeIn();
+      &#125;,
+      error: function() &#123;
+        $(&#39;.photos&#39;).html(&#39;&lt;li&gt;There was a problem fetching the latest photos. Please try again.&lt;/li&gt;&#39;);
+      &#125;
+    &#125;);
+  &#125;);
+&#125;);
+</code></pre>
+<p>在錯誤發生的時候，在<code>.photo</code>底下插入<code>&lt;li&gt;</code>元素</p>
+<pre><code class="js">      error: function() &#123;
+        $(&#39;.photos&#39;).html(&#39;&lt;li&gt;There was a problem fetching the latest photos. Please try again.&lt;/li&gt;&#39;);
+</code></pre>
+<p>ajax回傳之後的html</p>
+<pre><code class="html">&lt;li&gt;
+  &lt;img src=&quot;/assets/photos/paris1.jpg&quot;&gt;
+  &lt;span style=&quot;display: none;&quot;&gt;Arc de Triomphe&lt;/span&gt;
+&lt;/li&gt;
+&lt;li&gt;
+  &lt;img src=&quot;/assets/photos/paris2.jpg&quot;&gt;
+  &lt;span style=&quot;display: none;&quot;&gt;The Eiffel Tower&lt;/span&gt;
+&lt;/li&gt;
+&lt;li&gt;
+  &lt;img src=&quot;/assets/photos/london.jpg&quot;&gt;
+  &lt;span style=&quot;display: none;&quot;&gt;London&lt;/span&gt;
+&lt;/li&gt;
+</code></pre>
+<h1 id="event-delegate"><a href="#event-delegate" class="headerlink" title="event delegate"></a>event delegate</h1><p>錯誤寫法</p>
+<pre><code class="js">$(&#39;.confirmation .view-boarding-pass&#39;).on(&#39;click&#39;, function()&#123; ... &#125;);
+</code></pre>
+<p>正確寫法</p>
+<pre><code class="js">$(&#39;.confirmation&#39;).on(&#39;click&#39;, &#39;.view-boarding-pass&#39;, function()&#123; ... &#125;)
+</code></pre>
+<p>因為當頁面載入時，<code>.view-boarding-pass</code>並不存在，所以必須使用把要選擇的元素寫在event handler裡面又稱為<strong>event delegate</strong>的作法。</p>
+<h1 id="做出Loading特效"><a href="#做出Loading特效" class="headerlink" title="做出Loading特效"></a>做出Loading特效</h1><p>這是一個使用event delegate概念完成的特效。</p>
+<pre><code class="js">$(&#39;.photos&#39;).on(&#39;mouseenter&#39;, &#39;li&#39;, showPhotos)
+            .on(&#39;mouseleave&#39;, &#39;li&#39;, showPhotos);
+</code></pre>
+<p>完整js檔如下</p>
+<pre><code class="js">$(document).ready(function() &#123;
+  function showPhotos() &#123;
+    $(this).find(&#39;span&#39;).slideToggle();
+  &#125;
+  $(&#39;.photos&#39;).on(&#39;mouseenter&#39;, &#39;li&#39;, showPhotos)
+              .on(&#39;mouseleave&#39;, &#39;li&#39;, showPhotos);
+
+  var el = $(&quot;#tour&quot;);
+  el.on(&quot;click&quot;, &quot;button&quot;, function() &#123;
+    $.ajax(&#39;/photos.html&#39;, &#123;
+      data: &#123;location: el.data(&#39;location&#39;)&#125;,
+      success: function(response) &#123;
+        $(&#39;.photos&#39;).html(response).fadeIn();
+      &#125;,
+      error: function() &#123;
+        $(&#39;.photos&#39;).html(&#39;&lt;li&gt;There was a problem fetching the latest photos. Please try again.&lt;/li&gt;&#39;);
+      &#125;,
+      timeout: 3000,
+      beforeSend: function() &#123;
+        $(&#39;#tour&#39;).addClass(&#39;is-fetching&#39;);
+      &#125;,
+      complete: function() &#123;
+        $(&#39;#tour&#39;).removeClass(&#39;is-fetching&#39;);
+      &#125;
+    &#125;);
+  &#125;);
+&#125;);
+</code></pre>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2014/10/06/old%20posts/2014-10-06-jquery-return-flight-2/" title="jQuery Returm Flight Ch2：Javascript Object &amp; Function"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: jQuery Returm Flight Ch2：Javascript Object &amp; Function</span></a><a class="button is-default" href="/2014/10/03/old%20posts/2014-10-03-try-sinatra-02/" title="Sinatra 初體驗(2) template與layout"><span class="has-text-weight-semibold">Next: Sinatra 初體驗(2) template與layout</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

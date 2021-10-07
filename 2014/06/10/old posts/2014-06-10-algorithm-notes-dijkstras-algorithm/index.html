@@ -1,0 +1,50 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>Algorithm - Dijkstra's Algorithm</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="資料結構Q是一個以d值來做鍵值的Queue，取出時會從最小的d開始取，也就是取出距離最短的頂點V。S是一個頂點的集合，用來存放從Q中刪除的頂點。
+Dijkstra’s AlgorithmDIJKSTRA(G,w,s)
+1.  INITIALIZE-SINGLE-SOURCE(G,s)
+2.  S = ∅
+3.  Q = G.V
+4.  while Q ≠ ∅
+5.     u = EXTRACT-MIN(Q)
+6.     S = S ∪ &amp;#123;u&amp;#125;
+7.     for each vertex v ∈ G.Adj[u]
+8.        RELAX(u,v,w)
+
+第3行初始化Q包含Graph中所有的頂點V。第5行EXTRACT-MIN(Q)搜尋了Q中有最小的u.d的頂點u，將u從Q中刪.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Algorithm - Dijkstra's Algorithm</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B"><span class="toc-text">資料結構</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dijkstra%E2%80%99s-Algorithm"><span class="toc-text">Dijkstra’s Algorithm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6"><span class="toc-text">時間複雜度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dijkstra%E2%80%99s-Algorithm%E7%9A%84%E6%AD%A3%E7%A2%BA%E6%80%A7"><span class="toc-text">Dijkstra’s Algorithm的正確性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="toc-text">參考資料</span></a></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/Algorithm"><i class="tag post-item-tag">Algorithm</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Algorithm - Dijkstra's Algorithm</h1><time class="has-text-grey" datetime="2014-06-10T08:00:00.000Z">2014-06-10</time><article class="mt-2 post-content"><h3 id="資料結構"><a href="#資料結構" class="headerlink" title="資料結構"></a>資料結構</h3><p>Q是一個以d值來做鍵值的Queue，取出時會從最小的d開始取，也就是取出距離最短的頂點V。<br>S是一個頂點的集合，用來存放從Q中刪除的頂點。</p>
+<h3 id="Dijkstra’s-Algorithm"><a href="#Dijkstra’s-Algorithm" class="headerlink" title="Dijkstra’s Algorithm"></a>Dijkstra’s Algorithm</h3><pre><code>DIJKSTRA(G,w,s)
+1.  INITIALIZE-SINGLE-SOURCE(G,s)
+2.  S = ∅
+3.  Q = G.V
+4.  while Q ≠ ∅
+5.     u = EXTRACT-MIN(Q)
+6.     S = S ∪ &#123;u&#125;
+7.     for each vertex v ∈ G.Adj[u]
+8.        RELAX(u,v,w)
+</code></pre>
+<p>第3行初始化Q包含Graph中所有的頂點V。<br>第5行EXTRACT-MIN(Q)搜尋了Q中有最小的u.d的頂點u，將u從Q中刪除，並返回給用戶。<br>第6行把u加到S中。</p>
+<pre><code>INITIALIZE-SINGLE-SOURCE(G,s)
+1.  for each vertex v ∈ G.V
+2.     v.d = ∞
+3.     v.pi = NIL
+4.  s.d = 0
+</code></pre>
+<pre><code>RELAX(u,v,w)
+1.  if v.d &gt; u.d + w(u,v)
+2.     v.d = u.d + w(u,v)
+3.     v.pi = u
+</code></pre>
+<h3 id="時間複雜度"><a href="#時間複雜度" class="headerlink" title="時間複雜度"></a>時間複雜度</h3><p>Basically the algorithm works as follows:</p>
+<ol>
+<li>Initialize d’s, π’s, set s.d = 0, set S = ∅, and Q = G.V (i.e. put all the vertices into the queue with the source vertex having the smallest distance)</li>
+<li>While the queue is not empty, extract the minimum vertex (whose distance will be the shortest path distance at this point), add this vertex to S, and relax (using the same condition as Bellman-Ford) all the edges in the vertex’s adjacency list for vertices still in Q reprioritizing the queue if necessary</li>
+</ol>
+<p>The run time of Dijkstra’s algorithm depends on how Q is implemented:</p>
+<ul>
+<li>Simple array with search ⇒ O(V2 + E) = O(V2)</li>
+<li>Binary min-heap (if G is sparse) ⇒ O((V + E) lg V) = O(E lg V)</li>
+<li>Fibonacci heap ⇒ O(V lg V + E)</li>
+</ul>
+<h3 id="Dijkstra’s-Algorithm的正確性"><a href="#Dijkstra’s-Algorithm的正確性" class="headerlink" title="Dijkstra’s Algorithm的正確性"></a>Dijkstra’s Algorithm的正確性</h3><p>因為Dijkstra’s Algorithm永遠選擇最輕或最靠近的頂點來加入S，所以說們說它是採用貪婪的策略。貪婪策略不是擁有都會得到最佳的結果，所以我們必須推論它。因為太長就不推倒，詳見Theo24.6。</p>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><p><a target="_blank" rel="noopener" href="http://faculty.ycp.edu/~dbabcock/cs360/lectures/lecture22.html">Dijkstra’s Algorithm</a></p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2014/06/10/old%20posts/2014-06-10-algorithm-notes-fundamental-graphics-algorithms-and-bfs/" title="Algorithm - BFS(Breadth-first Search)(ch22.1 22.2)"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Algorithm - BFS(Breadth-first Search)(ch22.1 22.2)</span></a><a class="button is-default" href="/2014/04/18/old%20posts/2014-04-18-html-tags/" title="HTML額外標籤"><span class="has-text-weight-semibold">Next: HTML額外標籤</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

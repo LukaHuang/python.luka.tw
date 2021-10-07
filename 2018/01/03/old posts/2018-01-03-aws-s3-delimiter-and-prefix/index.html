@@ -1,0 +1,284 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>[譯] Amazon S3 Delimiter and Prefix</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="
+From: Amazon S3 Delimiter and Prefix - realguessposted at 2014/05/24
+
+AWS S3 是一個不昂貴的線上檔案儲存服務，我們可以透過 javascript SDK 來使用 S3。當我使 SDK 的時候有以下幾件令人疑惑的事情:
+
+
+
+如何使用參數 Delimiter 和 Prefix ?
+CommonPrefixes 與 Contents 的差別是什麼?
+如何透過 Javascript SDK 建立 folder / directory
+
+取回在 Amazon S3 Bucket 的物件得操作 (operation) 是 listObject. listObjects 不會回傳 (return) 物件的內容, 而會回傳 key 與 meta.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">[譯] Amazon S3 Delimiter and Prefix</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Delimiter"><span class="toc-text">Delimiter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Prefix"><span class="toc-text">Prefix</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Directory-Folder"><span class="toc-text">Directory &#x2F; Folder</span></a></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/AWS"><i class="tag post-item-tag">AWS</i></a><a href="/tags/S3"><i class="tag post-item-tag">S3</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">[譯] Amazon S3 Delimiter and Prefix</h1><time class="has-text-grey" datetime="2018-01-03T04:50:00.000Z">2018-01-03</time><article class="mt-2 post-content"><blockquote>
+<p>From: <a target="_blank" rel="noopener" href="https://realguess.net/2014/05/24/amazon-s3-delimiter-and-prefix/">Amazon S3 Delimiter and Prefix - realguess</a><br>posted at 2014/05/24</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/tw/s3/">AWS S3</a> 是一個不昂貴的線上檔案儲存服務，我們可以透過 <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html">javascript SDK</a> 來使用 S3。當我使 SDK 的時候有以下幾件令人疑惑的事情:</p>
+<span id="more"></span>
+
+<ol>
+<li>如何使用參數 <code>Delimiter</code> 和 <code>Prefix</code> ?</li>
+<li><code>CommonPrefixes</code> 與 <code>Contents</code> 的差別是什麼?</li>
+<li>如何透過 Javascript SDK 建立 folder / directory</li>
+</ol>
+<p>取回在 Amazon S3 Bucket 的物件得操作 (operation) 是 <code>listObject</code>. <code>listObjects</code> 不會回傳 (return) 物件的內容, 而會回傳 key 與 meta data 像是物件的大小 (size) 或是物件的擁有者。</p>
+<p>使用指令呼叫以取得 bucket 中的物件清單:</p>
+<pre><code class="js">s3.listObjects(params, function (err, data) &#123;
+  // ...
+&#125;);
+</code></pre>
+<p><code>params</code> 可以設置以下的參數:</p>
+<ul>
+<li>Bucket</li>
+<li>Delimiter</li>
+<li>EncodingType</li>
+<li>Marker</li>
+<li>MaxKeys</li>
+<li>Prefix</li>
+</ul>
+<p>但是什麼是 <code>Delimeter</code> 和 <code>Prefix</code>? 如何使用他們?</p>
+<p>我們開始在 S3 中創建一些物件，格式如下方的檔案結構。這可以用 Aws Console 很快的完成。</p>
+<pre><code>.
+├── directory
+│   ├── directory
+│   │   └── file
+│   └── file
+└── file
+2 directories, 3 files
+</code></pre>
+<p>在 Amazon S3 中，這些物件為:</p>
+<pre><code>directory/
+directory/directory/
+directory/directory/file
+directory/file
+file
+</code></pre>
+<p>一個需要留心的事情是 S3 不是檔案系統。S3 並沒有真正的檔案或是資料夾的概念。<br>從 Console 中看到的是 2 個資料夾和 3 個檔案。但是它們全部都是物件。這些物件<br>會用他們的 Key 值按照字母排序。</p>
+<p>為了讓概念更清楚點，我們來調用 (invoke) 方法 <code>listObjects</code>。而這個操作只需要參數 <code>Bucket</code>。</p>
+<pre><code>params = &#123;
+  Bucket: &#39;example&#39;
+&#125;;
+</code></pre>
+<p>Response <code>data</code> 包含下列的 callback function:</p>
+<pre><code class="json">&#123; Contents:
+   [ &#123; Key: &#39;directory/&#39;,
+       LastModified: ...,
+       ETag: &#39;&quot;d41d8cd98f00b204e9800998ecf8427e&quot;&#39;,
+       Size: 0,
+       Owner: [Object],
+       StorageClass: &#39;STANDARD&#39; &#125;,
+     &#123; Key: &#39;directory/directory/&#39;,
+       LastModified: ...,
+       ETag: &#39;&quot;d41d8cd98f00b204e9800998ecf8427e&quot;&#39;,
+       Size: 0,
+       Owner: [Object],
+       StorageClass: &#39;STANDARD&#39; &#125;,
+     &#123; Key: &#39;directory/directory/file&#39;,
+       LastModified: ...,
+       ETag: &#39;&quot;d41d8cd98f00b204e9800998ecf8427e&quot;&#39;,
+       Size: 0,
+       Owner: [Object],
+       StorageClass: &#39;STANDARD&#39; &#125;,
+     &#123; Key: &#39;directory/file&#39;,
+       LastModified: ...,
+       ETag: &#39;&quot;d41d8cd98f00b204e9800998ecf8427e&quot;&#39;,
+       Size: 0,
+       Owner: [Object],
+       StorageClass: &#39;STANDARD&#39; &#125;,
+     &#123; Key: &#39;file&#39;,
+       LastModified: ...,
+       ETag: &#39;&quot;d41d8cd98f00b204e9800998ecf8427e&quot;&#39;,
+       Size: 0,
+       Owner: [Object],
+       StorageClass: &#39;STANDARD&#39; &#125; ],
+  CommonPrefixes: [],
+  Name: &#39;example&#39;,
+  Prefix: &#39;&#39;,
+  Marker: &#39;&#39;,
+  MaxKeys: 1000,
+  IsTruncated: false &#125;
+</code></pre>
+<p>如果有檔案結構，你會期待是:</p>
+<pre><code>directory/
+file
+</code></pre>
+<p>但是並沒有，因為 bucket 運作的方式不像是 folder 或是 directory, 能夠顯示<br>directory 中的檔案。檔案在 bucket 中會全部攤開來並且照字母排列。</p>
+<p>在 Unit 中, directory 是檔案, 但是在 Amazon S3 中, 所有的東西都是物件,<br>並且他們用 key 來識別。</p>
+<p>所以，該如何讓 Amazon S3 表現的更像是 folder 或是 directory？ 或如何顯示 Bucket 中的第一層右邊的內容?</p>
+<p>為了讓 S3 顯示的更像是 director, 你必須使用 <code>Delimiter</code> 和 <code>Prefix</code>. <code>Delimeter</code> 讓你可以為 key 分組 (use to group keys)。它必須是一個字元或者一個字串。<code>Prefix</code> 限制 response 開始於特別的 prefix。</p>
+<h2 id="Delimiter"><a href="#Delimiter" class="headerlink" title="Delimiter"></a>Delimiter</h2><p>我們開始加入下列的 <code>delimiter</code>:</p>
+<pre><code>params = &#123;
+  Bucket: &#39;example&#39;,
+  Delimiter: &#39;/&#39;
+&#125;;
+</code></pre>
+<p>你會取得像是 directory 清單的一些資訊:</p>
+<pre><code>&#123; Contents:
+   [ &#123; Key: &#39;file&#39; &#125; ],
+  CommonPrefixes: [ &#123; Prefix: &#39;directory/&#39; &#125; ],
+  Name: &#39;example&#39;,
+  Prefix: &#39;&#39;,
+  MaxKeys: 1000,
+  Delimiter: &#39;/&#39;,
+  IsTruncated: false &#125;
+</code></pre>
+<p>有一個資料夾叫做 <code>directory/</code> 和一個檔案叫做 <code>file</code>. 發生的事情是下列的物件接受檔案被 delimeter <code>/</code> 分組。</p>
+<pre><code>directory/
+directory/directory/
+directory/directory/file
+directory/file
+file
+</code></pre>
+<p>所以，結果是:</p>
+<pre><code>directory/
+file
+</code></pre>
+<p>這感覺像是 <code>directory</code> 或是 <code>folder</code> 的清單。但如果我們把 <code>Delimeter</code> 改成 <code>i</code>, 接著你會取得空的 <code>Contents</code> 和 prefix。</p>
+<pre><code>&#123; Contents: [],
+  CommonPrefixes: [ &#123; Prefix: &#39;di&#39; &#125;, &#123; Prefix: &#39;fi&#39; &#125; ],
+  Name: &#39;example&#39;,
+  Prefix: &#39;&#39;,
+  MaxKeys: 1000,
+  Delimiter: &#39;i&#39;,
+  IsTruncated: false &#125;
+</code></pre>
+<p>所有的 key 被 <code>di</code> 和 <code>fi</code> 這兩個 prefix 分組。因此，Amazon S3 不是檔案系統, 但是他們如果可以設定對的參數，那他們看起來就會像是檔案系統。</p>
+<p>如之前提到的 <code>Delimeter</code> 不需要是單一的字元:</p>
+<pre><code>&#123; Contents:
+   [ &#123; Key: &#39;directory/&#39; &#125;,
+     &#123; Key: &#39;directory/file&#39; &#125;,
+     &#123; Key: &#39;file&#39; &#125; ],
+  CommonPrefixes: [ &#123; Prefix: &#39;directory/directory&#39; &#125; ],
+  Name: &#39;example&#39;,
+  Prefix: &#39;&#39;,
+  MaxKeys: 1000,
+  Delimiter: &#39;/directory&#39;,
+  IsTruncated: false &#125;
+</code></pre>
+<p>回想 bucket 的結構:</p>
+<pre><code>directory/
+directory/directory/
+directory/directory/file
+directory/file
+file
+</code></pre>
+<p>由於分組字串<code>/directory</code>，<code>directory/directory/</code> 和 <code>directory/directory/file</code> 被 prefix <code>directory/directory</code> 分組了。</p>
+<p>我們來試試其他的 <code>Delimiter: &#39;directory&#39;</code></p>
+<pre><code>&#123; Contents:
+   [ &#123; Key: &#39;file&#39; &#125; ],
+  CommonPrefixes: [ &#123; Prefix: &#39;directory&#39; &#125; ],
+  Name: &#39;example&#39;,
+  Prefix: &#39;&#39;,
+  MaxKeys: 1000,
+  Delimiter: &#39;directory&#39;,
+  IsTruncated: false &#125;
+</code></pre>
+<p>好，接著來試試 <code>ry/fi</code></p>
+<pre><code>&#123; Contents:
+   [ &#123; Key: &#39;directory/&#39; &#125;,
+     &#123; Key: &#39;directory/directory/&#39; &#125;,
+     &#123; Key: &#39;file&#39; &#125; ],
+  CommonPrefixes:
+   [ &#123; Prefix: &#39;directory/directory/fi&#39; &#125;,
+     &#123; Prefix: &#39;directory/fi&#39; &#125; ],
+  Name: &#39;example,
+  Prefix: &#39;&#39;,
+  MaxKeys: 1000,
+  Delimiter: &#39;ry/fi&#39;,
+  IsTruncated: false &#125;
+</code></pre>
+<p>所以記得 <code>Delimeter</code> 只是提供將 key 分組的功能。如果你想要他們表現的像是<br>檔案系統，那麼使用 <code>Delimiter: &#39;/&#39;</code>。</p>
+<h2 id="Prefix"><a href="#Prefix" class="headerlink" title="Prefix"></a>Prefix</h2><p><code>Prefix</code> 更易於理解。它利用前綴來過濾(filter) keys。</p>
+<p>相同的結構:</p>
+<pre><code>directory/
+directory/directory/
+directory/directory/file
+directory/file
+file
+</code></pre>
+<p>我們來設定 <code>Prefix</code> 參數值為 <code>directory</code>:</p>
+<pre><code>&#123; Contents:
+   [ &#123; Key: &#39;directory/&#39; &#125;,
+     &#123; Key: &#39;directory/directory/&#39; &#125;,
+     &#123; Key: &#39;directory/directory/file&#39; &#125;,
+     &#123; Key: &#39;directory/file&#39; &#125; ],
+  CommonPrefixes: [],
+  Name: &#39;example&#39;,
+  Prefix: &#39;directory&#39;,
+  MaxKeys: 1000,
+  IsTruncated: false &#125;
+</code></pre>
+<p>看看設定成 <code>directory/</code> 會怎麼樣:</p>
+<pre><code>&#123; Contents:
+   [ &#123; Key: &#39;directory/&#39; &#125;,
+     &#123; Key: &#39;directory/directory/&#39; &#125;,
+     &#123; Key: &#39;directory/directory/file&#39; &#125;,
+     &#123; Key: &#39;directory/file&#39; &#125; ],
+  CommonPrefixes: [],
+  Prefix: &#39;directory/&#39; &#125;
+</code></pre>
+<p>prefix 設成 <code>directory</code> 和 <code>directory/</code> 是一樣的。<br>如果我們嘗試一些不一樣的, <code>Prefix: &#39;directory/d&#39;</code>:</p>
+<pre><code>&#123; Contents:
+   [ &#123; Key: &#39;directory/directory/&#39; &#125;,
+     &#123; Key: &#39;directory/directory/file&#39; &#125; ],
+  CommonPrefixes: [],
+  Prefix: &#39;directory/d&#39; &#125;
+</code></pre>
+<p>同時使用 <code>Delimiter: &#39;directory&#39;</code> and<code> Prefix: &#39;directory&#39;</code>:</p>
+<pre><code>&#123; Contents:
+   [ &#123; Key: &#39;directory/&#39; &#125;,
+     &#123; Key: &#39;directory/file&#39; &#125; ],
+  CommonPrefixes: [ &#123; Prefix: &#39;directory/directory&#39; &#125; ],
+  Prefix: &#39;directory&#39;,
+  Delimiter: &#39;directory&#39; &#125;
+</code></pre>
+<p>第一步，列出 prefix 是 <code>directory</code> 的清單:</p>
+<pre><code>directory/
+directory/directory/
+directory/directory/file
+directory/file
+</code></pre>
+<p>用 delimiter <code>directory</code> 與 prefix <code>directory</code> 來分組:</p>
+<pre><code>directory/directory
+</code></pre>
+<p>結果的 <code>Contents</code> 會是:</p>
+<pre><code>directory/
+directory/file
+</code></pre>
+<p><code>CommonPrefixes</code> 會是:</p>
+<pre><code>directory/directory
+</code></pre>
+<p>也許改變 <code>Delimeter</code> 成 <code>i</code> 可以更好的理解:</p>
+<pre><code>&#123; Contents:
+   [ &#123; Key: &#39;directory/&#39; &#125; ],
+  CommonPrefixes: [ &#123; Prefix: &#39;directory/di&#39; &#125;, &#123; Prefix: &#39;directory/fi&#39; &#125; ],
+  Prefix: &#39;directory&#39;,
+  Delimiter: &#39;i&#39; &#125;
+</code></pre>
+<pre><code>directory/               # key to show
+directory/directory/     # group to &#39;directory/di&#39;
+directory/directory/file # group to &#39;directory/di&#39;
+directory/file           # Group to &#39;directory/fi&#39;
+file                     # ignored due to prefix
+</code></pre>
+<p>一個使用 Amazon S3 來列出 directory 的好處是你不需要顧慮巢狀的資料夾結構，<br>所有東西都是扁平化的。所以你可以藉由特定的 <code>Prefix</code> 來 <code>loop</code> 出你要的資料。</p>
+<h2 id="Directory-Folder"><a href="#Directory-Folder" class="headerlink" title="Directory / Folder"></a>Directory / Folder</h2><p>如果你使用 Amazon AWS console 來 <code>Create Folder</code>，你可以建立資料夾或是<br>上傳檔案在該資料夾中。實際上，你使用了下列的 key 建立了兩個物件:</p>
+<pre><code>directory/
+directory/file
+</code></pre>
+<p>如果你使用下列指令來上傳檔案，資料夾不會被建立:</p>
+<pre><code>aws s3 cp file s3://example/directory/file
+</code></pre>
+<p>因為，Amazon S3 不是檔案系統，而是 key/value 的儲存空間。如果你使用 <code>listObjects</code> 方法，你可以看到一個物件。<br>同理，你無法複製本地的資料夾：</p>
+<pre><code>$ aws s3 cp directory s3://example/directory
+upload failed: aws/ to s3://example/directory [Errno 21] Is a directory: u&#39;/home/chao/tmp/directory/&#39;
+</code></pre>
+<p>但我們可以用 JavaScript SDK 來創建 <code>directory/folder</code>:</p>
+<pre><code>s3.putObject(&#123; Bucket: &#39;example&#39;, Key: &#39;directory/&#39; &#125;, function (err, data) &#123;
+  if (err) &#123; return console.error(err); &#125;
+  console.log(data);
+&#125;);
+</code></pre>
+<p>需要筆記的地方是: 你必須使用 <code>directory/</code>，結尾必須是斜線。此外，這只是一個檔案而不是資料夾。</p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2018/01/25/old%20posts/2018-01-25-use-aws-ruby-sdk-to-update-s3-metadata/" title="[譯] 使用 AWS Ruby SDK v2 更新 S3 物件 Metadata"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: [譯] 使用 AWS Ruby SDK v2 更新 S3 物件 Metadata</span></a><a class="button is-default" href="/2017/12/22/old%20posts/2017-12-22-web-foundation-the-different-of-cookie-and-session/" title="Web 基本功 - Cookie 與 Session"><span class="has-text-weight-semibold">Next: Web 基本功 - Cookie 與 Session</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

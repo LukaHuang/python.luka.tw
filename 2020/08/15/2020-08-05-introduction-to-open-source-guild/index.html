@@ -1,0 +1,89 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>從 Github 開源指南｜學習如何貢獻開源專案</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="
+本週我們來讀一下「如何為開源做貢獻」。這份文件是 Github 的 Open Source Guide 開源指南，約莫兩年前剛出的時候全部是英文版的，已經三年了，拖到現在才讀（汗）。
+
+ （這篇是閱讀開源指南的筆記，原創內容偏少，原文在下方連結）如何為開源做貢獻？透過為開源貢獻力量，能從中學習、幫助他人並且從中累積相關技能的經驗 - 任何你能想像得到的技能。 為什麼會有人為開源做出貢獻？有數不清的原因！…opensource.guide
+
+是 Github 7000 顆星星的開源專案github/opensource.guideOpen Source Guides ( https://opensource.guide/) are a collection of resources for individu.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">從 Github 開源指南｜學習如何貢獻開源專案</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BD%95%E8%A6%81%E8%B2%A2%E7%8D%BB%E9%96%8B%E6%BA%90%E5%B0%88%E6%A1%88%EF%BC%9F"><span class="toc-text">為何要貢獻開源專案？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%89%93%E7%A3%A8%E4%BD%A0%E7%9A%84%E5%B0%88%E6%A5%AD%E6%8A%80%E8%83%BD"><span class="toc-text">1. 打磨你的專業技能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AA%8D%E8%AD%98%E8%88%87%E4%BD%A0%E6%9C%89%E7%9B%B8%E4%BC%BC%E8%88%88%E8%B6%A3%E7%9A%84%E4%BA%BA"><span class="toc-text">2. 認識與你有相似興趣的人</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%8D%9B%E9%8D%8A%E6%BA%9D%E9%80%9A%E8%83%BD%E5%8A%9B"><span class="toc-text">3. 鍛鍊溝通能力</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%BB%BA%E7%AB%8B%E5%90%8D%E8%81%B2"><span class="toc-text">4. 建立名聲</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%AD%B8%E7%BF%92%E4%BA%BA%E9%9A%9B%E9%97%9C%E4%BF%82%E7%9A%84%E8%83%BD%E5%8A%9B"><span class="toc-text">5. 學習人際關係的能力</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%BE%E5%B0%8B%E5%B0%88%E6%A1%88%E9%96%8B%E5%A7%8B%E8%B2%A2%E7%8D%BB"><span class="toc-text">找尋專案開始貢獻</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%BE%E5%88%B0%E5%B0%88%E6%A1%88%E6%99%82%EF%BC%8C%E5%85%88%E7%A2%BA%E4%BF%9D%E5%B0%88%E6%A1%88%E6%98%AF%E5%90%A6%E6%8E%A5%E5%8F%97%E8%B2%A2%E7%8D%BB"><span class="toc-text">找到專案時，先確保專案是否接受貢獻</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%B0%87%E6%88%90%E6%9E%9C%E8%B2%A2%E7%8D%BB%E8%87%B3%E9%96%8B%E6%BA%90%E5%B0%88%E6%A1%88"><span class="toc-text">如何將成果貢獻至開源專案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BA%A4%E4%BB%A3%E4%BE%86%E9%BE%8D%E5%8E%BB%E8%84%88"><span class="toc-text">1. 交代來龍去脈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%81%9A%E5%A5%BD%E6%BA%96%E5%82%99%E5%B7%A5%E4%BD%9C"><span class="toc-text">2. 做好準備工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%BA%9D%E9%80%9A%E6%99%82%E5%8A%9B%E6%B1%82%E7%B2%BE%E7%B0%A1%E6%98%8E%E7%9E%AD"><span class="toc-text">3. 溝通時力求精簡明瞭</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%A4%A7%E8%86%BD%E7%9A%84%E6%8F%90%E5%95%8F%EF%BC%88%E4%BD%86%E6%98%AF%E8%A6%81%E6%9C%89%E8%80%90%E5%BF%83%EF%BC%81%EF%BC%89"><span class="toc-text">4. 大膽的提問（但是要有耐心！）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%B0%8A%E9%87%8D%E7%A4%BE%E7%BE%A4%E7%9A%84%E6%B1%BA%E5%AE%9A"><span class="toc-text">5. 尊重社群的決定</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4%E4%B9%8B%E5%BE%8C"><span class="toc-text">提交之後</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%98%AD%E6%9C%89%E5%8F%AF%E8%83%BD%E6%B2%92%E6%9C%89%E4%BA%BA%E7%90%86%E4%BD%A0"><span class="toc-text">😭有可能沒有人理你</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%9A%A7%E6%9C%89%E4%BA%BA%E5%B8%8C%E6%9C%9B%E4%BD%A0%E4%BF%AE%E6%94%B9%E4%BD%A0%E7%9A%84%E8%B2%A2%E7%8D%BB"><span class="toc-text">🚧有人希望你修改你的貢獻</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%91%8E%E4%BD%A0%E7%9A%84%E8%B2%A2%E7%8D%BB%E6%B2%92%E6%9C%89%E8%A2%AB%E6%8E%A1%E7%B4%8D"><span class="toc-text">👎你的貢獻沒有被採納</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%8E%89-%E4%BD%A0%E7%9A%84%E8%B2%A2%E7%8D%BB%E8%A2%AB%E6%8E%A5%E5%8F%97%E3%80%82"><span class="toc-text">🎉 你的貢獻被接受。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%B6%E4%BC%B8%E9%96%B1%E8%AE%80"><span class="toc-text">延伸閱讀</span></a></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/Github"><i class="tag post-item-tag">Github</i></a><a href="/tags/Open-Source"><i class="tag post-item-tag">Open Source</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">從 Github 開源指南｜學習如何貢獻開源專案</h1><time class="has-text-grey" datetime="2020-08-15T12:50:00.000Z">2020-08-15</time><article class="mt-2 post-content"><p><img src="https://cdn-images-1.medium.com/max/7872/0*8Mqb8j7gMZ3_R-UI" alt="Photo by [Tim Mossholder](https://unsplash.com/@timmossholder?utm_source=medium&amp;utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&amp;utm_medium=referral)"></p>
+<p>本週我們來讀一下「如何為開源做貢獻」。這份文件是 Github 的 Open Source Guide 開源指南，約莫兩年前剛出的時候全部是英文版的，已經三年了，拖到現在才讀（汗）。</p>
+<blockquote>
+<p> （這篇是閱讀開源指南的筆記，原創內容偏少，原文在下方連結）<br><a target="_blank" rel="noopener" href="https://opensource.guide/zh-hant/how-to-contribute/"><strong>如何為開源做貢獻？</strong><br><em>透過為開源貢獻力量，能從中學習、幫助他人並且從中累積相關技能的經驗 - 任何你能想像得到的技能。 為什麼會有人為開源做出貢獻？有數不清的原因！…</em>opensource.guide</a></p>
+</blockquote>
+<p>是 Github 7000 顆星星的開源專案<br><a target="_blank" rel="noopener" href="https://github.com/github/opensource.guide"><strong>github/opensource.guide</strong><br><em>Open Source Guides ( https://opensource.guide/) are a collection of resources for individuals, communities, and…</em>github.com</a></p>
+<h2 id="為何要貢獻開源專案？"><a href="#為何要貢獻開源專案？" class="headerlink" title="為何要貢獻開源專案？"></a><strong>為何要貢獻開源專案？</strong></h2><blockquote>
+<p> 原文寫的很好，我用我的話說出來。</p>
+</blockquote>
+<h3 id="1-打磨你的專業技能"><a href="#1-打磨你的專業技能" class="headerlink" title="1. 打磨你的專業技能"></a>1. 打磨你的專業技能</h3><p>專案中包含了撰寫程式碼、平面設計、使用者體驗設計、撰寫文章 … 等等的工作。只要你想，你就可以在開源專案中找到你的位置。</p>
+<h3 id="2-認識與你有相似興趣的人"><a href="#2-認識與你有相似興趣的人" class="headerlink" title="2. 認識與你有相似興趣的人"></a>2. 認識與你有相似興趣的人</h3><p>我覺得這真的滿重要，在現實生活中要找到相同興趣的人就很困難了，但是透過貢獻開源，你可以無遠弗屆的認識世界各地與你有相似興趣的人。</p>
+<h3 id="3-鍛鍊溝通能力"><a href="#3-鍛鍊溝通能力" class="headerlink" title="3. 鍛鍊溝通能力"></a>3. 鍛鍊溝通能力</h3><p>因為開源專案是一個「共同協做」的專案。你需要向他人解釋自己是用什麼方法實作，也會需要其他人的幫助。</p>
+<h3 id="4-建立名聲"><a href="#4-建立名聲" class="headerlink" title="4. 建立名聲"></a>4. 建立名聲</h3><p>你在開源專案中實作的成果一切都是看的到的，這也意味開源專案是一個能好好火力展示的地方。</p>
+<h3 id="5-學習人際關係的能力"><a href="#5-學習人際關係的能力" class="headerlink" title="5. 學習人際關係的能力"></a>5. 學習人際關係的能力</h3><p>開源為練習領導及管理的能力提供了很好的機會。例如如何解決衝突、組織團隊以及如何為工作的優先順序排列。</p>
+<blockquote>
+<p> 小訣竅：走進開源專案，就像你走進一群陌生人中，想要嘗試融入。這群人討論的非常深入了，你突然打岔肯定會讓人覺得奇怪。<br> 與其盲目地在社群中拋出你自己的看法，不如先觀察一下社群的氛圍後再提出，這樣你的想法被注意到的機會才會增加。</p>
+</blockquote>
+<h2 id="找尋專案開始貢獻"><a href="#找尋專案開始貢獻" class="headerlink" title="找尋專案開始貢獻"></a>找尋專案開始貢獻</h2><p>如果你還未貢獻任何一個開源專案的話，可以想想，你能夠為開源專案做些什麼？</p>
+<p>可以從你有使用過的開源專案開始著手，跟你比較有關係的開源專案，或是你比較感興趣的開源專案，你才會積極的參加。</p>
+<p>平均一個專案有 28% 的貢獻是隨意且偶然的，像是 Readme、改錯字、失效連結 … 等等的小地方。</p>
+<h2 id="找到專案時，先確保專案是否接受貢獻"><a href="#找到專案時，先確保專案是否接受貢獻" class="headerlink" title="找到專案時，先確保專案是否接受貢獻"></a><strong>找到專案時，先確保專案是否接受貢獻</strong></h2><p>可以從幾個地方，看出專案是否活躍，樂於接受貢獻：</p>
+<p>從 Master 分支上看看觀察</p>
+<ul>
+<li><p>最近一次的 Commit 是什麼時候？</p>
+</li>
+<li><p>Commit 的次數頻繁嘛？</p>
+</li>
+<li><p>專案目前有多少貢獻者？</p>
+</li>
+</ul>
+<p>從 Issue 觀察</p>
+<ul>
+<li><p>目前有多少個 issue</p>
+</li>
+<li><p>維護者回覆 issue 是否迅速</p>
+</li>
+<li><p>是否有討論熱絡的 issue</p>
+</li>
+<li><p>issue 是否已經大量累積</p>
+</li>
+<li><p>最近 close 的 issue 是多久以前</p>
+</li>
+</ul>
+<p>從 PR 觀察</p>
+<ul>
+<li><p>有多少處於進行中的 PR</p>
+</li>
+<li><p>提交 PR 後維護者回覆是否迅速</p>
+</li>
+<li><p>最近有多少 PR 被 Merge</p>
+</li>
+</ul>
+<p>觀察專案的友善程度</p>
+<ul>
+<li><p>維護者的回應是否有幫助</p>
+</li>
+<li><p>討論過程是否親切</p>
+</li>
+<li><p>會不會審查 PR</p>
+</li>
+</ul>
+<h2 id="如何將成果貢獻至開源專案"><a href="#如何將成果貢獻至開源專案" class="headerlink" title="如何將成果貢獻至開源專案"></a>如何將成果貢獻至開源專案</h2><p>最重要的是「有效的溝通」，把握幾個要點：</p>
+<h3 id="1-交代來龍去脈"><a href="#1-交代來龍去脈" class="headerlink" title="1. 交代來龍去脈"></a>1. 交代來龍去脈</h3><p>讓他人快速的理解。如果是 Bug 交代清楚你想做的事情是什麼，你當實作了哪些步驟，以便重現錯誤。如果你想要發起一個新的想法，你要解釋為什麼你要這樣做，為什麼你覺得這樣會對專案有幫助。</p>
+<h3 id="2-做好準備工作"><a href="#2-做好準備工作" class="headerlink" title="2. 做好準備工作"></a>2. 做好準備工作</h3><p>在尋求幫助之前，先確保你看過文件、相關 Issue 的討論，當你表達出強烈的意願時，人們會很樂意幫助你的。</p>
+<h3 id="3-溝通時力求精簡明瞭"><a href="#3-溝通時力求精簡明瞭" class="headerlink" title="3. 溝通時力求精簡明瞭"></a>3. 溝通時力求精簡明瞭</h3><p>開源專案每次提交都是需要他人檢閱的，如果你能夠精準的表達你的看法，那麼你得到別人幫助的機會就會大幅提昇。</p>
+<h3 id="4-大膽的提問（但是要有耐心！）"><a href="#4-大膽的提問（但是要有耐心！）" class="headerlink" title="4. 大膽的提問（但是要有耐心！）"></a><strong>4. 大膽的提問（但是要有耐心！）</strong></h3><p>每個人都有新手的時候，不要怕提問。需要注意的是長期維護的人不一定熟悉專案的每一個部分。協作時表現出你的耐心，你會得到相同回報。</p>
+<h3 id="5-尊重社群的決定"><a href="#5-尊重社群的決定" class="headerlink" title="5. 尊重社群的決定"></a>5. 尊重社群的決定</h3><p>有時候你的看法跟社群的看法不一定相同。他們可能不接受你的建議。可能社群最後不接納你的建議。這時你可以試試看討論出折衷方案，或者將專案 fork 另起爐灶。</p>
+<h2 id="提交之後"><a href="#提交之後" class="headerlink" title="提交之後"></a>提交之後</h2><h3 id="😭有可能沒有人理你"><a href="#😭有可能沒有人理你" class="headerlink" title="😭有可能沒有人理你"></a>😭有可能沒有人理你</h3><p>因為大家都很忙，尤其是熱門的開源專案。Issue 很多，維護者的人手不夠，此時就先耐心的等待。</p>
+<blockquote>
+<p> <em>千萬不要私下聯絡，在開源專案中，一切的溝通都應該是公開的。</em></p>
+</blockquote>
+<h3 id="🚧有人希望你修改你的貢獻"><a href="#🚧有人希望你修改你的貢獻" class="headerlink" title="🚧有人希望你修改你的貢獻"></a>🚧有人希望你修改你的貢獻</h3><p>這是好的開始，溝通、改進直到符合維護者得期待。</p>
+<h3 id="👎你的貢獻沒有被採納"><a href="#👎你的貢獻沒有被採納" class="headerlink" title="👎你的貢獻沒有被採納"></a>👎你的貢獻沒有被採納</h3><p>你的工作最後沒有被採納，這時你可以問問維護者，為什麼沒有被採納。需要注意的是別花時間在爭論上，這會讓你樹立更多敵人。</p>
+<h3 id="🎉-你的貢獻被接受。"><a href="#🎉-你的貢獻被接受。" class="headerlink" title="🎉 你的貢獻被接受。"></a>🎉 你的貢獻被接受。</h3><p>太棒了！你完成了一次開源貢獻！</p>
+<h2 id="延伸閱讀"><a href="#延伸閱讀" class="headerlink" title="延伸閱讀"></a>延伸閱讀</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://opensource.guide/zh-hant/starting-a-project/"><strong>發起一個開源專案</strong></a></li>
+<li><a target="_blank" rel="noopener" href="https://opensource.guide/zh-hant/best-practices/"><strong>維護者最佳實踐</strong></a></li>
+<li><a target="_blank" rel="noopener" href="https://opensource.guide/zh-hant/leadership-and-governance/"><strong>領導與治理</strong></a></li>
+<li><a target="_blank" rel="noopener" href="https://opensource.guide/zh-hant/code-of-conduct/"><strong>建立一套行為準則</strong></a></li>
+<li><a target="_blank" rel="noopener" href="https://opensource.guide/zh-hant/finding-users/"><strong>找尋專案的使用者</strong></a></li>
+</ul>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2020/09/21/2020-09-21-introduction-to-gitops-via-argocd/" title="ArgoCD — 透過 ArgoCD 認識 GitOps"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: ArgoCD — 透過 ArgoCD 認識 GitOps</span></a><a class="button is-default" href="/2020/07/28/2020-07-28-tldr/" title="TLDR 命令列神兵｜Linux 入門必裝"><span class="has-text-weight-semibold">Next: TLDR 命令列神兵｜Linux 入門必裝</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

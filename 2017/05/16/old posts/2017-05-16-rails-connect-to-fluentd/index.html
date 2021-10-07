@@ -1,0 +1,72 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>EFK(3) - Rails 與 Fluentd 的串接方法</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="幾種可以跟 Rails 串接的方式
+gem ‘fluent-logger’ Centralize Logs from Ruby Applications
+
+自定解析 fluent/fluent-plugin-grok-parser: Fluentd’s Grok parser
+
+使用 Rails-logger 來蒐集, 如果你的目標是讓 EFK 變成一個 log 整合系統，這個方式是你的最佳選項。搭配 act-fluent-logger-rails&amp;#39;  與 lograge 這兩個 gem, 可以將你的 log 更加的組織化。詳細教學請參照下方連結: Collecting and Analyzing Ruby on Rails Logs | Fluentd
+
+
+這篇我們採用的方式是 1，優點是可以自定.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">EFK(3) - Rails 與 Fluentd 的串接方法</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%BE%E7%A8%AE%E5%8F%AF%E4%BB%A5%E8%B7%9F-Rails-%E4%B8%B2%E6%8E%A5%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">幾種可以跟 Rails 串接的方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fluentd-agent-%E8%88%87-Rails-%E7%9A%84%E4%B8%B2%E6%8E%A5"><span class="toc-text">Fluentd agent 與 Rails 的串接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#step-1-%E4%BD%BF%E7%94%A8-Gem-%E5%AE%89%E8%A3%9D-Fluentd"><span class="toc-text">step 1: 使用 Gem 安裝 Fluentd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-2-%E7%94%A2%E7%94%9F%E8%A8%AD%E5%AE%9A%E6%AA%94"><span class="toc-text">step 2: 產生設定檔</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-3-%E5%95%9F%E5%8B%95-fluentd"><span class="toc-text">step 3: 啟動 fluentd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-4-%E6%B8%AC%E8%A9%A6-fluentd-%E5%8A%9F%E8%83%BD%E6%98%AF%E5%90%A6%E6%AD%A3%E5%B8%B8"><span class="toc-text">step 4: 測試 fluentd 功能是否正常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-5-%E8%AE%93-Fluentd-%E5%8F%AF%E4%BB%A5%E8%92%90%E9%9B%86%E5%88%B0%E6%88%91%E5%80%91%E8%A6%81%E7%9A%84-log-pattern"><span class="toc-text">step 5: 讓 Fluentd 可以蒐集到我們要的 log pattern</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%B4%B9-Forward-Input-Plugin"><span class="toc-text">介紹 Forward Input Plugin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="toc-text">參考資料</span></a></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/OSX"><i class="tag post-item-tag">OSX</i></a><a href="/tags/Fluentd"><i class="tag post-item-tag">Fluentd</i></a><a href="/tags/EFK"><i class="tag post-item-tag">EFK</i></a><a href="/tags/Devops"><i class="tag post-item-tag">Devops</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">EFK(3) - Rails 與 Fluentd 的串接方法</h1><time class="has-text-grey" datetime="2017-05-16T13:23:00.000Z">2017-05-16</time><article class="mt-2 post-content"><h2 id="幾種可以跟-Rails-串接的方式"><a href="#幾種可以跟-Rails-串接的方式" class="headerlink" title="幾種可以跟 Rails 串接的方式"></a>幾種可以跟 Rails 串接的方式</h2><ol>
+<li><p>gem ‘fluent-logger’<br> <a target="_blank" rel="noopener" href="http://docs.fluentd.org/v0.12/articles/ruby">Centralize Logs from Ruby Applications</a></p>
+</li>
+<li><p>自定解析<br> <a target="_blank" rel="noopener" href="https://github.com/fluent/fluent-plugin-grok-parser">fluent/fluent-plugin-grok-parser: Fluentd’s Grok parser</a></p>
+</li>
+<li><p>使用 Rails-logger 來蒐集, 如果你的目標是讓 EFK 變成一個 log 整合系統，這個方式是你的最佳選項。搭配 <code>act-fluent-logger-rails&#39; </code> 與 <code>lograge</code> 這兩個 gem, 可以將你的 log 更加的組織化。詳細教學請參照下方連結:<br> <a target="_blank" rel="noopener" href="http://www.fluentd.org/datasources/rails">Collecting and Analyzing Ruby on Rails Logs | Fluentd</a></p>
+</li>
+</ol>
+<p>這篇我們採用的方式是 1，優點是可以自定義 log 的形式，缺點是需要自行設計 log 系統。如果你只是想把原本存在於 <code>log/prodcution.log</code> 搜集到 EFK Stack，那可以使用 3 的方式來整合 Rails-app 的 log。而如果你想蒐集 Rails 以外的 log 如 apache 或是 nginx 的 log，則可以使用 2 的方式。</p>
+<h2 id="Fluentd-agent-與-Rails-的串接"><a href="#Fluentd-agent-與-Rails-的串接" class="headerlink" title="Fluentd agent 與 Rails 的串接"></a>Fluentd agent 與 Rails 的串接</h2><h3 id="step-1-使用-Gem-安裝-Fluentd"><a href="#step-1-使用-Gem-安裝-Fluentd" class="headerlink" title="step 1: 使用 Gem 安裝 Fluentd"></a>step 1: 使用 Gem 安裝 Fluentd</h3><p>這邊使用的方法是使用 gem 安裝，<br>配合 rvm 方便管理，不會污染環境</p>
+<pre><code>gem install fluentd -v &quot;~&gt; 0.12.0&quot; --no-ri --no-rdoc
+</code></pre>
+<blockquote>
+<p>Error: 因為我的開發環境用的 Rails 版本較舊，bundler 使用的是 1.14.4，在開發的時候遇到錯誤訊息<code>gems/bundler-1.14.4/lib/bundler/rubygems_ext.rb:45:in full_gem_path&#39;</code>。<br>Solution：輸入 <code>gem update --system</code> 更新系統 gem 的版本。</p>
+</blockquote>
+<h3 id="step-2-產生設定檔"><a href="#step-2-產生設定檔" class="headerlink" title="step 2: 產生設定檔"></a>step 2: 產生設定檔</h3><p>輸入以下指令</p>
+<pre><code>fluentd --setup ./fluent
+</code></pre>
+<p>資料夾會變成這樣</p>
+<pre><code>$ tree .
+.
+└── fluent
+    ├── fluent.conf
+    └── plugin
+</code></pre>
+<h3 id="step-3-啟動-fluentd"><a href="#step-3-啟動-fluentd" class="headerlink" title="step 3: 啟動 fluentd"></a>step 3: 啟動 fluentd</h3><pre><code>fluentd -c ./fluent/fluent.conf -vv &amp;
+</code></pre>
+<p>輸入後 fluentd 就可以順利跑起來了</p>
+<p><img src="media/14943115845575/14943128690870.jpg"></p>
+<h3 id="step-4-測試-fluentd-功能是否正常"><a href="#step-4-測試-fluentd-功能是否正常" class="headerlink" title="step 4: 測試 fluentd 功能是否正常"></a>step 4: 測試 fluentd 功能是否正常</h3><pre><code class="rb">require &#39;fluent-logger&#39;
+</code></pre>
+<p>初始化 Fluentd</p>
+<pre><code>Fluent::Logger::FluentLogger.open(nil, :host=&gt;&#39;localhost&#39;, :port=&gt;24224)
+</code></pre>
+<p>來測試一下訊息</p>
+<pre><code class="rb">Fluent::Logger.post(&quot;fluentd.test.follow&quot;, &#123;&quot;from&quot;=&gt;&quot;userA&quot;, &quot;to&quot;=&gt;&quot;userB&quot;&#125;)
+</code></pre>
+<p>結果</p>
+<pre><code>2017-05-09 15:09:00 +0800 [warn]: fluent/agent.rb:170:emit: no patterns matched tag=&quot;fluentd.test.follow&quot;
+</code></pre>
+<p>可以看到 fluentd 並沒有成功收到我們想記錄的 log，並發現警告訊息，原因是 Fluentd 蒐集 log pattern 並沒有包含 <code>fluentd.test.follow</code></p>
+<h3 id="step-5-讓-Fluentd-可以蒐集到我們要的-log-pattern"><a href="#step-5-讓-Fluentd-可以蒐集到我們要的-log-pattern" class="headerlink" title="step 5: 讓 Fluentd 可以蒐集到我們要的 log pattern"></a>step 5: 讓 Fluentd 可以蒐集到我們要的 log pattern</h3><p>來修改 Fluentd 的設定檔，打開設定檔：</p>
+<pre><code>vim ./fluent/fluent.conf
+</code></pre>
+<p>加入 pattern</p>
+<pre><code>&lt;match fluentd.test.follow.**&gt;
+  @type stdout
+  @id stdout_output
+&lt;/match&gt;
+</code></pre>
+<p>重新啟動 fluentd，再記錄一次 log 看看：</p>
+<pre><code class="rb">Fluent::Logger::FluentLogger.open(nil, :host=&gt;&#39;localhost&#39;, :port=&gt;24224)
+Fluent::Logger.post(&quot;fluentd.test.follow&quot;, &#123;&quot;from&quot;=&gt;&quot;userA&quot;, &quot;to&quot;=&gt;&quot;userB&quot;&#125;)
+</code></pre>
+<p>結果</p>
+<pre><code>2017-05-09 15:16:19 +0800 fluentd.test.follow: &#123;&quot;from&quot;:&quot;userA&quot;,&quot;to&quot;:&quot;userB&quot;&#125;
+</code></pre>
+<p>這樣就完成單機上的 fluentd-agent 與 Rails Application 的串接了。</p>
+<h2 id="介紹-Forward-Input-Plugin"><a href="#介紹-Forward-Input-Plugin" class="headerlink" title="介紹 Forward Input Plugin"></a>介紹 Forward Input Plugin</h2><p>Fluentd 蒐集 Rails 的 Log 的時候，並不是使用讀取檔案的方式。<br>而是使用 <code>forward input plugin</code> 來幫助蒐集。<br>forward input plugin 是一個可以蒐集 tcp 或是 utp 協定的 fluentd plugin。</p>
+<p><a target="_blank" rel="noopener" href="http://docs.fluentd.org/v0.12/articles/in_forward">forward Input Plugin - Fluentd</a></p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a target="_blank" rel="noopener" href="http://docs.fluentd.org/v0.12/articles/quickstart">Quickstart Guide - Fluentd</a><br><a target="_blank" rel="noopener" href="http://docs.fluentd.org/v0.12/articles/install-by-gem">Installing Fluentd Using Ruby Gem - Fluentd</a><br><a target="_blank" rel="noopener" href="http://docs.fluentd.org/v0.12/articles/ruby">Centralize Logs from Ruby Applications - Fluentd</a></p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2017/05/17/old%20posts/2017-05-17-fluentd-connect-to-elasticsearch-kibana/" title="EFK(4) - 讓 Elasticsearch 與 Kibana 能夠接收 Rails 的 log"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: EFK(4) - 讓 Elasticsearch 與 Kibana 能夠接收 Rails 的 log</span></a><a class="button is-default" href="/2017/05/15/old%20posts/2017-05-15-introduce-to-fluentd-efk/" title="EFK(2) - 介紹 EFK (Elasticsaerch + Fluentd + Kibana)"><span class="has-text-weight-semibold">Next: EFK(2) - 介紹 EFK (Elasticsaerch + Fluentd + Kibana)</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

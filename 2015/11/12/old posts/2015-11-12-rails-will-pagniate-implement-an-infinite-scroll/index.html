@@ -1,0 +1,119 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>Rails - 使用 will pagniate 搭配 ajax 實作無限捲動</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="概念：will paganiate 由送到 controller 的 params[:page] 決定回傳的@posts。
+可以由我們在 controller 中定義@posts所知道。
+@posts = Post.paginate(:page =&amp;gt; params[:page])
+
+inifite scroll event$(window).scroll(function () &amp;#123;
+   if ($(window).scrollTop() &amp;gt;= $(document).height() - $(window).height() - 10) &amp;#123;
+      //Add something at the end of the page
+   &amp;#125;
+&amp;#125;);
+
+記得.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Rails - 使用 will pagniate 搭配 ajax 實作無限捲動</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%EF%BC%9A"><span class="toc-text">概念：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#inifite-scroll-event"><span class="toc-text">inifite scroll event</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%8B%E5%BC%8F%E7%A2%BC-HTML"><span class="toc-text">程式碼 - HTML</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%8B%E5%BC%8F%E7%A2%BC-JS"><span class="toc-text">程式碼 - JS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%EF%BC%9Ajavascript%E5%B0%8F%E6%8A%80%E5%B7%A7-%E9%81%8E%E6%BF%BEurl%E7%8D%B2%E5%8F%96id"><span class="toc-text">其他：javascript小技巧 - 過濾url獲取id</span></a></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/javascript"><i class="tag post-item-tag">javascript</i></a><a href="/tags/Rails"><i class="tag post-item-tag">Rails</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Rails - 使用 will pagniate 搭配 ajax 實作無限捲動</h1><time class="has-text-grey" datetime="2015-11-11T21:29:00.000Z">2015-11-12</time><article class="mt-2 post-content"><h2 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h2><p>will paganiate 由送到 controller 的 params[:page] 決定回傳的<code>@posts</code>。</p>
+<p>可以由我們在 controller 中定義<code>@posts</code>所知道。</p>
+<pre><code class="rb">@posts = Post.paginate(:page =&gt; params[:page])
+</code></pre>
+<h2 id="inifite-scroll-event"><a href="#inifite-scroll-event" class="headerlink" title="inifite scroll event"></a>inifite scroll event</h2><pre><code class="js">$(window).scroll(function () &#123;
+   if ($(window).scrollTop() &gt;= $(document).height() - $(window).height() - 10) &#123;
+      //Add something at the end of the page
+   &#125;
+&#125;);
+</code></pre>
+<p>記得要減10，或任何你覺得適合的數，可以幫助捲動正確觸發。</p>
+<p><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/5059526/infinite-scroll-jquery-plugin">javascript - infinite-scroll jquery plugin - Stack Overflow</a></p>
+<h2 id="程式碼-HTML"><a href="#程式碼-HTML" class="headerlink" title="程式碼 - HTML"></a>程式碼 - HTML</h2><p>因為我們使用 will pagniate 也就是分頁的GEM來實作，所以我們必須用 hidden field 來儲存目前捲動的最後一頁是哪一頁。image_tag 是 rails 特有的用法，會對應到 <code>assets/images</code> 資料夾下的圖片。</p>
+<p>index.html.erb</p>
+<pre><code class="html">&lt;div class=&quot;page-header&quot;&gt;
+  &lt;h1&gt;My Post&lt;/h1&gt;
+&lt;/div&gt;&lt;!-- page-header --&gt;
+
+&lt;div id=&quot;my-posts&quot;&gt;
+  &lt;%= render @posts %&gt;
+&lt;/div&gt;&lt;!-- my-posts --&gt;
+
+&lt;div id=&quot;loadmoreajaxloader&quot; style=&quot;display:none;&quot;&gt;&lt;center&gt;&lt;%= image_tag &quot;ajax-loader.gif&quot; %&gt;&lt;/center&gt;&lt;/div&gt;
+
+&lt;%= hidden_field_tag &quot;current_page&quot;, &quot;1&quot; %&gt;
+</code></pre>
+<p>_post.html.erb</p>
+<pre><code class="html">&lt;div&gt;
+  &lt;h2&gt;&lt;%= link_to post.title, post %&gt;&lt;/h2&gt;
+  &lt;small&gt;&lt;em&gt;&lt;%= post.timestamp %&gt;&lt;/em&gt;&lt;/small&gt;
+  &lt;p&gt;&lt;%= truncate(strip_tags(post.body), length: 600) %&gt;&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="程式碼-JS"><a href="#程式碼-JS" class="headerlink" title="程式碼 - JS"></a>程式碼 - JS</h2><p>實作了兩種觸發的方式，先完成較簡單的 click ，之後再把 click 事件替換成捲動至頁尾會觸發的事件即完成無限下拉式瀏覽。</p>
+<pre><code class="js">$(function () &#123;
+    // Load more
+    var $loadmore = $(&quot;#loadmore&quot;);
+    var $current_page = $(&quot;#current_page&quot;);
+    var $my_posts = $(&quot;#my-posts&quot;);
+    var addPostToList = function (post) &#123;
+        var postStri = &quot;&quot;;
+        postStri += &quot;&lt;div&gt;&quot;;
+        postStri += &quot;  &lt;h2&gt;&lt;a href=\&quot;#\&quot;&gt;&quot; + post.title + &quot;&lt;\/a&gt;&lt;\/h2&gt;&quot;;
+        postStri += &quot;  &lt;small&gt;&lt;em&gt;&quot; + post.created_at + &quot;&lt;\/em&gt;&lt;\/small&gt;&quot;;
+        postStri += post.body;
+        postStri += &quot;&lt;\/div&gt;&quot;;
+        $my_posts.append(postStri);
+    &#125;;
+    var addPosts = function (posts) &#123;
+        $.each(posts, function () &#123;
+            addPostToList(this);
+        &#125;);
+    &#125;;
+    $(window).on(&quot;scroll&quot;, function () &#123;
+        if ($($(window).scrollTop() &gt;= $(document).height() - $(window).height() - 50)) &#123;
+            var current_page = parseInt($current_page.val());
+            current_page++;
+            console.log(&quot;111&quot;);
+            $(&#39;div#loadmoreajaxloader&#39;).show();
+            $.ajax(&#123;
+                url: &quot;/posts.json&quot;,
+                type: &quot;GET&quot;,
+                dataType: &quot;json&quot;,
+                data: &#123;
+                    page: current_page
+                &#125;,
+                success: function (data) &#123;
+                    console.log(data);
+                    $current_page.val(String(current_page));
+                    var posts = data;
+                    $(&#39;div#loadmoreajaxloader&#39;).hide();
+                    addPosts(posts);
+                &#125;
+            &#125;);
+        &#125;
+    &#125;);
+    // var $loadmore_gif = $(&quot;a.loading-gif&quot;);
+    $loadmore.click(function (e) &#123;
+        e.preventDefault();
+        var current_page = parseInt($current_page.val());
+        current_page++;
+        $loadmore.hide();
+        console.log(&quot;click&quot;);
+        $.ajax(&#123;
+            url: &quot;/posts.json&quot;,
+            type: &quot;GET&quot;,
+            dataType: &quot;json&quot;,
+            data: &#123;
+                page: current_page
+            &#125;,
+            success: function (data) &#123;
+                console.log(data);
+                $current_page.val(String(current_page));
+                var posts = data;
+                addPosts(posts);
+                $loadmore.show();
+            &#125;
+        &#125;);
+    &#125;);
+&#125;);
+(function ($) &#123;
+&#125;)(jQuery);
+</code></pre>
+<h2 id="其他：javascript小技巧-過濾url獲取id"><a href="#其他：javascript小技巧-過濾url獲取id" class="headerlink" title="其他：javascript小技巧 - 過濾url獲取id"></a>其他：javascript小技巧 - 過濾url獲取id</h2><pre><code class="js">var str_sub = str.substr(str.lastIndexOf(&quot;=&quot;)+1);
+</code></pre>
+<p><a target="_blank" rel="noopener" href="http://codex.wiki/question/1933026-9917">Javascript: 標籤過濾從url獲取id - 數碼維基</a></p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2015/11/12/old%20posts/2015-11-12-rails-sortable-table-with-ajax/" title="Rails - Sortable Table With Ajax"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Rails - Sortable Table With Ajax</span></a><a class="button is-default" href="/2015/11/02/old%20posts/2015-11-02-tealeaf-course-2-sluggify-module/" title="從 Tealeaf 課程學習模組化 - Sluggify Module"><span class="has-text-weight-semibold">Next: 從 Tealeaf 課程學習模組化 - Sluggify Module</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

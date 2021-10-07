@@ -1,0 +1,212 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>Luka.tw</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/widget-post-list.css"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><span>Archives · All</span></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><article class="post-container is-flex is-justify-content-center section container is-max-widescreen pt-4 px-2"><div class="columns is-variable is-1-tablet is-3-desktop-only is-2-widescreen is-full-width"><section class="column"><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://lh5.googleusercontent.com/OB4R69JvbILh1yuu6vN19DE4F4N0D2x2ctwontchPpg=w1755-h930-no" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2014/09/05/old%20posts/2014-09-05-ruby-bits-4-active-support/"><img class="post-cover-img js-img-fadeIn" src="https://lh5.googleusercontent.com/OB4R69JvbILh1yuu6vN19DE4F4N0D2x2ctwontchPpg=w1755-h930-no" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Ruby"><i class="tag post-item-tag">Ruby</i></a><a href="/tags/Ruby-Bit"><i class="tag post-item-tag">Ruby Bit</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2014/09/05/old%20posts/2014-09-05-ruby-bits-4-active-support/">Ruby bits ( 4 )：ActiveSupport</a></h2><time class="has-text-grey" datetime="2014-09-05T00:12:00.000Z">2014-09-05</time><p class="is-flex-grow-2 mt-2">install it and load itinstall itgem install activesupportgem install i18n
+load itrequire ‘active_support/all’
+core extensions: arrayarray.form()array.to()array.in_group_ofarray.splite
+
+core extensions: Date.at_beginning_of_day.at_end_of_monthr
+
+core extensions:hash有兩個hashoptions = {user: ‘codeschool’, lang: ‘fr’}new_options = {user: ‘codeschool’, lang: ‘fr..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2014/09/05/old%20posts/2014-09-05-ruby-bits-4-active-support/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://lh3.googleusercontent.com/AXTNO38rF_Z5-Bvn6HEX96KsojxntcHjnKFdkpT-5-4=w1755-h923-no" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2014/09/05/old%20posts/2014-09-05-ruby-bits-3-class/"><img class="post-cover-img js-img-fadeIn" src="https://lh3.googleusercontent.com/AXTNO38rF_Z5-Bvn6HEX96KsojxntcHjnKFdkpT-5-4=w1755-h923-no" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Ruby"><i class="tag post-item-tag">Ruby</i></a><a href="/tags/Ruby-Bit"><i class="tag post-item-tag">Ruby Bit</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2014/09/05/old%20posts/2014-09-05-ruby-bits-3-class/">Ruby bits ( 3 )：Class</a></h2><time class="has-text-grey" datetime="2014-09-04T22:41:00.000Z">2014-09-05</time><p class="is-flex-grow-2 mt-2">上一個禮拜想要嘗試更多的動手記憶，經過實驗證明，還是需要筆記的輔助反覆記憶會比較好。經過這次的練習之後會更注重學習本身的強度。
+ENCAPSULATION封裝跟物件本身有關的method，使用class會比使用許多的method來的好。
+VISIBILITY有一些method你並不想給外面的人直接使用他，那麼宣告成private，限制這些private method不能給外面的人所使用。
+class User
+  def up_vote(friend)
+    bump_karma
+    friend.bump_karma
+  end
+  protected
+  def bump_karma
+    puts &amp;quot;karma up for #&amp;#123;name&amp;#125;&amp;quot;
+  end..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2014/09/05/old%20posts/2014-09-05-ruby-bits-3-class/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://lh4.googleusercontent.com/-hdUCbd8-xxI/VJ7OabbDJzI/AAAAAAAADVE/IVpvhmF0jME/w1755-h965-no/Screen%2BShot%2B2014-12-27%2Bat%2B23.18.02.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2014/09/04/old%20posts/2014-09-04-ruby-bits-2-methods-and-classes/"><img class="post-cover-img js-img-fadeIn" src="https://lh4.googleusercontent.com/-hdUCbd8-xxI/VJ7OabbDJzI/AAAAAAAADVE/IVpvhmF0jME/w1755-h965-no/Screen%2BShot%2B2014-12-27%2Bat%2B23.18.02.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Ruby"><i class="tag post-item-tag">Ruby</i></a><a href="/tags/Ruby-Bit"><i class="tag post-item-tag">Ruby Bit</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2014/09/04/old%20posts/2014-09-04-ruby-bits-2-methods-and-classes/">Ruby bits ( 2 ) : Methods and Classes</a></h2><time class="has-text-grey" datetime="2014-09-03T21:05:00.000Z">2014-09-04</time><p class="is-flex-grow-2 mt-2">Hash Argument每一個不同的欄位就多一個 argument不是個好方法，會造成很多欄位空在那邊。用 Hash argument 來解決這個問題。使用方法，因為 hash 是由 key-value 所組成，所以可以把需要的屬性設成 symbol ，也就是:lat這種樣子。後面指定它的 value，形成 key-value 的形式。改寫成 1.9 以後的 hashhash 中的 key 可以省略，只寫出某幾個就可以，就連hash argument 本身都可以省略，。
+Exceptions當 tweets 是空的時候，我希望我會知道這個訊息，這時候 Exception 就派上用場了。
+def get_tweets(list)
+  unless list.authorized?(@user)
+    ra..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2014/09/04/old%20posts/2014-09-04-ruby-bits-2-methods-and-classes/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://lh6.googleusercontent.com/-5bBGYT1k2-A/VJ6nejJKOhI/AAAAAAAADSo/1-o4flu-7Ys/w1753-h923-no/Screen%2BShot%2B2014-12-27%2Bat%2B20.21.26.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2014/09/03/old%20posts/2014-09-03-ruby-bits-1-expression/"><img class="post-cover-img js-img-fadeIn" src="https://lh6.googleusercontent.com/-5bBGYT1k2-A/VJ6nejJKOhI/AAAAAAAADSo/1-o4flu-7Ys/w1753-h923-no/Screen%2BShot%2B2014-12-27%2Bat%2B20.21.26.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Ruby"><i class="tag post-item-tag">Ruby</i></a><a href="/tags/Ruby-Bit"><i class="tag post-item-tag">Ruby Bit</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2014/09/03/old%20posts/2014-09-03-ruby-bits-1-expression/">Ruby bits ( 1 ) : Expression</a></h2><time class="has-text-grey" datetime="2014-09-03T01:10:00.000Z">2014-09-03</time><p class="is-flex-grow-2 mt-2">UnlessUnless is more intuitive用 unless 代替 if! 更加直覺
+Unless with else is confusingunless 和 else 一起用的時候令人困惑
+NILNIL IS FALSE因為 nil 的值等於 false 所以上面的程式可以簡化成下面這樣。
+ONLY NIL IS FALSERails 世界中只有 nil 的值是 false（除了 False 本身的值當然是 False 以外）。
+inline condition
+short circuit assignment指的是使用 and(&amp;amp;&amp;amp;) 和 or(||)來縮減 if-else
+Ex1 : if nil, default to empty array
+Ex2 : sign ..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2014/09/03/old%20posts/2014-09-03-ruby-bits-1-expression/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://lh6.googleusercontent.com/-HjoupHhCEzM/U_qSn5aBcsI/AAAAAAAACxQ/tnBo1gSjLCM/w1755-h860-no/Screen%2BShot%2B2014-08-25%2Bat%2B09.33.46.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2014/08/25/old%20posts/2014-08-25-javascript-return-flight/"><img class="post-cover-img js-img-fadeIn" src="https://lh6.googleusercontent.com/-HjoupHhCEzM/U_qSn5aBcsI/AAAAAAAACxQ/tnBo1gSjLCM/w1755-h860-no/Screen%2BShot%2B2014-08-25%2Bat%2B09.33.46.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/javascript"><i class="tag post-item-tag">javascript</i></a><a href="/tags/Ajax"><i class="tag post-item-tag">Ajax</i></a><a href="/tags/jQuery"><i class="tag post-item-tag">jQuery</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2014/08/25/old%20posts/2014-08-25-javascript-return-flight/">jQuery Return Flight Ch1 ( 1 )：Ajax Basics</a></h2><time class="has-text-grey" datetime="2014-08-24T17:26:00.000Z">2014-08-25</time><p class="is-flex-grow-2 mt-2">這是之前在try jQuery做過的例子。
+
+之前我們只能顯示localhost的圖片，現在我們要從server載圖片下來，並顯示之。接下來來完成我們第一個Ajax程式。
+$(&amp;#39;.confirmation&amp;#39;).on(&amp;#39;click&amp;#39;, &amp;#39;button&amp;#39;, function()&amp;#123;
+  $.ajax(&amp;#39;http://example.org/confirmation.html&amp;#39;,  &amp;#123;
+     success: function(response) &amp;#123;
+       $(&amp;#39;.ticket&amp;#39;).html(response).slideDown();
+       &amp;#125;
+    &amp;#125;);
+&amp;#..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2014/08/25/old%20posts/2014-08-25-javascript-return-flight/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://lh6.googleusercontent.com/-QXaRQdFQ51U/U-gsMJNN7xI/AAAAAAAACt8/gl7wpuNUmBI/w1916-h1146-no/Screen%2BShot%2B2014-08-11%2Bat%2B10.23.51.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2014/08/11/old%20posts/2014-08-11-sitcon-git-workshop/"><img class="post-cover-img js-img-fadeIn" src="https://lh6.googleusercontent.com/-QXaRQdFQ51U/U-gsMJNN7xI/AAAAAAAACt8/gl7wpuNUmBI/w1916-h1146-no/Screen%2BShot%2B2014-08-11%2Bat%2B10.23.51.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Git"><i class="tag post-item-tag">Git</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2014/08/11/old%20posts/2014-08-11-sitcon-git-workshop/">Sitcon workshop：Git 入門到進階與實務經驗談</a></h2><time class="has-text-grey" datetime="2014-08-10T17:54:00.000Z">2014-08-11</time><p class="is-flex-grow-2 mt-2">Git 入門到進階與實務經驗談workshop網頁sitcon這次舉辦的為期五天的workshop每天不一樣的主題，我參加的有
+
+8/11 Git 入門到進階與實務經驗談
+8/14 那些學校沒教的黑魔法攻防
+8/15 學習設計：從一個網站的設計開始
+
+這是第一天 Git workshop 的學習筆記主講人:Denny投影片: 連結
+第零部分：前置設定1. 讓你的termenal可以顯示出精美的彩色branch樹狀圖git config --global alias.lg &amp;quot;log --color --graph --all --pretty=format:&amp;#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&amp;l..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2014/08/11/old%20posts/2014-08-11-sitcon-git-workshop/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2014/08/09/old%20posts/2014-08-09-get-things-down-at-wednesday/">星期三搞定一週 88% 工作</a></h2><time class="has-text-grey" datetime="2014-08-08T17:54:00.000Z">2014-08-09</time><p class="is-flex-grow-2 mt-2">Part 1:工作清單以一週為規劃優點
+不需要每天製工作清單，可以節省時間精力。
+一年原本365份的工作清單，縮減成52份。
+有足足一週可以進行最終的彙整工作，消除「工作未完成」的心理壓力。
+可嚴選真正重要的工作：一天的工作量僅為一週的七分之一，審視一週所有的工作，較易依工作重要性決定優先次序。
+提昇完成工作的成就感，比幾每天完成小部分工作，一週完成一項中大型工作可獲得較高的成就感。
+
+Part2:一週只有三天，以星期三為最後期限為工作添加一些限制，像是「一週只有三天」，「星期三是最後的截止期限」這樣絕對可以讓自己以驚人的高效率、迅速完成工作。因為把工作集中在一個禮拜的前三天完成，這樣高密度的工作下，在經驗中反覆學習改進，自然可以養成高效率、高集中力的工作能力。（p39分析了禮拜中的每一天可能的心態，最後選..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2014/08/09/old%20posts/2014-08-09-get-things-down-at-wednesday/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://lh5.googleusercontent.com/fF4eK0g64rmCDr44cdBam6d--3ldM46wZK0Oalhftws=w1192-h986-no" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2014/08/05/old%20posts/2014-08-05-discover-meteor-ch5-routing/"><img class="post-cover-img js-img-fadeIn" src="https://lh5.googleusercontent.com/fF4eK0g64rmCDr44cdBam6d--3ldM46wZK0Oalhftws=w1192-h986-no" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/javascript"><i class="tag post-item-tag">javascript</i></a><a href="/tags/Meteor"><i class="tag post-item-tag">Meteor</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2014/08/05/old%20posts/2014-08-05-discover-meteor-ch5-routing/">Discover Meteor Ch5：Routing</a></h2><time class="has-text-grey" datetime="2014-08-04T23:18:00.000Z">2014-08-05</time><p class="is-flex-grow-2 mt-2">現在要做的事情是點選http://myapp.com/posts/post_id，就可以對應到post的網頁。
+加入iron router這個package。$ mrt add iron-router
+知識補充站Iron RouterNot only does it help with routing (setting up paths), but it can also take care of filters (assigning actions to some of these paths) and even manage subscriptions (control which path has access to what data). (Note: Iron Router was develop..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2014/08/05/old%20posts/2014-08-05-discover-meteor-ch5-routing/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/javascript"><i class="tag post-item-tag">javascript</i></a><a href="/tags/Meteor"><i class="tag post-item-tag">Meteor</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2014/08/05/old%20posts/2014-08-05-discover-meteor-ch4-collection/">Discover meteor Ch4：Collection</a></h2><time class="has-text-grey" datetime="2014-08-04T19:04:00.000Z">2014-08-05</time><p class="is-flex-grow-2 mt-2">Collection新增一個collection
+collections/posts.js
+
+Posts = new Meteor.Collection(&amp;#39;posts&amp;#39;);
+
+除了client與server以外的資料夾會在兩者都執行。所以Posts collection在client和server都可以使用。這裡的Posts前面不加var，這樣整個app都可以存取到Posts。
+git commit -m &amp;quot;Added a posts collection&amp;quot;
+
+Collection的性質On the server, the collection has the job of talking to the Mongo database, and reading and wr..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2014/08/05/old%20posts/2014-08-05-discover-meteor-ch4-collection/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/CSS"><i class="tag post-item-tag">CSS</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2014/08/03/old%20posts/2014-08-03-css-dinner/">CSS Dinner - 好玩又有效的 CSS 教學</a></h2><time class="has-text-grey" datetime="2014-08-02T19:04:00.000Z">2014-08-03</time><p class="is-flex-grow-2 mt-2">CSS DinnerCSS Diner 是一個很有趣的小遊戲，你必須使用css來選取桌上扭動的物體，全部26關玩完對 CSS selector 想忘也忘不了。css selector 在 javascript 或是 jQeury 也會用到，不熟的話到時候還是需要花額外的時間加強。有神人整理成一系列好玩練習效果又顯著的教學，好教學不玩嘛？XD
+學習目標
+Univeral, Type selector, Class selector, ID selector的用法。
+了解ul &amp;gt; ui &amp;#123;&amp;#125;和ul ui&amp;#123;&amp;#125;的不同
+了解A+B與A~B的不同。
+了解pasudo selector的用法。
+
+Memo1. A+B 與 A~B 的不同A+B 代表與 A 相鄰的 B。A~B ..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2014/08/03/old%20posts/2014-08-03-css-dinner/">Read more</a></section></article><section class="paginator is-flex is-justify-content-flex-end is-flex-wrap-wrap mt-5"><a class="extend prev" rel="prev" href="/archives/page/11/"><i class="iconfont icon-prev has-text-grey"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/10/">10</a><a class="page-number" href="/archives/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/archives/page/13/">13</a><a class="page-number" href="/archives/page/14/">14</a><a class="page-number" href="/archives/page/15/">15</a><a class="extend next" rel="next" href="/archives/page/13/"><i class="iconfont icon-next has-text-grey"></i></a></section></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><style>.search-widget .search-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--second-text-color);
+}
+.search-widget .search-content {
+    position: absolute;
+    left: 0;
+    top: calc(100% - 3px);
+    z-index: 2;
+
+    width: 100%;
+    height: 0;
+    max-height: 550px;
+
+    overflow: auto;
+    box-sizing: border-box;
+
+    background: var(--top-bar-bg-color);
+    backdrop-filter: blur(var(--backdropFilter));
+    -webkit-backdrop-filter: blur(var(--backdropFilter));
+
+    border-bottom-left-radius: var(--borderRadius);
+    border-bottom-right-radius: var(--borderRadius);
+    box-shadow: 0 12px 15px rgba(0, 0, 0, 0.08);
+}
+
+.search-widget .search-content a:hover h5 {
+    color: #3273dc!important;
+}
+</style><main class="aside-card-container search-widget is-relative"><label for="searchInput"><div class="is-flex px-4" id="searchButton"><i class="iconfont icon--search1 mr-1"></i><input class="search-input is-flex-grow-1" id="searchInput" placeholder="Search everything.."></div></label><section class="search-content content" id="searchContent"></section></main><script>var searchDatabase = []
+var searchInputEl = document.getElementById('searchInput')
+var searchButtonEl = document.getElementById('searchButton')
+var searchResultEl = document.getElementById('searchContent')
+
+searchInputEl.oninput = function (evt) {
+    var searchValue = evt.srcElement.value
+    var haveSearchValue = Boolean(searchValue.trim())
+    if (!haveSearchValue) {
+        searchResultEl.style.height = 0
+        searchResultEl.innerHTML = null
+        return
+    }
+
+    var searchResults = searching(searchValue)
+
+    if (searchResults.length > 0) {
+        renderSearchResults(searchResults)
+    }
+}
+
+function renderSearchResults(results) {
+    searchResultEl.innerHTML = null
+    var fragment = document.createDocumentFragment()
+
+    results.forEach(function (item) {
+        var link = document.createElement('a')
+        var title = document.createElement('h5')
+        var content = document.createElement('p')
+
+        title.className = 'mb-1'
+        title.innerText = item.title
+        content.innerText = item.content
+
+        link.href = item.link
+        link.appendChild(title)
+        link.appendChild(content)
+        link.className = 'p-4 is-block'
+
+        fragment.appendChild(link)
+    })
+
+    searchResultEl.appendChild(fragment)
+    searchResultEl.style.height = 'auto'
+}
+
+function searching(inputText) {
+    var inputTexts = inputText.split(' ')
+    var searchResults = []
+    inputTexts.forEach(function (searchKey) {
+        var haveSearchValue = Boolean(searchKey.trim())
+        if (!haveSearchValue) return
+
+        var key = searchKey.toLowerCase()
+
+        for (var entry of searchDatabase) {
+            var title = entry.getElementsByTagName('title')[0].textContent
+            var link = entry.getElementsByTagName('link')[0].getAttribute('href')
+            var contentWithTags = entry.getElementsByTagName('content')[0].textContent
+            var rawContent = contentWithTags.trim().replace(/<[^>]+>/g, '').toLowerCase()
+
+            var LENGTH = 80
+            var finalContent = ''
+            var contentLength = rawContent.length
+            var searchResultIdx = rawContent.indexOf(key)
+
+            var startIdx = searchResultIdx - 20,
+                endIdx = startIdx + LENGTH
+
+            if (startIdx < 0) {
+                startIdx = 0
+                endIdx = 100
+            }
+
+            endIdx > contentLength && (endIdx = contentLength)
+
+            finalContent = rawContent.substring(startIdx, endIdx)
+
+            if (title.indexOf(key) > -1 || searchResultIdx > -1) {
+                searchResults.push({
+                    link: link,
+                    title: title,
+                    content: finalContent
+                })
+            }
+        }
+    })
+    return searchResults
+}
+
+searchButtonEl.onclick = function () {
+    if (searchDatabase.length > 0) return;
+
+    fetch(window.location.href + '/search.xml').then(res => res.text()).then(res => {
+        var domparser = new DOMParser
+        var doc = domparser.parseFromString(res, 'application/xml')
+        searchDatabase = doc.getElementsByTagName('search')[0].children
+    })
+}</script><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><main class="aside-card-container archives-widget is-in-archive-page"><h3>Archives</h3><section><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a><span class="archive-list-count">2</span></li></ul></section></main><main class="aside-card-container recent-widget"><h3>Recent</h3><ul><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://lh5.googleusercontent.com/OB4R69JvbILh1yuu6vN19DE4F4N0D2x2ctwontchPpg=w1755-h930-no" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2014/09/05/old%20posts/2014-09-05-ruby-bits-4-active-support/">Ruby bits ( 4 )：ActiveSupport</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2014-09-05T00:12:00.000Z">2014-09-05</time></section></li><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://lh3.googleusercontent.com/AXTNO38rF_Z5-Bvn6HEX96KsojxntcHjnKFdkpT-5-4=w1755-h923-no" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2014/09/05/old%20posts/2014-09-05-ruby-bits-3-class/">Ruby bits ( 3 )：Class</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2014-09-04T22:41:00.000Z">2014-09-05</time></section></li><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://lh4.googleusercontent.com/-hdUCbd8-xxI/VJ7OabbDJzI/AAAAAAAADVE/IVpvhmF0jME/w1755-h965-no/Screen%2BShot%2B2014-12-27%2Bat%2B23.18.02.png" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2014/09/04/old%20posts/2014-09-04-ruby-bits-2-methods-and-classes/">Ruby bits ( 2 ) : Methods and Classes</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2014-09-03T21:05:00.000Z">2014-09-04</time></section></li><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://lh6.googleusercontent.com/-5bBGYT1k2-A/VJ6nejJKOhI/AAAAAAAADSo/1-o4flu-7Ys/w1753-h923-no/Screen%2BShot%2B2014-12-27%2Bat%2B20.21.26.png" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2014/09/03/old%20posts/2014-09-03-ruby-bits-1-expression/">Ruby bits ( 1 ) : Expression</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2014-09-03T01:10:00.000Z">2014-09-03</time></section></li><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://lh6.googleusercontent.com/-HjoupHhCEzM/U_qSn5aBcsI/AAAAAAAACxQ/tnBo1gSjLCM/w1755-h860-no/Screen%2BShot%2B2014-08-25%2Bat%2B09.33.46.png" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2014/08/25/old%20posts/2014-08-25-javascript-return-flight/">jQuery Return Flight Ch1 ( 1 )：Ajax Basics</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2014-08-24T17:26:00.000Z">2014-08-25</time></section></li><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://lh6.googleusercontent.com/-QXaRQdFQ51U/U-gsMJNN7xI/AAAAAAAACt8/gl7wpuNUmBI/w1916-h1146-no/Screen%2BShot%2B2014-08-11%2Bat%2B10.23.51.png" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2014/08/11/old%20posts/2014-08-11-sitcon-git-workshop/">Sitcon workshop：Git 入門到進階與實務經驗談</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2014-08-10T17:54:00.000Z">2014-08-11</time></section></li></ul></main></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+
+window.addEventListener('resize', $claudia.throttle(function () {
+    var images = document.querySelectorAll('.js-img-fadeIn')
+
+    images.forEach($claudia.blurBackdropImg)
+}, 150))</script></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+
+window.addEventListener('resize', $claudia.throttle(function () {
+    var images = document.querySelectorAll('.js-img-fadeIn')
+
+    images.forEach($claudia.blurBackdropImg)
+}, 150))</script></body></html>

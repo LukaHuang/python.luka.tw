@@ -1,0 +1,58 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>EFK(4) - 讓 Elasticsearch 與 Kibana 能夠接收 Rails 的 log</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="架構
+安裝步驟2.1 安裝 elasticsearch$ curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.0.2.tar.gz
+$ tar zxvf elasticsearch-5.0.2.tar.gz
+$ cd elasticsearch-5.0.2
+
+啟動 elasticsearch
+$ ./bin/elasticsearch
+
+2.2 安裝 Kibanacurl -O https://artifacts.elastic.co/downloads/kibana/kibana-5.0.2-darwin-x86_64.tar.gz
+$ tar zxvf kibana-5.0.2-darwin-x86_6.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">EFK(4) - 讓 Elasticsearch 與 Kibana 能夠接收 Rails 的 log</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%B6%E6%A7%8B"><span class="toc-text">架構</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D%E6%AD%A5%E9%A9%9F"><span class="toc-text">安裝步驟</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%AE%89%E8%A3%9D-elasticsearch"><span class="toc-text">2.1 安裝 elasticsearch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%AE%89%E8%A3%9D-Kibana"><span class="toc-text">2.2 安裝 Kibana</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%AE%89%E8%A3%9D-fluentd"><span class="toc-text">2.3 安裝 fluentd</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="toc-text">參考資料</span></a></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/Fluentd"><i class="tag post-item-tag">Fluentd</i></a><a href="/tags/EFK"><i class="tag post-item-tag">EFK</i></a><a href="/tags/Devops"><i class="tag post-item-tag">Devops</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">EFK(4) - 讓 Elasticsearch 與 Kibana 能夠接收 Rails 的 log</h1><time class="has-text-grey" datetime="2017-05-17T13:33:00.000Z">2017-05-17</time><article class="mt-2 post-content"><h2 id="架構"><a href="#架構" class="headerlink" title="架構"></a>架構</h2><p><img src="https://lh3.googleusercontent.com/-d5gQhHd4ylM/WSKepoR8vPI/AAAAAAAAKyc/0BxPY3iDqEkpUttT907x5q__p1z2Cgy1wCHM/I/14943188485356.jpg"></p>
+<h2 id="安裝步驟"><a href="#安裝步驟" class="headerlink" title="安裝步驟"></a>安裝步驟</h2><h3 id="2-1-安裝-elasticsearch"><a href="#2-1-安裝-elasticsearch" class="headerlink" title="2.1 安裝 elasticsearch"></a>2.1 安裝 elasticsearch</h3><pre><code>$ curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.0.2.tar.gz
+$ tar zxvf elasticsearch-5.0.2.tar.gz
+$ cd elasticsearch-5.0.2
+</code></pre>
+<p>啟動 elasticsearch</p>
+<pre><code>$ ./bin/elasticsearch
+</code></pre>
+<h3 id="2-2-安裝-Kibana"><a href="#2-2-安裝-Kibana" class="headerlink" title="2.2 安裝 Kibana"></a>2.2 安裝 Kibana</h3><pre><code>curl -O https://artifacts.elastic.co/downloads/kibana/kibana-5.0.2-darwin-x86_64.tar.gz
+$ tar zxvf kibana-5.0.2-darwin-x86_64.tar.gz
+$ cd kibana-5.0.2-darwin-x86_64
+</code></pre>
+<p>啟動 kibana</p>
+<pre><code>$ ./bin/kibana
+</code></pre>
+<h3 id="2-3-安裝-fluentd"><a href="#2-3-安裝-fluentd" class="headerlink" title="2.3 安裝 fluentd"></a>2.3 安裝 fluentd</h3><p>透過fluentd 的 elasticsearch 套件<code>fluent-plugin-elasticsearch</code>我們可以讓 fluentd 輸出的 log 變成 logstash 輸出的格式，這樣一來 kibana 就可以顯示我們儲存的 log。</p>
+<p>安裝 fluent-plugin-elasticsearch</p>
+<pre><code>fluent-gem install fluent-plugin-elasticsearch --no-document
+</code></pre>
+<p>設定 fluentd 設定檔</p>
+<pre><code>mkdir td-agent
+touch ./td-agent/td-agent.conf
+</code></pre>
+<p>編輯 <code>td-agent.conf</code><br>因為 Rails 是使用 forward input，我們只需要開啟 forward input 就好。<br>如果你想監測其他的 log 類型例如：syslog，也可以透過設定 source 來達成。</p>
+<pre><code># get logs from syslog
+#&lt;source&gt;
+#  @type syslog
+#  port 42185
+#  tag syslog
+#&lt;/source&gt;
+
+# get logs from fluent-logger, fluent-cat or other fluentd instances
+&lt;source&gt;
+  @type forward
+&lt;/source&gt;
+
+&lt;match syslog.**&gt;
+  @type elasticsearch
+  logstash_format true
+  flush_interval 10s # for testing
+&lt;/match&gt;
+</code></pre>
+<p>執行 fluentd</p>
+<pre><code>fluentd -c ./fluent/td-agent.conf -vv
+</code></pre>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a target="_blank" rel="noopener" href="http://docs.fluentd.org/v0.12/articles/free-alternative-to-splunk-by-fluentd">Free Alternative to Splunk Using Fluentd - Fluentd</a></p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2017/05/18/old%20posts/2017-05-18-efk-high-availbility/" title="EFK(5) - Fluentd 高可用架構(High Availibity)"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: EFK(5) - Fluentd 高可用架構(High Availibity)</span></a><a class="button is-default" href="/2017/05/16/old%20posts/2017-05-16-rails-connect-to-fluentd/" title="EFK(3) - Rails 與 Fluentd 的串接方法"><span class="has-text-weight-semibold">Next: EFK(3) - Rails 與 Fluentd 的串接方法</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

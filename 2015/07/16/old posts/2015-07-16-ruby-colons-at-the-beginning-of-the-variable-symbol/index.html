@@ -1,0 +1,94 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>Ruby中冒號開頭Symbol與&amp;:to_s用法解釋</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="本篇介紹Ruby中特有的寫法，將解答&amp;amp;:to_s和:symbol這兩種寫法的意義。並依序介紹以下議題：
+Symbol和String的不同之處分別宣告兩個symbol與string。
+[22] pry(main)&amp;gt; sym = :abc
+=&amp;gt; :abc
+[23] pry(main)&amp;gt; str = &amp;quot;abc&amp;quot;
+=&amp;gt; &amp;quot;abc&amp;quot;
+[24] pry(main)&amp;gt; sym2 = :abc
+=&amp;gt; :abc
+[25] pry(main)&amp;gt; str2 = &amp;quot;abc&amp;quot;
+=&amp;gt; &amp;quot;abc&amp;quot;
+
+用object_id來看看是否為同一個物件。從下面結果可以發現，在參照同樣的symbol:abc時，不同.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Ruby中冒號開頭Symbol與&amp;:to_s用法解釋</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Symbol%E5%92%8CString%E7%9A%84%E4%B8%8D%E5%90%8C%E4%B9%8B%E8%99%95"><span class="toc-text">Symbol和String的不同之處</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#all-symbols-%E8%88%87-include-%E6%90%AD%E9%85%8D%E9%81%8B%E7%94%A8"><span class="toc-text">all_symbols 與 include? 搭配運用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#amp-to-s%E7%9A%84%E7%94%A8%E6%B3%95%E8%88%87%E5%8E%9F%E7%90%86"><span class="toc-text">&amp;:to_s的用法與原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#String%E3%80%81Symbol%E5%92%8CInteger%E7%9A%84%E4%BA%92%E7%9B%B8%E8%BD%89%E6%8F%9B"><span class="toc-text">String、Symbol和Integer的互相轉換</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="toc-text">參考資料</span></a></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/Ruby"><i class="tag post-item-tag">Ruby</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Ruby中冒號開頭Symbol與&amp;:to_s用法解釋</h1><time class="has-text-grey" datetime="2015-07-15T21:53:00.000Z">2015-07-16</time><article class="mt-2 post-content"><p>本篇介紹Ruby中特有的寫法，將解答<code>&amp;:to_s</code>和<code>:symbol</code>這兩種寫法的意義。並依序介紹以下議題：</p>
+<h3 id="Symbol和String的不同之處"><a href="#Symbol和String的不同之處" class="headerlink" title="Symbol和String的不同之處"></a>Symbol和String的不同之處</h3><p>分別宣告兩個symbol與string。</p>
+<pre><code>[22] pry(main)&gt; sym = :abc
+=&gt; :abc
+[23] pry(main)&gt; str = &quot;abc&quot;
+=&gt; &quot;abc&quot;
+[24] pry(main)&gt; sym2 = :abc
+=&gt; :abc
+[25] pry(main)&gt; str2 = &quot;abc&quot;
+=&gt; &quot;abc&quot;
+</code></pre>
+<p>用object_id來看看是否為同一個物件。從下面結果可以發現，在參照同樣的symbol<code>:abc</code>時，不同的變數參考的是同一個物件。而String參考的物件是不同的。</p>
+<pre><code>[26] pry(main)&gt; sym.object_id
+=&gt; 1172168
+[28] pry(main)&gt; sym2.object_id
+=&gt; 1172168
+[29] pry(main)&gt; str.object_id
+=&gt; 70232488314360
+[30] pry(main)&gt; str2.object_id
+=&gt; 70232505015640
+[31] pry(main)&gt;
+</code></pre>
+<h3 id="all-symbols-與-include-搭配運用"><a href="#all-symbols-與-include-搭配運用" class="headerlink" title="all_symbols 與 include? 搭配運用"></a>all_symbols 與 include? 搭配運用</h3><p>在終端機輸入<code>Symbol.all_symbols</code>可以列出目前所有的Symbol。</p>
+<pre><code>[34] pry(main)&gt; Symbol.all_symbols
+=&gt; [:freeze,
+ :inspect,
+ :intern,
+ :object_id,
+ :const_missing,
+ :method_missing,
+ :method_added,
+ :singleton_method_added,
+ :method_removed,
+ :singleton_method_removed,
+ :method_undefined,
+ :singleton_method_undefined,
+ :length,
+ :size,
+ :gets,
+ :succ,
+ :each,
+ :proc,
+ :lambda,
+ :send,
+ :__send__,
+ :__attached__,
+ :initialize,
+ .
+ .
+ .
+</code></pre>
+<p>我們把用all_symbols取出的陣列用變數<code>symbols</code>存起來。這樣我們就可以用<code>include?</code>來檢查某個symbol是否已經宣告。</p>
+<pre><code>[23] pry(main)&gt; all_symbols.include?(:sym)
+=&gt; true
+# :sym是系統預設的所以顯示true
+[24] pry(main)&gt; all_symbols.include?(:abc)
+=&gt; false
+# :abc是我亂輸入的所以顯示false
+[25] pry(main)&gt;
+</code></pre>
+<h3 id="amp-to-s的用法與原理"><a href="#amp-to-s的用法與原理" class="headerlink" title="&amp;:to_s的用法與原理"></a><code>&amp;:to_s</code>的用法與原理</h3><p>以下兩個寫法效果相同，<code>:</code>代表一個Symbol，當Symbol遇上<code>&amp;</code>符號時，會把<code>to_s</code>方法轉變為proc，而是否能轉變為proc則是看Class中有沒有<code>to_proc</code>方法，這是ruby中的duck typing特性所致。我會另外寫一篇來說明duck typing是如何運作。</p>
+<pre><code>[72] pry(main)&gt; [1,2,3,4].map(&amp;:to_s)
+=&gt; [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;]
+[73] pry(main)&gt; [1,2,3,4].map&#123;|i| i.to_s&#125;
+=&gt; [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;]
+</code></pre>
+<h3 id="String、Symbol和Integer的互相轉換"><a href="#String、Symbol和Integer的互相轉換" class="headerlink" title="String、Symbol和Integer的互相轉換"></a>String、Symbol和Integer的互相轉換</h3><p>Symbol可以轉換成String</p>
+<pre><code>[74] pry(main)&gt; :a.to_s
+=&gt; &quot;a&quot;
+</code></pre>
+<p>String可以轉換成Symbol</p>
+<pre><code>[75] pry(main)&gt; &quot;a&quot;.to_sym
+=&gt; :a
+</code></pre>
+<p>Fixnum(數字的類別)不能轉換成Symbol，會出現錯誤。</p>
+<pre><code>[76] pry(main)&gt; 1.to_sym
+NoMethodError: undefined method `to_sym&#39; for 1:Fixnum
+from (pry):98:in `__pry__&#39;
+</code></pre>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p>誘人的ruby-符號篇</p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2015/07/22/old%20posts/2015-07-22-introduce-atoms-killer-packages/" title="Atom殺手級套件介紹"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Atom殺手級套件介紹</span></a><a class="button is-default" href="/2015/06/04/old%20posts/2015-06-04-psd-to-html-practice-using-sass-development-portfolio/" title="練習：使用SASS開發Portfolio (1) Header 與 Footer"><span class="has-text-weight-semibold">Next: 練習：使用SASS開發Portfolio (1) Header 與 Footer</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

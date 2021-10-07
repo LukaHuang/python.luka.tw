@@ -1,0 +1,210 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>Luka.tw</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/widget-post-list.css"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><span>Archives · 2016</span></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><article class="post-container is-flex is-justify-content-center section container is-max-widescreen pt-4 px-2"><div class="columns is-variable is-1-tablet is-3-desktop-only is-2-widescreen is-full-width"><section class="column"><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Rails"><i class="tag post-item-tag">Rails</i></a><a href="/tags/Cronjob"><i class="tag post-item-tag">Cronjob</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2016/07/08/old%20posts/2016-07-08-rails-gem-use-whenever-the-schedule-of-daily-routine/">Rails: 使用 Whenever 產生 Cronjob </a></h2><time class="has-text-grey" datetime="2016-07-07T20:53:00.000Z">2016-07-08</time><p class="is-flex-grow-2 mt-2">Part 1 - Crontab 介紹Crontab 是 Linux 中用來管理例行事務的程式，而 whenever 實際上的作用就是用來產生 cronjob 的，所以先介紹一下 Linux 系統中的 crontab 如何操作。
+crontab 指令比較常用指令的有以下幾項：
+crontab -l 顯示目前排程 (list cron)crontab -e 編輯排程 (edit cron)crontab -r 移除排程 (remove cron)crontab -u 改變排程的執行身分: crontab -u user filename
+crontab 的欄位與對應的意義整個指令會長得像樣子，這個指令做的事情是先移動到某個資料夾後執行User.delete_three_day_ago!。
+0 4 * * * ..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2016/07/08/old%20posts/2016-07-08-rails-gem-use-whenever-the-schedule-of-daily-routine/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Rails"><i class="tag post-item-tag">Rails</i></a><a href="/tags/ActiveRecord"><i class="tag post-item-tag">ActiveRecord</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2016/07/07/old%20posts/2016-07-07-security-of-raw-sql-in-ruby/">Generate Safety Query String In ActiveRecord </a></h2><time class="has-text-grey" datetime="2016-07-06T23:46:00.000Z">2016-07-07</time><p class="is-flex-grow-2 mt-2">Solution 1: sanitize_sqlActiveRecord::Base.send(:sanitize_sql,[&amp;quot;select * from my_table where description=&amp;#39;%s&amp;#39; and id=&amp;#39;%s&amp;#39;&amp;quot;,&amp;quot;mal&amp;#39;formed&amp;quot;, 55], &amp;quot;my_table&amp;quot;)
+=&amp;gt; &amp;quot;select * from my_table where description=&amp;#39;mal\\&amp;#39;formed&amp;#39; and id=&amp;#39;55&amp;#39;&amp;quot;
+
+Can also use instance method to do the same thi..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2016/07/07/old%20posts/2016-07-07-security-of-raw-sql-in-ruby/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Text-Editor"><i class="tag post-item-tag">Text Editor</i></a><a href="/tags/Atom"><i class="tag post-item-tag">Atom</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2016/06/27/old%20posts/2016-06-27-in-the-atom-set-god-corresponds-to-ruby-syntax/">在 Atom 設定 .god 對應至 Ruby Syntax </a></h2><time class="has-text-grey" datetime="2016-06-27T03:23:00.000Z">2016-06-27</time><p class="is-flex-grow-2 mt-2">簡介 GodGod 是以 Ruby 撰寫而成，但不僅限於使用於執行 Ruby 檔，常見的用途是維持程式的運行使程式不中斷，萬一中斷可以自動重啟。不過本篇的重點不在於 God 的使用方法，而是在 Atom 編輯器中於如何讓.god可以對應到 .rb 的語法高亮。
+這邊就是設定的方法，打開 config.cson，可以經由 menu 列的 Atom &amp;gt; config 開啟。在 core 的部份加上以下的設定。即可讓 .god 類型的檔案對應至 .rb 的語法高光。
+&amp;quot;*&amp;quot;:
+  core:
+    customFileTypes:
+      &amp;quot;source.ruby&amp;quot;: [
+        &amp;quot;god&amp;quot;
+      ]
+
+簡單的說明一下設定方法：..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2016/06/27/old%20posts/2016-06-27-in-the-atom-set-god-corresponds-to-ruby-syntax/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/javascript"><i class="tag post-item-tag">javascript</i></a><a href="/tags/jQuery"><i class="tag post-item-tag">jQuery</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2016/06/15/old%20posts/2016-06-15-js-sure-jquery-is-loaded-correctly/">JS - 確認 jQuery 是否正確載入</a></h2><time class="has-text-grey" datetime="2016-06-15T04:32:00.000Z">2016-06-15</time><p class="is-flex-grow-2 mt-2">使用情境有時候你不能確定環境是否已經載入 jQuery，所以你也不能使用 jQuery.ready()。例如：你想要在別人的網頁上執行一段 javascript 程式碼。這時候你就可以用本篇筆記記錄的方法等待 jQuery 載入後再執行自己的程式碼。
+程式碼：
+
+//如果沒有載入的話，會再執行一次直到 jQuery 正確載入。
+
+function defer(method) &amp;#123;
+    if (window.jQuery)
+        method();
+    else
+        setTimeout(function() &amp;#123; defer(method) &amp;#125;, 1000);
+&amp;#125;
+
+//要執行內容用 function 包起來，丟進 defer 裡面執行。
+
+..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2016/06/15/old%20posts/2016-06-15-js-sure-jquery-is-loaded-correctly/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/jQuery"><i class="tag post-item-tag">jQuery</i></a><a href="/tags/Ruby"><i class="tag post-item-tag">Ruby</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2016/05/31/old%20posts/2016-05-31-jquery-notes-get-last-element/">jQuery vs Ruby - 取得倒數的元素並組成字串</a></h2><time class="has-text-grey" datetime="2016-05-30T19:55:00.000Z">2016-05-31</time><p class="is-flex-grow-2 mt-2">摘要本篇利用把陣列轉成字串這個題目，探討 jquery 和 ruby 中，map 和 join 行為的差異。
+1. 在 jQuery 中可以用類似 Ruby 的方式取得尾部的倒數第幾個元素。$(&amp;#39;span[itemprop=title]&amp;#39;).eq(-2)
+
+對照 ruby 語法
+arr=[1,2,3,4,5,6]
+arr[-2]
+=&amp;gt; 5
+
+2. 也可以取出倒數的三個元素剛剛取出的是倒數的第二個元素，而現在我們要把倒數的三個元素都取出來
+$(&amp;#39;span[itemprop=title]&amp;#39;).slice(-3)
+
+對照的 ruby 語法
+arr=[1,2,3,4,5,6]
+arr[-3..-1]
+=&amp;gt; [4, 5, 6]
+
+3.1 取出元素中的text後，存到陣列中先..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2016/05/31/old%20posts/2016-05-31-jquery-notes-get-last-element/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Rails"><i class="tag post-item-tag">Rails</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2016/05/01/old%20posts/2016-05-01-rails-activerecord-enum-api/">Rails 筆記 - 使用 ActiveRecord::Enum 設定狀態</a></h2><time class="has-text-grey" datetime="2016-05-01T04:05:00.000Z">2016-05-01</time><p class="is-flex-grow-2 mt-2">使用 Array 表達狀態class Order
+    KIND = [ [&amp;#39;未付款&amp;#39;, 0], [&amp;#39;已付款&amp;#39;, 1], [&amp;#39;已出貨&amp;#39;,2] ]
+end
+
+代表 orders 這張表中的 kind 欄位如果是 1 ，則此訂單狀態是未付款的。寫成這樣的好處是在使用 select view helper 的時候可以直接丟進去
+&amp;lt;%= select_tag &amp;quot;訂單狀態&amp;quot;, options_for_select( Order::KIND ) %&amp;gt;
+
+把 KIND 打成這樣是 OK 的，但是我想把它打的好看一點。今天發現了有 ActiveRecord Enum 可以讓他變得有趣點。而且是只要有 ActiveRecord 就可以用，不需要..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2016/05/01/old%20posts/2016-05-01-rails-activerecord-enum-api/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Rails"><i class="tag post-item-tag">Rails</i></a><a href="/tags/Redmine"><i class="tag post-item-tag">Redmine</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2016/02/13/old%20posts/2016-02-13-deploy-redmine-to-vps-by-rails-way-in-ubuntu-14-04/">Deploy Redmine to VPS by Rails way in Ubuntu 14.04</a></h2><time class="has-text-grey" datetime="2016-02-13T02:30:00.000Z">2016-02-13</time><p class="is-flex-grow-2 mt-2">前言Redmine 是一套以 Ruby 為基底的專案管理網頁應用程式。而且正好就是使用 Ruby on Rails 開發的。所以如果你是 Rails 工程師，使用一般部屬 Rails 專案的方式就可將 Redmine 架起來。
+本文記錄下來的方法，是我覺得最簡單，並且沒有副作用的架設方法。如果你要架設的不是 Redmine ，而是其他的 Rails 專案，也同樣適用。
+本文採用的環境：OS: Ubuntu 14.04VPS: Digital Ocean
+在 Ubuntu 創造新的使用者Linux 是非常嚴謹的系統，不同資料夾放的東西都有其規範。而 root 帳號在 Linux 系統中是超人，可以做任何的事情。為了維持 Linux 系統的乾淨度，我們要建立一個專用的使用者 oceanttd 而不是直接使用 r..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2016/02/13/old%20posts/2016-02-13-deploy-redmine-to-vps-by-rails-way-in-ubuntu-14-04/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Golang"><i class="tag post-item-tag">Golang</i></a><a href="/tags/OSX"><i class="tag post-item-tag">OSX</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2016/01/09/old%20posts/2016-01-09-install-go-in-mac-osx-with-homebrew/">在 Mac OS X 下使用 brew 安裝 Go</a></h2><time class="has-text-grey" datetime="2016-01-09T06:07:00.000Z">2016-01-09</time><p class="is-flex-grow-2 mt-2">兩種安裝方法在 Mac OS X 下安裝 Go 有兩種方法，一種是去官網下載安裝包，另一種是使用 Homebrew 來安裝，為了以後更新的便利性著想，我決定使用 Homebrew 來安裝 Golang。
+ps: 如果你還沒有 Homebrew 的話，需要先安裝 Homebrew 才能進行以下的安裝。
+更新 Brew 到最新狀態打開你的 Terminal，輸入：
+brew update &amp;amp;&amp;amp; brew upgrade
+
+安裝 Golang使用 brew 安裝 go
+brew install go
+
+完成安裝，安裝完畢之後使用 go run file_name 指令時會出現 path error 因為我們還沒設定 $GOPATH 路徑。
+設置 $GOPATHbash打開 bash 設定檔
+vim..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2016/01/09/old%20posts/2016-01-09-install-go-in-mac-osx-with-homebrew/">Read more</a></section></article><section class="paginator is-flex is-justify-content-flex-end is-flex-wrap-wrap mt-5"><a class="extend prev" rel="prev" href="/archives/2016/"><i class="iconfont icon-prev has-text-grey"></i></a><a class="page-number" href="/archives/2016/">1</a><span class="page-number current">2</span></section></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><style>.search-widget .search-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--second-text-color);
+}
+.search-widget .search-content {
+    position: absolute;
+    left: 0;
+    top: calc(100% - 3px);
+    z-index: 2;
+
+    width: 100%;
+    height: 0;
+    max-height: 550px;
+
+    overflow: auto;
+    box-sizing: border-box;
+
+    background: var(--top-bar-bg-color);
+    backdrop-filter: blur(var(--backdropFilter));
+    -webkit-backdrop-filter: blur(var(--backdropFilter));
+
+    border-bottom-left-radius: var(--borderRadius);
+    border-bottom-right-radius: var(--borderRadius);
+    box-shadow: 0 12px 15px rgba(0, 0, 0, 0.08);
+}
+
+.search-widget .search-content a:hover h5 {
+    color: #3273dc!important;
+}
+</style><main class="aside-card-container search-widget is-relative"><label for="searchInput"><div class="is-flex px-4" id="searchButton"><i class="iconfont icon--search1 mr-1"></i><input class="search-input is-flex-grow-1" id="searchInput" placeholder="Search everything.."></div></label><section class="search-content content" id="searchContent"></section></main><script>var searchDatabase = []
+var searchInputEl = document.getElementById('searchInput')
+var searchButtonEl = document.getElementById('searchButton')
+var searchResultEl = document.getElementById('searchContent')
+
+searchInputEl.oninput = function (evt) {
+    var searchValue = evt.srcElement.value
+    var haveSearchValue = Boolean(searchValue.trim())
+    if (!haveSearchValue) {
+        searchResultEl.style.height = 0
+        searchResultEl.innerHTML = null
+        return
+    }
+
+    var searchResults = searching(searchValue)
+
+    if (searchResults.length > 0) {
+        renderSearchResults(searchResults)
+    }
+}
+
+function renderSearchResults(results) {
+    searchResultEl.innerHTML = null
+    var fragment = document.createDocumentFragment()
+
+    results.forEach(function (item) {
+        var link = document.createElement('a')
+        var title = document.createElement('h5')
+        var content = document.createElement('p')
+
+        title.className = 'mb-1'
+        title.innerText = item.title
+        content.innerText = item.content
+
+        link.href = item.link
+        link.appendChild(title)
+        link.appendChild(content)
+        link.className = 'p-4 is-block'
+
+        fragment.appendChild(link)
+    })
+
+    searchResultEl.appendChild(fragment)
+    searchResultEl.style.height = 'auto'
+}
+
+function searching(inputText) {
+    var inputTexts = inputText.split(' ')
+    var searchResults = []
+    inputTexts.forEach(function (searchKey) {
+        var haveSearchValue = Boolean(searchKey.trim())
+        if (!haveSearchValue) return
+
+        var key = searchKey.toLowerCase()
+
+        for (var entry of searchDatabase) {
+            var title = entry.getElementsByTagName('title')[0].textContent
+            var link = entry.getElementsByTagName('link')[0].getAttribute('href')
+            var contentWithTags = entry.getElementsByTagName('content')[0].textContent
+            var rawContent = contentWithTags.trim().replace(/<[^>]+>/g, '').toLowerCase()
+
+            var LENGTH = 80
+            var finalContent = ''
+            var contentLength = rawContent.length
+            var searchResultIdx = rawContent.indexOf(key)
+
+            var startIdx = searchResultIdx - 20,
+                endIdx = startIdx + LENGTH
+
+            if (startIdx < 0) {
+                startIdx = 0
+                endIdx = 100
+            }
+
+            endIdx > contentLength && (endIdx = contentLength)
+
+            finalContent = rawContent.substring(startIdx, endIdx)
+
+            if (title.indexOf(key) > -1 || searchResultIdx > -1) {
+                searchResults.push({
+                    link: link,
+                    title: title,
+                    content: finalContent
+                })
+            }
+        }
+    })
+    return searchResults
+}
+
+searchButtonEl.onclick = function () {
+    if (searchDatabase.length > 0) return;
+
+    fetch(window.location.href + '/search.xml').then(res => res.text()).then(res => {
+        var domparser = new DOMParser
+        var doc = domparser.parseFromString(res, 'application/xml')
+        searchDatabase = doc.getElementsByTagName('search')[0].children
+    })
+}</script><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><main class="aside-card-container archives-widget is-in-archive-page"><h3>Archives</h3><section><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a><span class="archive-list-count">2</span></li></ul></section></main><main class="aside-card-container recent-widget"><h3>Recent</h3><ul><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://ui-avatars.com/api/?background=f5f5f5&amp;name=Ra" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2016/07/08/old%20posts/2016-07-08-rails-gem-use-whenever-the-schedule-of-daily-routine/">Rails: 使用 Whenever 產生 Cronjob </a></p><time class="has-text-weight-semibold has-text-grey" datetime="2016-07-07T20:53:00.000Z">2016-07-08</time></section></li><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://ui-avatars.com/api/?background=f5f5f5&amp;name=Ge" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2016/07/07/old%20posts/2016-07-07-security-of-raw-sql-in-ruby/">Generate Safety Query String In ActiveRecord </a></p><time class="has-text-weight-semibold has-text-grey" datetime="2016-07-06T23:46:00.000Z">2016-07-07</time></section></li><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://ui-avatars.com/api/?background=f5f5f5&amp;name=在 " alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2016/06/27/old%20posts/2016-06-27-in-the-atom-set-god-corresponds-to-ruby-syntax/">在 Atom 設定 .god 對應至 Ruby Syntax </a></p><time class="has-text-weight-semibold has-text-grey" datetime="2016-06-27T03:23:00.000Z">2016-06-27</time></section></li><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://ui-avatars.com/api/?background=f5f5f5&amp;name=JS" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2016/06/15/old%20posts/2016-06-15-js-sure-jquery-is-loaded-correctly/">JS - 確認 jQuery 是否正確載入</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2016-06-15T04:32:00.000Z">2016-06-15</time></section></li><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://ui-avatars.com/api/?background=f5f5f5&amp;name=jQ" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2016/05/31/old%20posts/2016-05-31-jquery-notes-get-last-element/">jQuery vs Ruby - 取得倒數的元素並組成字串</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2016-05-30T19:55:00.000Z">2016-05-31</time></section></li><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://ui-avatars.com/api/?background=f5f5f5&amp;name=Ra" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2016/05/01/old%20posts/2016-05-01-rails-activerecord-enum-api/">Rails 筆記 - 使用 ActiveRecord::Enum 設定狀態</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2016-05-01T04:05:00.000Z">2016-05-01</time></section></li></ul></main></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+
+window.addEventListener('resize', $claudia.throttle(function () {
+    var images = document.querySelectorAll('.js-img-fadeIn')
+
+    images.forEach($claudia.blurBackdropImg)
+}, 150))</script></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+
+window.addEventListener('resize', $claudia.throttle(function () {
+    var images = document.querySelectorAll('.js-img-fadeIn')
+
+    images.forEach($claudia.blurBackdropImg)
+}, 150))</script></body></html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>Luka.tw</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/widget-post-list.css"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><span>Archives · All</span></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><article class="post-container is-flex is-justify-content-center section container is-max-widescreen pt-4 px-2"><div class="columns is-variable is-1-tablet is-3-desktop-only is-2-widescreen is-full-width"><section class="column"><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Ruby"><i class="tag post-item-tag">Ruby</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2016/10/24/old%20posts/2016-10-24-let-irb-better/">Ruby - 讓 irb 更好用</a></h2><time class="has-text-grey" datetime="2016-10-24T15:56:00.000Z">2016-10-24</time><p class="is-flex-grow-2 mt-2">前言在使用pry的時候我們可以回到上一個輸入的指令，擁有記錄指令歷史的功能。其實irb也可以！
+開始修改修改~/.irbrc
+require &amp;#39;irb/ext/save-history&amp;#39;
+IRB.conf[:SAVE_HISTORY] = 200
+IRB.conf[:HISTORY_FILE] = &amp;quot;#&amp;#123;ENV[&amp;#39;HOME&amp;#39;]&amp;#125;/.irb-history&amp;quot;
+
+修改完之後按下方向鍵上和下即可使用上一個用過的指令。而實際上，歷史紀錄是儲存在~/.irb_history。
+另一個常用的功能 - autocomplete  我們也順便把它開起來。在~/.irbrc中irb/completion即可，現在你的 irb 按下 tab 即可以自動補完..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2016/10/24/old%20posts/2016-10-24-let-irb-better/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Ruby"><i class="tag post-item-tag">Ruby</i></a><a href="/tags/Metaprogramming"><i class="tag post-item-tag">Metaprogramming</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2016/09/11/old%20posts/2016-09-11-ruby-meta-programming-refine/">Ruby metaprogramming - Open Class and Refine </a></h2><time class="has-text-grey" datetime="2016-09-11T05:49:00.000Z">2016-09-11</time><p class="is-flex-grow-2 mt-2">簡介Open Class 是 Ruby 常用的技巧，指的是我們可以覆寫已經存在的方法，來修改物件或類別的行為。在這邊我沒有要講詳細的作法，要介紹的是在 Ruby 2.0 中新增的 refine
+RefineRefine 是 ruby 2.0 之後加入的元素。會使用 Refine 的原因是使用一般 Open Class 的技巧時並不會有明顯的提示。所以我們如果沒有用比較清楚的方法標示 Open Class 作用的地方，造成的後果是非常難以維護且可怕的。透過 refine 我們可以更安全的覆寫原本的 Class，尤其是系統中本來存在的一些方法。用法是先定義一個 Module ，Module 裡面寫下你要覆寫的 Class 與要覆寫的方法。並且用 Using 決定在何時使用。
+class Cat
+  def me..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2016/09/11/old%20posts/2016-09-11-ruby-meta-programming-refine/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Elasticsearch"><i class="tag post-item-tag">Elasticsearch</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2016/09/11/old%20posts/2016-09-11-Elastic%20Search%20Note/">Elasticsearch 筆記</a></h2><time class="has-text-grey" datetime="2016-09-10T20:24:00.000Z">2016-09-11</time><p class="is-flex-grow-2 mt-2">前言最近工作上使用的資料庫主要以 Elasticsearch 為主。而 Elasticsearch 跟傳統的關聯式資料庫有諸多的不同之處。初期在開發的時候並不是那麼快的上手。所以記錄下該如何使用 Elasticsearch 與如何在官方文件中找到自己需要的功能。
+1. 準備工作1.1 你需要知道的名詞一開始我對名詞的對應並不是特別的重視，隨著實戰上的需求，我開始需要查找 API 的時候，發現文件有點不知道從何看起。後來隨著使用的功能越來越多。必須對 Elasticsearch 有更深一層的了解，於是花了大約兩天左右的時間把文件重要的部份大略的看過一次。這樣的過程讓我理解了哪些功能可以在哪些地方找到，也是我寫下這篇筆記的動機，
+index 對應關聯式資料庫中的 database。type 對應關聯式資料庫中的..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2016/09/11/old%20posts/2016-09-11-Elastic%20Search%20Note/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://lh3.googleusercontent.com/-CgYcBgfLE3M/V9ULwiOLqHI/AAAAAAAAKeU/x8xowPvc7k8/I/14735377495263.jpg" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2016/09/10/old%20posts/2016-09-10-ruby-metaprogramming-method-lookup/"><img class="post-cover-img js-img-fadeIn" src="https://lh3.googleusercontent.com/-CgYcBgfLE3M/V9ULwiOLqHI/AAAAAAAAKeU/x8xowPvc7k8/I/14735377495263.jpg" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Ruby"><i class="tag post-item-tag">Ruby</i></a><a href="/tags/Metaprogramming"><i class="tag post-item-tag">Metaprogramming</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2016/09/10/old%20posts/2016-09-10-ruby-metaprogramming-method-lookup/">Ruby metaprogramming - Method Lookup</a></h2><time class="has-text-grey" datetime="2016-09-10T11:55:00.000Z">2016-09-10</time><p class="is-flex-grow-2 mt-2">介紹ruby metaprogramming 這本書除了教如何用 ruby 來生成其他的程式語言外，對語言特性的描述是比較深入的。因此在研讀這本書的同時，記錄下一些我覺得重要的部份。這些筆記不會依照章節的順序性。而是隨機記錄我需要的部分。
+Method Lookup 即 Ruby 物件中查找方法的順序。從 Module 得到的方法與從 Class 繼承的方法其實是有順序性的。知道其順序性後我們在編寫的程式碼的時候才可以比較清楚的預想程式行為的發生的情況。在追蹤原始碼的時候對語言特性多一份的理解追起來就會順利一點快速一點。
+prepend 與 include這邊是 Method Lookup 的順序圖，左邊是 instance method 右邊是 class method。使用 include 的時候可以發..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2016/09/10/old%20posts/2016-09-10-ruby-metaprogramming-method-lookup/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Ruby"><i class="tag post-item-tag">Ruby</i></a><a href="/tags/Crawler"><i class="tag post-item-tag">Crawler</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2016/09/10/old%20posts/2016-09-10-ruby-crawler-encoding-problem/">Ruby - 爬網頁時遇到的編碼錯亂問題</a></h2><time class="has-text-grey" datetime="2016-09-10T05:50:00.000Z">2016-09-10</time><p class="is-flex-grow-2 mt-2">問題描述編碼問題是寫爬蟲常會遇到的問題。當你沒有處理好編碼問題，爬回來的網頁無法進行字串的切割，也無法使用 nokogiri 抽離需要的部份。
+解決方法
+找到原始網頁的編碼chartset=&amp;#39;big&amp;#39;
+把網頁 force_encoding 至原始格式
+將網頁轉換成 utf-8，這是 ruby 預設的編碼，也是 nokogiri 接受的編碼。
+
+force_encoding 的意思是強制使用某種編碼格式，但是其實不會進行編碼的轉換，因為ruby預設是utf-8，所以如果網頁是 big5 我們就得先幫網頁加上網頁原有的編碼格式。
+設定好網頁原始的編碼之後，我們才可以將載下來的網頁轉成我們要的格式，所以最後得使用encode指令來轉換成我們要的utf-8格式。
+完成以上步驟之後，你就可以順利的進行..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2016/09/10/old%20posts/2016-09-10-ruby-crawler-encoding-problem/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Ruby"><i class="tag post-item-tag">Ruby</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2016/08/26/old%20posts/2016-08-26-using-the-argv-characteristic-method-to-excute-specific-method/">Ruby - 利用 ARGV 特性執行指定的方法</a></h2><time class="has-text-grey" datetime="2016-08-26T08:58:00.000Z">2016-08-26</time><p class="is-flex-grow-2 mt-2">情境我想手動執行 class 的某個方法。這邊的例子是當我想移動的時候，我可以選擇走路、跑步或是游泳。
+方法一： 在 irb 中引入 Ruby 檔class Move
+
+  def self.walking
+    puts &amp;quot;walking&amp;quot;
+  end
+
+  def self.running
+    puts &amp;quot;running&amp;quot;
+  end
+
+  def self.swimming
+    puts &amp;quot;swimming&amp;quot;
+  end
+end
+
+打開 irb ，輸入 require_relative argv_ex1.rb，argv_ex1.rb 是上面程式碼的檔名。
+[1] pry(main)&amp;gt; require_relative &amp;#39..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2016/08/26/old%20posts/2016-08-26-using-the-argv-characteristic-method-to-excute-specific-method/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Ruby"><i class="tag post-item-tag">Ruby</i></a><a href="/tags/Crawler"><i class="tag post-item-tag">Crawler</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2016/08/12/old%20posts/2016-08-12-a-ruby-tip-html-entity-encode/">Ruby 爬蟲小技巧 - 處理 Html Entity</a></h2><time class="has-text-grey" datetime="2016-08-11T23:45:00.000Z">2016-08-12</time><p class="is-flex-grow-2 mt-2">這是一個在工作上遇到的小問題。把網頁爬回來的時候有 HTML Entity 的編碼，看起來很不美觀。舉例來說，爬回來的標題如果含有 HTML Entity 會是這個樣子:
+PURUS空氣清淨器&amp;amp;#40;鴻海集團創星出品&amp;amp;#41;
+
+如果我想要使用資料建立自己資料庫的時候勢必要對 html entity 做一些處理這時候 Gemhtmlentities就派上用場了。使用方法：
+require &amp;#39;htmlentities&amp;#39;
+
+str = &amp;quot;PURUS空氣清淨器&amp;amp;#40;鴻海集團創星出品&amp;amp;#41;&amp;quot;
+puts HTMLEntities.new.decode(str)
+=&amp;gt; PURUS空氣清淨器(鴻海集團創星出品)
+
+現在你可以把品名存進資料..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2016/08/12/old%20posts/2016-08-12-a-ruby-tip-html-entity-encode/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Rails"><i class="tag post-item-tag">Rails</i></a><a href="/tags/ActiveRecord"><i class="tag post-item-tag">ActiveRecord</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2016/08/03/old%20posts/2016-08-03-active-record-batch-update/">ActiveRecord - 更新大量資料</a></h2><time class="has-text-grey" datetime="2016-08-02T18:46:00.000Z">2016-08-03</time><p class="is-flex-grow-2 mt-2">前言本文使用的兩種方法，實際上都是用一個 sql 插入或更新所有的資料。原因是使用其他的方法都沒有使用一個sql插入快。如果插入的筆數過多，需要調整 sql buffer 的大小。本例子的情景是一次更新100筆資料，資料量不大，所以不會遇到這個問題。
+方法一：純 SQL
+因為欄位很多，我要傳送的欄位又是完整的一個不少，所以我用 Model.attribute_names 來組合要傳入的欄位名稱。
+然後將要更新的 Hash 組成 VALUES (x1, y1, z1, ...), (x2, y2, z2, ...), ...字串
+最後將要更新的欄位組成 flag_string=VALUES(flag_string) 這種格式
+
+想要組出的 sql
+    ActiveRecord::Base.connecti..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2016/08/03/old%20posts/2016-08-03-active-record-batch-update/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Linux"><i class="tag post-item-tag">Linux</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2016/07/29/old%20posts/2016-07-29-linux-how-to-check-os/">Linux - 如何查詢 OS 版本</a></h2><time class="has-text-grey" datetime="2016-07-28T20:37:00.000Z">2016-07-29</time><p class="is-flex-grow-2 mt-2">要接手 Server 第一件事情就是要了解 server 的環境啦。這邊要記錄的是如何判別 Linux 系統類別的方式
+1. 確認 Kernel 版本使用 uname -or 可以取得 kernel 的版本
+$ uname -or
+=&amp;gt; 3.10.0-327.el7.x86_64 GNU/Linux
+
+如果要知道詳細的資訊，輸入 uname -a，但即使這樣也無法清楚的看出 OS 的種類。
+$ uname -a
+=&amp;gt; Linux username 3.10.0-327.el7.x86_64 #1 SMP Thu Nov 19 22:10:57 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
+
+2. 針對不同 OS 查找對應的說明系統名稱的文件如果是 Ubuntu，..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2016/07/29/old%20posts/2016-07-29-linux-how-to-check-os/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Rails"><i class="tag post-item-tag">Rails</i></a><a href="/tags/Cronjob"><i class="tag post-item-tag">Cronjob</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2016/07/08/old%20posts/2016-07-08-rails-gem-use-whenever-the-schedule-of-daily-routine/">Rails: 使用 Whenever 產生 Cronjob </a></h2><time class="has-text-grey" datetime="2016-07-07T20:53:00.000Z">2016-07-08</time><p class="is-flex-grow-2 mt-2">Part 1 - Crontab 介紹Crontab 是 Linux 中用來管理例行事務的程式，而 whenever 實際上的作用就是用來產生 cronjob 的，所以先介紹一下 Linux 系統中的 crontab 如何操作。
+crontab 指令比較常用指令的有以下幾項：
+crontab -l 顯示目前排程 (list cron)crontab -e 編輯排程 (edit cron)crontab -r 移除排程 (remove cron)crontab -u 改變排程的執行身分: crontab -u user filename
+crontab 的欄位與對應的意義整個指令會長得像樣子，這個指令做的事情是先移動到某個資料夾後執行User.delete_three_day_ago!。
+0 4 * * * ..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2016/07/08/old%20posts/2016-07-08-rails-gem-use-whenever-the-schedule-of-daily-routine/">Read more</a></section></article><section class="paginator is-flex is-justify-content-flex-end is-flex-wrap-wrap mt-5"><a class="extend prev" rel="prev" href="/archives/page/3/"><i class="iconfont icon-prev has-text-grey"></i></a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/15/">15</a><a class="extend next" rel="next" href="/archives/page/5/"><i class="iconfont icon-next has-text-grey"></i></a></section></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><style>.search-widget .search-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--second-text-color);
+}
+.search-widget .search-content {
+    position: absolute;
+    left: 0;
+    top: calc(100% - 3px);
+    z-index: 2;
+
+    width: 100%;
+    height: 0;
+    max-height: 550px;
+
+    overflow: auto;
+    box-sizing: border-box;
+
+    background: var(--top-bar-bg-color);
+    backdrop-filter: blur(var(--backdropFilter));
+    -webkit-backdrop-filter: blur(var(--backdropFilter));
+
+    border-bottom-left-radius: var(--borderRadius);
+    border-bottom-right-radius: var(--borderRadius);
+    box-shadow: 0 12px 15px rgba(0, 0, 0, 0.08);
+}
+
+.search-widget .search-content a:hover h5 {
+    color: #3273dc!important;
+}
+</style><main class="aside-card-container search-widget is-relative"><label for="searchInput"><div class="is-flex px-4" id="searchButton"><i class="iconfont icon--search1 mr-1"></i><input class="search-input is-flex-grow-1" id="searchInput" placeholder="Search everything.."></div></label><section class="search-content content" id="searchContent"></section></main><script>var searchDatabase = []
+var searchInputEl = document.getElementById('searchInput')
+var searchButtonEl = document.getElementById('searchButton')
+var searchResultEl = document.getElementById('searchContent')
+
+searchInputEl.oninput = function (evt) {
+    var searchValue = evt.srcElement.value
+    var haveSearchValue = Boolean(searchValue.trim())
+    if (!haveSearchValue) {
+        searchResultEl.style.height = 0
+        searchResultEl.innerHTML = null
+        return
+    }
+
+    var searchResults = searching(searchValue)
+
+    if (searchResults.length > 0) {
+        renderSearchResults(searchResults)
+    }
+}
+
+function renderSearchResults(results) {
+    searchResultEl.innerHTML = null
+    var fragment = document.createDocumentFragment()
+
+    results.forEach(function (item) {
+        var link = document.createElement('a')
+        var title = document.createElement('h5')
+        var content = document.createElement('p')
+
+        title.className = 'mb-1'
+        title.innerText = item.title
+        content.innerText = item.content
+
+        link.href = item.link
+        link.appendChild(title)
+        link.appendChild(content)
+        link.className = 'p-4 is-block'
+
+        fragment.appendChild(link)
+    })
+
+    searchResultEl.appendChild(fragment)
+    searchResultEl.style.height = 'auto'
+}
+
+function searching(inputText) {
+    var inputTexts = inputText.split(' ')
+    var searchResults = []
+    inputTexts.forEach(function (searchKey) {
+        var haveSearchValue = Boolean(searchKey.trim())
+        if (!haveSearchValue) return
+
+        var key = searchKey.toLowerCase()
+
+        for (var entry of searchDatabase) {
+            var title = entry.getElementsByTagName('title')[0].textContent
+            var link = entry.getElementsByTagName('link')[0].getAttribute('href')
+            var contentWithTags = entry.getElementsByTagName('content')[0].textContent
+            var rawContent = contentWithTags.trim().replace(/<[^>]+>/g, '').toLowerCase()
+
+            var LENGTH = 80
+            var finalContent = ''
+            var contentLength = rawContent.length
+            var searchResultIdx = rawContent.indexOf(key)
+
+            var startIdx = searchResultIdx - 20,
+                endIdx = startIdx + LENGTH
+
+            if (startIdx < 0) {
+                startIdx = 0
+                endIdx = 100
+            }
+
+            endIdx > contentLength && (endIdx = contentLength)
+
+            finalContent = rawContent.substring(startIdx, endIdx)
+
+            if (title.indexOf(key) > -1 || searchResultIdx > -1) {
+                searchResults.push({
+                    link: link,
+                    title: title,
+                    content: finalContent
+                })
+            }
+        }
+    })
+    return searchResults
+}
+
+searchButtonEl.onclick = function () {
+    if (searchDatabase.length > 0) return;
+
+    fetch(window.location.href + '/search.xml').then(res => res.text()).then(res => {
+        var domparser = new DOMParser
+        var doc = domparser.parseFromString(res, 'application/xml')
+        searchDatabase = doc.getElementsByTagName('search')[0].children
+    })
+}</script><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><main class="aside-card-container archives-widget is-in-archive-page"><h3>Archives</h3><section><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a><span class="archive-list-count">2</span></li></ul></section></main><main class="aside-card-container recent-widget"><h3>Recent</h3><ul><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://ui-avatars.com/api/?background=f5f5f5&amp;name=Ru" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2016/10/24/old%20posts/2016-10-24-let-irb-better/">Ruby - 讓 irb 更好用</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2016-10-24T15:56:00.000Z">2016-10-24</time></section></li><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://ui-avatars.com/api/?background=f5f5f5&amp;name=Ru" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2016/09/11/old%20posts/2016-09-11-ruby-meta-programming-refine/">Ruby metaprogramming - Open Class and Refine </a></p><time class="has-text-weight-semibold has-text-grey" datetime="2016-09-11T05:49:00.000Z">2016-09-11</time></section></li><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://ui-avatars.com/api/?background=f5f5f5&amp;name=El" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2016/09/11/old%20posts/2016-09-11-Elastic%20Search%20Note/">Elasticsearch 筆記</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2016-09-10T20:24:00.000Z">2016-09-11</time></section></li><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://lh3.googleusercontent.com/-CgYcBgfLE3M/V9ULwiOLqHI/AAAAAAAAKeU/x8xowPvc7k8/I/14735377495263.jpg" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2016/09/10/old%20posts/2016-09-10-ruby-metaprogramming-method-lookup/">Ruby metaprogramming - Method Lookup</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2016-09-10T11:55:00.000Z">2016-09-10</time></section></li><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://ui-avatars.com/api/?background=f5f5f5&amp;name=Ru" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2016/09/10/old%20posts/2016-09-10-ruby-crawler-encoding-problem/">Ruby - 爬網頁時遇到的編碼錯亂問題</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2016-09-10T05:50:00.000Z">2016-09-10</time></section></li><li class="is-flex"><!-- change to element replace image placeholder--><img class="js-img-fadeIn" src="https://ui-avatars.com/api/?background=f5f5f5&amp;name=Ru" alt="cover"><!--else--><!--    div.post-img-placeholder--><section class="is-flex-grow-2"><p class="has-text-weight-semibold" style="line-height: 20px; font-size: 14px"><a href="/2016/08/26/old%20posts/2016-08-26-using-the-argv-characteristic-method-to-excute-specific-method/">Ruby - 利用 ARGV 特性執行指定的方法</a></p><time class="has-text-weight-semibold has-text-grey" datetime="2016-08-26T08:58:00.000Z">2016-08-26</time></section></li></ul></main></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+
+window.addEventListener('resize', $claudia.throttle(function () {
+    var images = document.querySelectorAll('.js-img-fadeIn')
+
+    images.forEach($claudia.blurBackdropImg)
+}, 150))</script></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+
+window.addEventListener('resize', $claudia.throttle(function () {
+    var images = document.querySelectorAll('.js-img-fadeIn')
+
+    images.forEach($claudia.blurBackdropImg)
+}, 150))</script></body></html>

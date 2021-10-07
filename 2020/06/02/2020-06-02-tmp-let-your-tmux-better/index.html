@@ -1,0 +1,100 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>TPM — 套件管理工具 ，讓你的 TMUX 更好用</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="最近因為工作上需要用到開很多個視窗的情景，研究了一下如何把 tmux 變得更具有生產力。
+
+tmux 是什麼？tmux 是一個很好用的遠端 session 管理套件，兼具效能與功能性，可以讓你在遠端伺服器中，輕易管理背景執行程式。
+Larry 在 **終端機 session 管理神器 — tmux **文章中介紹了基本的概念、使用方式與經典的使用情景。如果沒有看過的話，請看文章了解一下。終端機 session 管理神器 — tmux身為一名開發者對終端機應該不陌生，不管是要執行腳本、ssh 到遠端伺服器都會用到終端機。這邊要介紹給大家一個工具 tmux，tmux 是個 terminal multiplexer，可以讓你的終端機更好用larrylu.blogt
+不過其實不看也沒什麼關係啦，看我寫得就好。
+He.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">TPM — 套件管理工具 ，讓你的 TMUX 更好用</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#tmux-%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F"><span class="toc-text">tmux 是什麼？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hello-tpm"><span class="toc-text">Hello, tpm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A6%81%E6%80%8E%E9%BA%BC%E4%BD%BF%E7%94%A8-tpm-%E5%AE%89%E8%A3%9D-tmux-%E5%A5%97%E4%BB%B6"><span class="toc-text">要怎麼使用 tpm 安裝 tmux 套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ctrl-b-%E6%9C%89%E9%BB%9E%E9%81%A0%EF%BC%8C%E4%BF%AE%E6%94%B9-prefix-%E7%82%BA-ctrl-a"><span class="toc-text">ctrl+b 有點遠，修改 prefix 為 ctrl + a</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%B4%B9%E5%B9%BE%E5%80%8B%E5%A5%BD%E7%94%A8%E7%9A%84%E5%A5%97%E4%BB%B6"><span class="toc-text">介紹幾個好用的套件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tmux-yank"><span class="toc-text">tmux-yank</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tmux-pain-control"><span class="toc-text">tmux-pain-control</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%93%E5%88%87%E5%89%B2%E8%A6%96%E7%AA%97%E8%AE%8A%E5%BE%97%E6%9B%B4%E5%8A%A0%E7%B0%A1%E5%96%AE"><span class="toc-text">讓切割視窗變得更加簡單</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8-vim-%E7%9A%84%E6%96%B9%E5%90%91%E9%8D%B5%E8%B7%B3%E8%BD%89%E8%A6%96%E7%AA%97"><span class="toc-text">用 vim 的方向鍵跳轉視窗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8-vim-%E7%9A%84%E6%96%B9%E5%90%91%E9%8D%B5%E7%B8%AE%E6%94%BE%E8%A6%96%E7%AA%97"><span class="toc-text">用 vim 的方向鍵縮放視窗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tmux-copycat"><span class="toc-text">tmux copycat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tmux-resurrect"><span class="toc-text">tmux-resurrect</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tmux-open"><span class="toc-text">tmux-open</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tmux-prefix-highlight"><span class="toc-text">tmux-prefix-highlight</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tmux-continuum"><span class="toc-text">tmux-continuum</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tmux-sensible"><span class="toc-text">tmux-sensible</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90"><span class="toc-text">小結</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%BA%90"><span class="toc-text">參考資源</span></a></li></ol></div></div></div><div class="column is-9"><header class="my-4"></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">TPM — 套件管理工具 ，讓你的 TMUX 更好用</h1><time class="has-text-grey" datetime="2020-06-02T11:51:00.000Z">2020-06-02</time><article class="mt-2 post-content"><p>最近因為工作上需要用到開很多個視窗的情景，研究了一下如何把 tmux 變得更具有生產力。</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*wJrJdR3tFO84Tdsd.jpg"></p>
+<h2 id="tmux-是什麼？"><a href="#tmux-是什麼？" class="headerlink" title="tmux 是什麼？"></a>tmux 是什麼？</h2><p><a target="_blank" rel="noopener" href="https://github.com/tmux/tmux">tmux</a> 是一個很好用的遠端 session 管理套件，兼具效能與功能性，可以讓你在遠端伺服器中，輕易管理背景執行程式。</p>
+<p>Larry 在 **<a target="_blank" rel="noopener" href="https://larrylu.blog/tmux-33a24e595fbc">終端機 session 管理神器 — tmux</a> **文章中介紹了基本的概念、使用方式與經典的使用情景。如果沒有看過的話，請看文章了解一下。<br><a target="_blank" rel="noopener" href="https://larrylu.blog/tmux-33a24e595fbc"><strong>終端機 session 管理神器 — tmux</strong><br><em>身為一名開發者對終端機應該不陌生，不管是要執行腳本、ssh 到遠端伺服器都會用到終端機。<br>這邊要介紹給大家一個工具 tmux，tmux 是個 terminal multiplexer，可以讓你的終端機更好用</em>larrylu.blog</a><a target="_blank" rel="noopener" href="https://larrylu.blog/tmux-33a24e595fbc">t</a></p>
+<p>不過其實不看也沒什麼關係啦，看我寫得就好<em>。</em></p>
+<h2 id="Hello-tpm"><a href="#Hello-tpm" class="headerlink" title="Hello, tpm"></a>Hello, tpm</h2><p><a target="_blank" rel="noopener" href="https://github.com/tmux-plugins/tpm">tpm</a> 是 tmux 的套件管理工具，英文是 Tmux Plugin Manager。tmux 之於 tpm 就如同是 nodejs 之於 npm。是一個在 github 上面有 6100 顆星星的開源專案。</p>
+<p>今天我的重點放在 tpm 的介紹上，如果還沒安裝 tmux，請按照 **<a target="_blank" rel="noopener" href="https://larrylu.blog/tmux-33a24e595fbc">終端機 session 管理神器 — tmux</a> **文章中的教學逐步安裝並學習使用方法。</p>
+<p>回過頭來，我們想要用 tpm 來安裝一些好用的套件，先安裝好 tpm。 首先 git clone tpm 至本機。</p>
+<pre><code>git clone [https://github.com/tmux-plugins/tpm](https://github.com/tmux-plugins/tpm) ~/.tmux/plugins/tpm
+</code></pre>
+<p>接著修改 ~/.tmux.conf 檔案的內容，將下列內容複製貼上至檔案中。</p>
+<pre><code class="bash">    # List of plugins
+    set -g @plugin &#39;tmux-plugins/tpm&#39;
+    set -g @plugin &#39;tmux-plugins/tmux-sensible&#39;
+
+    # Other examples:
+    # set -g @plugin &#39;github_username/plugin_name&#39;
+    # set -g @plugin &#39;git@github.com/user/plugin&#39;
+    # set -g @plugin &#39;git@bitbucket.com/user/plugin&#39;
+
+    # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+    run -b &#39;~/.tmux/plugins/tpm/tpm&#39;
+</code></pre>
+<p>安裝完成後在終端機中輸入下列指令或是重開終端機即可載入完成。</p>
+<pre><code>tmux source ~/.tmux.conf
+</code></pre>
+<h2 id="要怎麼使用-tpm-安裝-tmux-套件"><a href="#要怎麼使用-tpm-安裝-tmux-套件" class="headerlink" title="要怎麼使用 tpm 安裝 tmux 套件"></a>要怎麼使用 tpm 安裝 tmux 套件</h2><p>安裝 tpm 套件可能跟你想的不太一樣，直接修改 ~/.tmux.conf 檔案的內容，並且重啟。例如你想要安裝 <a target="_blank" rel="noopener" href="https://github.com/tmux-plugins/tmux-copycat">tmux-copycat</a>。</p>
+<pre><code>vim ~/.tmux.conf
+</code></pre>
+<p>加入這一行</p>
+<pre><code class="bash">    set -g @plugin &#39;tmux-plugins/tmux-copycat&#39;
+</code></pre>
+<p>接著，重開 tmux session 或是在 tmux 中輸入 prefix (ctrl+b) + I 即可。</p>
+<h2 id="ctrl-b-有點遠，修改-prefix-為-ctrl-a"><a href="#ctrl-b-有點遠，修改-prefix-為-ctrl-a" class="headerlink" title="ctrl+b 有點遠，修改 prefix 為 ctrl + a"></a>ctrl+b 有點遠，修改 prefix 為 ctrl + a</h2><p>tmux 大部分的指令是由組合鍵 prefix + 某某鍵所構成。 prefix 預設是 ctrl + b，外國鄉民大多是將 prefix 修改成 ctrl + a ，你也可以設成你喜歡的樣子，設定方法很簡單。在 .tmux.conf 中加上以下內容即可將 prefix 變成ctrl + a。</p>
+<pre><code class="bash">    # remap prefix from &#39;C-b&#39; to &#39;C-a&#39;
+    unbind C-b
+    set-option -g prefix C-a
+    bind-key C-a send-prefix
+</code></pre>
+<h2 id="介紹幾個好用的套件"><a href="#介紹幾個好用的套件" class="headerlink" title="介紹幾個好用的套件"></a>介紹幾個好用的套件</h2><h3 id="tmux-yank"><a href="#tmux-yank" class="headerlink" title="tmux-yank"></a><a target="_blank" rel="noopener" href="https://github.com/tmux-plugins/tmux-yank">tmux-yank</a></h3><p>讓你的 tmux 可以用系統的剪貼簿，支援 osx, linux, WSL(Windows Subsystem for Linux) … 等等的環境。</p>
+<h3 id="tmux-pain-control"><a href="#tmux-pain-control" class="headerlink" title="tmux-pain-control"></a><a target="_blank" rel="noopener" href="https://github.com/tmux-plugins/tmux-pain-control">tmux-pain-control</a></h3><p>這個套件有三大功能，第一是切割視窗，第二是在視窗中跳躍，第三是縮放視窗大小。</p>
+<h3 id="讓切割視窗變得更加簡單"><a href="#讓切割視窗變得更加簡單" class="headerlink" title="讓切割視窗變得更加簡單"></a>讓切割視窗變得更加簡單</h3><p>這兩個是 tmux 預設的切割視窗快捷鍵</p>
+<ol>
+<li><p>prefix + “：進行<strong>水平</strong>分割</p>
+</li>
+<li><p>prefix + %：進行<strong>垂直</strong>分割</p>
+</li>
+</ol>
+<p>這兩個符號我一直記不起來😭，但是在使用<a target="_blank" rel="noopener" href="https://github.com/tmux-plugins/tmux-pain-control">tmux-pain-control</a> 之後：</p>
+<ol>
+<li><p>prefix + |：進行<strong>水平</strong>分割</p>
+</li>
+<li><p>prefix + -：進行<strong>垂直</strong>分割</p>
+</li>
+</ol>
+<p>圖型記憶法，真是太好記了。連續技用起來會有這樣的效果：</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*P3MQZDaihxlpHZwBNTvdpQ.gif"></p>
+<h3 id="用-vim-的方向鍵跳轉視窗"><a href="#用-vim-的方向鍵跳轉視窗" class="headerlink" title="用 vim 的方向鍵跳轉視窗"></a>用 vim 的方向鍵跳轉視窗</h3><ol>
+<li><p>prefix + h：往左跳</p>
+</li>
+<li><p>prefix + j：往上跳</p>
+</li>
+<li><p>prefix + k：往下跳</p>
+</li>
+<li><p>prefix + l：往右跳</p>
+</li>
+</ol>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*F-mk4CsL1oh36EDK_cRr0g.gif"></p>
+<h3 id="用-vim-的方向鍵縮放視窗"><a href="#用-vim-的方向鍵縮放視窗" class="headerlink" title="用 vim 的方向鍵縮放視窗"></a>用 vim 的方向鍵縮放視窗</h3><ol>
+<li><p>prefix + shift + h：視窗邊界往左移</p>
+</li>
+<li><p>prefix + shift + j：視窗邊界往上移</p>
+</li>
+<li><p>prefix + shift + k：視窗邊界往下移</p>
+</li>
+<li><p>prefix + shift + l：視窗邊界往右移</p>
+</li>
+</ol>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*lv0mJUFUVHmxCZMPuctZRg.gif"></p>
+<h3 id="tmux-copycat"><a href="#tmux-copycat" class="headerlink" title="tmux copycat"></a><a target="_blank" rel="noopener" href="https://github.com/tmux-plugins/tmux-copycat">tmux copycat</a></h3><p>tmux copycat 可以讓你不使用滑鼠就能夠複製文字。這個套件非常好用，礙於時間不夠無法錄製完整操作。殘念。</p>
+<h3 id="tmux-resurrect"><a href="#tmux-resurrect" class="headerlink" title="tmux-resurrect"></a><a target="_blank" rel="noopener" href="https://github.com/tmux-plugins/tmux-resurrect">tmux-resurrect</a></h3><p>讓系統重啟的時候保持 tmux 的設定。</p>
+<h3 id="tmux-open"><a href="#tmux-open" class="headerlink" title="tmux-open"></a><a target="_blank" rel="noopener" href="https://github.com/tmux-plugins/tmux-open">tmux-open</a></h3><p>能夠讓你快速的打開你選取到的文字對應的超連結或是檔案。</p>
+<h3 id="tmux-prefix-highlight"><a href="#tmux-prefix-highlight" class="headerlink" title="tmux-prefix-highlight"></a><a target="_blank" rel="noopener" href="https://github.com/tmux-plugins/tmux-prefix-highlight">tmux-prefix-highlight</a></h3><p>讓你知道你有沒有成功觸發 prefix，如果按成功了，在下方顯示列會有成功觸發的圖案。</p>
+<h3 id="tmux-continuum"><a href="#tmux-continuum" class="headerlink" title="tmux-continuum"></a><a target="_blank" rel="noopener" href="https://github.com/tmux-plugins/tmux-continuum">tmux-continuum</a></h3><p>持續幫你儲存 tmux 的設定。</p>
+<h3 id="tmux-sensible"><a href="#tmux-sensible" class="headerlink" title="tmux-sensible"></a><a target="_blank" rel="noopener" href="https://github.com/tmux-plugins/tmux-sensible">tmux-sensible</a></h3><p>讓 tmux 比較合乎邏輯，不然 tmux 有些預設的設定實在是有點難用，這是必備的 tmux 套件。</p>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>有了 tpm 可以輕鬆安裝好用套件，這讓 tmux 平易進人多了，操作上不再需要記憶太多奇怪的快捷鍵。就可以讓生產力獲得大幅的提升，真滴好。</p>
+<h2 id="參考資源"><a href="#參考資源" class="headerlink" title="參考資源"></a>參考資源</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/">Making tmux Pretty and Usable — A Guide to Customizing your tmux.conf</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://medium.com/actualize-network/a-minimalist-guide-to-tmux-13675fb160fa">A minimalist guide to tmux</a></p>
+</li>
+</ul>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2020/06/30/2020-06-30-lens-the-ide-for-kubernetes/" title="Kubernetes IDE | Lens 用圖形化介面管理 K8S"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Kubernetes IDE | Lens 用圖形化介面管理 K8S</span></a><a class="button is-default" href="/2020/05/05/2020-05-05-unit-test/" title="Unit Test 中的替身：搞不清楚的Dummy 、Stub、Spy、Mock、Fake"><span class="has-text-weight-semibold">Next: Unit Test 中的替身：搞不清楚的Dummy 、Stub、Spy、Mock、Fake</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

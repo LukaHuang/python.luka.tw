@@ -1,0 +1,90 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>Javascript核心筆記：callback</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="callback是一種設計模式來看看callback的定義：
+
+Callback (computer programming) - WikipediaIn computer programming, a callback is a reference to a piece of executable code that is passed as an argument to other code.
+
+
+jQuery Document: How jQuery Works#Callback_and_Functio…A callback is a function that is passed as an argument to another function and is executed after its.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Javascript核心筆記：callback</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#callback%E6%98%AF%E4%B8%80%E7%A8%AE%E8%A8%AD%E8%A8%88%E6%A8%A1%E5%BC%8F"><span class="toc-text">callback是一種設計模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#callback%E4%B8%8D%E9%99%90%E6%96%BC%E9%9D%9E%E5%90%8C%E6%AD%A5%E4%BD%BF%E7%94%A8"><span class="toc-text">callback不限於非同步使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#callback-function%E7%9A%84%E6%92%B0%E5%AF%AB%E6%96%B9%E5%BC%8F"><span class="toc-text">callback function的撰寫方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%B2%92%E6%9C%89%E5%85%B6%E4%BB%96%E5%BC%95%E6%95%B8%E6%99%82"><span class="toc-text">1.沒有其他引數時</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%9C%89%E5%85%B6%E4%BB%96%E5%BC%95%E6%95%B8%E6%99%82%E5%8F%AF%E4%BB%A5%E7%94%A8call%E6%88%96apply%E4%BE%86%E5%AF%A6%E4%BD%9C%E3%80%82%E7%94%A8call%E4%BE%86%E5%AF%A6%E4%BD%9C%E7%9C%8B%E7%9C%8B%E3%80%82"><span class="toc-text">2.有其他引數時可以用call或apply來實作。用call來實作看看。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="toc-text">參考資料</span></a></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/javascript"><i class="tag post-item-tag">javascript</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Javascript核心筆記：callback</h1><time class="has-text-grey" datetime="2015-02-26T20:25:00.000Z">2015-02-27</time><article class="mt-2 post-content"><h2 id="callback是一種設計模式"><a href="#callback是一種設計模式" class="headerlink" title="callback是一種設計模式"></a>callback是一種設計模式</h2><p>來看看callback的定義：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Callback_(computer_programming)">Callback (computer programming) - Wikipedia</a><br>In computer programming, a callback is a reference to a piece of executable code that is passed as an argument to other code.</p>
+</blockquote>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://docs.jquery.com/How_jQuery_Works#Callback_and_Functions">jQuery Document: How jQuery Works#Callback_and_Functio…</a><br>A callback is a function that is passed as an argument to another function and is executed after its parent function has completed. The special thing about a callback is that functions that appear after the “parent” can execute before the callback executes. Another important thing to know is how to properly pass the callback. This is where I have often forgotten the proper syntax.</p>
+</blockquote>
+<p>所以本質上callback是一種設計模式。當一段程式碼可以當做參數丟給其他程式碼執行就叫做callback。jQuery和許多其他的框架的設計原則都遵循這個模式。</p>
+<h2 id="callback不限於非同步使用"><a href="#callback不限於非同步使用" class="headerlink" title="callback不限於非同步使用"></a>callback不限於非同步使用</h2><p>同步時使用callback通常是希望程式能夠按照順序執行。通常callback在同步的情況下是最後執行的。</p>
+<pre><code class="js">var func1=function(callback)&#123;
+    //do something.
+
+    //如果callback存在就執行它
+    callback &amp;&amp; callback();
+&#125;
+
+func1(func2);
+    var func2=function()&#123;
+&#125;
+</code></pre>
+<p>非同步的例子：</p>
+<pre><code class="js">$(document).ready(callback);
+$.ajax(&#123;
+  url: &quot;test.html&quot;,
+  context: document.body
+&#125;).done(function() &#123;
+  $(this).addClass(&quot;done&quot;);
+&#125;).fail(function() &#123;
+  alert(&quot;error&quot;);
+&#125;).always(function() &#123;
+  alert(&quot;complete&quot;);
+&#125;);
+</code></pre>
+<h2 id="callback-function的撰寫方式"><a href="#callback-function的撰寫方式" class="headerlink" title="callback function的撰寫方式"></a>callback function的撰寫方式</h2><h4 id="1-沒有其他引數時"><a href="#1-沒有其他引數時" class="headerlink" title="1.沒有其他引數時"></a>1.沒有其他引數時</h4><pre><code class="js">function basic( callback )&#123;
+  console.log( &#39;作些事情&#39; );
+  var result = &#39;我是等會要被傳送給 `do something` 的 callback 的函式結果&#39;;
+  // 如果 callback 存在的話就執行他
+  callback &amp;&amp; callback( result );
+&#125;
+
+basic( function( result )&#123;
+  console.log( &#39;這個 callback 函式會在 terminal 上列出 `basic` 函式執行的結果&#39; );
+  console.log( result );
+&#125;);
+</code></pre>
+<p>結果</p>
+<pre><code>作些事情
+這個 callback 函式會在 terminal 上列出 `basic` 函式執行的結果
+我是等會要被傳送給 `do something` 的 callback 的函式結果
+</code></pre>
+<h4 id="2-有其他引數時可以用call或apply來實作。用call來實作看看。"><a href="#2-有其他引數時可以用call或apply來實作。用call來實作看看。" class="headerlink" title="2.有其他引數時可以用call或apply來實作。用call來實作看看。"></a>2.有其他引數時可以用call或apply來實作。用call來實作看看。</h4><pre><code class="js">function callbacks_with_call( arg1, arg2, callback )&#123;
+  console.log( &#39;作些事情&#39; );
+
+  var result1 = arg1.replace( &#39;argument&#39;, &#39;result&#39; ),
+      result2 = arg2.replace( &#39;argument&#39;, &#39;result&#39; );
+
+  this.data = &#39;這等會可以讓 callback 函式用 `this` 來調用&#39;;
+
+  // 如果 callback 存在的話就執行他
+  callback &amp;amp;&amp;amp; callback.call( this, result1, result2 );
+&#125;
+
+( function()&#123;
+  var arg1 = &#39;我是 argument1&#39;,
+      arg2 = &#39;我是 argument2&#39;;
+
+  callbacks_with_call( arg1, arg2, function( result1, result2 )&#123;
+    console.log( &#39;這一個 callback 函式將會列出 `callbacks_with_call` 的執行結果&#39; );
+    console.log( &#39;result1: &#39; + result1 );
+    console.log( &#39;result2: &#39; + result2 );
+    console.log( &#39;data from `callbacks_with_call`: &#39; + this.data );
+  &#125;);
+&#125;)();
+</code></pre>
+<p>執行結果</p>
+<pre><code>作些事情
+這一個 callback 函式將會列出 `callbacks_with_call` 的執行結果
+result1: i am result1
+result2: i am result2
+data from `callbacks_with_call`: 這等會可以讓 callback 函式用 `this` 來調用
+</code></pre>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a target="_blank" rel="noopener" href="http://dreamerslab.com/blog/tw/javascript-callbacks/">Javascript callbacks | DreamersLab</a><br><a target="_blank" rel="noopener" href="http://segmentfault.com/q/1010000000140970">JavaScript 回调函数怎么理解</a></p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2015/02/27/old%20posts/2015-02-27-javascript-core-note-function/" title="Javascript核心筆記：function "><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Javascript核心筆記：function </span></a><a class="button is-default" href="/2015/02/27/old%20posts/2015-02-27-javascript-this/" title="Javascript核心筆記：this"><span class="has-text-weight-semibold">Next: Javascript核心筆記：this</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

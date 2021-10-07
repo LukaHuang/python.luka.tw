@@ -1,0 +1,55 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>EDX Linux Foundation Ch 9：User Environment Section 2 Environment Variables</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="##Environment VariablesEnvironment variables are simply named quantities that have specific values and are understood by the command shell, such as bash. Some of these are pre-set (built-in) by the system, and others are set by the user either at the command line or within startup and other scripts.
+環境變數可以幫我們達到很多功能～包括家目錄的變換啊、提示字元的顯示啊、執行檔搜尋的路徑啊等等的， 還有很多很多啦！.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">EDX Linux Foundation Ch 9：User Environment Section 2 Environmen..</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile is-hidden"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/Linux"><i class="tag post-item-tag">Linux</i></a><a href="/tags/EDX-Linux-Foundation"><i class="tag post-item-tag">EDX Linux Foundation</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">EDX Linux Foundation Ch 9：User Environment Section 2 Environment Variables</h1><time class="has-text-grey" datetime="2014-09-14T01:04:00.000Z">2014-09-14</time><article class="mt-2 post-content"><p>##Environment Variables<br>Environment variables are simply named quantities that have specific values and are understood by the command shell, such as bash. Some of these are pre-set (built-in) by the system, and others are set by the user either at the command line or within startup and other scripts.</p>
+<p>環境變數可以幫我們達到很多功能～包括家目錄的變換啊、提示字元的顯示啊、執行檔搜尋的路徑啊等等的， 還有很多很多啦！那麼，既然環境變數有那麼多的功能，問一下，目前我的 shell 環境中， 有多少預設的環境變數啊？我們可以利用兩個指令來查閱，分別是 env 與 export 呢！</p>
+<p>###env和export<br>env是environment的簡寫，可以列出來所有的環境變數。</p>
+<pre><code>$ env
+SSH_AGENT_PID=1892
+GPG_AGENT_INFO=/run/user/me/keyring-Ilf3vt/gpg:0:1
+TERM=xterm
+SHELL=/bin/bash
+...
+</code></pre>
+<p>如果使用 export 也會是一樣的內容～ 只不過， export 還有其他額外的功能就是了。（下面會講到）</p>
+<pre><code>$ export
+declare -x COLORTERM=gnome-terminal
+declare -x COMPIZ_BIN_PATH=/usr/bin /
+declare -x COMPIZ_CONFIG_PROFILE=ubuntu
+...
+</code></pre>
+<p>###set<br>用 set 觀察所有變數 (含環境變數與自訂變數)</p>
+<pre><code>$ set
+BASH=/bin/bash
+BASHOPTS=checkwinsize:cmdhist:expand_aliases:extglob:extquote:force_fignore
+BASH_ALIASES=()
+...
+</code></pre>
+<p>###環境變數與自定變數<br>By default, variables created within a script are only available to the current shell; child processes (sub-shells) will not have access to values that have been set or modified. Allowing child processes to see the values, requires use of the export command.</p>
+<p>環境變數與自訂變數這兩者之間有啥差異呢？其實這兩者的差異在於<strong>『 該變數是否會被子程序所繼續引用』</strong><br>子程序僅會繼承父程序的環境變數， 子程序不會繼承父程序的自訂變數啦！所以你在原本 bash 的自訂變數在進入了子程序後就會消失不見， 一直到你離開子程序並回到原本的父程序後，這個變數才會又出現！</p>
+<p>##Setting Environment Variables</p>
+<p>###Show the value of a specific variable</p>
+<pre><code>echo $SHELL
+</code></pre>
+<p>###Export a new variable value<br>export除了可以查看以外還可以用來設定環境變數</p>
+<pre><code>export VARIABLE=value (or VARIABLE=value; export VARIABLE)
+</code></pre>
+<p>###Add a variable permanently</p>
+<pre><code>Edit ~/.bashrc and add the line export VARIABLE=value
+</code></pre>
+<p>Type source <code>~/.bashrc</code> or just <code>. ~/.bashrc</code> (dot ~/.bashrc); or just start a new shell by typing  <code>bash</code></p>
+<p>##The HOME Variable<br>HOME is an environment variable that represents the home (or login) directory of the user.<br>輸入<code>echo $HOME</code>會顯示家目錄的路徑<br>輸入<code>cd</code>後面不加目錄名稱會切換到家目錄</p>
+<p>##The PATH Variable<br>PATH is an ordered list of directories (the path) which is scanned when a command is given to find the appropriate program or script to run. Each directory in the path is separated by colons (:). A null (empty) directory name (or ./) indicates the current directory at any given time.</p>
+<p>###show $Path<br>echo $PATH</p>
+<p>###To prefix a private bin directory to your path:</p>
+<pre><code>$ export PATH=$HOME/bin:$PATH
+$ echo $PATH
+/home/me/bin:/usr/local/bin:/usr/bin:/bin/usr
+</code></pre>
+<p>延伸閱讀：<a target="_blank" rel="noopener" href="http://linux.vbird.org/linux_basic/0220filemanager.php#dir_path">鳥哥：$Path</a></p>
+<p>##The PS1 Variable<br>Prompt Statement (PS) is used to customize your prompt string in your terminal windows to display the information you want.<br>用來改變終端機外觀的變數。</p>
+<p>##The SHELL Variable<br>The environment variable SHELL points to the user’s default command shell and contains the full pathname to the shell:</p>
+<pre><code>$ echo $SHELL
+/bin/bash
+</code></pre>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2014/09/14/old%20posts/2014-09-14-edx-linux-foundation-ch-9-user-environment-section-3-recalling-previous-commands/" title="EDX Linux Foundation Ch 9：User Environment Section 3 and 4"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: EDX Linux Foundation Ch 9：User Environment Section 3 and 4</span></a><a class="button is-default" href="/2014/09/13/old%20posts/2014-09-13-edx-linux-foundation-ch-9/" title="EDX Linux Foundation Ch 9：User Environment Section 1 Account"><span class="has-text-weight-semibold">Next: EDX Linux Foundation Ch 9：User Environment Section 1 Account</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

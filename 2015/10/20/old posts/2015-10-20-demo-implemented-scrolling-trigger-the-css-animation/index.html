@@ -1,0 +1,162 @@
+<!DOCTYPE html><html class="appearance-light" lang="en"><head><meta charset="UTF-8"><title>Demo：實作捲動觸發CSS動畫</title><meta name="description"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/widget-post-list.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="demo
+第一部分：使用CSS撰寫Slide In效果這個單元使用的技巧有：
+
+使用transition讓屬性值改變時有動畫的效果
+使用animation-fill-mode設定結束狀態
+使用transform:translate移動元素
+
+1. 使用transition讓屬性值改變時有動畫的效果transition 可以將CSS改變的過程變成動畫。詳細玩一下CSS3 Transitions就懂了。
+2. 使用animation-fill-mode設定結束狀態animation-fill-mode 結束後的狀態
+
+none：默认值。不设置对象动画之外的状态
+forwards：结束后保持动画结束时的状态，但当animation-direction为0，则动画不执行，持续保持动画开始时的状态
+backwards.."><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Luka.tw</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Demo：實作捲動觸發CSS動畫</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><div class="post-container" style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3 style="font-size:1em;">Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/01-Python-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/">01 Python 基礎教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/02-Python-%E7%88%AC%E8%9F%B2%E6%95%99%E5%AD%B8/">02 Python 爬蟲教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/03-Python-Flask-%E6%95%99%E5%AD%B8/">03 Python Flask 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/04-Python-Django-%E6%95%99%E5%AD%B8/">04 Python Django 教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/05-Python-%E8%B3%87%E6%96%99%E5%BA%AB%E6%95%99%E5%AD%B8/">05 Python 資料庫教學</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/06-Python-%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/">06 Python 資料分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/07-Python-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/">07 Python 機器學習</a><span class="category-list-count">1</span></li></ul></section></main><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9A%E4%BD%BF%E7%94%A8CSS%E6%92%B0%E5%AF%ABSlide-In%E6%95%88%E6%9E%9C"><span class="toc-text">第一部分：使用CSS撰寫Slide In效果</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8transition%E8%AE%93%E5%B1%AC%E6%80%A7%E5%80%BC%E6%94%B9%E8%AE%8A%E6%99%82%E6%9C%89%E5%8B%95%E7%95%AB%E7%9A%84%E6%95%88%E6%9E%9C"><span class="toc-text">1. 使用transition讓屬性值改變時有動畫的效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8animation-fill-mode%E8%A8%AD%E5%AE%9A%E7%B5%90%E6%9D%9F%E7%8B%80%E6%85%8B"><span class="toc-text">2. 使用animation-fill-mode設定結束狀態</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8transform-translate%E7%A7%BB%E5%8B%95%E5%85%83%E7%B4%A0"><span class="toc-text">3. 使用transform:translate移動元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BC%8F%E7%A2%BC-CSS%E9%83%A8%E5%88%86"><span class="toc-text">程式碼(CSS部分)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BC%8F%E7%A2%BC-JS%E9%83%A8%E5%88%86"><span class="toc-text">程式碼(JS部分)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9A%E4%BD%BF%E7%94%A8CSS%E8%AE%93%E5%9C%96%E7%89%87%E6%B0%B8%E4%B9%85%E6%97%8B%E8%BD%89"><span class="toc-text">第二部分：使用CSS讓圖片永久旋轉</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%EF%BC%9A%E8%AE%93%E5%9C%96%E7%89%87%E8%AE%8A%E5%A4%A7"><span class="toc-text">第三部分：讓圖片變大</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%83%E8%80%83%E9%80%A3%E7%B5%90"><span class="toc-text">參考連結</span></a></li></ol></div></div></div><div class="column is-9"><header class="my-4"><a href="/tags/HTML"><i class="tag post-item-tag">HTML</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Demo：實作捲動觸發CSS動畫</h1><time class="has-text-grey" datetime="2015-10-20T10:35:00.000Z">2015-10-20</time><article class="mt-2 post-content"><p><a target="_blank" rel="noopener" href="http://codingluka.github.io/CSS-Animation-Page-Demo/">demo</a></p>
+<h2 id="第一部分：使用CSS撰寫Slide-In效果"><a href="#第一部分：使用CSS撰寫Slide-In效果" class="headerlink" title="第一部分：使用CSS撰寫Slide In效果"></a>第一部分：使用CSS撰寫Slide In效果</h2><p>這個單元使用的技巧有：</p>
+<ol>
+<li>使用<code>transition</code>讓屬性值改變時有動畫的效果</li>
+<li>使用<code>animation-fill-mode</code>設定結束狀態</li>
+<li>使用<code>transform:translate</code>移動元素</li>
+</ol>
+<h4 id="1-使用transition讓屬性值改變時有動畫的效果"><a href="#1-使用transition讓屬性值改變時有動畫的效果" class="headerlink" title="1. 使用transition讓屬性值改變時有動畫的效果"></a>1. 使用<code>transition</code>讓屬性值改變時有動畫的效果</h4><p>transition 可以將CSS改變的過程變成動畫。詳細玩一下<a target="_blank" rel="noopener" href="http://www.w3schools.com/css/css3_transitions.asp">CSS3 Transitions</a>就懂了。</p>
+<h4 id="2-使用animation-fill-mode設定結束狀態"><a href="#2-使用animation-fill-mode設定結束狀態" class="headerlink" title="2. 使用animation-fill-mode設定結束狀態"></a>2. 使用<code>animation-fill-mode</code>設定結束狀態</h4><p>animation-fill-mode 結束後的狀態</p>
+<ul>
+<li>none：默认值。不设置对象动画之外的状态</li>
+<li>forwards：结束后保持动画结束时的状态，但当animation-direction为0，则动画不执行，持续保持动画开始时的状态</li>
+<li>backwards：结束后返回动画开始时的状态</li>
+<li>both：结束后可遵循forwards和backwards两个规则。</li>
+</ul>
+<h4 id="3-使用transform-translate移動元素"><a href="#3-使用transform-translate移動元素" class="headerlink" title="3. 使用transform:translate移動元素"></a>3. 使用<code>transform:translate</code>移動元素</h4><p>使用<code>transform: translate(x,y)</code>來移動元素。其他常用的還有：</p>
+<ul>
+<li>rotate(-20deg) 用來旋轉元素</li>
+<li>scale(x,y) 等比例放大或縮小元素</li>
+</ul>
+<p>可以到W3C Scholl玩玩看<br><a target="_blank" rel="noopener" href="http://www.w3schools.com/css/css3_2dtransforms.asp">CSS3 2D Transforms</a></p>
+<h4 id="程式碼-CSS部分"><a href="#程式碼-CSS部分" class="headerlink" title="程式碼(CSS部分)"></a>程式碼(CSS部分)</h4><pre><code class="css">@-webkit-keyframes fadeIn &#123; from &#123; opacity:0; &#125; to &#123;opacity: 1;&#125; &#125;
+@-moz-keyframes fadeIn &#123; from &#123; opacity:0; &#125; to &#123;opacity: 1;&#125; &#125;
+@keyframes fadeIn &#123; from &#123; opacity:0; &#125; to &#123;opacity: 1;&#125; &#125;
+</code></pre>
+<pre><code class="css">.animate&#123;
+    -moz-transition: 2s ease-in-out;
+    -webkit-transition: 2s ease-in-out;
+    transition: 2s ease-in-out;
+
+    -moz-animation: fadeIn ease-in 1;
+    -webkit-animation: fadeIn ease-in 1;
+    animation: fadeIn ease-in 1;
+
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    animation-duration: 1s;
+&#125;
+</code></pre>
+<pre><code class="css">#phone.animate &#123;
+    -webkit-transform: translate(14em,0);
+    -moz-transform: translate(14em,0);
+    transform: translate(14em,0);
+&#125;
+
+#monitor.animate &#123;
+    -webkit-transform: translate(3em,0);
+    -moz-transform: translate(3em,0);
+    transform: translate(3em,0);
+&#125;
+</code></pre>
+<h4 id="程式碼-JS部分"><a href="#程式碼-JS部分" class="headerlink" title="程式碼(JS部分)"></a>程式碼(JS部分)</h4><p>用簡單的addClass方法即可完成。</p>
+<pre><code class="js">$(function () &#123;
+    $(window).scroll(function () &#123;
+        var y = $(this).scrollTop();
+        if (y &gt; 300) &#123;
+             $(&#39;#monitor&#39;).addClass(&#39;animate&#39;);
+             $(&#39;#phone&#39;).addClass(&#39;animate&#39;);
+        &#125;;
+
+            .
+            .
+            .
+
+    &#125;);
+&#125;);
+</code></pre>
+<h2 id="第二部分：使用CSS讓圖片永久旋轉"><a href="#第二部分：使用CSS讓圖片永久旋轉" class="headerlink" title="第二部分：使用CSS讓圖片永久旋轉"></a>第二部分：使用CSS讓圖片永久旋轉</h2><p>keyframe:用來編寫這個動畫的過程。設定好旋轉的動作命名為rotaRadial。</p>
+<pre><code class="css"> @-webkit-keyframes rotateRadial &#123;
+     from &#123;
+         -webkit-transform: rotate(0deg);
+     &#125;
+     to &#123;
+         -webkit-transform: rotate(360deg);
+     &#125;
+ &#125;
+
+ @keyframes rotateRadial &#123;
+     from &#123;
+         transform: rotate(0deg);
+     &#125;
+     to &#123;
+         transform: rotate(360deg);
+     &#125;
+ &#125;
+</code></pre>
+<p>設定幾個參數來達到我們要的效果：</p>
+<ol>
+<li>動畫名稱指定剛剛創造的keyframe名稱<code>rotateRadial</code>。</li>
+<li>完成一次動畫的時間設為10s秒。</li>
+<li>永不停止。<code>animation-iteration-count: infinite;</code></li>
+<li>將動畫轉變的加速曲線設為線性。<code>animation-timing-function: linear;</code></li>
+</ol>
+<pre><code class="css">.always-rotate&#123;
+    -webkit-animation-name: rotateRadial;
+    -webkit-animation-duration: 10s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+
+    animation-name: rotateRadial;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+&#125;
+</code></pre>
+<h2 id="第三部分：讓圖片變大"><a href="#第三部分：讓圖片變大" class="headerlink" title="第三部分：讓圖片變大"></a>第三部分：讓圖片變大</h2><p>原本圖片的大小，設成0。</p>
+<pre><code class="css">.anim-img&#123;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+&#125;
+</code></pre>
+<p>後來圖片的大小</p>
+<pre><code class="css">img.grow-img&#123;
+    width: 200px;
+    height: 200px;
+&#125;
+</code></pre>
+<p>用<code>.animate</code>設定了transition，因此會有動畫效果。</p>
+<pre><code class="js">$(function () &#123;
+    $(window).scroll(function () &#123;
+        var y = $(this).scrollTop();
+        if (y &gt; 300) &#123;
+            $(&#39;#monitor&#39;).addClass(&#39;animate&#39;);
+            $(&#39;#phone&#39;).addClass(&#39;animate&#39;);
+        &#125;;
+
+
+        if(y &gt; 400)&#123;
+          $(&#39;#support&#39;).find(&#39;img&#39;).addClass(&#39;animate grow-img&#39;);
+          $(&#39;#speed&#39;).find(&#39;img&#39;).addClass(&#39;animate grow-img&#39;);
+          $(&#39;#smart&#39;).find(&#39;img&#39;).addClass(&#39;animate grow-img&#39;);
+        &#125;;
+
+    &#125;);
+&#125;);
+</code></pre>
+<h2 id="參考連結"><a href="#參考連結" class="headerlink" title="參考連結"></a>參考連結</h2><p>大量範例展示CSS動畫可以做到的效果。</p>
+<p><a target="_blank" rel="noopener" href="http://learn.shayhowe.com/advanced-html-css/transitions-animations/">Transitions &amp; Animations - Learn to Code Advanced HTML &amp; CSS</a></p>
+<p>MDN 的 CSS 動畫說明頁，有不少的範例可以玩。</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/CSS_%E5%8B%95%E7%95%AB">CSS 動畫  MDN</a></p>
+<p>中文版的CSS字典</p>
+<p><a target="_blank" rel="noopener" href="http://css.doyoe.com/">CSS参考手册_web前端开发参考手册系列</a></p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2015/10/22/old%20posts/2015-10-22-use-wowjs-to-quickly-create-scrolling-animation/" title="Demo：使用wow.js快速打造捲動式動畫網頁"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Demo：使用wow.js快速打造捲動式動畫網頁</span></a><a class="button is-default" href="/2015/10/19/old%20posts/2015-10-19-landing-page-implements-a/" title="Demo：使用scrollspy讓畫面更生動"><span class="has-text-weight-semibold">Next: Demo：使用scrollspy讓畫面更生動</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="LukaHuang/" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/LukaHuang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/LukaHuang"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//CodeShiba"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Luka.tw 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo </p></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>
