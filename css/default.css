@@ -11060,6 +11060,21 @@ footer.footer .level-end .field {
 .post-navigation .level-item {
   margin-bottom: 0;
 }
+.post-navigation .level-start,
+.post-navigation .level-end {
+  padding: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 1.35rem;
+  max-width: 47.5%;
+  background-color: #fff;
+  color: #4a4a4a;
+/* margin-bottom: 20px; */
+}
+.post-navigation .level-start {
+  margin-right: 5%;
+}
 .timeline {
   margin-left: 1rem;
   padding: 1rem 0 0 1.5rem;
@@ -11369,6 +11384,15 @@ figure.highlight .section {
 }
 .gist .file {
   all: initial;
+}
+.widget .categories {
+  display: none;
+}
+.widget .menu-label {
+  margin-bottom: 0.25em;
+  font-size: 1.35rem;
+  color: #363636;
+  font-weight: bold;
 }
 .widget .menu-list li ul {
   margin-right: 0;
