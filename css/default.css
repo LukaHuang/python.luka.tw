@@ -10836,7 +10836,7 @@ article.article .article-tags {
   color: #7a7a7a;
 }
 article.article .article-meta {
-  overflow-x: auto;
+  overflow-x: hidden;
   margin-bottom: 0.5rem;
 }
 article.article .content {
@@ -11007,9 +11007,14 @@ a.article-nav-next span {
   }
   .navbar-main .navbar-start {
     margin-right: 0;
+    display: none;
   }
   .navbar-main .navbar-end {
     margin-left: 0;
+  }
+  .navbar-main .navbar-end .navbar-item:nth-child(1),
+  .navbar-main .navbar-end .navbar-item:nth-child(2) {
+    display: none;
   }
 }
 .navbar-logo img {
