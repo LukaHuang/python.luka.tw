@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>Luka.tw</title>
   
   
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="https://luka.tw/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="https://luka.tw/"/>
   <updated>2021-10-08T18:53:53.368Z</updated>
-  <id>http://example.com/</id>
+  <id>https://luka.tw/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>Luka Huang</name>
     
   </author>
   
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Python 到底是 Call by Value, Call by Reference, 還是 Call by Sharing？</title>
-    <link href="http://example.com/2021/09/21/2021-09-21-is-python-call-by-sharing/"/>
-    <id>http://example.com/2021/09/21/2021-09-21-is-python-call-by-sharing/</id>
+    <link href="https://luka.tw/2021/09/21/2021-09-21-is-python-call-by-sharing/"/>
+    <id>https://luka.tw/2021/09/21/2021-09-21-is-python-call-by-sharing/</id>
     <published>2021-09-21T12:50:00.000Z</published>
     <updated>2021-10-08T18:53:53.368Z</updated>
     
@@ -41,17 +41,17 @@
     
     
     
-    <category term="Python" scheme="http://example.com/categories/Python/"/>
+    <category term="Python" scheme="https://luka.tw/categories/Python/"/>
     
-    <category term="01 基礎教學" scheme="http://example.com/categories/Python/01-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/"/>
+    <category term="01 基礎教學" scheme="https://luka.tw/categories/Python/01-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/"/>
     
     
   </entry>
   
   <entry>
     <title>Python — Mutable vs Immutable</title>
-    <link href="http://example.com/2021/08/24/2021-08-24-mutable-and-imuttable/"/>
-    <id>http://example.com/2021/08/24/2021-08-24-mutable-and-imuttable/</id>
+    <link href="https://luka.tw/2021/08/24/2021-08-24-mutable-and-imuttable/"/>
+    <id>https://luka.tw/2021/08/24/2021-08-24-mutable-and-imuttable/</id>
     <published>2021-08-24T11:32:00.000Z</published>
     <updated>2021-10-09T12:04:19.472Z</updated>
     
@@ -69,17 +69,17 @@
     
     
     
-    <category term="Python" scheme="http://example.com/categories/Python/"/>
+    <category term="Python" scheme="https://luka.tw/categories/Python/"/>
     
-    <category term="01 基礎教學" scheme="http://example.com/categories/Python/01-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/"/>
+    <category term="01 基礎教學" scheme="https://luka.tw/categories/Python/01-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/"/>
     
     
   </entry>
   
   <entry>
     <title>WSL - 在 Windows 上打造 Linux 的開發體驗</title>
-    <link href="http://example.com/2020/11/15/2020-11-15-wsl/"/>
-    <id>http://example.com/2020/11/15/2020-11-15-wsl/</id>
+    <link href="https://luka.tw/2020/11/15/2020-11-15-wsl/"/>
+    <id>https://luka.tw/2020/11/15/2020-11-15-wsl/</id>
     <published>2020-11-15T12:50:00.000Z</published>
     <updated>2021-10-04T14:39:32.570Z</updated>
     
@@ -97,8 +97,8 @@
   
   <entry>
     <title>ArgoCD — 透過 ArgoCD 認識 GitOps</title>
-    <link href="http://example.com/2020/09/21/2020-09-21-introduction-to-gitops-via-argocd/"/>
-    <id>http://example.com/2020/09/21/2020-09-21-introduction-to-gitops-via-argocd/</id>
+    <link href="https://luka.tw/2020/09/21/2020-09-21-introduction-to-gitops-via-argocd/"/>
+    <id>https://luka.tw/2020/09/21/2020-09-21-introduction-to-gitops-via-argocd/</id>
     <published>2020-09-21T12:50:00.000Z</published>
     <updated>2021-10-04T14:39:07.248Z</updated>
     
@@ -117,8 +117,8 @@
   
   <entry>
     <title>從 Github 開源指南｜學習如何貢獻開源專案</title>
-    <link href="http://example.com/2020/08/15/2020-08-05-introduction-to-open-source-guild/"/>
-    <id>http://example.com/2020/08/15/2020-08-05-introduction-to-open-source-guild/</id>
+    <link href="https://luka.tw/2020/08/15/2020-08-05-introduction-to-open-source-guild/"/>
+    <id>https://luka.tw/2020/08/15/2020-08-05-introduction-to-open-source-guild/</id>
     <published>2020-08-15T12:50:00.000Z</published>
     <updated>2021-10-04T14:39:03.116Z</updated>
     
@@ -136,16 +136,16 @@
     
     
     
-    <category term="Github" scheme="http://example.com/tags/Github/"/>
+    <category term="Github" scheme="https://luka.tw/tags/Github/"/>
     
-    <category term="Open Source" scheme="http://example.com/tags/Open-Source/"/>
+    <category term="Open Source" scheme="https://luka.tw/tags/Open-Source/"/>
     
   </entry>
   
   <entry>
     <title>TLDR 命令列神兵｜Linux 入門必裝</title>
-    <link href="http://example.com/2020/07/28/2020-07-28-tldr/"/>
-    <id>http://example.com/2020/07/28/2020-07-28-tldr/</id>
+    <link href="https://luka.tw/2020/07/28/2020-07-28-tldr/"/>
+    <id>https://luka.tw/2020/07/28/2020-07-28-tldr/</id>
     <published>2020-07-28T08:01:00.000Z</published>
     <updated>2021-10-04T14:02:14.844Z</updated>
     
@@ -169,8 +169,8 @@
   
   <entry>
     <title>Kubernetes IDE | Lens 用圖形化介面管理 K8S</title>
-    <link href="http://example.com/2020/06/30/2020-06-30-lens-the-ide-for-kubernetes/"/>
-    <id>http://example.com/2020/06/30/2020-06-30-lens-the-ide-for-kubernetes/</id>
+    <link href="https://luka.tw/2020/06/30/2020-06-30-lens-the-ide-for-kubernetes/"/>
+    <id>https://luka.tw/2020/06/30/2020-06-30-lens-the-ide-for-kubernetes/</id>
     <published>2020-06-30T09:01:00.000Z</published>
     <updated>2021-10-04T14:02:10.908Z</updated>
     
@@ -189,8 +189,8 @@
   
   <entry>
     <title>TPM — 套件管理工具 ，讓你的 TMUX 更好用</title>
-    <link href="http://example.com/2020/06/02/2020-06-02-tmp-let-your-tmux-better/"/>
-    <id>http://example.com/2020/06/02/2020-06-02-tmp-let-your-tmux-better/</id>
+    <link href="https://luka.tw/2020/06/02/2020-06-02-tmp-let-your-tmux-better/"/>
+    <id>https://luka.tw/2020/06/02/2020-06-02-tmp-let-your-tmux-better/</id>
     <published>2020-06-02T11:51:00.000Z</published>
     <updated>2021-10-04T15:34:57.624Z</updated>
     
@@ -209,8 +209,8 @@
   
   <entry>
     <title>Unit Test 中的替身：搞不清楚的Dummy 、Stub、Spy、Mock、Fake</title>
-    <link href="http://example.com/2020/05/05/2020-05-05-unit-test/"/>
-    <id>http://example.com/2020/05/05/2020-05-05-unit-test/</id>
+    <link href="https://luka.tw/2020/05/05/2020-05-05-unit-test/"/>
+    <id>https://luka.tw/2020/05/05/2020-05-05-unit-test/</id>
     <published>2020-05-05T11:50:00.000Z</published>
     <updated>2021-10-04T14:00:59.255Z</updated>
     
@@ -227,14 +227,14 @@
     
     
     
-    <category term="Unit Test" scheme="http://example.com/tags/Unit-Test/"/>
+    <category term="Unit Test" scheme="https://luka.tw/tags/Unit-Test/"/>
     
   </entry>
   
   <entry>
     <title>Kubernetes 教學 02 — 在 Minikube 上部屬 Python Flask 應用程式</title>
-    <link href="http://example.com/2020/03/10/2020-03-20-running-flask-on-minikube/"/>
-    <id>http://example.com/2020/03/10/2020-03-20-running-flask-on-minikube/</id>
+    <link href="https://luka.tw/2020/03/10/2020-03-20-running-flask-on-minikube/"/>
+    <id>https://luka.tw/2020/03/10/2020-03-20-running-flask-on-minikube/</id>
     <published>2020-03-10T11:50:00.000Z</published>
     <updated>2021-10-04T14:40:55.156Z</updated>
     
@@ -251,20 +251,20 @@
     
     
     
-    <category term="Kubernetes" scheme="http://example.com/tags/Kubernetes/"/>
+    <category term="Kubernetes" scheme="https://luka.tw/tags/Kubernetes/"/>
     
-    <category term="Minikube" scheme="http://example.com/tags/Minikube/"/>
+    <category term="Minikube" scheme="https://luka.tw/tags/Minikube/"/>
     
-    <category term="Python" scheme="http://example.com/tags/Python/"/>
+    <category term="Python" scheme="https://luka.tw/tags/Python/"/>
     
-    <category term="Flask" scheme="http://example.com/tags/Flask/"/>
+    <category term="Flask" scheme="https://luka.tw/tags/Flask/"/>
     
   </entry>
   
   <entry>
     <title>Kubernetes 教學 01 - 概念與架構</title>
-    <link href="http://example.com/2020/02/11/2020-02-11-kubernetes-tutorial-01/"/>
-    <id>http://example.com/2020/02/11/2020-02-11-kubernetes-tutorial-01/</id>
+    <link href="https://luka.tw/2020/02/11/2020-02-11-kubernetes-tutorial-01/"/>
+    <id>https://luka.tw/2020/02/11/2020-02-11-kubernetes-tutorial-01/</id>
     <published>2020-02-11T02:32:00.000Z</published>
     <updated>2021-10-04T14:00:28.034Z</updated>
     
@@ -284,16 +284,16 @@
     
     
     
-    <category term="Kubernetes" scheme="http://example.com/tags/Kubernetes/"/>
+    <category term="Kubernetes" scheme="https://luka.tw/tags/Kubernetes/"/>
     
-    <category term="Minikube" scheme="http://example.com/tags/Minikube/"/>
+    <category term="Minikube" scheme="https://luka.tw/tags/Minikube/"/>
     
   </entry>
   
   <entry>
     <title>從零開始學 DevOps — 那就選擇最簡單的 Drone CI 開始吧！</title>
-    <link href="http://example.com/2020/01/14/2020-01-14-drone/"/>
-    <id>http://example.com/2020/01/14/2020-01-14-drone/</id>
+    <link href="https://luka.tw/2020/01/14/2020-01-14-drone/"/>
+    <id>https://luka.tw/2020/01/14/2020-01-14-drone/</id>
     <published>2020-01-14T02:32:00.000Z</published>
     <updated>2021-10-04T14:00:15.313Z</updated>
     
@@ -308,16 +308,16 @@
     
     
     
-    <category term="DevOps" scheme="http://example.com/tags/DevOps/"/>
+    <category term="DevOps" scheme="https://luka.tw/tags/DevOps/"/>
     
-    <category term="DroneCI" scheme="http://example.com/tags/DroneCI/"/>
+    <category term="DroneCI" scheme="https://luka.tw/tags/DroneCI/"/>
     
   </entry>
   
   <entry>
     <title>用 Harbor 架設 Private Docker Registry</title>
-    <link href="http://example.com/2019/12/17/2019-12-17-harbor/"/>
-    <id>http://example.com/2019/12/17/2019-12-17-harbor/</id>
+    <link href="https://luka.tw/2019/12/17/2019-12-17-harbor/"/>
+    <id>https://luka.tw/2019/12/17/2019-12-17-harbor/</id>
     <published>2019-12-17T02:32:00.000Z</published>
     <updated>2021-10-04T15:35:32.077Z</updated>
     
@@ -332,16 +332,16 @@
     
     
     
-    <category term="Harbor" scheme="http://example.com/tags/Harbor/"/>
+    <category term="Harbor" scheme="https://luka.tw/tags/Harbor/"/>
     
-    <category term="Docker" scheme="http://example.com/tags/Docker/"/>
+    <category term="Docker" scheme="https://luka.tw/tags/Docker/"/>
     
   </entry>
   
   <entry>
     <title>駭客是怎麼思考的？｜從 Devcore Conf 學駭客思維</title>
-    <link href="http://example.com/2019/11/19/2019-11-19/"/>
-    <id>http://example.com/2019/11/19/2019-11-19/</id>
+    <link href="https://luka.tw/2019/11/19/2019-11-19/"/>
+    <id>https://luka.tw/2019/11/19/2019-11-19/</id>
     <published>2019-11-19T02:32:00.000Z</published>
     <updated>2021-10-04T13:50:17.119Z</updated>
     
@@ -355,16 +355,16 @@
     
     
     
-    <category term="Harbor" scheme="http://example.com/tags/Harbor/"/>
+    <category term="Harbor" scheme="https://luka.tw/tags/Harbor/"/>
     
-    <category term="Docker" scheme="http://example.com/tags/Docker/"/>
+    <category term="Docker" scheme="https://luka.tw/tags/Docker/"/>
     
   </entry>
   
   <entry>
     <title>Mysql - 如何修改 partition 並還原資料</title>
-    <link href="http://example.com/2018/03/04/old%20posts/2018-03-04-modify-and-restore-mysql-partition/"/>
-    <id>http://example.com/2018/03/04/old%20posts/2018-03-04-modify-and-restore-mysql-partition/</id>
+    <link href="https://luka.tw/2018/03/04/old%20posts/2018-03-04-modify-and-restore-mysql-partition/"/>
+    <id>https://luka.tw/2018/03/04/old%20posts/2018-03-04-modify-and-restore-mysql-partition/</id>
     <published>2018-03-04T04:50:00.000Z</published>
     <updated>2021-10-03T17:05:35.175Z</updated>
     
@@ -376,16 +376,16 @@
     
     
     
-    <category term="Database" scheme="http://example.com/tags/Database/"/>
+    <category term="Database" scheme="https://luka.tw/tags/Database/"/>
     
-    <category term="Mysql" scheme="http://example.com/tags/Mysql/"/>
+    <category term="Mysql" scheme="https://luka.tw/tags/Mysql/"/>
     
   </entry>
   
   <entry>
     <title>[譯] 使用 AWS Ruby SDK v2 更新 S3 物件 Metadata</title>
-    <link href="http://example.com/2018/01/25/old%20posts/2018-01-25-use-aws-ruby-sdk-to-update-s3-metadata/"/>
-    <id>http://example.com/2018/01/25/old%20posts/2018-01-25-use-aws-ruby-sdk-to-update-s3-metadata/</id>
+    <link href="https://luka.tw/2018/01/25/old%20posts/2018-01-25-use-aws-ruby-sdk-to-update-s3-metadata/"/>
+    <id>https://luka.tw/2018/01/25/old%20posts/2018-01-25-use-aws-ruby-sdk-to-update-s3-metadata/</id>
     <published>2018-01-25T07:32:00.000Z</published>
     <updated>2021-10-03T17:05:35.173Z</updated>
     
@@ -400,16 +400,16 @@
     
     
     
-    <category term="AWS" scheme="http://example.com/tags/AWS/"/>
+    <category term="AWS" scheme="https://luka.tw/tags/AWS/"/>
     
-    <category term="S3" scheme="http://example.com/tags/S3/"/>
+    <category term="S3" scheme="https://luka.tw/tags/S3/"/>
     
   </entry>
   
   <entry>
     <title>[譯] Amazon S3 Delimiter and Prefix</title>
-    <link href="http://example.com/2018/01/03/old%20posts/2018-01-03-aws-s3-delimiter-and-prefix/"/>
-    <id>http://example.com/2018/01/03/old%20posts/2018-01-03-aws-s3-delimiter-and-prefix/</id>
+    <link href="https://luka.tw/2018/01/03/old%20posts/2018-01-03-aws-s3-delimiter-and-prefix/"/>
+    <id>https://luka.tw/2018/01/03/old%20posts/2018-01-03-aws-s3-delimiter-and-prefix/</id>
     <published>2018-01-03T04:50:00.000Z</published>
     <updated>2021-10-03T17:05:35.172Z</updated>
     
@@ -424,16 +424,16 @@
     
     
     
-    <category term="AWS" scheme="http://example.com/tags/AWS/"/>
+    <category term="AWS" scheme="https://luka.tw/tags/AWS/"/>
     
-    <category term="S3" scheme="http://example.com/tags/S3/"/>
+    <category term="S3" scheme="https://luka.tw/tags/S3/"/>
     
   </entry>
   
   <entry>
     <title>Web 基本功 - Cookie 與 Session</title>
-    <link href="http://example.com/2017/12/22/old%20posts/2017-12-22-web-foundation-the-different-of-cookie-and-session/"/>
-    <id>http://example.com/2017/12/22/old%20posts/2017-12-22-web-foundation-the-different-of-cookie-and-session/</id>
+    <link href="https://luka.tw/2017/12/22/old%20posts/2017-12-22-web-foundation-the-different-of-cookie-and-session/"/>
+    <id>https://luka.tw/2017/12/22/old%20posts/2017-12-22-web-foundation-the-different-of-cookie-and-session/</id>
     <published>2017-12-22T06:11:00.000Z</published>
     <updated>2021-10-03T17:05:35.169Z</updated>
     
@@ -449,18 +449,18 @@
     
     
     
-    <category term="Web Foundation" scheme="http://example.com/tags/Web-Foundation/"/>
+    <category term="Web Foundation" scheme="https://luka.tw/tags/Web-Foundation/"/>
     
-    <category term="Coockie" scheme="http://example.com/tags/Coockie/"/>
+    <category term="Coockie" scheme="https://luka.tw/tags/Coockie/"/>
     
-    <category term="Session" scheme="http://example.com/tags/Session/"/>
+    <category term="Session" scheme="https://luka.tw/tags/Session/"/>
     
   </entry>
   
   <entry>
     <title>OLTP 與 OLAP</title>
-    <link href="http://example.com/2017/12/22/old%20posts/2017-12-29-oltp-vs-olap/"/>
-    <id>http://example.com/2017/12/22/old%20posts/2017-12-29-oltp-vs-olap/</id>
+    <link href="https://luka.tw/2017/12/22/old%20posts/2017-12-29-oltp-vs-olap/"/>
+    <id>https://luka.tw/2017/12/22/old%20posts/2017-12-29-oltp-vs-olap/</id>
     <published>2017-12-22T06:11:00.000Z</published>
     <updated>2021-10-03T17:05:35.170Z</updated>
     
@@ -472,14 +472,14 @@
     
     
     
-    <category term="Database" scheme="http://example.com/tags/Database/"/>
+    <category term="Database" scheme="https://luka.tw/tags/Database/"/>
     
   </entry>
   
   <entry>
     <title>使用 GIT Precommit hooks 防止 Binding.pry 進入 Commit</title>
-    <link href="http://example.com/2017/12/06/old%20posts/2017-12-06-git-precommit-hooks-copy/"/>
-    <id>http://example.com/2017/12/06/old%20posts/2017-12-06-git-precommit-hooks-copy/</id>
+    <link href="https://luka.tw/2017/12/06/old%20posts/2017-12-06-git-precommit-hooks-copy/"/>
+    <id>https://luka.tw/2017/12/06/old%20posts/2017-12-06-git-precommit-hooks-copy/</id>
     <published>2017-12-06T14:34:00.000Z</published>
     <updated>2021-10-03T17:05:35.168Z</updated>
     
@@ -493,9 +493,9 @@
     
     
     
-    <category term="Rails" scheme="http://example.com/tags/Rails/"/>
+    <category term="Rails" scheme="https://luka.tw/tags/Rails/"/>
     
-    <category term="Time" scheme="http://example.com/tags/Time/"/>
+    <category term="Time" scheme="https://luka.tw/tags/Time/"/>
     
   </entry>
   
