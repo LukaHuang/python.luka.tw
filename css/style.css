@@ -10797,10 +10797,10 @@ body > .section {
   max-height: 100%;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
   will-change: transform;
-  transition: transform 600ms;
+  transition: transform 250ms;
 }
 .card:hover .post-cover-img {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 article.media {
   color: #7a7a7a;
