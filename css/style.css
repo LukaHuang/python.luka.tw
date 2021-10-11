@@ -11400,6 +11400,9 @@ figure.highlight .section {
 .widget .categories {
   display: none;
 }
+.widget .categories li ul {
+  margin: 0;
+}
 .widget .menu-label {
   margin-bottom: 0.25em;
   font-size: 1.35rem;
@@ -11413,6 +11416,9 @@ figure.highlight .section {
 .widget .menu-list .level {
   margin-bottom: 0;
   padding: 0.5rem 0;
+}
+.widget .menu-list .level .level-item {
+  padding-left: 10.5px;
 }
 .widget .menu-list .level .level-left,
 .widget .menu-list .level .level-right,
