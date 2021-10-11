@@ -11187,10 +11187,11 @@ footer.footer .level-end .field {
   box-sizing: border-box;
   padding: 0.75em 0 0.75em 1.25em;
   background: #fff;
+  font-size: 1.35rem;
 }
 .searchbox .searchbox-close {
   display: inline-block;
-  font-size: 1.5em;
+  font-size: 0.8em;
   padding: 0.5em 0.75em;
   cursor: pointer;
 }
@@ -11407,6 +11408,7 @@ figure.highlight .section {
 }
 .widget .menu-list li ul {
   margin-right: 0;
+  margin-top: 0;
 }
 .widget .menu-list .level {
   margin-bottom: 0;
