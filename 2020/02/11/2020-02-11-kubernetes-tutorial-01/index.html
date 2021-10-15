@@ -4,7 +4,7 @@
         gtag('js', new Date());
     
         gtag('config', 'G-4R5BH0GFLH');</script><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="LukaJoJo" type="application/atom+xml">
-</head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-menu"><a class="navbar-item navbar-logo" href="/">LukaJoJo</a><div class="navbar-start"><a class="navbar-item" href="/">首頁</a><a class="navbar-item" href="/categories">分類</a><a class="navbar-item" href="/archives">彙整</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Medium" href="https://lukajojo.medium.com/"><i class="fab fa-medium"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Facebook" href="https://www.facebook.com/CodeShiba"><i class="fab fa-facebook"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目錄" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜尋" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">2020-02-11</time></span><span class="level-item"><time dateTime="2020-02-11T02:32:00.000Z" title="2/11/2020, 10:32:00 AM">2020-02-11</time>發表</span><span class="level-item">6 分鐘讀完 (大約1766個字)</span></div></div><h1 class="title is-3 is-size-4-mobile">Kubernetes 教學 01 - 概念與架構</h1><div class="content"><h2 id="為什麼該學-K8S-？-Pod、Node-是什麼？搞的我好亂呀！"><a href="#為什麼該學-K8S-？-Pod、Node-是什麼？搞的我好亂呀！" class="headerlink" title="為什麼該學 K8S ？ Pod、Node 是什麼？搞的我好亂呀！"></a>為什麼該學 K8S ？ Pod、Node 是什麼？搞的我好亂呀！</h2><p><img src="./images/loading.gif" data-original="https://hackmd.io/_uploads/BJvr9reBt.png"></p>
+</head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-menu"><a class="navbar-item navbar-logo" href="/">LukaJoJo</a><div class="navbar-start"><a class="navbar-item" href="/">首頁</a><a class="navbar-item" href="/categories">分類</a><a class="navbar-item" href="/archives">彙整</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Medium" href="https://lukajojo.medium.com/"><i class="fab fa-medium"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Facebook" href="https://www.facebook.com/CodeShiba"><i class="fab fa-facebook"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目錄" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜尋" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">2020-02-11</time></span><span class="level-item"><time dateTime="2020-02-11T02:32:00.000Z" title="2/11/2020, 10:32:00 AM">2020-02-11</time>發表</span><span class="level-item">6 分鐘讀完 (大約1766個字)</span></div></div><h1 class="title is-3 is-size-4-mobile">Kubernetes 教學 01 - 概念與架構</h1><div class="content"><h2 id="為什麼該學-K8S-？-Pod、Node-是什麼？搞的我好亂呀！"><a href="#為什麼該學-K8S-？-Pod、Node-是什麼？搞的我好亂呀！" class="headerlink" title="為什麼該學 K8S ？ Pod、Node 是什麼？搞的我好亂呀！"></a>為什麼該學 K8S ？ Pod、Node 是什麼？搞的我好亂呀！</h2><p><img src="./img/loading.gif" data-original="https://hackmd.io/_uploads/BJvr9reBt.png"></p>
 <p>適合讀者：</p>
 <ul>
 <li><p>已經會使用 Docker，但是不知道 Kubernetes 是什麼。</p>
@@ -26,9 +26,9 @@
 <p>Container 中就是我們容器化好的應用程式，例如：Node.js 應用程式、MySQL 服務 … 等等</p>
 <p>需要 Pod 來作為基本單位的原因是，如果每個 Container 都作為 K8S 的最小單位，那麼管理網路會變得非常的困難。以 Pod 來區隔，同一個 Pod 裡面的 Container 能夠在本地端互相的連線，只有需要提供給外部呼叫的 API 才需要暴露出來。</p>
 <p>示意圖如下：</p>
-<p><img src="./images/loading.gif" data-original="https://hackmd.io/_uploads/SkEGjSeSF.png"></p>
+<p><img src="./img/loading.gif" data-original="https://hackmd.io/_uploads/SkEGjSeSF.png"></p>
 <h2 id="理解-Kubernetes-Cluster"><a href="#理解-Kubernetes-Cluster" class="headerlink" title="理解 Kubernetes Cluster"></a>理解 Kubernetes Cluster</h2><p>Kubernetes 集群由控制面板 Control Panel 與節點 Node 所組成。控制面板又稱為是 Kubernetes Master。</p>
-<p><img src="./images/loading.gif" data-original="https://hackmd.io/_uploads/H1J7oHgrK.png"></p>
+<p><img src="./img/loading.gif" data-original="https://hackmd.io/_uploads/H1J7oHgrK.png"></p>
 <p>控制面板由幾個元件 (Component) 所組成：</p>
 <h3 id="1-Kube-API-Server"><a href="#1-Kube-API-Server" class="headerlink" title="1. Kube API Server"></a>1. Kube API Server</h3><p>控制面板中用來暴露 Kubernetes API 的元件，讓其他服務可以讀寫 K8S 的資源物件 (Resouce Object)。</p>
 <h3 id="2-Kube-Schedular"><a href="#2-Kube-Schedular" class="headerlink" title="2. Kube Schedular"></a>2. Kube Schedular</h3><p>調度器，需要調度軟體、硬體資源的時候就要靠調度器囉。例如：如果新建立的 pod 沒有 node 可以放的時候，調度器就會開啟一個新的 node，來放置剛剛需要建立的 pod。</p>
@@ -56,11 +56,11 @@
 </li>
 </ul>
 <p>這種分類法較接近開發者，可以藉此看看開發者在想些什麼。</p>
-<p><img src="./images/loading.gif" data-original="https://hackmd.io/_uploads/HyqXjSlHY.png"></p>
+<p><img src="./img/loading.gif" data-original="https://hackmd.io/_uploads/HyqXjSlHY.png"></p>
 <p>還有精美的 kubectl 範例可以使用，很方便。</p>
-<p><img src="./images/loading.gif" data-original="https://hackmd.io/_uploads/SJZVoSlSF.png"></p>
+<p><img src="./img/loading.gif" data-original="https://hackmd.io/_uploads/SJZVoSlSF.png"></p>
 <h2 id="kubectl-—-跟-K8S-Cluster-溝通的工具"><a href="#kubectl-—-跟-K8S-Cluster-溝通的工具" class="headerlink" title="kubectl — 跟 K8S Cluster 溝通的工具"></a>kubectl — 跟 K8S Cluster 溝通的工具</h2><p>我們絕大多數對 K8S 的操作都需要透過 kubectl，kubectl 的是什麼呢？DevOps 開發者用 kubectl 命令列工具，可以透過 Kubernetes Master 上的 api-server 對各個 Node 下達指令。而這些 API 即是上一小節說的 Kubernetes API。</p>
-<p><img src="./images/loading.gif" data-original="https://hackmd.io/_uploads/SkjEjBgHt.png"></p>
+<p><img src="./img/loading.gif" data-original="https://hackmd.io/_uploads/SkjEjBgHt.png"></p>
 <p>to be continued …</p>
 <p>下一部分會比較偏重實作， Minikube 的基本操作、Kubectl 的基本操作與重要的 資源物件的介紹。</p>
 <p>如果喜歡我寫的文章，歡迎追蹤 本人的帳號 <a target="_blank" rel="noopener" href="https://medium.com/@LukaJoJo">@LukaJoJo</a> 與 <a target="_blank" rel="noopener" href="https://medium.com/starbugs">StarBugs Weekly 星巴哥技術週刊</a> 🙂🙂🙂</p>

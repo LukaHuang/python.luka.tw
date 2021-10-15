@@ -16,7 +16,7 @@
 </li>
 <li><p>密碼：<br>早期 Unix 系統的密碼就是放在這欄位上！但是因為這個檔案的特性是所有的程序都能夠讀取，這樣一來很容易造成密碼資料被竊取， 因此後來就將這個欄位的密碼資料給他改放到 /etc/shadow 中了。所以這裡你會看到一個『 x 』！</p>
 </li>
-<li><p>UID：<br><img src="./images/loading.gif" data-original="https://lh5.googleusercontent.com/kZDKBDkeEs8mmyEsJNC78JD5tTmtdtmU72h3ZnjMt1c=w1743-h1090-no" alt="資料來源：鳥哥"></p>
+<li><p>UID：<br><img src="./img/loading.gif" data-original="https://lh5.googleusercontent.com/kZDKBDkeEs8mmyEsJNC78JD5tTmtdtmU72h3ZnjMt1c=w1743-h1090-no" alt="資料來源：鳥哥"></p>
 </li>
 <li><p>GID<br>這個與 /etc/group 有關！其實 /etc/group 的觀念與 /etc/passwd 差不多，只是他是用來規範群組名稱與 GID 的對應而已！</p>
 </li>
@@ -52,7 +52,7 @@
 <h3 id="id"><a href="#id" class="headerlink" title="id"></a>id</h3><p>Typing id with no argument gives information about the current user, as in:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$ id<br>uid=500(george) gid=500(george) groups=106(fuse),500(george)<br></code></pre></td></tr></table></figure>
 <p>If given the name of another user as an argument, id will report information about that other user.</p>
-<p><img src="./images/loading.gif" data-original="https://lh5.googleusercontent.com/-DlvXntyuZuo/VB5Yp-Bv8eI/AAAAAAAAC_M/na_IAEG8CLg/w1755-h153-no/Screen%2BShot%2B2014-09-21%2Bat%2B12.46.47.png"></p>
+<p><img src="./img/loading.gif" data-original="https://lh5.googleusercontent.com/-DlvXntyuZuo/VB5Yp-Bv8eI/AAAAAAAAC_M/na_IAEG8CLg/w1755-h153-no/Screen%2BShot%2B2014-09-21%2Bat%2B12.46.47.png"></p>
 <h3 id="usermod"><a href="#usermod" class="headerlink" title="usermod"></a>usermod</h3><p>所謂這『人有失手，馬有亂蹄』，您說是吧？所以囉，當然有的時候會『不小心』在 useradd 的時候加入了錯誤的設定資料。或者是，在使用 useradd 後，發現某些地方還可以進行細部修改。 此時，當然我們可以直接到 /etc/passwd 或 /etc/shadow 去修改相對應欄位的資料， 不過，Linux 也有提供相關的指令讓大家來進行帳號相關資料的微調呢～那就是 usermod 囉～</p>
 <p><a target="_blank" rel="noopener" href="http://linux.vbird.org/linux_basic/0410accountmanager.php#usermod">鳥哥：usermod</a></p>
 <h1 id="4-Adding-and-Removing-Groups"><a href="#4-Adding-and-Removing-Groups" class="headerlink" title="4. Adding and Removing Groups"></a>4. Adding and Removing Groups</h1><h3 id="groupadd"><a href="#groupadd" class="headerlink" title="groupadd"></a>groupadd</h3><p>Adding a new group is done with groupadd:</p>

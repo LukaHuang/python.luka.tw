@@ -7,7 +7,7 @@
 </head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-menu"><a class="navbar-item navbar-logo" href="/">LukaJoJo</a><div class="navbar-start"><a class="navbar-item" href="/">首頁</a><a class="navbar-item" href="/categories">分類</a><a class="navbar-item" href="/archives">彙整</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Medium" href="https://lukajojo.medium.com/"><i class="fab fa-medium"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Facebook" href="https://www.facebook.com/CodeShiba"><i class="fab fa-facebook"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目錄" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜尋" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">2020-03-10</time></span><span class="level-item"><time dateTime="2020-03-10T11:50:00.000Z" title="3/10/2020, 7:50:00 PM">2020-03-10</time>發表</span><span class="level-item">4 分鐘讀完 (大約1323個字)</span></div></div><h1 class="title is-3 is-size-4-mobile">Kubernetes 教學 02 — 在 Minikube 上部屬 Python Flask 應用程式</h1><div class="content"><blockquote>
 <p>Minikube、kubectl 終於派上用場囉</p>
 </blockquote>
-<p><img src="./images/loading.gif" data-original="https://cdn-images-1.medium.com/max/2088/0*BVfI3gXXICtmPkCu.jpeg"></p>
+<p><img src="./img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2088/0*BVfI3gXXICtmPkCu.jpeg"></p>
 <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>在 <a target="_blank" rel="noopener" href="https://medium.com/starbugs/954caa9b1558">前一篇</a> 中我們弄懂了 K8S Cluster、Node、Pod 與 Container 的關係，並且在文章末段介紹了能夠與 kubectl -「能夠與 K8S 溝通的命令列工具」。這次我們用實際的操作，來認識容器化的實際過程，並把它部屬到本地的 Kubernetes 上面。</p>
 <h2 id="什麼是-Minikube-？"><a href="#什麼是-Minikube-？" class="headerlink" title="什麼是 Minikube ？"></a>什麼是 Minikube ？</h2><p>Minikube 是一個單節點的 Kubernetes Cluster，可以安裝在本機上，支援 Windows 與 Mac Minikube 只有一個 Node (節點)。</p>
 <p>還記得 Node 是什麼嘛？來複習一下，Node 是一台實體機器，一個工作者 (worker)。上面可以搭載許多個 Pod，而 Pod 是 Kubernetes 的最小部屬單位。一個 Pod 由一個 Container 或是多個 Container 所組成。</p>
@@ -26,7 +26,7 @@
 <pre><code>minikube status
 </code></pre>
 <p>上一篇提到的 kubelet 與 api-server 已經成功跑起來。複習一下 api-server 是 Master 的元件，kubelet，則是 Node 上負責跟 Master 溝通的元件。因為 Minikube 只有單一個 Node，所以同時具備 Master 與 Node 的元件。</p>
-<p><img src="./images/loading.gif" data-original="https://cdn-images-1.medium.com/max/2000/0*g0EkSg37jwB0wHNb.png"><br><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/overview/components/">ref: https://kubernetes.io/docs/concepts/overview/components/</a></p>
+<p><img src="./img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2000/0*g0EkSg37jwB0wHNb.png"><br><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/overview/components/">ref: https://kubernetes.io/docs/concepts/overview/components/</a></p>
 <p>使用 kubectl 查看目前 Cluster 中的狀態</p>
 <pre><code>kubectl get all
 </code></pre>
@@ -57,9 +57,9 @@ Flask
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">docker build . -t flask_app<br></code></pre></td></tr></table></figure>
 
 <p>可以成功 build，沒有問題</p>
-<p><img src="./images/loading.gif" data-original="https://cdn-images-1.medium.com/max/2000/1*bSSrv5vrsVqBO2xGZbs0qA.png"></p>
+<p><img src="./img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2000/1*bSSrv5vrsVqBO2xGZbs0qA.png"></p>
 <p>用 docker images 查看剛剛製作的 image</p>
-<p><img src="./images/loading.gif" data-original="https://cdn-images-1.medium.com/max/2140/1*ta80syB_HoOKMwLmSLOdQA.png"></p>
+<p><img src="./img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2140/1*ta80syB_HoOKMwLmSLOdQA.png"></p>
 <p>跑跑看剛剛製作好的 image</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">docker run -p 5001:5000 flask_app<br></code></pre></td></tr></table></figure>
 
@@ -74,7 +74,7 @@ Flask
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">kubectl apply -f k8s.yaml<br></code></pre></td></tr></table></figure>
 
 <p>部屬完的畫面</p>
-<p><img src="./images/loading.gif" data-original="https://cdn-images-1.medium.com/max/2000/1*G45yB7h77nfGQ--OtDgG1A.png"></p>
+<p><img src="./img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2000/1*G45yB7h77nfGQ--OtDgG1A.png"></p>
 <p>接著訪問</p>
 <p>剛剛的 k8s.yaml 只有聲明 deployment 與 service 兩種物件，但卻產生了 3 個 pod，原因就在於，deployment 裡面聲明了需要 3 個 pod，所以會擴展出 3 個。</p>
 <p>輸入以下指令查看暴露出來的 IP</p>
