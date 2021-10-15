@@ -8,7 +8,7 @@
 <h1 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h1><p>linux系統可分為三個重要的部份：<br>1.kernel<br>2.shell<br>3.application</p>
 <p>因為kernel的部份太過低階，所以需要透過一個友善介面(interface)來讓使用者操作的時候更為方便，這個介面便是shell。涵蓋範圍包括但不限於：</p>
 <p>CLI (Command line interface)<br>GUI (Graphical user interface)</p>
-<p>常見的CLI有以下幾種。<br><img src="https://lh4.googleusercontent.com/-Bxs23-huhzU/VDzh7zDaaII/AAAAAAAADII/sFNHHEnQwKk/w1618-h1185-no/Screen%2BShot%2B2014-10-14%2Bat%2B16.32.01.png"></p>
+<p>常見的CLI有以下幾種。<br><img src="./images/loading.gif" data-original="https://lh4.googleusercontent.com/-Bxs23-huhzU/VDzh7zDaaII/AAAAAAAADII/sFNHHEnQwKk/w1618-h1185-no/Screen%2BShot%2B2014-10-14%2Bat%2B16.32.01.png"></p>
 <p>sh是最古老的shell，大部分的linux系統使用上sh時，會直接使用其他shell的對應功能來取代，所以使用時需特別注意，就算語法是sh，其實實際上運作的是bash或者其他的shell如zsh…等等。</p>
 <p>csh 用c寫shell</p>
 <p>其他shell如zsh功能較bash強大，但是bash是一般linux系統最常見最基本的shell，所以撰寫 Shell Script 時，使用 Bash 是較好的選擇。</p>
@@ -46,4 +46,10 @@
             }
         });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="請輸入關鍵字..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
             loadInsight({"contentUrl":"/content.json"}, {"hint":"請輸入關鍵字...","untitled":"(無標題)","posts":"文章","pages":"頁面","categories":"文章分類","tags":"標籤"});
-        });</script></body></html>
+        });</script><script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 3,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body></html>

@@ -19,7 +19,7 @@
 <li>知道自己該做些什麼</li>
 </ol>
 <h3 id="步驟2：限制WIP數量來提高TH"><a href="#步驟2：限制WIP數量來提高TH" class="headerlink" title="步驟2：限制WIP數量來提高TH"></a>步驟2：限制WIP數量來提高TH</h3><h4 id="Buffering-緩衝區法"><a href="#Buffering-緩衝區法" class="headerlink" title="Buffering 緩衝區法"></a>Buffering 緩衝區法</h4><p>運用增減 Buffer 大小的控制方式，正是 Kanban Method 的威力所在，請依據利特爾法則 Little’s law ，來追求最大的產出。</p>
-<h4 id="利特爾法則"><a href="#利特爾法則" class="headerlink" title="利特爾法則"></a>利特爾法則</h4><p><img src="https://lh4.googleusercontent.com/mLD54mGAOKQa0D2FpHbn_fJSBFkifnyfYXF0Qrg8Zws=w1753-h655-no"><br>Work in Process (進行中的工作) 同時開工但是卻尚未完工的工作項目數量<br>Throughput (產能) 團隊在單位時間內的產出。<br>Lead time (開發週期時間) 團隊完成一個項目所花費的平均時間。</p>
+<h4 id="利特爾法則"><a href="#利特爾法則" class="headerlink" title="利特爾法則"></a>利特爾法則</h4><p><img src="./images/loading.gif" data-original="https://lh4.googleusercontent.com/mLD54mGAOKQa0D2FpHbn_fJSBFkifnyfYXF0Qrg8Zws=w1753-h655-no"><br>Work in Process (進行中的工作) 同時開工但是卻尚未完工的工作項目數量<br>Throughput (產能) 團隊在單位時間內的產出。<br>Lead time (開發週期時間) 團隊完成一個項目所花費的平均時間。</p>
 <p>如何來限制半成品 WIP數與獲取最大的產能TH值，便成了Kanban方法不斷從看板上做調整以追求開發瓶頸的工作了。<em><strong>設定限制工作項WIP數目可以讓我們更專注，更清楚眼前應該認真完成的目標。</strong></em></p>
 <h3 id="步驟3：管理工作流：個人看板讓你掌握時間《做自己》"><a href="#步驟3：管理工作流：個人看板讓你掌握時間《做自己》" class="headerlink" title="步驟3：管理工作流：個人看板讓你掌握時間《做自己》"></a>步驟3：管理工作流：個人看板讓你掌握時間《做自己》</h3><p>個人看板不只是拿來提升個人工作效能, 它更能拿來管理自己生活與工作流程，讓你知道如何掌握時間《做自己》。</p>
 <h4 id="如何改善瓶頸？"><a href="#如何改善瓶頸？" class="headerlink" title="如何改善瓶頸？"></a>如何改善瓶頸？</h4><ol>
@@ -67,4 +67,10 @@
             }
         });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="請輸入關鍵字..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
             loadInsight({"contentUrl":"/content.json"}, {"hint":"請輸入關鍵字...","untitled":"(無標題)","posts":"文章","pages":"頁面","categories":"文章分類","tags":"標籤"});
-        });</script></body></html>
+        });</script><script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 3,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body></html>

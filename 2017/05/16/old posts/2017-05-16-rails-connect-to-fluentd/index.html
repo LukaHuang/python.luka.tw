@@ -28,7 +28,7 @@
 <h3 id="step-3-啟動-fluentd"><a href="#step-3-啟動-fluentd" class="headerlink" title="step 3: 啟動 fluentd"></a>step 3: 啟動 fluentd</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">fluentd -c ./fluent/fluent.conf -vv &amp;<br></code></pre></td></tr></table></figure>
 
 <p>輸入後 fluentd 就可以順利跑起來了</p>
-<p><img src="media/14943115845575/14943128690870.jpg"></p>
+<p><img src="./images/loading.gif" data-original="media/14943115845575/14943128690870.jpg"></p>
 <h3 id="step-4-測試-fluentd-功能是否正常"><a href="#step-4-測試-fluentd-功能是否正常" class="headerlink" title="step 4: 測試 fluentd 功能是否正常"></a>step 4: 測試 fluentd 功能是否正常</h3><figure class="highlight rb"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs rb"><span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;fluent-logger&#x27;</span><br></code></pre></td></tr></table></figure>
 
 <p>初始化 Fluentd</p>
@@ -76,4 +76,10 @@
             }
         });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="請輸入關鍵字..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
             loadInsight({"contentUrl":"/content.json"}, {"hint":"請輸入關鍵字...","untitled":"(無標題)","posts":"文章","pages":"頁面","categories":"文章分類","tags":"標籤"});
-        });</script></body></html>
+        });</script><script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 3,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body></html>

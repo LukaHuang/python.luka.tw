@@ -4,13 +4,13 @@
         gtag('js', new Date());
     
         gtag('config', 'G-4R5BH0GFLH');</script><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="LukaJoJo" type="application/atom+xml">
-</head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-menu"><a class="navbar-item navbar-logo" href="/">LukaJoJo</a><div class="navbar-start"><a class="navbar-item" href="/">首頁</a><a class="navbar-item" href="/categories">分類</a><a class="navbar-item" href="/archives">彙整</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Medium" href="https://lukajojo.medium.com/"><i class="fab fa-medium"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Facebook" href="https://www.facebook.com/CodeShiba"><i class="fab fa-facebook"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目錄" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜尋" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">2019-11-19</time></span><span class="level-item"><time dateTime="2019-11-19T02:32:00.000Z" title="11/19/2019, 10:32:00 AM">2019-11-19</time>發表</span><span class="level-item">8 分鐘讀完 (大約2446個字)</span></div></div><h1 class="title is-3 is-size-4-mobile">駭客是怎麼思考的？｜從 Devcore Conf 學駭客思維</h1><div class="content"><h3 id="媽阿，原來電影裡演的都是真的"><a href="#媽阿，原來電影裡演的都是真的" class="headerlink" title="媽阿，原來電影裡演的都是真的"></a>媽阿，原來電影裡演的都是真的</h3><p><img src="https://hackmd.io/_uploads/SJBRyjbHK.jpg"></p>
+</head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-menu"><a class="navbar-item navbar-logo" href="/">LukaJoJo</a><div class="navbar-start"><a class="navbar-item" href="/">首頁</a><a class="navbar-item" href="/categories">分類</a><a class="navbar-item" href="/archives">彙整</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Medium" href="https://lukajojo.medium.com/"><i class="fab fa-medium"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Facebook" href="https://www.facebook.com/CodeShiba"><i class="fab fa-facebook"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目錄" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜尋" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">2019-11-19</time></span><span class="level-item"><time dateTime="2019-11-19T02:32:00.000Z" title="11/19/2019, 10:32:00 AM">2019-11-19</time>發表</span><span class="level-item">8 分鐘讀完 (大約2446個字)</span></div></div><h1 class="title is-3 is-size-4-mobile">駭客是怎麼思考的？｜從 Devcore Conf 學駭客思維</h1><div class="content"><h3 id="媽阿，原來電影裡演的都是真的"><a href="#媽阿，原來電影裡演的都是真的" class="headerlink" title="媽阿，原來電影裡演的都是真的"></a>媽阿，原來電影裡演的都是真的</h3><p><img src="./images/loading.gif" data-original="https://hackmd.io/_uploads/SJBRyjbHK.jpg"></p>
 <p>Hello 大家好，我是 Luka，一名喜歡追新技術並喜歡做些有趣嘗試的工程師。這次來的是分享參加 DEVCORE CONF 2019 的心得與收獲。</p>
 <p>這篇以 Web 前端、後端工程師的角度來分享參加 DEVCORE CONF 2019 的心得。適合「 Web 工程師」或是「想要多了解一點資安觀念的人」閱讀。如果你本身已經是從事資安行業了，那麼這篇文章對你來說可能太淺，請到 <a target="_blank" rel="noopener" href="https://devco.re/">DEVCORE 官網</a> 觀看專業的技術文章。</p>
 <p>簡單介紹一下 DEVCORE 戴夫寇爾這家資安公司，在我參加 DEVCORE CONF 之前已耳聞 DEVCORE 的大名，但我一直搞不清楚資安公司的不同之處。</p>
 <p>參加完 DEVCORE CONF 之後，我才知道原來 DEVCORE 這麼厲害，回報了非常多的 CVE 漏洞，在國際的駭客比賽中也常獲得獎項。和他們平常到底做些什麼事情。話不多說，趕快來進入正題。</p>
 <h2 id="全部講者都是駭客的年會"><a href="#全部講者都是駭客的年會" class="headerlink" title="全部講者都是駭客的年會"></a>全部講者都是駭客的年會</h2><p>必須說這個體驗真的超狂的，一家公司獨自舉辦一個研討會，並且所有講者都是「駭客」。議程裡大概有一半是分享「如何攻陷別人的公司」的過程與方法，而且當講到攻陷時的那一刻時，你會感受到講者眼睛裡閃耀著光芒，展現出了純粹的喜悅（抖～～。</p>
-<p><img src="https://hackmd.io/_uploads/H14bT4gHK.png"><br>( 因為主辦單位提到勿公開與會者，因此用海苔條保護與會者隱私。)</p>
+<p><img src="./images/loading.gif" data-original="https://hackmd.io/_uploads/H14bT4gHK.png"><br>( 因為主辦單位提到勿公開與會者，因此用海苔條保護與會者隱私。)</p>
 <p>這是 DEVCORE CONFERENCE 2019 的主設計，在牆上貼著有著很大 Attack 字樣的海報，傳遞了一個訊息：</p>
 <blockquote>
 <h1 id="攻擊！攻擊！再攻擊！純攻擊導向的資安研討會"><a href="#攻擊！攻擊！再攻擊！純攻擊導向的資安研討會" class="headerlink" title="攻擊！攻擊！再攻擊！純攻擊導向的資安研討會"></a><strong>攻擊！攻擊！再攻擊！純攻擊導向的資安研討會</strong></h1></blockquote>
@@ -18,7 +18,7 @@
 <p>聽完之後往往會覺得疑惑 ： 「這真的是攻擊者會採用的策略？」或是「這樣防禦真的就防的著了嘛？」，這些問題就是 DEVCORE CONF 2019 整個研討會的主軸 「從攻擊者的角度制定防禦策略」要解決的問題。</p>
 <blockquote>
 <h1 id="了解駭客思維，你才能了解從哪邊下手會是有效的防禦策略。"><a href="#了解駭客思維，你才能了解從哪邊下手會是有效的防禦策略。" class="headerlink" title="了解駭客思維，你才能了解從哪邊下手會是有效的防禦策略。"></a>了解駭客思維，你才能了解從哪邊下手會是有效的防禦策略。</h1></blockquote>
-<h2 id="進入駭客的思考領域"><a href="#進入駭客的思考領域" class="headerlink" title="進入駭客的思考領域"></a>進入駭客的思考領域</h2><p><img src="https://hackmd.io/_uploads/SkVXpVlrY.png"></p>
+<h2 id="進入駭客的思考領域"><a href="#進入駭客的思考領域" class="headerlink" title="進入駭客的思考領域"></a>進入駭客的思考領域</h2><p><img src="./images/loading.gif" data-original="https://hackmd.io/_uploads/SkVXpVlrY.png"></p>
 <h2 id="第一個思考點-—-我們如何防禦駭客入侵？"><a href="#第一個思考點-—-我們如何防禦駭客入侵？" class="headerlink" title="第一個思考點 — 我們如何防禦駭客入侵？"></a>第一個思考點 — 我們如何防禦駭客入侵？</h2><p>常見防守方式是「縱深防禦」，意思是用不同的資安設備、安全規範、服務，降低駭客入侵的可能性。</p>
 <p>萬一不幸某個點被駭客入侵了，例如：檔案伺服器被攻陷了，讓損害局限於某處，控制損害範圍。</p>
 <p>縱深防禦常見的被突破點：</p>
@@ -32,19 +32,19 @@
 <li><p>重兵防守了重要資產，但跟「重要資產的相關資產」卻沒有做好防禦，導致駭客可以選擇防禦較薄弱的相關資產作為中繼點作為入侵點，進而入侵重要資產。</p>
 </li>
 </ol>
-<h2 id="第二個思考點—-駭客想要的是什麼？"><a href="#第二個思考點—-駭客想要的是什麼？" class="headerlink" title="第二個思考點— 駭客想要的是什麼？"></a>第二個思考點— 駭客想要的是什麼？</h2><p><img src="https://hackmd.io/_uploads/HkT764xrt.png"></p>
+<h2 id="第二個思考點—-駭客想要的是什麼？"><a href="#第二個思考點—-駭客想要的是什麼？" class="headerlink" title="第二個思考點— 駭客想要的是什麼？"></a>第二個思考點— 駭客想要的是什麼？</h2><p><img src="./images/loading.gif" data-original="https://hackmd.io/_uploads/HkT764xrt.png"></p>
 <p>駭客在攻擊時想要取得的是「重要資產」，透過每一層的漏洞逐步的接近重要資產，進而拿下。</p>
 <p>這邊介紹一個名詞叫做<strong>瑞士乳酪模型（Swiss Cheese Model）</strong>，這個模型是在描述的是當威脅透過層層防護層的失誤（乳酪的層數），最終造成危害。</p>
-<p><img src="https://hackmd.io/_uploads/B1NnaVxBK.png"></p>
+<p><img src="./images/loading.gif" data-original="https://hackmd.io/_uploads/B1NnaVxBK.png"></p>
 <p>而應用在資安領域上，指的是駭客透過層層防禦的漏洞或是疏私，鑽過了瑞士起司模型的空隙，最終拿下重要資產。</p>
 <p>下圖名詞解釋：FW（Firewall 防火牆），IPS（ Intrusion Prevention System）入侵預防系統，WAF（Web Application Firewall），Antivirus 防毒軟體。</p>
-<p><img src="https://hackmd.io/_uploads/r1HzCVxBF.png"></p>
+<p><img src="./images/loading.gif" data-original="https://hackmd.io/_uploads/r1HzCVxBF.png"></p>
 <p>雖然每一個漏洞個別來看風險價值都不高，但以駭客的戰略思維來說，目標是要取得重要資產。也就是說這些「弱點拆開來看價值不高，但結合起來卻可以讓駭客拿下極高價值的重要資產」。</p>
 <p>也就是說，如果我們以駭客的思維來檢視我們的企業防禦機制，我們會更主動的去思考哪些點是重要的、是我們原本沒有注意到的。</p>
 <h2 id="第三個思考點-—-駭客如何決定攻擊的手法"><a href="#第三個思考點-—-駭客如何決定攻擊的手法" class="headerlink" title="第三個思考點 — 駭客如何決定攻擊的手法"></a>第三個思考點 — 駭客如何決定攻擊的手法</h2><p>駭客的攻擊的已經越來越具有系統化的趨勢，美國非營利資安組織 MITRE 提出 <a target="_blank" rel="noopener" href="https://attack.mitre.org/">ATT&amp;CK</a>，讓攻擊的流程變成簡單易懂模型，讓資安業者在討論網路攻擊手法時有統一的標準去依循，有共通的名詞來討論攻擊的手法。</p>
-<p><img src="https://hackmd.io/_uploads/H1q70VlBt.png"></p>
+<p><img src="./images/loading.gif" data-original="https://hackmd.io/_uploads/H1q70VlBt.png"></p>
 <p>上方紅色框框是可以採用的攻擊策略，直的藍色框框標示的是可以使用的攻擊技巧。</p>
-<p><img src="https://hackmd.io/_uploads/BJHVCNgHY.png"></p>
+<p><img src="./images/loading.gif" data-original="https://hackmd.io/_uploads/BJHVCNgHY.png"></p>
 <p>從這邊我們可以發現，攻擊的策略已經變得非常模組化，並且有很多種攻擊手法可以使用。如果我們想要防禦的話，我們必須知道更貼近駭客的思考方式，哪一種攻擊手法是最有可能被某種駭客組織採用。哪些攻擊手法耗費的時間成本較低，所以需要優先防禦。</p>
 <h2 id="第四個思考點-—-到底駭客會怎麼打？"><a href="#第四個思考點-—-到底駭客會怎麼打？" class="headerlink" title="第四個思考點 — 到底駭客會怎麼打？"></a>第四個思考點 — 到底駭客會怎麼打？</h2><p>我們知道了駭客有一個大型的資料庫，可以決定策略與攻擊技巧，但是駭客到底會用哪一種方式來攻擊？</p>
 <p>「<a target="_blank" rel="noopener" href="https://devco.re/services/red-team">紅隊演練</a>」就是解決這個問題的方法，資安人員模擬駭客全面性的攻擊，在不影響企業營運下，無所不用其極的模仿駭客攻擊企業，協助企業發掘弱點，讓企業面對攻擊時可以更好的應對。</p>
@@ -78,4 +78,10 @@
             }
         });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="請輸入關鍵字..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
             loadInsight({"contentUrl":"/content.json"}, {"hint":"請輸入關鍵字...","untitled":"(無標題)","posts":"文章","pages":"頁面","categories":"文章分類","tags":"標籤"});
-        });</script></body></html>
+        });</script><script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 3,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body></html>

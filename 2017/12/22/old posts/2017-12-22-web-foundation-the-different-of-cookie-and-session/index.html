@@ -13,9 +13,9 @@
 <li>Client 請求 Server 給予頁面</li>
 <li>Server 回 Response 給 Browser 的時候，HTTP Header 帶上 <code>Set-Cookie</code>。Browser 接收到 Set-Cookie 指令時，會將 Cookie 的名稱和值儲存在 Browser 的 Cookie。</li>
 </ol>
-<p><img src="https://lh3.googleusercontent.com/-ivTQRwbrQzs/WjyiAfiRepI/AAAAAAAAK7Y/8pjRBORXGEIKxyP7bjFTiEHjPYroooXQwCHMYCw/I/15139142578413.jpg"></p>
+<p><img src="./images/loading.gif" data-original="https://lh3.googleusercontent.com/-ivTQRwbrQzs/WjyiAfiRepI/AAAAAAAAK7Y/8pjRBORXGEIKxyP7bjFTiEHjPYroooXQwCHMYCw/I/15139142578413.jpg"></p>
 <h3 id="1-4-Browser-在每次-Request-的時候會帶上-Cookie"><a href="#1-4-Browser-在每次-Request-的時候會帶上-Cookie" class="headerlink" title="1.4 Browser 在每次 Request 的時候會帶上 Cookie"></a>1.4 Browser 在每次 Request 的時候會帶上 Cookie</h3><p>Browser 在每次對 Server 發出 Request 的時候會帶上 <code>Cookie</code> 的 Header，讓 Server 能夠正確的存取當前 Cookie。</p>
-<p><img src="https://lh3.googleusercontent.com/-316qWgn_JFg/WjyiAwnYu4I/AAAAAAAAK7c/jUqct0G-OeIYDDq5DxyM_rR1azOAClRnwCHMYCw/I/15139133853587.jpg"></p>
+<p><img src="./images/loading.gif" data-original="https://lh3.googleusercontent.com/-316qWgn_JFg/WjyiAwnYu4I/AAAAAAAAK7c/jUqct0G-OeIYDDq5DxyM_rR1azOAClRnwCHMYCw/I/15139133853587.jpg"></p>
 <h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h2><h3 id="2-1-什麼是-Session"><a href="#2-1-什麼是-Session" class="headerlink" title="2.1 什麼是 Session"></a>2.1 什麼是 Session</h3><p>Session 就像你進入一個遊樂園，手上先蓋個章，下次進入的時候就知道你是誰。<br>遊樂園就好比是 Server，你就好比是 Client (Browser)。<br>Client 要怎麼儲存這個章呢? 有兩種方法:</p>
 <ol>
 <li>使用 Cookie (set cookie)</li>
@@ -95,4 +95,10 @@
             }
         });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="請輸入關鍵字..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
             loadInsight({"contentUrl":"/content.json"}, {"hint":"請輸入關鍵字...","untitled":"(無標題)","posts":"文章","pages":"頁面","categories":"文章分類","tags":"標籤"});
-        });</script></body></html>
+        });</script><script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 3,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body></html>
