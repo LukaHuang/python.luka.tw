@@ -9,7 +9,7 @@
 <ol>
 <li>選擇陣列中的一個元素作為pivot</li>
 <li>比pivot小的都移到pivot的左邊，比pivot大的都移到pivot的右邊。</li>
-<li>對pivot左邊和右邊的兩個陣列分別再做一次QUICKSORT()，形成一個遞迴呼叫。<br><img src="./img/loading.gif" data-original="http://user-image.logdown.io/user/6141/blog/6148/post/205864/WGqApmAOSfylxMIEmhql_quicksort.jpg" alt="quicksort.jpg"></li>
+<li>對pivot左邊和右邊的兩個陣列分別再做一次QUICKSORT()，形成一個遞迴呼叫。<br><img src="/img/loading.gif" data-original="http://user-image.logdown.io/user/6141/blog/6148/post/205864/WGqApmAOSfylxMIEmhql_quicksort.jpg" alt="quicksort.jpg"></li>
 </ol>
 <h3 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">QUICKSORT(A,p,r)<br>1  if p &lt; r<br>2     q = PARTITION(A,p,r)<br>3     QUICKSORT(A,p,q-1)<br>4     QUICKSORT(A,q+1,r)<br></code></pre></td></tr></table></figure>
 <p>PARTITION()這個副程式的作用是將比pivot小的數放在pivot左邊，比pivot大的放在pivot的右邊。最後回傳pivot所在的位置存到變數q裡面，方便下一次quicksort的執行。</p>

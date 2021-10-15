@@ -4,30 +4,30 @@
         gtag('js', new Date());
     
         gtag('config', 'G-4R5BH0GFLH');</script><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="LukaJoJo" type="application/atom+xml">
-</head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-menu"><a class="navbar-item navbar-logo" href="/">LukaJoJo</a><div class="navbar-start"><a class="navbar-item" href="/">首頁</a><a class="navbar-item" href="/categories">分類</a><a class="navbar-item" href="/archives">彙整</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Medium" href="https://lukajojo.medium.com/"><i class="fab fa-medium"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Facebook" href="https://www.facebook.com/CodeShiba"><i class="fab fa-facebook"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目錄" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜尋" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">2019-12-17</time></span><span class="level-item"><time dateTime="2019-12-17T02:32:00.000Z" title="12/17/2019, 10:32:00 AM">2019-12-17</time>發表</span><span class="level-item">4 分鐘讀完 (大約1228個字)</span></div></div><h1 class="title is-3 is-size-4-mobile">用 Harbor 架設 Private Docker Registry</h1><div class="content"><p><img src="./img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2000/1*zYNBpVXtxGID9rttcSYklQ.jpeg"></p>
+</head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-menu"><a class="navbar-item navbar-logo" href="/">LukaJoJo</a><div class="navbar-start"><a class="navbar-item" href="/">首頁</a><a class="navbar-item" href="/categories">分類</a><a class="navbar-item" href="/archives">彙整</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Medium" href="https://lukajojo.medium.com/"><i class="fab fa-medium"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Facebook" href="https://www.facebook.com/CodeShiba"><i class="fab fa-facebook"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目錄" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜尋" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">2019-12-17</time></span><span class="level-item"><time dateTime="2019-12-17T02:32:00.000Z" title="12/17/2019, 10:32:00 AM">2019-12-17</time>發表</span><span class="level-item">4 分鐘讀完 (大約1228個字)</span></div></div><h1 class="title is-3 is-size-4-mobile">用 Harbor 架設 Private Docker Registry</h1><div class="content"><p><img src="/img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2000/1*zYNBpVXtxGID9rttcSYklQ.jpeg"></p>
 <h2 id="什麼是-Docker-Registry？"><a href="#什麼是-Docker-Registry？" class="headerlink" title="什麼是 Docker Registry？"></a>什麼是 Docker Registry？</h2><p>顧名思義就是用來儲存鏡像檔 (Image) 的地方。例如：DockerHub 就是 Docker 官方提供的 Docker Registry，你可以把你自己編寫的 Dockerfile 編譯之後上傳到 Dockerhub ，讓網路上的其他人自由的下載，讓大家站在你的肩膀上寫程式。</p>
-<p><img src="./img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2402/1*xCluFgOIs4GgoiAFkxIOJg.png" alt="Dockerhub 首頁"></p>
-<p><img src="./img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2328/1*5V65KKaQS5QlDeSEMW6Crg.png" alt="在 dockerhub 上面可以搜尋到 ubuntu 官方釋出的 docker image"></p>
+<p><img src="/img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2402/1*xCluFgOIs4GgoiAFkxIOJg.png" alt="Dockerhub 首頁"></p>
+<p><img src="/img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2328/1*5V65KKaQS5QlDeSEMW6Crg.png" alt="在 dockerhub 上面可以搜尋到 ubuntu 官方釋出的 docker image"></p>
 <h2 id="為什麼要架設私有的-Docker-Registry？"><a href="#為什麼要架設私有的-Docker-Registry？" class="headerlink" title="為什麼要架設私有的 Docker Registry？"></a>為什麼要架設私有的 Docker Registry？</h2><p>在這個容器化的時代， 要使用 Kubernetes 生態系，第一步是將原本的實體機器的配置轉換成程式碼，轉換完成後變成 Dockerfile，Dockerfile 編寫著這台機器上所有的配置。</p>
 <p>我們需要找一個地方存放由這些 Dockerfile 建立 (build) 出來的 Docker 鏡像檔，這些鏡像檔總不能放在 Dockerhub 上給大家一覽無遺吧？因此我們需要一個私有的 Docker Registry 來放置建立的 Docker 鏡像檔。</p>
 <h2 id="Harbor-是什麼？"><a href="#Harbor-是什麼？" class="headerlink" title="Harbor 是什麼？"></a>Harbor 是什麼？</h2><p>Harbor 是由 VMware 發行的鏡像檔儲存倉庫，就是你自行架設一個只有公司內部可以存取到的 Dockerhub，公司內部使用的鏡像檔都上傳到上面，要使用時也都從 Harbor 中拉下來 (pull image)。</p>
 <p>Harbor 的管理介面如下</p>
-<p><img src="./img/loading.gif" data-original="https://cdn-images-1.medium.com/max/3052/1*pl2f1k9c_PdW_QWxRf1cAQ.png"></p>
+<p><img src="/img/loading.gif" data-original="https://cdn-images-1.medium.com/max/3052/1*pl2f1k9c_PdW_QWxRf1cAQ.png"></p>
 <p>每一個專案可以有多個 Repository，而每個 Repository 可以上傳多個 Image</p>
-<p><img src="./img/loading.gif" data-original="https://cdn-images-1.medium.com/max/3078/1*l76NWolqE7O0t0rGAafk6A.png"></p>
+<p><img src="/img/loading.gif" data-original="https://cdn-images-1.medium.com/max/3078/1*l76NWolqE7O0t0rGAafk6A.png"></p>
 <h2 id="Harbor-在-CI-CD-中扮演的角色"><a href="#Harbor-在-CI-CD-中扮演的角色" class="headerlink" title="Harbor 在 CI/CD 中扮演的角色"></a>Harbor 在 CI/CD 中扮演的角色</h2><p>用一張圖表來說明 Docker Registry 在 CI / CD 流程中扮演的角色：</p>
-<p><img src="./img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2808/1*M69pOie1Kw6U1G36CC6sVA.png"></p>
+<p><img src="/img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2808/1*M69pOie1Kw6U1G36CC6sVA.png"></p>
 <p>首先我們把程式碼推上 Github，觸發 CI / CD (以 Jenkins 為例) Pipeline，Pipeline 中包含跑測試、程式碼品質檢測 … 等等的步驟，依照需求自由定義。</p>
 <p>跑完 CI / CD Pipeline 後便會把 Docker Image 推上 Harbor。接著如果 K8S 需要取用時便會從 Harbor 拉取 (pull) 需要的版本的 Image。</p>
 <p>註：更安全的作法是 Github 用私有的程式碼儲存庫取代，這邊為了簡單示意，用 Github 作為程式碼儲存庫的代表。</p>
 <h2 id="如何架設-Harbor？"><a href="#如何架設-Harbor？" class="headerlink" title="如何架設 Harbor？"></a>如何架設 Harbor？</h2><h3 id="Harbor-的安裝方式"><a href="#Harbor-的安裝方式" class="headerlink" title="Harbor 的安裝方式"></a>Harbor 的安裝方式</h3><p>在 Github 上面可以看到 Harbor 是 1 萬顆星星以上的大型開源專案</p>
-<p><img src="./img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2260/1*CH1EH9Z67Zb1Ly-yLwq9Kg.png"></p>
+<p><img src="/img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2260/1*CH1EH9Z67Zb1Ly-yLwq9Kg.png"></p>
 <p>找到 Install &amp;&amp; Run 區域的說明，上面寫著先下載 binary 檔案，然後跟著安裝手冊操作。</p>
-<p><img src="./img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2126/1*B-Q22EUDNzCgm0iMguOZOA.png"></p>
+<p><img src="/img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2126/1*B-Q22EUDNzCgm0iMguOZOA.png"></p>
 <p>我們就進入到 <a target="_blank" rel="noopener" href="https://github.com/goharbor/harbor/releases">Harbor Release</a> 頁面</p>
-<p><img src="./img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2264/1*ROVmxJmXqeKol5YLfjjN8w.png"></p>
+<p><img src="/img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2264/1*ROVmxJmXqeKol5YLfjjN8w.png"></p>
 <p>往下卷找到 Assets 區域</p>
-<p><img src="./img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2014/1*lNDshHJA-X-ZyF6EG_e_3g.png"></p>
+<p><img src="/img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2014/1*lNDshHJA-X-ZyF6EG_e_3g.png"></p>
 <p>這時我們點選 online installler 下載，如果在 linux 主機上可以用 wget 取得。</p>
 <h3 id="安裝-Docker-與-Docker-Compose"><a href="#安裝-Docker-與-Docker-Compose" class="headerlink" title="安裝 Docker 與 Docker Compose"></a>安裝 Docker 與 Docker Compose</h3><p>接著到 <a target="_blank" rel="noopener" href="https://github.com/goharbor/harbor/blob/master/docs/installation_guide.md">Harbor Installation and Configuration Guide</a> 觀看教學逐步完成安裝，安裝 Harbor 時需要安裝 Docker 與 Docker Compose。</p>
 <p>首先我們需要安裝 Docker，用 Ubuntu 18.04 來演練：參考 <a target="_blank" rel="noopener" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04">How To Install and Use Docker on Ubuntu 18.04</a> 逐步完成 docker 安裝。</p>
@@ -39,11 +39,11 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">tar xvf harbor-online-installer-v1.10.0.tgz<br></code></pre></td></tr></table></figure>
 
 <p>現在你有 harbor 安裝檔資料夾</p>
-<p><img src="./img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2000/1*oucT344pLoZU6e0MUKr_Cg.png"></p>
+<p><img src="/img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2000/1*oucT344pLoZU6e0MUKr_Cg.png"></p>
 <p>進入 harbor 資料夾，看到有幾個檔案，install.sh 就是安裝檔了，首先我們要先修改 harbor.yml</p>
-<p><img src="./img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2000/1*W2KPqrMFv2TC--85ciaIdw.png"></p>
+<p><img src="/img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2000/1*W2KPqrMFv2TC--85ciaIdw.png"></p>
 <p>將 hostname 修改，否則直接運行 install.sh 是會發生錯誤的。除了修改 hostman 以外，修改 admin password 預設管理員密碼，可以增加安全性。</p>
-<p><img src="./img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2000/1*jDUzW33Dqar1YOkZWwzgpg.png"></p>
+<p><img src="/img/loading.gif" data-original="https://cdn-images-1.medium.com/max/2000/1*jDUzW33Dqar1YOkZWwzgpg.png"></p>
 <p>修改完成後執行 sudo ./install.sh，harbor 需要的服務就會依序被建立起來，就是這麼簡單。</p>
 <p>此時訪問這台機器的 ip 位置，就會出現登入畫面囉！</p>
 <h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>現在你擁有了一個可以放在公司內網的 Docker Registry，你可以在上面自由的上傳自己建立的 Docker Image，不用怕被看光光，是不是很棒呢。</p>
