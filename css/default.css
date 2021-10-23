@@ -11403,6 +11403,18 @@ figure.highlight .section {
 .gist .file {
   all: initial;
 }
+.column-right #toc {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 1.5rem;
+  z-index: 99;
+}
+#post-page div[data-type="archives"] {
+  display: none;
+}
+#post-page div[data-type="recent-posts"] {
+  display: none;
+}
 .widget .categories {
   display: none;
 }
@@ -11446,8 +11458,8 @@ figure.highlight .section {
 .widget .menu-list a {
   font-size: 1.35rem;
 }
-.widget .menu-list a:active {
-  background-color: none;
+.widget .menu-list a.is-active {
+  background-color: #fff;
 }
 .widget .tags .tag:first-child {
   background: #3273dc;
