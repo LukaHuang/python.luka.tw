@@ -11430,13 +11430,11 @@ figure.highlight .section {
 .widget .menu-list li ul {
   margin: 0;
   border-left: none;
+  padding-left: 1.25rem;
 }
 .widget .menu-list .level {
   margin-bottom: 0;
   padding: 0.5rem 0;
-}
-.widget .menu-list .level .level-item {
-  padding-left: 10.5px;
 }
 .widget .menu-list .level .level-left,
 .widget .menu-list .level .level-right,
@@ -11457,6 +11455,10 @@ figure.highlight .section {
 }
 .widget .menu-list a {
   font-size: 1.35rem;
+}
+.widget .menu-list a:hover {
+  background-color: #fff;
+  color: #3273dc;
 }
 .widget .menu-list a.is-active {
   background-color: #fff;
@@ -11734,18 +11736,18 @@ figure.highlight .section {
 @media screen and (min-width: 1280px) {
   .is-1-column .container,
   .is-2-column .container {
-    max-width: 1152px;
-    width: 1152px;
+    max-width: 1088px;
+    width: 1088px;
   }
 }
 @media screen and (min-width: 1472px) {
   .is-2-column .container {
-    max-width: 1344px;
-    width: 1344px;
+    max-width: 1280px;
+    width: 1280px;
   }
   .is-1-column .container {
-    max-width: 1152px;
-    width: 1152px;
+    max-width: 1088px;
+    width: 1088px;
   }
 }
 @media screen and (min-width: 769px), print {
