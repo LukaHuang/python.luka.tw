@@ -11409,6 +11409,9 @@ figure.highlight .section {
   top: 1.5rem;
   z-index: 99;
 }
+.column-right .menu-list li ul {
+  padding-left: 1.25rem;
+}
 #post-page div[data-type="archives"] {
   display: none;
 }
@@ -11430,7 +11433,6 @@ figure.highlight .section {
 .widget .menu-list li ul {
   margin: 0;
   border-left: none;
-  padding-left: 1.25rem;
 }
 .widget .menu-list .level {
   margin-bottom: 0;
