@@ -11412,6 +11412,9 @@ figure.highlight .section {
 .column-right .menu-list li ul {
   padding-left: 1.25rem;
 }
+#post-page #toc {
+  margin: 6px 0;
+}
 #post-page div[data-type="archives"] {
   display: none;
 }
