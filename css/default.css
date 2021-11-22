@@ -10889,9 +10889,6 @@ article.article .content .message.message-immersive {
 article.article .content .message.message-immersive .message-body {
   border: none;
 }
-article.article .content > p:first-child > a {
-  display: none;
-}
 article.article .article-tags {
   display: flex;
   flex-wrap: wrap;
