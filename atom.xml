@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>LukaJoJo</title>
+  <title>程式柴 CodeShiba</title>
   
   
-  <link href="https://luka.tw/atom.xml" rel="self"/>
+  <link href="https://lukajojo.com/atom.xml" rel="self"/>
   
-  <link href="https://luka.tw/"/>
-  <updated>2021-11-10T07:42:38.439Z</updated>
-  <id>https://luka.tw/</id>
+  <link href="https://lukajojo.com/"/>
+  <updated>2021-11-22T16:54:36.221Z</updated>
+  <id>https://lukajojo.com/</id>
   
   <author>
     <name>Luka Huang</name>
@@ -17,68 +17,43 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Python 到底是 Call by Value, Call by Reference, 還是 Call by Sharing？</title>
-    <link href="https://luka.tw/2021/09/21/posts/2021-09-21-is-python-call-by-sharing/"/>
-    <id>https://luka.tw/2021/09/21/posts/2021-09-21-is-python-call-by-sharing/</id>
+    <title>【 Python 教學 】什麼是 Pass By Assignment？</title>
+    <link href="https://lukajojo.com/2021/09/21/posts/2021-09-21-is-python-call-by-sharing/"/>
+    <id>https://lukajojo.com/2021/09/21/posts/2021-09-21-is-python-call-by-sharing/</id>
     <published>2021-09-21T12:50:00.000Z</published>
-    <updated>2021-11-10T07:42:38.439Z</updated>
+    <updated>2021-11-22T16:54:36.221Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://hackmd.io/_uploads/S1C-0QxHK.png"></p><p>常見的語言的求值策略(Evaluation strategy)大概離不開這幾個，例如：JavaScript (Call by Value, Call by Sharing)、Java (Call by Value)、C (Call by Value)、C++ (Call by Value, Call by Reference)</p><p>這次使用使用淺顯易懂的語言，並搭配圖片來說明到底 Python 中是 Pass by Value, Pass by Reference, 還是 Pass Sharing？</p><h2 id="用-C-理解-Pass-by-Value"><a href="#用-C-理解-Pass-by-Value" class="headerlink" title="用 C++ 理解 Pass by Value"></a>用 C++ 理解 Pass by Value</h2><p>C++ 是探討 Pass by Value 與 Pass by Reference 的最佳選擇。我們先來理解 Pass by Value。</p><h3 id="Pass-by-Value-Output"><a href="#Pass-by-Value-Output" class="headerlink" title="Pass by Value (Output)"></a>Pass by Value (Output)</h3><p><img src="https://hackmd.io/_uploads/B1EzC7xrY.png"></p><p>執行結果</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Before: number is 7  <br>Before: the num is 7  <br>After: the num is 3  <br>After: number is 7<br></code></pre></td></tr></table></figure><h3 id="Pass-by-Value-Address"><a href="#Pass-by-Value-Address" class="headerlink" title="Pass by Value (Address)"></a>Pass by Value (Address)</h3><p>可以看到函式內部的數並不會受到影響，遵守作用域( Scope)範圍。我們再執行另一個程式，查看記憶體位址的改變。</p><p><img src="https://hackmd.io/_uploads/rJYMRmlHY.png"></p><p>執行結果:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">The Address of number is 0x7ffd0abe7b74  <br>The Address of num is 0x7ffd0abe7b5c  <br>The Address of num is 0x7ffd0abe7b5c  <br>The Address of number is 0x7ffd0abe7b74<br></code></pre></td></tr></table></figure><p>可以發現 num 的位址遵守作用域 (Scope)，經過這兩個程式之後，可以理解到 Pass by Value 是在呼叫函式的時候，複製一份引數(number)給函式使用。</p><p>Step 1：宣告 number 為 7</p><p><img src="https://hackmd.io/_uploads/H1kNRmxBt.png"></p><p>Step 2：呼叫函式時，複製一份給 number 的值複製一份給 num。</p><p><img src="https://hackmd.io/_uploads/ry1HCXert.png"></p><p>step 3：修改 num 的值時，修改的是複製出來的那一份。因此原本的 number 不受影響。</p><p><img src="https://hackmd.io/_uploads/BJPBCXlBK.png"></p><h2 id="用-C-理解-Pass-by-Reference"><a href="#用-C-理解-Pass-by-Reference" class="headerlink" title="用 C++ 理解 Pass by Reference"></a>用 C++ 理解 Pass by Reference</h2><h3 id="Pass-by-Reference"><a href="#Pass-by-Reference" class="headerlink" title="Pass by Reference"></a>Pass by Reference</h3><p><img src="https://hackmd.io/_uploads/SkHTzExSt.png"></p><p>執行結果：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Before: number is 7  <br>Before: the num is 7  <br>After: the num is 3  <br>After: number is 3<br></code></pre></td></tr></table></figure><h3 id="Pass-by-Reference-Address"><a href="#Pass-by-Reference-Address" class="headerlink" title="Pass by Reference (Address)"></a>Pass by Reference (Address)</h3><p>跟剛剛不同的是，因為 Pass by Reference 傳的是參照，也就是地址，所以裡外等同於是一個變數。接著我們一樣把記憶體位址印出來。看看是不是真的是同樣的記憶體位址。</p><p><img src="https://hackmd.io/_uploads/BkjpfExSY.png"></p><p>執行結果：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">The Address of number is 0x7ffd45470b64  <br>The Address of num is 0x7ffd45470b64  <br>The Address of num is 0x7ffd45470b64  <br>The Address of number is 0x7ffd45470b64<br></code></pre></td></tr></table></figure><p>發現結果如我們推測的，從頭到尾記憶體位址都是 <code>0x7ffd45470b64</code> 。因為我們傳的是記憶體位址嘛。</p><p>Step 1：宣告 number</p><p><img src="https://hackmd.io/_uploads/H1fNm_DrF.jpg"></p><p>Step 2：呼叫 passByReference 時不會複製一份 number 的值，也就是「共用」同一份的值。</p><p><img src="https://hackmd.io/_uploads/H10EQdDHK.jpg"></p><p>Step 3：因為共用一份資料，num 更新時，也更新到了 number。</p><p><img src="https://hackmd.io/_uploads/Skx1XNxrK.png"></p><p>Step 4: 看所以最後得到的結果是 <code>After: number is 3</code> ，因為 number 已經被改變</p><p><img src="https://hackmd.io/_uploads/H1jyQ4lrt.png"></p><h2 id="來看看-Python-是不是-Pass-by-Value"><a href="#來看看-Python-是不是-Pass-by-Value" class="headerlink" title="來看看 Python 是不是 Pass by Value"></a>來看看 Python 是不是 Pass by Value</h2><p>接著我們來看看 Python 是否是 Pass by Value。</p><p><img src="https://hackmd.io/_uploads/ByxlQNxrY.png"></p><p>執行結果</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Before the function starts, the number is 7  <br>Before the function starts, the number is 7  <br>After the function ends, the number is 1  <br>After the function ends, the number is 7<br></code></pre></td></tr></table></figure><p>執行完 function_1 後，發現原本的 number，並<strong>沒有</strong>因為在函式中重新指派而改變成 1，還是維持原本的 7。</p><p>看起來跟 C++ 的 Pass Value 很像，接著我們再做一個實驗，把記憶體位置印出來。</p><p><img src="https://hackmd.io/_uploads/B1deQ4gHK.png"></p><p>執行結果：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Before the function starts, the id is 4321770416  <br>Before assigning, the num is %d 4321770416  <br>After assigning, the num is %d 4321770224  <br>After the function ends, the id is 4321770416<br></code></pre></td></tr></table></figure><p>可以發現，行為雖然像是 Pass by Value，但是記憶體位址變化的時候，並不是執行 function_1 函式的當下，而是在指派 num = 1 之後。這是為什麼呢？</p><p>Step 1：將 7 指派給變數 number，此時 7 存到記憶體中。</p><p><img src="https://hackmd.io/_uploads/rkDiHODSK.jpg"></p><p>Step 2：呼叫函式 pass_by_value() 的時候，將 7 傳了進去。此時函式並不會複製一份值進去。</p><p><img src="https://hackmd.io/_uploads/rkcJU_vBY.jpg"></p><p>Step 3：當執行到 <code>num=1</code>時， num 是整數型別，是 Imuttable Object 不可變物件，值無法改變，因此會新增一塊記憶體來儲存 num。</p><p><img src="https://hackmd.io/_uploads/rJMlUuwSY.jpg"></p><p>Step 4 : 所以最後印出時，不會是 1，而是 7 ，因為 number 與 num 已經沒有共用記憶體位置</p><p><img src="https://hackmd.io/_uploads/rJcg8_PBF.jpg"></p><p>結論：Python 的 function_1 跟 C++的 Call by Value 最後的結果都有分開的記憶體位址。但是從記憶體位址變化的時機可以看得出來，讓 Python 有此現象的，是 Imuttable Object 不可變的特性，而非 Call by Value。</p><h2 id="來看看-Python-是不是Pass-By-Reference"><a href="#來看看-Python-是不是Pass-By-Reference" class="headerlink" title="來看看 Python 是不是Pass By Reference"></a>來看看 Python 是不是Pass By Reference</h2><p>接著我們來看看 Python 是否是 Pass by Reference。</p><p><img src="https://hackmd.io/_uploads/r1LQ7VlBt.png"></p><p>執行結果</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">before the function starts, the object is `&#123;‘name’: ‘Leo’, ‘age’: 25&#125;`  <br>before the variable assign, the obj is `&#123;‘name’: ‘Leo’, ‘age’: 25&#125;`  <br>after the variable assign, the obj is `&#123;‘name’: ‘9m88’, ‘age’: 20&#125;`  <br>after the function ends, the object is `&#123;‘name’: ‘9m88’, ‘age’: 20&#125;`<br></code></pre></td></tr></table></figure><p>哇，外面 object 的內容居然被改變了，跟剛剛的 number 行為完全不一樣，這是怎麼回事？難道這是 Call by Reference？ 可是我們沒有傳地址進去呀。</p><p>一樣，我們先把記憶體位址印出來試試看。</p><p><img src="https://hackmd.io/_uploads/rkaQmEeSY.png"></p><p>執行結果：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Before variable assign, the object id is 4508274560  <br>Before variable assign, the obj id is 4508274560  <br>After variable assign, the obj id is 4508274560  <br>After variable assign, the object id is 4508274560<br></code></pre></td></tr></table></figure><p>記憶體位址完全沒有改變，這是為什麼呢？因為剛剛我們使用字典 (dict) 這種資料型別，是屬於可變物件 (Mutable Object)，內容可以改變</p><h3 id="深入資料型別字典-dict-的記憶體調用"><a href="#深入資料型別字典-dict-的記憶體調用" class="headerlink" title="深入資料型別字典(dict) 的記憶體調用"></a>深入資料型別字典(dict) 的記憶體調用</h3><p>我們來看看這段程式記憶體的調用。這次的圖表將記憶體更精確的分為儲存空間所儲存的「資料 Data」與儲存空間的「地址 Address」。</p><p>因為字典這種物件是 mutable 可變的，代表這種物件的值是可以改變的，所以想要來看看到底是記憶體怎麼儲存，才是可以改變的</p><p>如果不了解 Imuttable 的人可以參考我寫的另外一篇文章。<a href="https://medium.com/starbugs/python-mutable-%E8%88%87-immutable-8ef7804181cd">Python — Mutable vs Immutable</a>。裡面講解了 Python 中可變與不可變的概念。</p><p><img src="https://hackmd.io/_uploads/Hkf7U_DSt.jpg"></p><p>宣告 object 物件的時候，變數 Variable: object，指向一個記憶體位址為 <code>x8</code> 資料為 <code>x7</code>。變數本身不直接儲存資料的，只會儲存資料的記憶體位址。而真正的資料儲存在地址為 <code>x7</code> 資料為 <code>&#123;‘name’: ‘Leo’, ‘age’: 25&#125;</code> 。</p><p><img src="https://hackmd.io/_uploads/HJcQ8OwBF.jpg"></p><p>是呼叫function_2 函式的時候，object 的參照傳進去函式裡面，變數名稱變為 obj 。 變數 obj 將內容的地址，儲存在 x9 記憶體位址，資料為 x7。告訴變數 obj 可以去地址 x7 拿資料，這樣就會找到原本物件內容了。</p><p><img src="https://hackmd.io/_uploads/rJwp8uDBt.jpg"></p><p>接著實際執行 pass_by_reference() 函式，因為之前變數 obj 將資料指向跟變數 dict_object 相同的物件，<strong>所以實際修改到的資料，是原本的資料</strong>。最後印出來的時候發現，原始的物件內容已經被改變。</p><p>回顧一下 function_2 的執行結果，函式內部的改變會改變 object 外部的內容。</p><p>執行結果： </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">before the function starts, the object is &#123;‘name’: ‘Leo’, ‘age’: 25&#125;   <br>before the variable assign, the obj is &#123;‘name’: ‘Leo’, ‘age’: 25&#125;   <br>after the variable assign, the obj is &#123;‘name’: ‘9m88’, ‘age’: 20&#125;   <br>after the function ends, the object is &#123;‘name’: ‘9m88’, ‘age’: 20&#125;<br></code></pre></td></tr></table></figure><h2 id="來看看-Python-是不是-Pass-by-Sharing"><a href="#來看看-Python-是不是-Pass-by-Sharing" class="headerlink" title="來看看 Python 是不是 Pass by Sharing"></a>來看看 Python 是不是 Pass by Sharing</h2><p>接下來我們來看範例 3，將範例 2 稍作改變，來看看會發生什麼事情</p><p><img src="https://hackmd.io/_uploads/HkRuX4xBK.png"></p><p>我們將 function_2() 方法改成 function_3()。並且把將方法的內容改成建立新物件的方式。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">function</span>\<span class="hljs-title">_3</span>(<span class="hljs-params">obj</span>):</span>  <br>    obj = &#123;  <br>      <span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;Amy&#x27;</span>,  <br>      <span class="hljs-string">&#x27;age&#x27;</span>: <span class="hljs-number">50</span>  <br>    &#125;<br></code></pre></td></tr></table></figure><p>執行結果:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">before the function starts, the dict_object is &#123;‘name’: ‘Leo’, ‘age’: 25&#125;<br>before assign, the obj is &#123;‘name’: ‘Leo’, ‘age’: 25&#125;<br>after assign, the obj is &#123;‘name’: ‘Amy’, ‘age’: 50&#125;<br>after the function ends, the dict_object is &#123;‘name’: ‘Leo’, ‘age’: 25&#125;<br></code></pre></td></tr></table></figure><p>輸出結果再度變回跟 function_1 的結果一樣，無法改變外部物件，這是為什麼呢？</p><p>Step 1: 跟 function_2 完全相同。初始化字典物件內容。</p><p><img src="https://hackmd.io/_uploads/B1hPUdvBF.jpg"></p><p>Step 2: 這時就可以看得出來到底發生了什麼事情了，如果是直接使用建立一個新物件的來賦予變數 obj，那麼將不會改變原本變數 dict_obj 的值。</p><p><img src="https://hackmd.io/_uploads/r1M_8_PSK.jpg"></p><p>我們可以得出一個結論，在使用可變物件(Muttable Object)的時候，如果重新指派新的物件給它，它就不會保持共用記憶體，而是建立一個心的物件。</p><h2 id="Python-到底是-Pass-by-Value-Pass-Value-還是-Pass-Sharing-呢？"><a href="#Python-到底是-Pass-by-Value-Pass-Value-還是-Pass-Sharing-呢？" class="headerlink" title="Python 到底是 Pass by Value, Pass Value 還是 Pass Sharing 呢？"></a>Python 到底是 Pass by Value, Pass Value 還是 Pass Sharing 呢？</h2><h3 id="都不是，Python-是-Pass-by-Assignment！"><a href="#都不是，Python-是-Pass-by-Assignment！" class="headerlink" title="都不是，Python 是 Pass by Assignment！"></a>都不是，Python 是 Pass by Assignment！</h3><p>我覺得最清楚的是這篇 Stack Overflow 的回答，簡單解釋，引數傳的是物件的參照(Call by Object Reference)，但此 Reference 是由 Pass by Value 的方式實作。</p><p>可以歸納出兩個結論：</p><ul><li>如果你傳遞的可變物件 (Mutable Object)，傳遞的是物件的參照(記憶體位址)，所以可變物件的值是可以改變的，你可以因此修改到原始的物件的內容。</li><li>可變物件 (Mutable Object) 有一個例外是你重新指派一個新的物件給他，外部的作用域(Scope)將無法得知你做的事情，所以外部作用域會認舊的物件，而不是新指派的物件。</li><li>如果你用的是不可變物件(Imutable Object)，那麼因為每次指派都會是新的物件，但是物件是在函式作用域內部生成的，所以外部作用域無法得知。就變成了兩個物件</li></ul><p><img src="https://hackmd.io/_uploads/S1Bcm4xBF.png"></p><p><a href="https://stackoverflow.com/questions/986006/how-do-i-pass-a-variable-by-reference">https://stackoverflow.com/questions/986006/how-do-i-pass-a-variable-by-reference</a></p><p>最後再回到官方文件的定義，確認一下 Python 真的是 Pass by Assignment，打完收工。</p><p><img src="https://hackmd.io/_uploads/BJ3qm4lrF.png"></p><p><a href="https://docs.python.org/3/faq/programming.html#how-do-i-write-a-function-with-output-parameters-call-by-reference">https://docs.python.org/3/faq/programming.html#how-do-i-write-a-function-with-output-parameters-call-by-reference</a></p>]]></content>
+    <content type="html"><![CDATA[<p><img src="/img/2021-11-23-00-20-05.png"></p><p>常見的語言的求值策略(Evaluation strategy)大概離不開這幾個，例如：JavaScript (Call by Value, Call by Sharing)、Java (Call by Value)、C (Call by Value)、C++ (Call by Value, Call by Reference)</p><p>這次使用使用淺顯易懂的語言，並搭配圖片來說明到底 Python 中是 Pass by Value, Pass by Reference, 還是 Pass Sharing？</p><h2 id="用-C-理解-Pass-by-Value"><a href="#用-C-理解-Pass-by-Value" class="headerlink" title="用 C++ 理解 Pass by Value"></a>用 C++ 理解 Pass by Value</h2><p>C++ 是探討 Pass by Value 與 Pass by Reference 的最佳選擇。我們先來理解 Pass by Value。</p><h3 id="Pass-by-Value-Output"><a href="#Pass-by-Value-Output" class="headerlink" title="Pass by Value (Output)"></a>Pass by Value (Output)</h3><p><img src="https://hackmd.io/_uploads/B1EzC7xrY.png"></p><p>執行結果</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Before: number is 7  <br>Before: the num is 7  <br>After: the num is 3  <br>After: number is 7<br></code></pre></td></tr></table></figure><h3 id="Pass-by-Value-Address"><a href="#Pass-by-Value-Address" class="headerlink" title="Pass by Value (Address)"></a>Pass by Value (Address)</h3><p>可以看到函式內部的數並不會受到影響，遵守作用域( Scope)範圍。我們再執行另一個程式，查看記憶體位址的改變。</p><p><img src="https://hackmd.io/_uploads/rJYMRmlHY.png"></p><p>執行結果:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">The Address of number is 0x7ffd0abe7b74  <br>The Address of num is 0x7ffd0abe7b5c  <br>The Address of num is 0x7ffd0abe7b5c  <br>The Address of number is 0x7ffd0abe7b74<br></code></pre></td></tr></table></figure><p>可以發現 num 的位址遵守作用域 (Scope)，經過這兩個程式之後，可以理解到 Pass by Value 是在呼叫函式的時候，複製一份引數(number)給函式使用。</p><p>Step 1：宣告 number 為 7</p><p><img src="https://hackmd.io/_uploads/H1kNRmxBt.png"></p><p>Step 2：呼叫函式時，複製一份給 number 的值複製一份給 num。</p><p><img src="https://hackmd.io/_uploads/ry1HCXert.png"></p><p>step 3：修改 num 的值時，修改的是複製出來的那一份。因此原本的 number 不受影響。</p><p><img src="https://hackmd.io/_uploads/BJPBCXlBK.png"></p><h2 id="用-C-理解-Pass-by-Reference"><a href="#用-C-理解-Pass-by-Reference" class="headerlink" title="用 C++ 理解 Pass by Reference"></a>用 C++ 理解 Pass by Reference</h2><h3 id="Pass-by-Reference"><a href="#Pass-by-Reference" class="headerlink" title="Pass by Reference"></a>Pass by Reference</h3><p><img src="https://hackmd.io/_uploads/SkHTzExSt.png"></p><p>執行結果：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Before: number is 7  <br>Before: the num is 7  <br>After: the num is 3  <br>After: number is 3<br></code></pre></td></tr></table></figure><h3 id="Pass-by-Reference-Address"><a href="#Pass-by-Reference-Address" class="headerlink" title="Pass by Reference (Address)"></a>Pass by Reference (Address)</h3><p>跟剛剛不同的是，因為 Pass by Reference 傳的是參照，也就是地址，所以裡外等同於是一個變數。接著我們一樣把記憶體位址印出來。看看是不是真的是同樣的記憶體位址。</p><p><img src="https://hackmd.io/_uploads/BkjpfExSY.png"></p><p>執行結果：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">The Address of number is 0x7ffd45470b64  <br>The Address of num is 0x7ffd45470b64  <br>The Address of num is 0x7ffd45470b64  <br>The Address of number is 0x7ffd45470b64<br></code></pre></td></tr></table></figure><p>發現結果如我們推測的，從頭到尾記憶體位址都是 <code>0x7ffd45470b64</code> 。因為我們傳的是記憶體位址嘛。</p><p>Step 1：宣告 number</p><p><img src="https://hackmd.io/_uploads/H1fNm_DrF.jpg"></p><p>Step 2：呼叫 passByReference 時不會複製一份 number 的值，也就是「共用」同一份的值。</p><p><img src="https://hackmd.io/_uploads/H10EQdDHK.jpg"></p><p>Step 3：因為共用一份資料，num 更新時，也更新到了 number。</p><p><img src="https://hackmd.io/_uploads/Skx1XNxrK.png"></p><p>Step 4: 看所以最後得到的結果是 <code>After: number is 3</code> ，因為 number 已經被改變</p><p><img src="https://hackmd.io/_uploads/H1jyQ4lrt.png"></p><h2 id="來看看-Python-是不是-Pass-by-Value"><a href="#來看看-Python-是不是-Pass-by-Value" class="headerlink" title="來看看 Python 是不是 Pass by Value"></a>來看看 Python 是不是 Pass by Value</h2><p>接著我們來看看 Python 是否是 Pass by Value。</p><p><img src="https://hackmd.io/_uploads/ByxlQNxrY.png"></p><p>執行結果</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Before the function starts, the number is 7  <br>Before the function starts, the number is 7  <br>After the function ends, the number is 1  <br>After the function ends, the number is 7<br></code></pre></td></tr></table></figure><p>執行完 function_1 後，發現原本的 number，並<strong>沒有</strong>因為在函式中重新指派而改變成 1，還是維持原本的 7。</p><p>看起來跟 C++ 的 Pass Value 很像，接著我們再做一個實驗，把記憶體位置印出來。</p><p><img src="https://hackmd.io/_uploads/B1deQ4gHK.png"></p><p>執行結果：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Before the function starts, the id is 4321770416  <br>Before assigning, the num is %d 4321770416  <br>After assigning, the num is %d 4321770224  <br>After the function ends, the id is 4321770416<br></code></pre></td></tr></table></figure><p>可以發現，行為雖然像是 Pass by Value，但是記憶體位址變化的時候，並不是執行 function_1 函式的當下，而是在指派 num = 1 之後。這是為什麼呢？</p><p>Step 1：將 7 指派給變數 number，此時 7 存到記憶體中。</p><p><img src="https://hackmd.io/_uploads/rkDiHODSK.jpg"></p><p>Step 2：呼叫函式 pass_by_value() 的時候，將 7 傳了進去。此時函式並不會複製一份值進去。</p><p><img src="https://hackmd.io/_uploads/rkcJU_vBY.jpg"></p><p>Step 3：當執行到 <code>num=1</code>時， num 是整數型別，是 Imuttable Object 不可變物件，值無法改變，因此會新增一塊記憶體來儲存 num。</p><p><img src="https://hackmd.io/_uploads/rJMlUuwSY.jpg"></p><p>Step 4 : 所以最後印出時，不會是 1，而是 7 ，因為 number 與 num 已經沒有共用記憶體位置</p><p><img src="https://hackmd.io/_uploads/rJcg8_PBF.jpg"></p><p>結論：Python 的 function_1 跟 C++的 Call by Value 最後的結果都有分開的記憶體位址。但是從記憶體位址變化的時機可以看得出來，讓 Python 有此現象的，是 Imuttable Object 不可變的特性，而非 Call by Value。</p><h2 id="來看看-Python-是不是Pass-By-Reference"><a href="#來看看-Python-是不是Pass-By-Reference" class="headerlink" title="來看看 Python 是不是Pass By Reference"></a>來看看 Python 是不是Pass By Reference</h2><p>接著我們來看看 Python 是否是 Pass by Reference。</p><p><img src="https://hackmd.io/_uploads/r1LQ7VlBt.png"></p><p>執行結果</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">before the function starts, the object is `&#123;‘name’: ‘Leo’, ‘age’: 25&#125;`  <br>before the variable assign, the obj is `&#123;‘name’: ‘Leo’, ‘age’: 25&#125;`  <br>after the variable assign, the obj is `&#123;‘name’: ‘9m88’, ‘age’: 20&#125;`  <br>after the function ends, the object is `&#123;‘name’: ‘9m88’, ‘age’: 20&#125;`<br></code></pre></td></tr></table></figure><p>哇，外面 object 的內容居然被改變了，跟剛剛的 number 行為完全不一樣，這是怎麼回事？難道這是 Call by Reference？ 可是我們沒有傳地址進去呀。</p><p>一樣，我們先把記憶體位址印出來試試看。</p><p><img src="https://hackmd.io/_uploads/rkaQmEeSY.png"></p><p>執行結果：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Before variable assign, the object id is 4508274560  <br>Before variable assign, the obj id is 4508274560  <br>After variable assign, the obj id is 4508274560  <br>After variable assign, the object id is 4508274560<br></code></pre></td></tr></table></figure><p>記憶體位址完全沒有改變，這是為什麼呢？因為剛剛我們使用字典 (dict) 這種資料型別，是屬於可變物件 (Mutable Object)，內容可以改變</p><h3 id="深入資料型別字典-dict-的記憶體調用"><a href="#深入資料型別字典-dict-的記憶體調用" class="headerlink" title="深入資料型別字典(dict) 的記憶體調用"></a>深入資料型別字典(dict) 的記憶體調用</h3><p>我們來看看這段程式記憶體的調用。這次的圖表將記憶體更精確的分為儲存空間所儲存的「資料 Data」與儲存空間的「地址 Address」。</p><p>因為字典這種物件是 mutable 可變的，代表這種物件的值是可以改變的，所以想要來看看到底是記憶體怎麼儲存，才是可以改變的</p><p>如果不了解 Imuttable 的人可以參考我寫的另外一篇文章。<a href="https://medium.com/starbugs/python-mutable-%E8%88%87-immutable-8ef7804181cd">Python — Mutable vs Immutable</a>。裡面講解了 Python 中可變與不可變的概念。</p><p><img src="https://hackmd.io/_uploads/Hkf7U_DSt.jpg"></p><p>宣告 object 物件的時候，變數 Variable: object，指向一個記憶體位址為 <code>x8</code> 資料為 <code>x7</code>。變數本身不直接儲存資料的，只會儲存資料的記憶體位址。而真正的資料儲存在地址為 <code>x7</code> 資料為 <code>&#123;‘name’: ‘Leo’, ‘age’: 25&#125;</code> 。</p><p><img src="https://hackmd.io/_uploads/HJcQ8OwBF.jpg"></p><p>是呼叫function_2 函式的時候，object 的參照傳進去函式裡面，變數名稱變為 obj 。 變數 obj 將內容的地址，儲存在 x9 記憶體位址，資料為 x7。告訴變數 obj 可以去地址 x7 拿資料，這樣就會找到原本物件內容了。</p><p><img src="https://hackmd.io/_uploads/rJwp8uDBt.jpg"></p><p>接著實際執行 pass_by_reference() 函式，因為之前變數 obj 將資料指向跟變數 dict_object 相同的物件，<strong>所以實際修改到的資料，是原本的資料</strong>。最後印出來的時候發現，原始的物件內容已經被改變。</p><p>回顧一下 function_2 的執行結果，函式內部的改變會改變 object 外部的內容。</p><p>執行結果： </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">before the function starts, the object is &#123;‘name’: ‘Leo’, ‘age’: 25&#125;   <br>before the variable assign, the obj is &#123;‘name’: ‘Leo’, ‘age’: 25&#125;   <br>after the variable assign, the obj is &#123;‘name’: ‘9m88’, ‘age’: 20&#125;   <br>after the function ends, the object is &#123;‘name’: ‘9m88’, ‘age’: 20&#125;<br></code></pre></td></tr></table></figure><h2 id="來看看-Python-是不是-Pass-by-Sharing"><a href="#來看看-Python-是不是-Pass-by-Sharing" class="headerlink" title="來看看 Python 是不是 Pass by Sharing"></a>來看看 Python 是不是 Pass by Sharing</h2><p>接下來我們來看範例 3，將範例 2 稍作改變，來看看會發生什麼事情</p><p><img src="https://hackmd.io/_uploads/HkRuX4xBK.png"></p><p>我們將 function_2() 方法改成 function_3()。並且把將方法的內容改成建立新物件的方式。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">function</span>\<span class="hljs-title">_3</span>(<span class="hljs-params">obj</span>):</span>  <br>    obj = &#123;  <br>      <span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;Amy&#x27;</span>,  <br>      <span class="hljs-string">&#x27;age&#x27;</span>: <span class="hljs-number">50</span>  <br>    &#125;<br></code></pre></td></tr></table></figure><p>執行結果:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">before the function starts, the dict_object is &#123;‘name’: ‘Leo’, ‘age’: 25&#125;<br>before assign, the obj is &#123;‘name’: ‘Leo’, ‘age’: 25&#125;<br>after assign, the obj is &#123;‘name’: ‘Amy’, ‘age’: 50&#125;<br>after the function ends, the dict_object is &#123;‘name’: ‘Leo’, ‘age’: 25&#125;<br></code></pre></td></tr></table></figure><p>輸出結果再度變回跟 function_1 的結果一樣，無法改變外部物件，這是為什麼呢？</p><p>Step 1: 跟 function_2 完全相同。初始化字典物件內容。</p><p><img src="https://hackmd.io/_uploads/B1hPUdvBF.jpg"></p><p>Step 2: 這時就可以看得出來到底發生了什麼事情了，如果是直接使用建立一個新物件的來賦予變數 obj，那麼將不會改變原本變數 dict_obj 的值。</p><p><img src="https://hackmd.io/_uploads/r1M_8_PSK.jpg"></p><p>我們可以得出一個結論，在使用可變物件(Muttable Object)的時候，如果重新指派新的物件給它，它就不會保持共用記憶體，而是建立一個心的物件。</p><h2 id="Python-到底是-Pass-by-Value-Pass-Value-還是-Pass-Sharing-呢？"><a href="#Python-到底是-Pass-by-Value-Pass-Value-還是-Pass-Sharing-呢？" class="headerlink" title="Python 到底是 Pass by Value, Pass Value 還是 Pass Sharing 呢？"></a>Python 到底是 Pass by Value, Pass Value 還是 Pass Sharing 呢？</h2><h3 id="都不是，Python-是-Pass-by-Assignment！"><a href="#都不是，Python-是-Pass-by-Assignment！" class="headerlink" title="都不是，Python 是 Pass by Assignment！"></a>都不是，Python 是 Pass by Assignment！</h3><p>我覺得最清楚的是這篇 Stack Overflow 的回答，簡單解釋，引數傳的是物件的參照(Call by Object Reference)，但此 Reference 是由 Pass by Value 的方式實作。</p><p>可以歸納出兩個結論：</p><ul><li>如果你傳遞的可變物件 (Mutable Object)，傳遞的是物件的參照(記憶體位址)，所以可變物件的值是可以改變的，你可以因此修改到原始的物件的內容。</li><li>可變物件 (Mutable Object) 有一個例外是你重新指派一個新的物件給他，外部的作用域(Scope)將無法得知你做的事情，所以外部作用域會認舊的物件，而不是新指派的物件。</li><li>如果你用的是不可變物件(Imutable Object)，那麼因為每次指派都會是新的物件，但是物件是在函式作用域內部生成的，所以外部作用域無法得知。就變成了兩個物件</li></ul><p><img src="https://hackmd.io/_uploads/S1Bcm4xBF.png"></p><p><a href="https://stackoverflow.com/questions/986006/how-do-i-pass-a-variable-by-reference">https://stackoverflow.com/questions/986006/how-do-i-pass-a-variable-by-reference</a></p><p>最後再回到官方文件的定義，確認一下 Python 真的是 Pass by Assignment，打完收工。</p><p><img src="https://hackmd.io/_uploads/BJ3qm4lrF.png"></p><p><a href="https://docs.python.org/3/faq/programming.html#how-do-i-write-a-function-with-output-parameters-call-by-reference">https://docs.python.org/3/faq/programming.html#how-do-i-write-a-function-with-output-parameters-call-by-reference</a></p>]]></content>
     
     
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://hackmd.io/_uploads/S1C-0QxHK.png&quot;&gt;&lt;/p&gt;
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/img/2021-11-23-00-20-05.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;常見的語言的求值策略(Evaluation strategy)大概離不開這幾個，例如：JavaScript (Call by Value, Call by Sharing)、Java (Call by Value)、C (Call by Value)、C++ (Call by Value, Call by Reference)&lt;/p&gt;
 &lt;p&gt;這次使用使用淺顯易懂的語言，並搭配圖片來說明到底 Python 中是 Pass by Value, Pass by Reference, 還是 Pass Sharing？&lt;/p&gt;
 &lt;h2 id=&quot;用-C-理解-Pass-by-Value&quot;&gt;&lt;a href=&quot;#用-C-理解-Pass-by-Value&quot; class=&quot;headerlink&quot; title=&quot;用 C++ 理解 Pass by Value&quot;&gt;&lt;/a&gt;用 C++ 理解 Pass by Value&lt;/h2&gt;&lt;p&gt;C++ 是探討 Pass by Value 與 Pass by Reference 的最佳選擇。我們先來理解 Pass by Value。&lt;/p&gt;</summary>
     
     
     
-    <category term="Python" scheme="https://luka.tw/categories/Python/"/>
+    <category term="Python" scheme="https://lukajojo.com/categories/Python/"/>
     
-    <category term="01 基礎教學" scheme="https://luka.tw/categories/Python/01-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>[Python 教學] Mutable 與 Immutable 是什麼？</title>
-    <link href="https://luka.tw/2021/08/24/posts/2021-08-24-mutable-and-imuttable/"/>
-    <id>https://luka.tw/2021/08/24/posts/2021-08-24-mutable-and-imuttable/</id>
-    <published>2021-08-24T11:32:00.000Z</published>
-    <updated>2021-10-23T15:07:00.634Z</updated>
-    
-    <content type="html"><![CDATA[<p>今天來探討 Python 中的 Mutable 與 Immutable 的概念。Mutable 顧名思意就是「可變的」，而「Immutable」顧名思義是不可變得。</p><h2 id="Immutable-與-Mutable-是什麼意思？"><a href="#Immutable-與-Mutable-是什麼意思？" class="headerlink" title="Immutable 與 Mutable 是什麼意思？"></a>Immutable 與 Mutable 是什麼意思？</h2><p>在 Python 中什麼是「可變的」？什麼是「不可變的」呢？</p><blockquote><p>Python 中 Mutable 定義，物件的「值」可以被改變。反之，Immutable 就是物件的值不可以被改變。</p></blockquote><p>例如：</p><p>聽到這邊你可能產生一些疑惑，為什麼是「物件」的值可以被改變？</p><h2 id="在-Python-中的一切都是物件"><a href="#在-Python-中的一切都是物件" class="headerlink" title="在 Python 中的一切都是物件"></a>在 Python 中的一切都是物件</h2><p>延續剛剛的話題，雖然我們已經知道可變物件與不可變物件。</p><blockquote><p>Everything Is an Object by <a href="https://linux.die.net/diveintopython/html/getting_to_know_python/everything_is_an_object.html#d0e4665">DiveIntoPython</a></p></blockquote><p>這是什麼意思呢？ 在 Python 中你所使用的一切東西都是物件。我們來試試看一下 Python 中的資料型別。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>my_integer = <span class="hljs-number">100</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">id</span>(my_integer)<br><span class="hljs-number">4487734736</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>my_integer.__class__<br>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> &#x27;<span class="hljs-title">int</span>&#x27;&gt;</span><br></code></pre></td></tr></table></figure><p>說明：</p><ol><li>使用 id(object) 可以找到物件 id。</li><li>使用 __class__ 特殊方法可以找到物件是由哪個類別(class)生成的。</li></ol><p>由此可知，在 Python 中即使是基本型別也是物件。包括函式的一切都是物件。</p><h2 id="Immutable-Object-不可變物件"><a href="#Immutable-Object-不可變物件" class="headerlink" title="Immutable Object 不可變物件"></a>Immutable Object 不可變物件</h2><p>直譯「不可被改變的物件」，是什麼意思呢？</p><blockquote><blockquote><p>當物件生成後，值(Value)無法被改變。</p></blockquote></blockquote><p>例如：先將 100 指派給 a ，接著我想把 a 的值改成 101 ，我們來看看會發生什麼事情。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>a = <span class="hljs-number">100</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">id</span>(a)<br><span class="hljs-number">4487734736</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>a = <span class="hljs-number">101</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">id</span>(a)<br><span class="hljs-number">4487734768</span><br></code></pre></td></tr></table></figure><p>當 a 是 100 的時候，物件 id 是 4487734736。當我想重新指派 101 給 a 的時候，因為整數資料型別(Integer)，他是一種 Immutable Object，值無法被改變。<br>所以，當我們指派給 101 給 a 後，a 的 id 由 4487734736 變成了 4487734768，產生了一個新的物件。<br>除了整數 int 以外，在 Python 中以下的型別也是 immutable 的</p><h2 id="Mutable-Object-可變物件"><a href="#Mutable-Object-可變物件" class="headerlink" title="Mutable Object 可變物件"></a>Mutable Object 可變物件</h2><p>接下來來談談「可變的物件」，那麼什麼東西是可變的呢？同理，此物件的值可以被改變。</p><p>我們用字典 (dict) 資料型別來演示，當我們創造出一個字典資料結構的時候，裡面的內容是可以被改變的，而且外部的 id 卻不會改變。這樣的特性就跟 JS 之類的動態語言比較相似。</p><h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>複習一下，這篇學到的是 Immutable Object 不可變物件，物件的值不可被改變。當被改變時有兩種情況，一是會發生錯誤或，二是產生一個新的物件。</p><p>mutable Object 可變物件，物件的值可被改變，可重新賦值。id 在大多數的情況下不會被改變。那麼什麼時候會被改變呢？</p><p>請看搭配：<a href="/2021/09/21/2021-09-21-is-python-call-by-sharing/">[Python 教學] 為什麼我們說 Python 是 Pass by Assignment 而不是 Pass by Sharing？</a></p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;今天來探討 Python 中的 Mutable 與 Immutable 的概念。Mutable 顧名思意就是「可變的」，而「Immutable」顧名思義是不可變得。&lt;/p&gt;
-&lt;h2 id=&quot;Immutable-與-Mutable-是什麼意思？&quot;&gt;&lt;a href=&quot;#Immutable-與-Mutable-是什麼意思？&quot; class=&quot;headerlink&quot; title=&quot;Immutable 與 Mutable 是什麼意思？&quot;&gt;&lt;/a&gt;Immutable 與 Mutable 是什麼意思？&lt;/h2&gt;&lt;p&gt;在 Python 中什麼是「可變的」？什麼是「不可變的」呢？&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Python 中 Mutable 定義，物件的「值」可以被改變。反之，Immutable 就是物件的值不可以被改變。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;例如：&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Python" scheme="https://luka.tw/categories/Python/"/>
-    
-    <category term="01 基礎教學" scheme="https://luka.tw/categories/Python/01-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/"/>
+    <category term="01 基礎教學" scheme="https://lukajojo.com/categories/Python/01-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/"/>
     
     
   </entry>
   
   <entry>
-    <title>WSL - 在 Windows 上打造 Linux 的開發體驗</title>
-    <link href="https://luka.tw/2020/11/15/posts/2020-11-15-wsl/"/>
-    <id>https://luka.tw/2020/11/15/posts/2020-11-15-wsl/</id>
+    <title>用 WSL 在 Windows 上打造 Linux 的開發體驗</title>
+    <link href="https://lukajojo.com/2020/11/15/posts/2020-11-15-wsl/"/>
+    <id>https://lukajojo.com/2020/11/15/posts/2020-11-15-wsl/</id>
     <published>2020-11-15T12:50:00.000Z</published>
-    <updated>2021-10-23T15:07:00.578Z</updated>
+    <updated>2021-11-22T17:06:26.028Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="在-Windows-上打造-Linux-的開發體驗-WSL是關鍵"><a href="#在-Windows-上打造-Linux-的開發體驗-WSL是關鍵" class="headerlink" title="在 Windows 上打造 Linux 的開發體驗 WSL是關鍵"></a>在 Windows 上打造 Linux 的開發體驗 WSL是關鍵</h2><p><img src="https://hackmd.io/_uploads/ByE01rxBY.jpg"></p><p>延續上一篇，打造舒適的 Windows ＋ Mac 雙系統開發環境，打算用一系列的文章，一一來介紹開發各種環境。<br><a href="https://medium.com/starbugs/%E6%89%93%E9%80%A0%E8%88%92%E9%81%A9%E7%9A%84%E9%9B%99%E7%B3%BB%E7%B5%B1%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83-windows-mac-%E9%9B%99%E5%88%80%E6%B5%81-6127ce8583a"><strong>打造舒適的雙系統開發環境 Windows + Mac 雙刀流</strong></a></p><h2 id="重度-Mac-Linux-開發者，嘗試-Windows-開發"><a href="#重度-Mac-Linux-開發者，嘗試-Windows-開發" class="headerlink" title="重度 Mac / Linux 開發者，嘗試 Windows 開發"></a>重度 Mac / Linux 開發者，嘗試 Windows 開發</h2><p>先來說說我是個怎麼樣的人，我是個 Mac / Linux 重度使用者，學生時期使用 Windows 開發實在雷，光是搞環境平均就要花一個禮拜以上。再換成一台二手的 Macbook 之後就一路大順暢，從此只用 Mac / Linux 環境開發。</p><p>直到最近看到強者我朋友用 Windows 用得滿順的，不僅 Web 這些比較通用的東西跑得順，連 Linux 套件和 Docker 甚至 K8S 都可以順利執行。於是我就買了一台 Windows 電腦，那就<strong>來打造出能夠媲美 Linux 開發環境的舒適 Windows 開發體驗吧！</strong></p><h3 id="對-Window-敬而遠之的時期"><a href="#對-Window-敬而遠之的時期" class="headerlink" title="對 Window 敬而遠之的時期"></a>對 Window 敬而遠之的時期</h3><p>過去幾年我的主力開發環境以 Mac 或是 Linux 為主要開發環境，主要的原因是，有許多 Linux 的套件在 Windows 上不太穩定，安裝時發生的錯誤，10 台有 7 台會發生不一樣的情況。可能是軟體發生問題，也有可能是硬體導致，雖然說最終還是可以找到解決方案，可是每台電腦或是重灌都要重複花費大量時間的時間在處理環境。讓我這個 Windows 使用者毅然決然使用 Macbook 做為開發工具，這一用下去，也用了 7 年以上了。</p><h3 id="長年使用-Mac-的我，為什麼想要使用-Windows-開發？"><a href="#長年使用-Mac-的我，為什麼想要使用-Windows-開發？" class="headerlink" title="長年使用 Mac 的我，為什麼想要使用 Windows 開發？"></a>長年使用 Mac 的我，為什麼想要使用 Windows 開發？</h3><p>第一個原因是，看到強者我朋友 Windows 上跑各種環境跑的很順，滿讓我訝異的，因為以往雷到爆的 Windows，好像突然間不雷了？</p><p>但現在的 Windows 滿穩定的，我觀察了一些現象，在安裝了一些套件之後，沒有發生以前動不動就爆炸，卻又非常難排除的情形。</p><h2 id="Cmder-—-類似-Linux-的開發體驗"><a href="#Cmder-—-類似-Linux-的開發體驗" class="headerlink" title="Cmder — 類似 Linux 的開發體驗"></a>Cmder — 類似 Linux 的開發體驗</h2><p><img src="https://hackmd.io/_uploads/rJbylBxHK.png"></p><p>Cmder 安裝很簡單，去<a href="https://cmder.net/">官方網站</a>下載即可使用，選擇完全安裝的話，可以連 git 一起安裝起來。可以說是懶人最快建置好環境的方式。</p><p><img src="https://hackmd.io/_uploads/HyjgxreBY.png"></p><p>不過由於 Cmder 只是提供一些「類似」Linux 的體驗。並且他是一種「終端機」，所以並不能解鎖好用的 Linux 開發環境。因此接著介紹下一個好冰友 WSL。</p><h2 id="WSL-—-如果想要一勞永逸，選他"><a href="#WSL-—-如果想要一勞永逸，選他" class="headerlink" title="WSL — 如果想要一勞永逸，選他"></a>WSL — 如果想要一勞永逸，選他</h2><p>WSL 讓 Windows 使用者，不必透過虛擬機，就能直接使用 Linux 環境。現在，Windows 變得對 Linux 開發者更友善。</p><p>可以使用 Linux 指令來操作 Windows 系統，令我感到驚豔。以前裝 Linux 套件用一堆奇怪的方法，最後還是裝不好，現在可以直接在 Windows 無縫銜接 Linux，真滴棒！</p><blockquote><p>WSL 讓我們可以在 Windows 上體驗到 Linux 的開發流暢感。</p></blockquote><p>附上 WSL 的架構圖，簡單的說 Linux 的指令會被轉成 NTCore 的 system call，來達到期待的效果。例如：ls 可以列出檔案，</p><p><img src="https://hackmd.io/_uploads/HJEWlBxrY.png"></p><p>ps: 想要深入了解 WSL 原理請看這篇 ：<a href="https://hackmd.io/@billsun/Bkh8oAmGX?type=view">WSL 原理介紹</a></p><h3 id="WSL-的安裝"><a href="#WSL-的安裝" class="headerlink" title="WSL 的安裝"></a>WSL 的安裝</h3><p>按照下面網頁逐一步驟安裝即可，下面連結中有幾個步驟，依序跑完，即可安裝完成。建議不要參加實驗計畫當白老鼠，跑幾個</p><p>如果沒有加入微軟的實驗計畫，那下面連結中有幾個步驟，依序跑完，即可安裝完成。我自己是沒有參加實驗計畫當白老鼠，指令貼一貼比較省事。</p><p>參考連結：<a href="https://docs.microsoft.com/zh-tw/windows/wsl/install-win10">在 Windows 10 上安裝適用於 Linux 的 Windows 子系統 (WSL)</a></p><h2 id="有了-WSL-之後，來個終端機吧！"><a href="#有了-WSL-之後，來個終端機吧！" class="headerlink" title="有了 WSL 之後，來個終端機吧！"></a>有了 WSL 之後，來個終端機吧！</h2><p>安裝好 WSL 以後，你就可以在 Windows 上面使用 Linux 指令，該怎麼使用終端機呢？</p><p>打開終端機，輸入 wsl 即會進入 WSL 的環境，並且會將路徑綁定到 Windows 的檔案系統上。下面使用的終端機為 Windows Terminal。</p><p><img src="https://hackmd.io/_uploads/H1y7xHlBt.png"></p><h2 id="Terminal-終端機的選擇"><a href="#Terminal-終端機的選擇" class="headerlink" title="Terminal 終端機的選擇"></a>Terminal 終端機的選擇</h2><p>終端機有幾個選擇，如果你是 Windows 慣用的使用者，你可使用 Cmder 來開啟 WSL，因為你已經習慣了 Cmder 帶來的整合度與習慣。Cmder 也滿漂亮的，只是有些地方，還是需要設定和調教，才能符合自己的使用習慣，例如：$ 的取代 … 等等瑣碎的小事。</p><p><img src="https://hackmd.io/_uploads/SJxNgHgBt.png"></p><p>如果你是輕量使用者 ，對終端機不是很熟悉，可以用用看 Windows Terminal。微軟推出了一款 Terminal，簡單素雅的頁面，可以輕鬆切換 Powershell 與 WSL 環境，好像也有很多主題可以客製，算是一個簡單好上手的組合。</p><p><img src="https://hackmd.io/_uploads/BkU4lHlrK.png"></p><p>順帶一提，來看看 Powershell 原始的終端機有多恐怖！！藍色的底，加上進入 WSL 的藍色字體，根本是眼睛殺手，哎呀～我的眼睛業障重！</p><p><img src="https://hackmd.io/_uploads/SyMLereHK.png"></p><p>最後一個選項是使用 VS Code 來整合 WSL，方便大家開發的時候順便使用 VSCode 直接下指令。我覺得這也不失為一個理想的開發環境解決方案。</p><p><img src="https://hackmd.io/_uploads/r1tIereBY.png"></p><h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>讓 Windows 上也可以擁有舒適的開發環境是突破自己舒適圈的一小步，現在微軟越來越邁向開源，給他一次機會，雖然因為 Windows 的更新非常的奇葩，你不更新還要給你強制更新，根本使用者體驗殺手，這個情形讓我不會想要轉移主要開發環境過去，但，現在 Windows 是否已經是一個「還可以」的開發環境了呢？我覺得是 ok 的。</p><p>希望這篇有幫助到 Windows 使用者的你😃</p>]]></content>
+    <content type="html"><![CDATA[<p><img src="https://hackmd.io/_uploads/ByE01rxBY.jpg"></p><p>延續上一篇，打造舒適的 Windows ＋ Mac 雙系統開發環境，打算用一系列的文章，一一來介紹開發各種環境。<br><a href="https://medium.com/starbugs/%E6%89%93%E9%80%A0%E8%88%92%E9%81%A9%E7%9A%84%E9%9B%99%E7%B3%BB%E7%B5%B1%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83-windows-mac-%E9%9B%99%E5%88%80%E6%B5%81-6127ce8583a"><strong>打造舒適的雙系統開發環境 Windows + Mac 雙刀流</strong></a></p><h2 id="重度-Mac-Linux-開發者，嘗試-Windows-開發"><a href="#重度-Mac-Linux-開發者，嘗試-Windows-開發" class="headerlink" title="重度 Mac / Linux 開發者，嘗試 Windows 開發"></a>重度 Mac / Linux 開發者，嘗試 Windows 開發</h2><p>先來說說我是個怎麼樣的人，我是個 Mac / Linux 重度使用者，學生時期使用 Windows 開發實在雷，光是搞環境平均就要花一個禮拜以上。再換成一台二手的 Macbook 之後就一路大順暢，從此只用 Mac / Linux 環境開發。</p><p>直到最近看到強者我朋友用 Windows 用得滿順的，不僅 Web 這些比較通用的東西跑得順，連 Linux 套件和 Docker 甚至 K8S 都可以順利執行。於是我就買了一台 Windows 電腦，那就<strong>來打造出能夠媲美 Linux 開發環境的舒適 Windows 開發體驗吧！</strong></p><h3 id="對-Window-敬而遠之的時期"><a href="#對-Window-敬而遠之的時期" class="headerlink" title="對 Window 敬而遠之的時期"></a>對 Window 敬而遠之的時期</h3><p>過去幾年我的主力開發環境以 Mac 或是 Linux 為主要開發環境，主要的原因是，有許多 Linux 的套件在 Windows 上不太穩定，安裝時發生的錯誤，10 台有 7 台會發生不一樣的情況。可能是軟體發生問題，也有可能是硬體導致，雖然說最終還是可以找到解決方案，可是每台電腦或是重灌都要重複花費大量時間的時間在處理環境。讓我這個 Windows 使用者毅然決然使用 Macbook 做為開發工具，這一用下去，也用了 7 年以上了。</p><h3 id="長年使用-Mac-的我，為什麼想要使用-Windows-開發？"><a href="#長年使用-Mac-的我，為什麼想要使用-Windows-開發？" class="headerlink" title="長年使用 Mac 的我，為什麼想要使用 Windows 開發？"></a>長年使用 Mac 的我，為什麼想要使用 Windows 開發？</h3><p>第一個原因是，看到強者我朋友 Windows 上跑各種環境跑的很順，滿讓我訝異的，因為以往雷到爆的 Windows，好像突然間不雷了？</p><p>但現在的 Windows 滿穩定的，我觀察了一些現象，在安裝了一些套件之後，沒有發生以前動不動就爆炸，卻又非常難排除的情形。</p><h2 id="Cmder-—-類似-Linux-的開發體驗"><a href="#Cmder-—-類似-Linux-的開發體驗" class="headerlink" title="Cmder — 類似 Linux 的開發體驗"></a>Cmder — 類似 Linux 的開發體驗</h2><p><img src="https://hackmd.io/_uploads/rJbylBxHK.png"></p><p>Cmder 安裝很簡單，去<a href="https://cmder.net/">官方網站</a>下載即可使用，選擇完全安裝的話，可以連 git 一起安裝起來。可以說是懶人最快建置好環境的方式。</p><p><img src="https://hackmd.io/_uploads/HyjgxreBY.png"></p><p>不過由於 Cmder 只是提供一些「類似」Linux 的體驗。並且他是一種「終端機」，所以並不能解鎖好用的 Linux 開發環境。因此接著介紹下一個好冰友 WSL。</p><h2 id="WSL-—-如果想要一勞永逸，選他"><a href="#WSL-—-如果想要一勞永逸，選他" class="headerlink" title="WSL — 如果想要一勞永逸，選他"></a>WSL — 如果想要一勞永逸，選他</h2><p>WSL 讓 Windows 使用者，不必透過虛擬機，就能直接使用 Linux 環境。現在，Windows 變得對 Linux 開發者更友善。</p><p>可以使用 Linux 指令來操作 Windows 系統，令我感到驚豔。以前裝 Linux 套件用一堆奇怪的方法，最後還是裝不好，現在可以直接在 Windows 無縫銜接 Linux，真滴棒！</p><blockquote><p>WSL 讓我們可以在 Windows 上體驗到 Linux 的開發流暢感。</p></blockquote><p>附上 WSL 的架構圖，簡單的說 Linux 的指令會被轉成 NTCore 的 system call，來達到期待的效果。例如：ls 可以列出檔案，</p><p><img src="https://hackmd.io/_uploads/HJEWlBxrY.png"></p><p>ps: 想要深入了解 WSL 原理請看這篇 ：<a href="https://hackmd.io/@billsun/Bkh8oAmGX?type=view">WSL 原理介紹</a></p><h3 id="WSL-的安裝"><a href="#WSL-的安裝" class="headerlink" title="WSL 的安裝"></a>WSL 的安裝</h3><p>按照下面網頁逐一步驟安裝即可，下面連結中有幾個步驟，依序跑完，即可安裝完成。建議不要參加實驗計畫當白老鼠，跑幾個</p><p>如果沒有加入微軟的實驗計畫，那下面連結中有幾個步驟，依序跑完，即可安裝完成。我自己是沒有參加實驗計畫當白老鼠，指令貼一貼比較省事。</p><p>參考連結：<a href="https://docs.microsoft.com/zh-tw/windows/wsl/install-win10">在 Windows 10 上安裝適用於 Linux 的 Windows 子系統 (WSL)</a></p><h2 id="有了-WSL-之後，來個終端機吧！"><a href="#有了-WSL-之後，來個終端機吧！" class="headerlink" title="有了 WSL 之後，來個終端機吧！"></a>有了 WSL 之後，來個終端機吧！</h2><p>安裝好 WSL 以後，你就可以在 Windows 上面使用 Linux 指令，該怎麼使用終端機呢？</p><p>打開終端機，輸入 wsl 即會進入 WSL 的環境，並且會將路徑綁定到 Windows 的檔案系統上。下面使用的終端機為 Windows Terminal。</p><p><img src="https://hackmd.io/_uploads/H1y7xHlBt.png"></p><h2 id="Terminal-終端機的選擇"><a href="#Terminal-終端機的選擇" class="headerlink" title="Terminal 終端機的選擇"></a>Terminal 終端機的選擇</h2><p>終端機有幾個選擇，如果你是 Windows 慣用的使用者，你可使用 Cmder 來開啟 WSL，因為你已經習慣了 Cmder 帶來的整合度與習慣。Cmder 也滿漂亮的，只是有些地方，還是需要設定和調教，才能符合自己的使用習慣，例如：$ 的取代 … 等等瑣碎的小事。</p><p><img src="https://hackmd.io/_uploads/SJxNgHgBt.png"></p><p>如果你是輕量使用者 ，對終端機不是很熟悉，可以用用看 Windows Terminal。微軟推出了一款 Terminal，簡單素雅的頁面，可以輕鬆切換 Powershell 與 WSL 環境，好像也有很多主題可以客製，算是一個簡單好上手的組合。</p><p><img src="https://hackmd.io/_uploads/BkU4lHlrK.png"></p><p>順帶一提，來看看 Powershell 原始的終端機有多恐怖！！藍色的底，加上進入 WSL 的藍色字體，根本是眼睛殺手，哎呀～我的眼睛業障重！</p><p><img src="https://hackmd.io/_uploads/SyMLereHK.png"></p><p>最後一個選項是使用 VS Code 來整合 WSL，方便大家開發的時候順便使用 VSCode 直接下指令。我覺得這也不失為一個理想的開發環境解決方案。</p><p><img src="https://hackmd.io/_uploads/r1tIereBY.png"></p><h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>讓 Windows 上也可以擁有舒適的開發環境是突破自己舒適圈的一小步，現在微軟越來越邁向開源，給他一次機會，雖然因為 Windows 的更新非常的奇葩，你不更新還要給你強制更新，根本使用者體驗殺手，這個情形讓我不會想要轉移主要開發環境過去，但，現在 Windows 是否已經是一個「還可以」的開發環境了呢？我覺得是 ok 的。</p><p>希望這篇有幫助到 Windows 使用者的你😃</p>]]></content>
     
     
-    <summary type="html">&lt;h2 id=&quot;在-Windows-上打造-Linux-的開發體驗-WSL是關鍵&quot;&gt;&lt;a href=&quot;#在-Windows-上打造-Linux-的開發體驗-WSL是關鍵&quot; class=&quot;headerlink&quot; title=&quot;在 Windows 上打造 Linux 的開發體驗 WSL是關鍵&quot;&gt;&lt;/a&gt;在 Windows 上打造 Linux 的開發體驗 WSL是關鍵&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://hackmd.io/_uploads/ByE01rxBY.jpg&quot;&gt;&lt;/p&gt;
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://hackmd.io/_uploads/ByE01rxBY.jpg&quot;&gt;&lt;/p&gt;
 &lt;p&gt;延續上一篇，打造舒適的 Windows ＋ Mac 雙系統開發環境，打算用一系列的文章，一一來介紹開發各種環境。&lt;br&gt;&lt;a href=&quot;https://medium.com/starbugs/%E6%89%93%E9%80%A0%E8%88%92%E9%81%A9%E7%9A%84%E9%9B%99%E7%B3%BB%E7%B5%B1%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83-windows-mac-%E9%9B%99%E5%88%80%E6%B5%81-6127ce8583a&quot;&gt;&lt;strong&gt;打造舒適的雙系統開發環境 Windows + Mac 雙刀流&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;重度-Mac-Linux-開發者，嘗試-Windows-開發&quot;&gt;&lt;a href=&quot;#重度-Mac-Linux-開發者，嘗試-Windows-開發&quot; class=&quot;headerlink&quot; title=&quot;重度 Mac / Linux 開發者，嘗試 Windows 開發&quot;&gt;&lt;/a&gt;重度 Mac / Linux 開發者，嘗試 Windows 開發&lt;/h2&gt;&lt;p&gt;先來說說我是個怎麼樣的人，我是個 Mac / Linux 重度使用者，學生時期使用 Windows 開發實在雷，光是搞環境平均就要花一個禮拜以上。再換成一台二手的 Macbook 之後就一路大順暢，從此只用 Mac / Linux 環境開發。&lt;/p&gt;</summary>
+&lt;h2 id=&quot;重度-Mac-Linux-開發者，嘗試-Windows-開發&quot;&gt;&lt;a href=&quot;#重度-Mac-Linux-開發者，嘗試-Windows-開發&quot; class=&quot;headerlink&quot; title=&quot;重度 Mac / Linux 開發者，嘗試 Windows 開發&quot;&gt;&lt;/a&gt;重度 Mac / Linux 開發者，嘗試 Windows 開發&lt;/h2&gt;&lt;p&gt;先來說說我是個怎麼樣的人，我是個 Mac / Linux 重度使用者，學生時期使用 Windows 開發實在雷，光是搞環境平均就要花一個禮拜以上。再換成一台二手的 Macbook 之後就一路大順暢，從此只用 Mac / Linux 環境開發。&lt;/p&gt;
+&lt;p&gt;直到最近看到強者我朋友用 Windows 用得滿順的，不僅 Web 這些比較通用的東西跑得順，連 Linux 套件和 Docker 甚至 K8S 都可以順利執行。於是我就買了一台 Windows 電腦，那就&lt;strong&gt;來打造出能夠媲美 Linux 開發環境的舒適 Windows 開發體驗吧！&lt;/strong&gt;&lt;/p&gt;</summary>
     
     
     
@@ -87,8 +62,8 @@
   
   <entry>
     <title>ArgoCD — 透過 ArgoCD 認識 GitOps</title>
-    <link href="https://luka.tw/2020/09/21/posts/2020-09-21-introduction-to-gitops-via-argocd/"/>
-    <id>https://luka.tw/2020/09/21/posts/2020-09-21-introduction-to-gitops-via-argocd/</id>
+    <link href="https://lukajojo.com/2020/09/21/posts/2020-09-21-introduction-to-gitops-via-argocd/"/>
+    <id>https://lukajojo.com/2020/09/21/posts/2020-09-21-introduction-to-gitops-via-argocd/</id>
     <published>2020-09-21T12:50:00.000Z</published>
     <updated>2021-10-23T15:07:00.510Z</updated>
     
@@ -107,15 +82,15 @@
   
   <entry>
     <title>從 Github 開源指南｜學習如何貢獻開源專案</title>
-    <link href="https://luka.tw/2020/08/15/posts/2020-08-05-introduction-to-open-source-guild/"/>
-    <id>https://luka.tw/2020/08/15/posts/2020-08-05-introduction-to-open-source-guild/</id>
+    <link href="https://lukajojo.com/2020/08/15/posts/2020-08-05-introduction-to-open-source-guild/"/>
+    <id>https://lukajojo.com/2020/08/15/posts/2020-08-05-introduction-to-open-source-guild/</id>
     <published>2020-08-15T12:50:00.000Z</published>
-    <updated>2021-10-23T15:07:00.431Z</updated>
+    <updated>2021-11-22T16:19:36.190Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://cdn-images-1.medium.com/max/7872/0*8Mqb8j7gMZ3_R-UI" alt="Photo by [Tim Mossholder](https://unsplash.com/@timmossholder?utm_source=medium&amp;utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&amp;utm_medium=referral)"></p><p>本週我們來讀一下「如何為開源做貢獻」。這份文件是 Github 的 Open Source Guide 開源指南，約莫兩年前剛出的時候全部是英文版的，已經三年了，拖到現在才讀（汗）。</p><blockquote><p> （這篇是閱讀開源指南的筆記，原創內容偏少，原文在下方連結）<br><a href="https://opensource.guide/zh-hant/how-to-contribute/"><strong>如何為開源做貢獻？</strong><br><em>透過為開源貢獻力量，能從中學習、幫助他人並且從中累積相關技能的經驗 - 任何你能想像得到的技能。 為什麼會有人為開源做出貢獻？有數不清的原因！…</em>opensource.guide</a></p></blockquote><p>是 Github 7000 顆星星的開源專案<br><a href="https://github.com/github/opensource.guide"><strong>github/opensource.guide</strong><br><em>Open Source Guides ( https://opensource.guide/) are a collection of resources for individuals, communities, and…</em>github.com</a></p><h2 id="為何要貢獻開源專案？"><a href="#為何要貢獻開源專案？" class="headerlink" title="為何要貢獻開源專案？"></a><strong>為何要貢獻開源專案？</strong></h2><blockquote><p> 原文寫的很好，我用我的話說出來。</p></blockquote><h3 id="1-打磨你的專業技能"><a href="#1-打磨你的專業技能" class="headerlink" title="1. 打磨你的專業技能"></a>1. 打磨你的專業技能</h3><p>專案中包含了撰寫程式碼、平面設計、使用者體驗設計、撰寫文章 … 等等的工作。只要你想，你就可以在開源專案中找到你的位置。</p><h3 id="2-認識與你有相似興趣的人"><a href="#2-認識與你有相似興趣的人" class="headerlink" title="2. 認識與你有相似興趣的人"></a>2. 認識與你有相似興趣的人</h3><p>我覺得這真的滿重要，在現實生活中要找到相同興趣的人就很困難了，但是透過貢獻開源，你可以無遠弗屆的認識世界各地與你有相似興趣的人。</p><h3 id="3-鍛鍊溝通能力"><a href="#3-鍛鍊溝通能力" class="headerlink" title="3. 鍛鍊溝通能力"></a>3. 鍛鍊溝通能力</h3><p>因為開源專案是一個「共同協做」的專案。你需要向他人解釋自己是用什麼方法實作，也會需要其他人的幫助。</p><h3 id="4-建立名聲"><a href="#4-建立名聲" class="headerlink" title="4. 建立名聲"></a>4. 建立名聲</h3><p>你在開源專案中實作的成果一切都是看的到的，這也意味開源專案是一個能好好火力展示的地方。</p><h3 id="5-學習人際關係的能力"><a href="#5-學習人際關係的能力" class="headerlink" title="5. 學習人際關係的能力"></a>5. 學習人際關係的能力</h3><p>開源為練習領導及管理的能力提供了很好的機會。例如如何解決衝突、組織團隊以及如何為工作的優先順序排列。</p><blockquote><p> 小訣竅：走進開源專案，就像你走進一群陌生人中，想要嘗試融入。這群人討論的非常深入了，你突然打岔肯定會讓人覺得奇怪。<br> 與其盲目地在社群中拋出你自己的看法，不如先觀察一下社群的氛圍後再提出，這樣你的想法被注意到的機會才會增加。</p></blockquote><h2 id="找尋專案開始貢獻"><a href="#找尋專案開始貢獻" class="headerlink" title="找尋專案開始貢獻"></a>找尋專案開始貢獻</h2><p>如果你還未貢獻任何一個開源專案的話，可以想想，你能夠為開源專案做些什麼？</p><p>可以從你有使用過的開源專案開始著手，跟你比較有關係的開源專案，或是你比較感興趣的開源專案，你才會積極的參加。</p><p>平均一個專案有 28% 的貢獻是隨意且偶然的，像是 Readme、改錯字、失效連結 … 等等的小地方。</p><h2 id="找到專案時，先確保專案是否接受貢獻"><a href="#找到專案時，先確保專案是否接受貢獻" class="headerlink" title="找到專案時，先確保專案是否接受貢獻"></a><strong>找到專案時，先確保專案是否接受貢獻</strong></h2><p>可以從幾個地方，看出專案是否活躍，樂於接受貢獻：</p><p>從 Master 分支上看看觀察</p><ul><li><p>最近一次的 Commit 是什麼時候？</p></li><li><p>Commit 的次數頻繁嘛？</p></li><li><p>專案目前有多少貢獻者？</p></li></ul><p>從 Issue 觀察</p><ul><li><p>目前有多少個 issue</p></li><li><p>維護者回覆 issue 是否迅速</p></li><li><p>是否有討論熱絡的 issue</p></li><li><p>issue 是否已經大量累積</p></li><li><p>最近 close 的 issue 是多久以前</p></li></ul><p>從 PR 觀察</p><ul><li><p>有多少處於進行中的 PR</p></li><li><p>提交 PR 後維護者回覆是否迅速</p></li><li><p>最近有多少 PR 被 Merge</p></li></ul><p>觀察專案的友善程度</p><ul><li><p>維護者的回應是否有幫助</p></li><li><p>討論過程是否親切</p></li><li><p>會不會審查 PR</p></li></ul><h2 id="如何將成果貢獻至開源專案"><a href="#如何將成果貢獻至開源專案" class="headerlink" title="如何將成果貢獻至開源專案"></a>如何將成果貢獻至開源專案</h2><p>最重要的是「有效的溝通」，把握幾個要點：</p><h3 id="1-交代來龍去脈"><a href="#1-交代來龍去脈" class="headerlink" title="1. 交代來龍去脈"></a>1. 交代來龍去脈</h3><p>讓他人快速的理解。如果是 Bug 交代清楚你想做的事情是什麼，你當實作了哪些步驟，以便重現錯誤。如果你想要發起一個新的想法，你要解釋為什麼你要這樣做，為什麼你覺得這樣會對專案有幫助。</p><h3 id="2-做好準備工作"><a href="#2-做好準備工作" class="headerlink" title="2. 做好準備工作"></a>2. 做好準備工作</h3><p>在尋求幫助之前，先確保你看過文件、相關 Issue 的討論，當你表達出強烈的意願時，人們會很樂意幫助你的。</p><h3 id="3-溝通時力求精簡明瞭"><a href="#3-溝通時力求精簡明瞭" class="headerlink" title="3. 溝通時力求精簡明瞭"></a>3. 溝通時力求精簡明瞭</h3><p>開源專案每次提交都是需要他人檢閱的，如果你能夠精準的表達你的看法，那麼你得到別人幫助的機會就會大幅提昇。</p><h3 id="4-大膽的提問（但是要有耐心！）"><a href="#4-大膽的提問（但是要有耐心！）" class="headerlink" title="4. 大膽的提問（但是要有耐心！）"></a><strong>4. 大膽的提問（但是要有耐心！）</strong></h3><p>每個人都有新手的時候，不要怕提問。需要注意的是長期維護的人不一定熟悉專案的每一個部分。協作時表現出你的耐心，你會得到相同回報。</p><h3 id="5-尊重社群的決定"><a href="#5-尊重社群的決定" class="headerlink" title="5. 尊重社群的決定"></a>5. 尊重社群的決定</h3><p>有時候你的看法跟社群的看法不一定相同。他們可能不接受你的建議。可能社群最後不接納你的建議。這時你可以試試看討論出折衷方案，或者將專案 fork 另起爐灶。</p><h2 id="提交之後"><a href="#提交之後" class="headerlink" title="提交之後"></a>提交之後</h2><h3 id="😭有可能沒有人理你"><a href="#😭有可能沒有人理你" class="headerlink" title="😭有可能沒有人理你"></a>😭有可能沒有人理你</h3><p>因為大家都很忙，尤其是熱門的開源專案。Issue 很多，維護者的人手不夠，此時就先耐心的等待。</p><blockquote><p> <em>千萬不要私下聯絡，在開源專案中，一切的溝通都應該是公開的。</em></p></blockquote><h3 id="🚧有人希望你修改你的貢獻"><a href="#🚧有人希望你修改你的貢獻" class="headerlink" title="🚧有人希望你修改你的貢獻"></a>🚧有人希望你修改你的貢獻</h3><p>這是好的開始，溝通、改進直到符合維護者得期待。</p><h3 id="👎你的貢獻沒有被採納"><a href="#👎你的貢獻沒有被採納" class="headerlink" title="👎你的貢獻沒有被採納"></a>👎你的貢獻沒有被採納</h3><p>你的工作最後沒有被採納，這時你可以問問維護者，為什麼沒有被採納。需要注意的是別花時間在爭論上，這會讓你樹立更多敵人。</p><h3 id="🎉-你的貢獻被接受。"><a href="#🎉-你的貢獻被接受。" class="headerlink" title="🎉 你的貢獻被接受。"></a>🎉 你的貢獻被接受。</h3><p>太棒了！你完成了一次開源貢獻！</p><h2 id="延伸閱讀"><a href="#延伸閱讀" class="headerlink" title="延伸閱讀"></a>延伸閱讀</h2><ul><li><a href="https://opensource.guide/zh-hant/starting-a-project/"><strong>發起一個開源專案</strong></a></li><li><a href="https://opensource.guide/zh-hant/best-practices/"><strong>維護者最佳實踐</strong></a></li><li><a href="https://opensource.guide/zh-hant/leadership-and-governance/"><strong>領導與治理</strong></a></li><li><a href="https://opensource.guide/zh-hant/code-of-conduct/"><strong>建立一套行為準則</strong></a></li><li><a href="https://opensource.guide/zh-hant/finding-users/"><strong>找尋專案的使用者</strong></a></li></ul>]]></content>
+    <content type="html"><![CDATA[<p><img src="https://cdn-images-1.medium.com/max/7872/0*8Mqb8j7gMZ3_R-UI" alt="Photo by [Tim Mossholder](https://unsplash.com/@timmossholder) on [Unsplash](https://unsplash.com)"></p><p>本週我們來讀一下「如何為開源做貢獻」。這份文件是 Github 的 Open Source Guide 開源指南，約莫兩年前剛出的時候全部是英文版的，已經三年了，拖到現在才讀（汗）。</p><blockquote><p> （這篇是閱讀開源指南的筆記，原創內容偏少，原文在下方連結）<br><a href="https://opensource.guide/zh-hant/how-to-contribute/"><strong>如何為開源做貢獻？</strong><br><em>透過為開源貢獻力量，能從中學習、幫助他人並且從中累積相關技能的經驗 - 任何你能想像得到的技能。 為什麼會有人為開源做出貢獻？有數不清的原因！…</em>opensource.guide</a></p></blockquote><p>是 Github 7000 顆星星的開源專案<br><a href="https://github.com/github/opensource.guide"><strong>github/opensource.guide</strong><br><em>Open Source Guides ( https://opensource.guide/) are a collection of resources for individuals, communities, and…</em>github.com</a></p><h2 id="為何要貢獻開源專案？"><a href="#為何要貢獻開源專案？" class="headerlink" title="為何要貢獻開源專案？"></a><strong>為何要貢獻開源專案？</strong></h2><blockquote><p> 原文寫的很好，我用我的話說出來。</p></blockquote><h3 id="1-打磨你的專業技能"><a href="#1-打磨你的專業技能" class="headerlink" title="1. 打磨你的專業技能"></a>1. 打磨你的專業技能</h3><p>專案中包含了撰寫程式碼、平面設計、使用者體驗設計、撰寫文章 … 等等的工作。只要你想，你就可以在開源專案中找到你的位置。</p><h3 id="2-認識與你有相似興趣的人"><a href="#2-認識與你有相似興趣的人" class="headerlink" title="2. 認識與你有相似興趣的人"></a>2. 認識與你有相似興趣的人</h3><p>我覺得這真的滿重要，在現實生活中要找到相同興趣的人就很困難了，但是透過貢獻開源，你可以無遠弗屆的認識世界各地與你有相似興趣的人。</p><h3 id="3-鍛鍊溝通能力"><a href="#3-鍛鍊溝通能力" class="headerlink" title="3. 鍛鍊溝通能力"></a>3. 鍛鍊溝通能力</h3><p>因為開源專案是一個「共同協做」的專案。你需要向他人解釋自己是用什麼方法實作，也會需要其他人的幫助。</p><h3 id="4-建立名聲"><a href="#4-建立名聲" class="headerlink" title="4. 建立名聲"></a>4. 建立名聲</h3><p>你在開源專案中實作的成果一切都是看的到的，這也意味開源專案是一個能好好火力展示的地方。</p><h3 id="5-學習人際關係的能力"><a href="#5-學習人際關係的能力" class="headerlink" title="5. 學習人際關係的能力"></a>5. 學習人際關係的能力</h3><p>開源為練習領導及管理的能力提供了很好的機會。例如如何解決衝突、組織團隊以及如何為工作的優先順序排列。</p><blockquote><p> 小訣竅：走進開源專案，就像你走進一群陌生人中，想要嘗試融入。這群人討論的非常深入了，你突然打岔肯定會讓人覺得奇怪。<br> 與其盲目地在社群中拋出你自己的看法，不如先觀察一下社群的氛圍後再提出，這樣你的想法被注意到的機會才會增加。</p></blockquote><h2 id="找尋專案開始貢獻"><a href="#找尋專案開始貢獻" class="headerlink" title="找尋專案開始貢獻"></a>找尋專案開始貢獻</h2><p>如果你還未貢獻任何一個開源專案的話，可以想想，你能夠為開源專案做些什麼？</p><p>可以從你有使用過的開源專案開始著手，跟你比較有關係的開源專案，或是你比較感興趣的開源專案，你才會積極的參加。</p><p>平均一個專案有 28% 的貢獻是隨意且偶然的，像是 Readme、改錯字、失效連結 … 等等的小地方。</p><h2 id="找到專案時，先確保專案是否接受貢獻"><a href="#找到專案時，先確保專案是否接受貢獻" class="headerlink" title="找到專案時，先確保專案是否接受貢獻"></a><strong>找到專案時，先確保專案是否接受貢獻</strong></h2><p>可以從幾個地方，看出專案是否活躍，樂於接受貢獻：</p><p>從 Master 分支上看看觀察</p><ul><li><p>最近一次的 Commit 是什麼時候？</p></li><li><p>Commit 的次數頻繁嘛？</p></li><li><p>專案目前有多少貢獻者？</p></li></ul><p>從 Issue 觀察</p><ul><li><p>目前有多少個 issue</p></li><li><p>維護者回覆 issue 是否迅速</p></li><li><p>是否有討論熱絡的 issue</p></li><li><p>issue 是否已經大量累積</p></li><li><p>最近 close 的 issue 是多久以前</p></li></ul><p>從 PR 觀察</p><ul><li><p>有多少處於進行中的 PR</p></li><li><p>提交 PR 後維護者回覆是否迅速</p></li><li><p>最近有多少 PR 被 Merge</p></li></ul><p>觀察專案的友善程度</p><ul><li><p>維護者的回應是否有幫助</p></li><li><p>討論過程是否親切</p></li><li><p>會不會審查 PR</p></li></ul><h2 id="如何將成果貢獻至開源專案"><a href="#如何將成果貢獻至開源專案" class="headerlink" title="如何將成果貢獻至開源專案"></a>如何將成果貢獻至開源專案</h2><p>最重要的是「有效的溝通」，把握幾個要點：</p><h3 id="1-交代來龍去脈"><a href="#1-交代來龍去脈" class="headerlink" title="1. 交代來龍去脈"></a>1. 交代來龍去脈</h3><p>讓他人快速的理解。如果是 Bug 交代清楚你想做的事情是什麼，你當實作了哪些步驟，以便重現錯誤。如果你想要發起一個新的想法，你要解釋為什麼你要這樣做，為什麼你覺得這樣會對專案有幫助。</p><h3 id="2-做好準備工作"><a href="#2-做好準備工作" class="headerlink" title="2. 做好準備工作"></a>2. 做好準備工作</h3><p>在尋求幫助之前，先確保你看過文件、相關 Issue 的討論，當你表達出強烈的意願時，人們會很樂意幫助你的。</p><h3 id="3-溝通時力求精簡明瞭"><a href="#3-溝通時力求精簡明瞭" class="headerlink" title="3. 溝通時力求精簡明瞭"></a>3. 溝通時力求精簡明瞭</h3><p>開源專案每次提交都是需要他人檢閱的，如果你能夠精準的表達你的看法，那麼你得到別人幫助的機會就會大幅提昇。</p><h3 id="4-大膽的提問（但是要有耐心！）"><a href="#4-大膽的提問（但是要有耐心！）" class="headerlink" title="4. 大膽的提問（但是要有耐心！）"></a><strong>4. 大膽的提問（但是要有耐心！）</strong></h3><p>每個人都有新手的時候，不要怕提問。需要注意的是長期維護的人不一定熟悉專案的每一個部分。協作時表現出你的耐心，你會得到相同回報。</p><h3 id="5-尊重社群的決定"><a href="#5-尊重社群的決定" class="headerlink" title="5. 尊重社群的決定"></a>5. 尊重社群的決定</h3><p>有時候你的看法跟社群的看法不一定相同。他們可能不接受你的建議。可能社群最後不接納你的建議。這時你可以試試看討論出折衷方案，或者將專案 fork 另起爐灶。</p><h2 id="提交之後"><a href="#提交之後" class="headerlink" title="提交之後"></a>提交之後</h2><h3 id="😭有可能沒有人理你"><a href="#😭有可能沒有人理你" class="headerlink" title="😭有可能沒有人理你"></a>😭有可能沒有人理你</h3><p>因為大家都很忙，尤其是熱門的開源專案。Issue 很多，維護者的人手不夠，此時就先耐心的等待。</p><blockquote><p> <em>千萬不要私下聯絡，在開源專案中，一切的溝通都應該是公開的。</em></p></blockquote><h3 id="🚧有人希望你修改你的貢獻"><a href="#🚧有人希望你修改你的貢獻" class="headerlink" title="🚧有人希望你修改你的貢獻"></a>🚧有人希望你修改你的貢獻</h3><p>這是好的開始，溝通、改進直到符合維護者得期待。</p><h3 id="👎你的貢獻沒有被採納"><a href="#👎你的貢獻沒有被採納" class="headerlink" title="👎你的貢獻沒有被採納"></a>👎你的貢獻沒有被採納</h3><p>你的工作最後沒有被採納，這時你可以問問維護者，為什麼沒有被採納。需要注意的是別花時間在爭論上，這會讓你樹立更多敵人。</p><h3 id="🎉-你的貢獻被接受。"><a href="#🎉-你的貢獻被接受。" class="headerlink" title="🎉 你的貢獻被接受。"></a>🎉 你的貢獻被接受。</h3><p>太棒了！你完成了一次開源貢獻！</p><h2 id="延伸閱讀"><a href="#延伸閱讀" class="headerlink" title="延伸閱讀"></a>延伸閱讀</h2><ul><li><a href="https://opensource.guide/zh-hant/starting-a-project/"><strong>發起一個開源專案</strong></a></li><li><a href="https://opensource.guide/zh-hant/best-practices/"><strong>維護者最佳實踐</strong></a></li><li><a href="https://opensource.guide/zh-hant/leadership-and-governance/"><strong>領導與治理</strong></a></li><li><a href="https://opensource.guide/zh-hant/code-of-conduct/"><strong>建立一套行為準則</strong></a></li><li><a href="https://opensource.guide/zh-hant/finding-users/"><strong>找尋專案的使用者</strong></a></li></ul>]]></content>
     
     
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/7872/0*8Mqb8j7gMZ3_R-UI&quot; alt=&quot;Photo by [Tim Mossholder](https://unsplash.com/@timmossholder?utm_source=medium&amp;amp;utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&amp;amp;utm_medium=referral)&quot;&gt;&lt;/p&gt;
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/7872/0*8Mqb8j7gMZ3_R-UI&quot; alt=&quot;Photo by [Tim Mossholder](https://unsplash.com/@timmossholder) on [Unsplash](https://unsplash.com)&quot;&gt;&lt;/p&gt;
 &lt;p&gt;本週我們來讀一下「如何為開源做貢獻」。這份文件是 Github 的 Open Source Guide 開源指南，約莫兩年前剛出的時候全部是英文版的，已經三年了，拖到現在才讀（汗）。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt; （這篇是閱讀開源指南的筆記，原創內容偏少，原文在下方連結）&lt;br&gt;&lt;a href=&quot;https://opensource.guide/zh-hant/how-to-contribute/&quot;&gt;&lt;strong&gt;如何為開源做貢獻？&lt;/strong&gt;&lt;br&gt;&lt;em&gt;透過為開源貢獻力量，能從中學習、幫助他人並且從中累積相關技能的經驗 - 任何你能想像得到的技能。 為什麼會有人為開源做出貢獻？有數不清的原因！…&lt;/em&gt;opensource.guide&lt;/a&gt;&lt;/p&gt;
@@ -126,16 +101,16 @@
     
     
     
-    <category term="Github" scheme="https://luka.tw/tags/Github/"/>
+    <category term="Github" scheme="https://lukajojo.com/tags/Github/"/>
     
-    <category term="Open Source" scheme="https://luka.tw/tags/Open-Source/"/>
+    <category term="Open Source" scheme="https://lukajojo.com/tags/Open-Source/"/>
     
   </entry>
   
   <entry>
     <title>TLDR 命令列神兵｜Linux 入門必裝</title>
-    <link href="https://luka.tw/2020/07/28/posts/2020-07-28-tldr/"/>
-    <id>https://luka.tw/2020/07/28/posts/2020-07-28-tldr/</id>
+    <link href="https://lukajojo.com/2020/07/28/posts/2020-07-28-tldr/"/>
+    <id>https://lukajojo.com/2020/07/28/posts/2020-07-28-tldr/</id>
     <published>2020-07-28T08:01:00.000Z</published>
     <updated>2021-10-23T15:07:00.334Z</updated>
     
@@ -159,8 +134,8 @@
   
   <entry>
     <title>Kubernetes IDE | Lens 用圖形化介面管理 K8S</title>
-    <link href="https://luka.tw/2020/06/30/posts/2020-06-30-lens-the-ide-for-kubernetes/"/>
-    <id>https://luka.tw/2020/06/30/posts/2020-06-30-lens-the-ide-for-kubernetes/</id>
+    <link href="https://lukajojo.com/2020/06/30/posts/2020-06-30-lens-the-ide-for-kubernetes/"/>
+    <id>https://lukajojo.com/2020/06/30/posts/2020-06-30-lens-the-ide-for-kubernetes/</id>
     <published>2020-06-30T09:01:00.000Z</published>
     <updated>2021-10-23T15:07:00.154Z</updated>
     
@@ -179,8 +154,8 @@
   
   <entry>
     <title>TPM — 套件管理工具 ，讓你的 TMUX 更好用</title>
-    <link href="https://luka.tw/2020/06/02/posts/2020-06-02-tmp-let-your-tmux-better/"/>
-    <id>https://luka.tw/2020/06/02/posts/2020-06-02-tmp-let-your-tmux-better/</id>
+    <link href="https://lukajojo.com/2020/06/02/posts/2020-06-02-tmp-let-your-tmux-better/"/>
+    <id>https://lukajojo.com/2020/06/02/posts/2020-06-02-tmp-let-your-tmux-better/</id>
     <published>2020-06-02T11:51:00.000Z</published>
     <updated>2021-10-23T15:06:59.977Z</updated>
     
@@ -199,8 +174,8 @@
   
   <entry>
     <title>Unit Test 中的替身：搞不清楚的 Dummy 、Stub、Spy、Mock、Fake</title>
-    <link href="https://luka.tw/2020/05/05/posts/2020-05-05-unit-test/"/>
-    <id>https://luka.tw/2020/05/05/posts/2020-05-05-unit-test/</id>
+    <link href="https://lukajojo.com/2020/05/05/posts/2020-05-05-unit-test/"/>
+    <id>https://lukajojo.com/2020/05/05/posts/2020-05-05-unit-test/</id>
     <published>2020-05-05T11:50:00.000Z</published>
     <updated>2021-10-23T15:06:59.934Z</updated>
     
@@ -217,14 +192,14 @@
     
     
     
-    <category term="Unit Test" scheme="https://luka.tw/tags/Unit-Test/"/>
+    <category term="Unit Test" scheme="https://lukajojo.com/tags/Unit-Test/"/>
     
   </entry>
   
   <entry>
     <title>Kubernetes 教學 02 — 在 Minikube 上部屬 Python Flask 應用程式</title>
-    <link href="https://luka.tw/2020/03/10/posts/2020-03-20-running-flask-on-minikube/"/>
-    <id>https://luka.tw/2020/03/10/posts/2020-03-20-running-flask-on-minikube/</id>
+    <link href="https://lukajojo.com/2020/03/10/posts/2020-03-20-running-flask-on-minikube/"/>
+    <id>https://lukajojo.com/2020/03/10/posts/2020-03-20-running-flask-on-minikube/</id>
     <published>2020-03-10T11:50:00.000Z</published>
     <updated>2021-10-23T15:06:59.878Z</updated>
     
@@ -241,20 +216,20 @@
     
     
     
-    <category term="Kubernetes" scheme="https://luka.tw/tags/Kubernetes/"/>
+    <category term="Kubernetes" scheme="https://lukajojo.com/tags/Kubernetes/"/>
     
-    <category term="Minikube" scheme="https://luka.tw/tags/Minikube/"/>
+    <category term="Minikube" scheme="https://lukajojo.com/tags/Minikube/"/>
     
-    <category term="Python" scheme="https://luka.tw/tags/Python/"/>
+    <category term="Python" scheme="https://lukajojo.com/tags/Python/"/>
     
-    <category term="Flask" scheme="https://luka.tw/tags/Flask/"/>
+    <category term="Flask" scheme="https://lukajojo.com/tags/Flask/"/>
     
   </entry>
   
   <entry>
     <title>Kubernetes 教學 01 - 概念與架構</title>
-    <link href="https://luka.tw/2020/02/11/posts/2020-02-11-kubernetes-tutorial-01/"/>
-    <id>https://luka.tw/2020/02/11/posts/2020-02-11-kubernetes-tutorial-01/</id>
+    <link href="https://lukajojo.com/2020/02/11/posts/2020-02-11-kubernetes-tutorial-01/"/>
+    <id>https://lukajojo.com/2020/02/11/posts/2020-02-11-kubernetes-tutorial-01/</id>
     <published>2020-02-11T02:32:00.000Z</published>
     <updated>2021-10-23T15:06:59.832Z</updated>
     
@@ -274,16 +249,16 @@
     
     
     
-    <category term="Kubernetes" scheme="https://luka.tw/tags/Kubernetes/"/>
+    <category term="Kubernetes" scheme="https://lukajojo.com/tags/Kubernetes/"/>
     
-    <category term="Minikube" scheme="https://luka.tw/tags/Minikube/"/>
+    <category term="Minikube" scheme="https://lukajojo.com/tags/Minikube/"/>
     
   </entry>
   
   <entry>
     <title>從零開始學 DevOps — 那就選擇最簡單的 Drone CI 開始吧！</title>
-    <link href="https://luka.tw/2020/01/14/posts/2020-01-14-drone/"/>
-    <id>https://luka.tw/2020/01/14/posts/2020-01-14-drone/</id>
+    <link href="https://lukajojo.com/2020/01/14/posts/2020-01-14-drone/"/>
+    <id>https://lukajojo.com/2020/01/14/posts/2020-01-14-drone/</id>
     <published>2020-01-14T02:32:00.000Z</published>
     <updated>2021-10-23T15:06:59.770Z</updated>
     
@@ -298,16 +273,16 @@
     
     
     
-    <category term="DevOps" scheme="https://luka.tw/tags/DevOps/"/>
+    <category term="DevOps" scheme="https://lukajojo.com/tags/DevOps/"/>
     
-    <category term="DroneCI" scheme="https://luka.tw/tags/DroneCI/"/>
+    <category term="DroneCI" scheme="https://lukajojo.com/tags/DroneCI/"/>
     
   </entry>
   
   <entry>
     <title>用 Harbor 架設 Private Docker Registry</title>
-    <link href="https://luka.tw/2019/12/17/posts/2019-12-17-harbor/"/>
-    <id>https://luka.tw/2019/12/17/posts/2019-12-17-harbor/</id>
+    <link href="https://lukajojo.com/2019/12/17/posts/2019-12-17-harbor/"/>
+    <id>https://lukajojo.com/2019/12/17/posts/2019-12-17-harbor/</id>
     <published>2019-12-17T02:32:00.000Z</published>
     <updated>2021-10-23T15:06:59.630Z</updated>
     
@@ -322,16 +297,16 @@
     
     
     
-    <category term="Harbor" scheme="https://luka.tw/tags/Harbor/"/>
+    <category term="Harbor" scheme="https://lukajojo.com/tags/Harbor/"/>
     
-    <category term="Docker" scheme="https://luka.tw/tags/Docker/"/>
+    <category term="Docker" scheme="https://lukajojo.com/tags/Docker/"/>
     
   </entry>
   
   <entry>
     <title>駭客是怎麼思考的？｜從 Devcore Conf 學駭客思維</title>
-    <link href="https://luka.tw/2019/11/19/posts/2019-11-19/"/>
-    <id>https://luka.tw/2019/11/19/posts/2019-11-19/</id>
+    <link href="https://lukajojo.com/2019/11/19/posts/2019-11-19/"/>
+    <id>https://lukajojo.com/2019/11/19/posts/2019-11-19/</id>
     <published>2019-11-19T02:32:00.000Z</published>
     <updated>2021-10-23T15:06:59.500Z</updated>
     
@@ -346,16 +321,16 @@
     
     
     
-    <category term="Security" scheme="https://luka.tw/tags/Security/"/>
+    <category term="Security" scheme="https://lukajojo.com/tags/Security/"/>
     
-    <category term="Hacker" scheme="https://luka.tw/tags/Hacker/"/>
+    <category term="Hacker" scheme="https://lukajojo.com/tags/Hacker/"/>
     
   </entry>
   
   <entry>
     <title>Mysql - 如何修改 partition 並還原資料</title>
-    <link href="https://luka.tw/2018/03/04/posts/2018-03-04-modify-and-restore-mysql-partition/"/>
-    <id>https://luka.tw/2018/03/04/posts/2018-03-04-modify-and-restore-mysql-partition/</id>
+    <link href="https://lukajojo.com/2018/03/04/posts/2018-03-04-modify-and-restore-mysql-partition/"/>
+    <id>https://lukajojo.com/2018/03/04/posts/2018-03-04-modify-and-restore-mysql-partition/</id>
     <published>2018-03-04T04:50:00.000Z</published>
     <updated>2021-10-03T17:05:35.175Z</updated>
     
@@ -367,16 +342,16 @@
     
     
     
-    <category term="Database" scheme="https://luka.tw/tags/Database/"/>
+    <category term="Database" scheme="https://lukajojo.com/tags/Database/"/>
     
-    <category term="Mysql" scheme="https://luka.tw/tags/Mysql/"/>
+    <category term="Mysql" scheme="https://lukajojo.com/tags/Mysql/"/>
     
   </entry>
   
   <entry>
     <title>[譯] 使用 AWS Ruby SDK v2 更新 S3 物件 Metadata</title>
-    <link href="https://luka.tw/2018/01/25/posts/2018-01-25-use-aws-ruby-sdk-to-update-s3-metadata/"/>
-    <id>https://luka.tw/2018/01/25/posts/2018-01-25-use-aws-ruby-sdk-to-update-s3-metadata/</id>
+    <link href="https://lukajojo.com/2018/01/25/posts/2018-01-25-use-aws-ruby-sdk-to-update-s3-metadata/"/>
+    <id>https://lukajojo.com/2018/01/25/posts/2018-01-25-use-aws-ruby-sdk-to-update-s3-metadata/</id>
     <published>2018-01-25T07:32:00.000Z</published>
     <updated>2021-10-03T17:05:35.173Z</updated>
     
@@ -391,16 +366,16 @@
     
     
     
-    <category term="AWS" scheme="https://luka.tw/tags/AWS/"/>
+    <category term="AWS" scheme="https://lukajojo.com/tags/AWS/"/>
     
-    <category term="S3" scheme="https://luka.tw/tags/S3/"/>
+    <category term="S3" scheme="https://lukajojo.com/tags/S3/"/>
     
   </entry>
   
   <entry>
     <title>[譯] Amazon S3 Delimiter and Prefix</title>
-    <link href="https://luka.tw/2018/01/03/posts/2018-01-03-aws-s3-delimiter-and-prefix/"/>
-    <id>https://luka.tw/2018/01/03/posts/2018-01-03-aws-s3-delimiter-and-prefix/</id>
+    <link href="https://lukajojo.com/2018/01/03/posts/2018-01-03-aws-s3-delimiter-and-prefix/"/>
+    <id>https://lukajojo.com/2018/01/03/posts/2018-01-03-aws-s3-delimiter-and-prefix/</id>
     <published>2018-01-03T04:50:00.000Z</published>
     <updated>2021-10-03T17:05:35.172Z</updated>
     
@@ -415,16 +390,16 @@
     
     
     
-    <category term="AWS" scheme="https://luka.tw/tags/AWS/"/>
+    <category term="AWS" scheme="https://lukajojo.com/tags/AWS/"/>
     
-    <category term="S3" scheme="https://luka.tw/tags/S3/"/>
+    <category term="S3" scheme="https://lukajojo.com/tags/S3/"/>
     
   </entry>
   
   <entry>
     <title>Web 基本功 - Cookie 與 Session</title>
-    <link href="https://luka.tw/2017/12/22/posts/2017-12-22-web-foundation-the-different-of-cookie-and-session/"/>
-    <id>https://luka.tw/2017/12/22/posts/2017-12-22-web-foundation-the-different-of-cookie-and-session/</id>
+    <link href="https://lukajojo.com/2017/12/22/posts/2017-12-22-web-foundation-the-different-of-cookie-and-session/"/>
+    <id>https://lukajojo.com/2017/12/22/posts/2017-12-22-web-foundation-the-different-of-cookie-and-session/</id>
     <published>2017-12-22T06:11:00.000Z</published>
     <updated>2021-10-03T17:05:35.169Z</updated>
     
@@ -440,18 +415,18 @@
     
     
     
-    <category term="Web Foundation" scheme="https://luka.tw/tags/Web-Foundation/"/>
+    <category term="Web Foundation" scheme="https://lukajojo.com/tags/Web-Foundation/"/>
     
-    <category term="Coockie" scheme="https://luka.tw/tags/Coockie/"/>
+    <category term="Coockie" scheme="https://lukajojo.com/tags/Coockie/"/>
     
-    <category term="Session" scheme="https://luka.tw/tags/Session/"/>
+    <category term="Session" scheme="https://lukajojo.com/tags/Session/"/>
     
   </entry>
   
   <entry>
     <title>OLTP 與 OLAP</title>
-    <link href="https://luka.tw/2017/12/22/posts/2017-12-29-oltp-vs-olap/"/>
-    <id>https://luka.tw/2017/12/22/posts/2017-12-29-oltp-vs-olap/</id>
+    <link href="https://lukajojo.com/2017/12/22/posts/2017-12-29-oltp-vs-olap/"/>
+    <id>https://lukajojo.com/2017/12/22/posts/2017-12-29-oltp-vs-olap/</id>
     <published>2017-12-22T06:11:00.000Z</published>
     <updated>2021-10-03T17:05:35.170Z</updated>
     
@@ -463,14 +438,14 @@
     
     
     
-    <category term="Database" scheme="https://luka.tw/tags/Database/"/>
+    <category term="Database" scheme="https://lukajojo.com/tags/Database/"/>
     
   </entry>
   
   <entry>
     <title>使用 GIT Precommit hooks 防止 Binding.pry 進入 Commit</title>
-    <link href="https://luka.tw/2017/12/06/posts/2017-12-06-git-precommit-hooks-copy/"/>
-    <id>https://luka.tw/2017/12/06/posts/2017-12-06-git-precommit-hooks-copy/</id>
+    <link href="https://lukajojo.com/2017/12/06/posts/2017-12-06-git-precommit-hooks-copy/"/>
+    <id>https://lukajojo.com/2017/12/06/posts/2017-12-06-git-precommit-hooks-copy/</id>
     <published>2017-12-06T14:34:00.000Z</published>
     <updated>2021-10-03T17:05:35.168Z</updated>
     
@@ -484,9 +459,34 @@
     
     
     
-    <category term="Rails" scheme="https://luka.tw/tags/Rails/"/>
+    <category term="Rails" scheme="https://lukajojo.com/tags/Rails/"/>
     
-    <category term="Time" scheme="https://luka.tw/tags/Time/"/>
+    <category term="Time" scheme="https://lukajojo.com/tags/Time/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Time in Rails</title>
+    <link href="https://lukajojo.com/2017/10/23/posts/2017-10-23-time-in-rails/"/>
+    <id>https://lukajojo.com/2017/10/23/posts/2017-10-23-time-in-rails/</id>
+    <published>2017-10-23T14:34:00.000Z</published>
+    <updated>2021-10-03T17:05:35.167Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Rails-中的時間"><a href="#Rails-中的時間" class="headerlink" title="Rails 中的時間"></a>Rails 中的時間</h2><p>Rails 中的時間是個有趣的議題，如果不多加注意，很容易被雷到。<br>尤其是一般在本地端開發的的時候並不會有時區不同的問題，但是一放到 Server 上，就會忽然爆炸。<br>是不能不小心的一個問題。<br>如果你在 <code>config/application.rb</code> 設定 Time.zone，範例如下:</p><figure class="highlight rb"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs rb">config.i18n.default_locale = <span class="hljs-string">&quot;zh-TW&quot;</span><br></code></pre></td></tr></table></figure><p>如果透過 ActiveRecord 來存取，取得的會是你在 <code>application.rb</code> 裡面設定的 Time.zone<br>比如說你有一個 <code>User</code> 物件:</p><figure class="highlight rb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs rb">user = User.first<br>user.created_at.zone<br><span class="hljs-comment"># =&gt; &quot;CST&quot;</span><br></code></pre></td></tr></table></figure><p>CST 即中原標準時間. it’s right!</p><h2 id="Time-now-VS-Time-current"><a href="#Time-now-VS-Time-current" class="headerlink" title="Time.now VS Time.current"></a>Time.now VS Time.current</h2><p>接著來比較 Time.now 和 Time.current</p><figure class="highlight rb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs rb">Time.now.zone<br>=&gt; <span class="hljs-string">&quot;UTC&quot;</span><br>Time.current.zone<br>=&gt; <span class="hljs-string">&quot;CST&quot;</span><br></code></pre></td></tr></table></figure><p>很明顯的可以看到，如果是 <code>Time.now</code> 的話回傳的會是格林威治時間 <code>UTC</code>, 但若是使用 <code>Time.current</code> 回傳的則會是我們在 <code>config/application.rb</code> 裡面設定的 Time.zone。究竟為什麼會有這個差異呢? 其實很簡單，因為 Time.now 是 Ruby 的原生物件，而 Time.current 是 Rails ActiveSupport 的物件。</p><figure class="highlight rb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs rb">Time.now.<span class="hljs-keyword">class</span><br>=&gt; Time<br>Time.current.<span class="hljs-keyword">class</span><br>=&gt; ActiveSupport::TimeWithZone<br></code></pre></td></tr></table></figure><p>我們再來做個測試，來看看剛剛的 <code>user.created_at</code> 是不是真的如果們所想:</p><figure class="highlight rb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs rb">User.last.created_at.<span class="hljs-keyword">class</span><br>=&gt; ActiveSupport::TimeWithZone<br></code></pre></td></tr></table></figure><p>太棒了! 果然如此，這樣一來是不是很容易理解 Rails 的時間了。</p><h2 id="Rails-時間的另一個重點-SQL"><a href="#Rails-時間的另一個重點-SQL" class="headerlink" title="Rails 時間的另一個重點 - SQL"></a>Rails 時間的另一個重點 - SQL</h2><p>Rails 時間另一個需要注意的地方是 SQL 的時間。來比較一下使用 Time.now 和 Time.current 在 ActiveRecord Relation 中的時間:</p><figure class="highlight rb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs rb">User.where(<span class="hljs-string">&quot;created_at &gt; ?&quot;</span>, Time.now)<br><span class="hljs-comment">#=&gt; SELECT &quot;users&quot;.* FROM &quot;users&quot; WHERE &quot;users&quot;.&quot;deleted_at&quot; IS NULL AND (created_at &gt; &#x27;2017-11-17 14:46:01.698018&#x27;)</span><br><br>User.where(<span class="hljs-string">&quot;created_at &gt; ?&quot;</span>, Time.current)<br><span class="hljs-comment">#=&gt; SELECT &quot;users&quot;.* FROM &quot;users&quot; WHERE &quot;users&quot;.&quot;deleted_at&quot; IS NULL AND (created_at &gt; &#x27;2017-11-17 14:46:09.655406&#x27;)</span><br></code></pre></td></tr></table></figure><p>筆者在測試的時候是台北時間(CST)晚上 22:46，可以發現兩者依賴的時區都是在 <code>config/application.rb</code> 設定的時區。</p>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;Rails-中的時間&quot;&gt;&lt;a href=&quot;#Rails-中的時間&quot; class=&quot;headerlink&quot; title=&quot;Rails 中的時間&quot;&gt;&lt;/a&gt;Rails 中的時間&lt;/h2&gt;&lt;p&gt;Rails 中的時間是個有趣的議題，如果不多加注意，很容易被雷到。&lt;br&gt;尤其是一般在本地端開發的的時候並不會有時區不同的問題，但是一放到 Server 上，就會忽然爆炸。&lt;br&gt;是不能不小心的一個問題。&lt;br&gt;如果你在 &lt;code&gt;config/application.rb&lt;/code&gt; 設定 Time.zone，範例如下:&lt;/p&gt;
+&lt;figure class=&quot;highlight rb&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs rb&quot;&gt;config.i18n.default_locale = &lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;zh-TW&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;如果透過 ActiveRecord 來存取，取得的會是你在 &lt;code&gt;application.rb&lt;/code&gt; 裡面設定的 Time.zone&lt;br&gt;比如說你有一個 &lt;code&gt;User&lt;/code&gt; 物件:&lt;/p&gt;
+&lt;figure class=&quot;highlight rb&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs rb&quot;&gt;user = User.first&lt;br&gt;user.created_at.zone&lt;br&gt;&lt;span class=&quot;hljs-comment&quot;&gt;# =&amp;gt; &amp;quot;CST&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    
+    <category term="Rails" scheme="https://lukajojo.com/tags/Rails/"/>
+    
+    <category term="Time" scheme="https://lukajojo.com/tags/Time/"/>
     
   </entry>
   

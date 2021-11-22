@@ -11010,14 +11010,9 @@ a.article-nav-next span {
   }
   .navbar-main .navbar-start {
     margin-right: 0;
-    display: none;
   }
   .navbar-main .navbar-end {
     margin-left: 0;
-  }
-  .navbar-main .navbar-end .navbar-item:nth-child(1),
-  .navbar-main .navbar-end .navbar-item:nth-child(2) {
-    display: none;
   }
 }
 .navbar-logo img {
