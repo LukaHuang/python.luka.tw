@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>【 Python 資料科學 】書籍推薦</title>
+      <link href="/2021/11/25/python/01-data-science-book/"/>
+      <url>/2021/11/25/python/01-data-science-book/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Data-Science-from-Scratch-中文版（第二版）：用-Python-學資料科學"><a href="#Data-Science-from-Scratch-中文版（第二版）：用-Python-學資料科學" class="headerlink" title="Data Science from Scratch 中文版（第二版）：用 Python 學資料科學"></a>Data Science from Scratch 中文版（第二版）：用 Python 學資料科學</h3><p><img src="/img/2021-11-25-07-53-06.png"></p><p>這本裡面有大量的名詞幫，適合當工具書來查詢，硬啃的話有點累。名詞如下：</p><p>資料視覺化, 線性代數, 統計學, 機率, 假設與推論, 梯度遞減, 取得資料, 處理資料, 機器學習, k最近鄰, 單純貝氏, 簡單線性迴歸, 多元迴歸, 邏輯迴歸, 決策樹, 神經網路, 深度學習, 集群, 自然語言處理, 網路分析, 推薦系統, 資料庫與SQL, MapReduce</p><h3 id="Python資料分析-第二版"><a href="#Python資料分析-第二版" class="headerlink" title="Python資料分析 第二版"></a>Python資料分析 第二版</h3><p><img src="/img/2021-11-25-07-53-46.png"></p><p>這本是 pandas 的作者寫的書，本書重點在於使用 pandas 與 NumPy 進行資料載入、資料前處理、資料處理、資料視覺化 … 等等的步驟。如果想要學習完整的流程挺推薦。</p><h3 id="參考資料："><a href="#參考資料：" class="headerlink" title="參考資料："></a>參考資料：</h3><p><a href="https://www.pttcc.org/bbs/Book/M.1587341470.A.A26">[分享] 2020 推薦 Python資料科學的書</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Python </category>
+          
+          <category> 01 基礎教學 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【 Python 教學 】什麼是 Pass By Assignment？</title>
       <link href="/2021/09/21/posts/2021-09-21-is-python-call-by-sharing/"/>
       <url>/2021/09/21/posts/2021-09-21-is-python-call-by-sharing/</url>
@@ -866,9 +887,9 @@
       
         <tags>
             
-            <tag> Ruby </tag>
-            
             <tag> jQuery </tag>
+            
+            <tag> Ruby </tag>
             
         </tags>
       
@@ -2805,37 +2826,6 @@
             <tag> Design Pattern </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello Python</title>
-      <link href="/2014/01/01/python/hello-world/"/>
-      <url>/2014/01/01/python/hello-world/</url>
-      
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Python </category>
-          
-          <category> 01 基礎教學 </category>
-          
-          <category> 02 爬蟲教學 </category>
-          
-          <category> 03 Flask 教學 </category>
-          
-          <category> 04 Django 教學 </category>
-          
-          <category> 05 資料庫教學 </category>
-          
-          <category> 06 資料分析 </category>
-          
-      </categories>
-      
       
     </entry>
     

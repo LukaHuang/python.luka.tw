@@ -6,7 +6,7 @@
   <link href="https://lukajojo.com/atom.xml" rel="self"/>
   
   <link href="https://lukajojo.com/"/>
-  <updated>2021-11-22T17:25:40.610Z</updated>
+  <updated>2021-11-25T00:29:42.254Z</updated>
   <id>https://lukajojo.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【 Python 資料科學 】書籍推薦</title>
+    <link href="https://lukajojo.com/2021/11/25/python/01-data-science-book/"/>
+    <id>https://lukajojo.com/2021/11/25/python/01-data-science-book/</id>
+    <published>2021-11-24T22:23:14.000Z</published>
+    <updated>2021-11-25T00:29:42.254Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Data-Science-from-Scratch-中文版（第二版）：用-Python-學資料科學"><a href="#Data-Science-from-Scratch-中文版（第二版）：用-Python-學資料科學" class="headerlink" title="Data Science from Scratch 中文版（第二版）：用 Python 學資料科學"></a>Data Science from Scratch 中文版（第二版）：用 Python 學資料科學</h3><p><img src="/img/2021-11-25-07-53-06.png"></p><p>這本裡面有大量的名詞幫，適合當工具書來查詢，硬啃的話有點累。名詞如下：</p><p>資料視覺化, 線性代數, 統計學, 機率, 假設與推論, 梯度遞減, 取得資料, 處理資料, 機器學習, k最近鄰, 單純貝氏, 簡單線性迴歸, 多元迴歸, 邏輯迴歸, 決策樹, 神經網路, 深度學習, 集群, 自然語言處理, 網路分析, 推薦系統, 資料庫與SQL, MapReduce</p><h3 id="Python資料分析-第二版"><a href="#Python資料分析-第二版" class="headerlink" title="Python資料分析 第二版"></a>Python資料分析 第二版</h3><p><img src="/img/2021-11-25-07-53-46.png"></p><p>這本是 pandas 的作者寫的書，本書重點在於使用 pandas 與 NumPy 進行資料載入、資料前處理、資料處理、資料視覺化 … 等等的步驟。如果想要學習完整的流程挺推薦。</p><h3 id="參考資料："><a href="#參考資料：" class="headerlink" title="參考資料："></a>參考資料：</h3><p><a href="https://www.pttcc.org/bbs/Book/M.1587341470.A.A26">[分享] 2020 推薦 Python資料科學的書</a></p>]]></content>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;Data-Science-from-Scratch-中文版（第二版）：用-Python-學資料科學&quot;&gt;&lt;a href=&quot;#Data-Science-from-Scratch-中文版（第二版）：用-Python-學資料科學&quot; class=&quot;headerlink&quot; title=&quot;Data Science from Scratch 中文版（第二版）：用 Python 學資料科學&quot;&gt;&lt;/a&gt;Data Science from Scratch 中文版（第二版）：用 Python 學資料科學&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/img/2021-11-25-07-53-06.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;這本裡面有大量的名詞幫，適合當工具書來查詢，硬啃的話有點累。名詞如下：&lt;/p&gt;
+&lt;p&gt;資料視覺化, 線性代數, 統計學, 機率, 假設與推論, 梯度遞減, 取得資料, 處理資料, 機器學習, k最近鄰, 單純貝氏, 簡單線性迴歸, 多元迴歸, 邏輯迴歸, 決策樹, 神經網路, 深度學習, 集群, 自然語言處理, 網路分析, 推薦系統, 資料庫與SQL, MapReduce&lt;/p&gt;
+&lt;h3 id=&quot;Python資料分析-第二版&quot;&gt;&lt;a href=&quot;#Python資料分析-第二版&quot; class=&quot;headerlink&quot; title=&quot;Python資料分析 第二版&quot;&gt;&lt;/a&gt;Python資料分析 第二版&lt;/h3&gt;</summary>
+    
+    
+    
+    <category term="Python" scheme="https://lukajojo.com/categories/Python/"/>
+    
+    <category term="01 基礎教學" scheme="https://lukajojo.com/categories/Python/01-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>【 Python 教學 】什麼是 Pass By Assignment？</title>
@@ -455,31 +479,6 @@
     <summary type="html">&lt;h2 id=&quot;Problem&quot;&gt;&lt;a href=&quot;#Problem&quot; class=&quot;headerlink&quot; title=&quot;Problem&quot;&gt;&lt;/a&gt;Problem&lt;/h2&gt;&lt;p&gt;如果不小心把 &lt;code&gt;binding.pry&lt;/code&gt; commit 進 git 而且不幸的 push 的話, 勢必要使用另一個 commit 來修正。如果要讓這個 commit 不見可能就需要用 &lt;code&gt;git push -f&lt;/code&gt; 來修改。這樣做很醜，不優雅。根治的方法是 - &lt;code&gt;根本不應該將 debug code 進入 commit&lt;/code&gt; 。但是人總是會有不小心的時候。最近發現一個工具可以做到這件事情: GIT Precommit hooks。&lt;/p&gt;
 &lt;h2 id=&quot;What-is-GIT-Precommit-hooks&quot;&gt;&lt;a href=&quot;#What-is-GIT-Precommit-hooks&quot; class=&quot;headerlink&quot; title=&quot;What is GIT Precommit hooks?&quot;&gt;&lt;/a&gt;What is GIT Precommit hooks?&lt;/h2&gt;&lt;p&gt;GIT Precommit hooks 是一種可以在你每次 Commit 之前的 Callback。每次 Commit 前都會執行。我們利用這個特性，可以用來檢查，防止如 &lt;code&gt;Binding.pry&lt;/code&gt; 的 Debug Code    進入 Git 中。&lt;/p&gt;
 &lt;h2 id=&quot;Solution-1-Use-Script&quot;&gt;&lt;a href=&quot;#Solution-1-Use-Script&quot; class=&quot;headerlink&quot; title=&quot;Solution 1 - Use Script&quot;&gt;&lt;/a&gt;Solution 1 - Use Script&lt;/h2&gt;</summary>
-    
-    
-    
-    
-    <category term="Rails" scheme="https://lukajojo.com/tags/Rails/"/>
-    
-    <category term="Time" scheme="https://lukajojo.com/tags/Time/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Time in Rails</title>
-    <link href="https://lukajojo.com/2017/10/23/posts/2017-10-23-time-in-rails/"/>
-    <id>https://lukajojo.com/2017/10/23/posts/2017-10-23-time-in-rails/</id>
-    <published>2017-10-23T14:34:00.000Z</published>
-    <updated>2021-10-03T17:05:35.167Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Rails-中的時間"><a href="#Rails-中的時間" class="headerlink" title="Rails 中的時間"></a>Rails 中的時間</h2><p>Rails 中的時間是個有趣的議題，如果不多加注意，很容易被雷到。<br>尤其是一般在本地端開發的的時候並不會有時區不同的問題，但是一放到 Server 上，就會忽然爆炸。<br>是不能不小心的一個問題。<br>如果你在 <code>config/application.rb</code> 設定 Time.zone，範例如下:</p><figure class="highlight rb"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs rb">config.i18n.default_locale = <span class="hljs-string">&quot;zh-TW&quot;</span><br></code></pre></td></tr></table></figure><p>如果透過 ActiveRecord 來存取，取得的會是你在 <code>application.rb</code> 裡面設定的 Time.zone<br>比如說你有一個 <code>User</code> 物件:</p><figure class="highlight rb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs rb">user = User.first<br>user.created_at.zone<br><span class="hljs-comment"># =&gt; &quot;CST&quot;</span><br></code></pre></td></tr></table></figure><p>CST 即中原標準時間. it’s right!</p><h2 id="Time-now-VS-Time-current"><a href="#Time-now-VS-Time-current" class="headerlink" title="Time.now VS Time.current"></a>Time.now VS Time.current</h2><p>接著來比較 Time.now 和 Time.current</p><figure class="highlight rb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs rb">Time.now.zone<br>=&gt; <span class="hljs-string">&quot;UTC&quot;</span><br>Time.current.zone<br>=&gt; <span class="hljs-string">&quot;CST&quot;</span><br></code></pre></td></tr></table></figure><p>很明顯的可以看到，如果是 <code>Time.now</code> 的話回傳的會是格林威治時間 <code>UTC</code>, 但若是使用 <code>Time.current</code> 回傳的則會是我們在 <code>config/application.rb</code> 裡面設定的 Time.zone。究竟為什麼會有這個差異呢? 其實很簡單，因為 Time.now 是 Ruby 的原生物件，而 Time.current 是 Rails ActiveSupport 的物件。</p><figure class="highlight rb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs rb">Time.now.<span class="hljs-keyword">class</span><br>=&gt; Time<br>Time.current.<span class="hljs-keyword">class</span><br>=&gt; ActiveSupport::TimeWithZone<br></code></pre></td></tr></table></figure><p>我們再來做個測試，來看看剛剛的 <code>user.created_at</code> 是不是真的如果們所想:</p><figure class="highlight rb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs rb">User.last.created_at.<span class="hljs-keyword">class</span><br>=&gt; ActiveSupport::TimeWithZone<br></code></pre></td></tr></table></figure><p>太棒了! 果然如此，這樣一來是不是很容易理解 Rails 的時間了。</p><h2 id="Rails-時間的另一個重點-SQL"><a href="#Rails-時間的另一個重點-SQL" class="headerlink" title="Rails 時間的另一個重點 - SQL"></a>Rails 時間的另一個重點 - SQL</h2><p>Rails 時間另一個需要注意的地方是 SQL 的時間。來比較一下使用 Time.now 和 Time.current 在 ActiveRecord Relation 中的時間:</p><figure class="highlight rb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs rb">User.where(<span class="hljs-string">&quot;created_at &gt; ?&quot;</span>, Time.now)<br><span class="hljs-comment">#=&gt; SELECT &quot;users&quot;.* FROM &quot;users&quot; WHERE &quot;users&quot;.&quot;deleted_at&quot; IS NULL AND (created_at &gt; &#x27;2017-11-17 14:46:01.698018&#x27;)</span><br><br>User.where(<span class="hljs-string">&quot;created_at &gt; ?&quot;</span>, Time.current)<br><span class="hljs-comment">#=&gt; SELECT &quot;users&quot;.* FROM &quot;users&quot; WHERE &quot;users&quot;.&quot;deleted_at&quot; IS NULL AND (created_at &gt; &#x27;2017-11-17 14:46:09.655406&#x27;)</span><br></code></pre></td></tr></table></figure><p>筆者在測試的時候是台北時間(CST)晚上 22:46，可以發現兩者依賴的時區都是在 <code>config/application.rb</code> 設定的時區。</p>]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;Rails-中的時間&quot;&gt;&lt;a href=&quot;#Rails-中的時間&quot; class=&quot;headerlink&quot; title=&quot;Rails 中的時間&quot;&gt;&lt;/a&gt;Rails 中的時間&lt;/h2&gt;&lt;p&gt;Rails 中的時間是個有趣的議題，如果不多加注意，很容易被雷到。&lt;br&gt;尤其是一般在本地端開發的的時候並不會有時區不同的問題，但是一放到 Server 上，就會忽然爆炸。&lt;br&gt;是不能不小心的一個問題。&lt;br&gt;如果你在 &lt;code&gt;config/application.rb&lt;/code&gt; 設定 Time.zone，範例如下:&lt;/p&gt;
-&lt;figure class=&quot;highlight rb&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs rb&quot;&gt;config.i18n.default_locale = &lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;zh-TW&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;如果透過 ActiveRecord 來存取，取得的會是你在 &lt;code&gt;application.rb&lt;/code&gt; 裡面設定的 Time.zone&lt;br&gt;比如說你有一個 &lt;code&gt;User&lt;/code&gt; 物件:&lt;/p&gt;
-&lt;figure class=&quot;highlight rb&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs rb&quot;&gt;user = User.first&lt;br&gt;user.created_at.zone&lt;br&gt;&lt;span class=&quot;hljs-comment&quot;&gt;# =&amp;gt; &amp;quot;CST&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
