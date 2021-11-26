@@ -6,7 +6,7 @@
   <link href="https://lukajojo.com/atom.xml" rel="self"/>
   
   <link href="https://lukajojo.com/"/>
-  <updated>2021-11-25T08:42:47.839Z</updated>
+  <updated>2021-11-25T22:26:14.404Z</updated>
   <id>https://lukajojo.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://lukajojo.com/2021/11/25/python/01-data-science-book/"/>
     <id>https://lukajojo.com/2021/11/25/python/01-data-science-book/</id>
     <published>2021-11-24T22:23:14.000Z</published>
-    <updated>2021-11-25T08:42:47.839Z</updated>
+    <updated>2021-11-25T22:26:14.404Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="Data-Science-from-Scratch-中文版（第二版）：用-Python-學資料科學"><a href="#Data-Science-from-Scratch-中文版（第二版）：用-Python-學資料科學" class="headerlink" title="Data Science from Scratch 中文版（第二版）：用 Python 學資料科學"></a>Data Science from Scratch 中文版（第二版）：用 Python 學資料科學</h3><p><img src="/img/2021-11-25-07-53-06.png"></p><p>這本裡面有大量的名詞幫，適合當工具書來查詢，硬啃的話有點累。名詞如下：</p><p>資料視覺化, 線性代數, 統計學, 機率, 假設與推論, 梯度遞減, 取得資料, 處理資料, 機器學習, k最近鄰, 單純貝氏, 簡單線性迴歸, 多元迴歸, 邏輯迴歸, 決策樹, 神經網路, 深度學習, 集群, 自然語言處理, 網路分析, 推薦系統, 資料庫與SQL, MapReduce</p><h3 id="Python資料分析-第二版"><a href="#Python資料分析-第二版" class="headerlink" title="Python資料分析 第二版"></a>Python資料分析 第二版</h3><p><img src="/img/2021-11-25-07-53-46.png"></p><p>這本是 pandas 的作者寫的書，本書重點在於使用 pandas 與 NumPy 進行資料載入、資料前處理、資料處理、資料視覺化 … 等等的步驟。如果想要學習完整的流程挺推薦。</p><h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><p><a href="https://www.pttcc.org/bbs/Book/M.1587341470.A.A26">[分享] 2020 推薦 Python資料科學的書</a></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="Data-Science-from-Scratch-中文版（第二版）：用-Python-學資料科學"><a href="#Data-Science-from-Scratch-中文版（第二版）：用-Python-學資料科學" class="headerlink" title="Data Science from Scratch 中文版（第二版）：用 Python 學資料科學"></a>Data Science from Scratch 中文版（第二版）：用 Python 學資料科學</h3><p><img src="/img/2021-11-25-07-53-06.png"></p><p>這本裡面有大量的名詞幫，適合當工具書來查詢，硬啃的話有點累。名詞如下：</p><p>資料視覺化, 線性代數, 統計學, 機率, 假設與推論, 梯度遞減, 取得資料, 處理資料, 機器學習, k最近鄰, 單純貝氏, 簡單線性迴歸, 多元迴歸, 邏輯迴歸, 決策樹, 神經網路, 深度學習, 集群, 自然語言處理, 網路分析, 推薦系統, 資料庫與SQL, MapReduce</p><h3 id="Python資料分析-第二版"><a href="#Python資料分析-第二版" class="headerlink" title="Python資料分析 第二版"></a>Python資料分析 第二版</h3><p><img src="/img/2021-11-25-07-53-46.png"></p><p>這本是 pandas 的作者寫的書，本書重點在於使用 pandas 與 NumPy 進行資料載入、資料前處理、資料處理、資料視覺化 … 等等的步驟。如果想要學習完整的流程挺推薦。</p><h3 id="Python資料科學學習手冊"><a href="#Python資料科學學習手冊" class="headerlink" title="Python資料科學學習手冊"></a>Python資料科學學習手冊</h3><p><img src="/img/2021-11-26-06-11-45.png"></p><p>本書分為五個章節，從資料科學開始介紹，接著介紹常用的 IPython、NumPy、Pandas 資料處理、Matplotlib 資料視覺化、最後介紹 Sckit-Learn 來學習機器學習。非常完整的介紹資料科學的流程。</p><h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><p><a href="https://www.pttcc.org/bbs/Book/M.1587341470.A.A26">[分享] 2020 推薦 Python資料科學的書</a></p>]]></content>
     
     
     <summary type="html">&lt;h3 id=&quot;Data-Science-from-Scratch-中文版（第二版）：用-Python-學資料科學&quot;&gt;&lt;a href=&quot;#Data-Science-from-Scratch-中文版（第二版）：用-Python-學資料科學&quot; class=&quot;headerlink&quot; title=&quot;Data Science from Scratch 中文版（第二版）：用 Python 學資料科學&quot;&gt;&lt;/a&gt;Data Science from Scratch 中文版（第二版）：用 Python 學資料科學&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/img/2021-11-25-07-53-06.png&quot;&gt;&lt;/p&gt;
