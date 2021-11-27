@@ -6,7 +6,7 @@
   <link href="https://lukajojo.com/atom.xml" rel="self"/>
   
   <link href="https://lukajojo.com/"/>
-  <updated>2021-11-25T22:26:14.404Z</updated>
+  <updated>2021-11-27T21:01:09.777Z</updated>
   <id>https://lukajojo.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【 Python 教學 】什麼是 PyPI</title>
+    <link href="https://lukajojo.com/2021/11/27/python/02-what-is-pypi/"/>
+    <id>https://lukajojo.com/2021/11/27/python/02-what-is-pypi/</id>
+    <published>2021-11-27T15:11:23.000Z</published>
+    <updated>2021-11-27T21:01:09.777Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/img/python/02/cover.png"></p><p>PyPI（英語 Package Index，簡稱PyPI），是 的官方的第三方套件儲存庫。</p><p><img src="/img/python/02/2021-11-28-05-00-54.png"></p><p>如果用生活的例子來比喻，就像 Android 手機，有 google play 可以安裝軟體。iphone 有 app store 來安裝軟體。在這之中 PyPI 就像是 google play 或是 app store. </p><p>在我們使用 pip 安裝套件的時候，下指令 <code>pip install 套件名稱</code> 預設就是從 PyPI 下載套件。</p><p><a href="https://pypi.org/">官方網站</a></p><p><img src="/img/python/02/2021-11-28-05-00-25.png"></p><p>我們試著搜尋 web 框架 flask 。看到第一個就是搜尋結果，後方的日期是更新的時間。</p><p><img src="/img/python/02/20211128040736.png"></p><p>點擊進去之後，就可以看到 Flask 的介紹，還有貼心的教學， 在指令列輸入 <code>pip install flask</code> 即可安裝。</p><p><img src="/img/python/02/20211128040929.png"></p><p>下方還有簡單的範例，不過因為這些套件是第三方 (Third-Party) 維護，也就是開發套件的人是自主開發的，因此我們需要到各自的官網看詳細教學。</p><p><img src="/img/python/02/20211128041134.png"></p><p>所以我們點擊 documentation </p><p><img src="/img/python/02/20211128041405.png"></p><p>就可以進入到 Flask 的官方網站，最詳盡的文件可以在這邊找到。</p><p><img src="/img/python/02/20211128041528.png"></p><p>今天介紹的是從 PyPI 官方網站搜尋到需要的套件 (Flask)，然後使用指令安裝需要的套件，最後是如何查詢 Flask 的使用方式。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/img/python/02/cover.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;PyPI（英語 Package Index，簡稱PyPI），是 的官方的第三方套件儲存庫。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/python/02/2021-11-28-05-00-54.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;如果用生活的例子來比喻，就像 Android 手機，有 google play 可以安裝軟體。iphone 有 app store 來安裝軟體。在這之中 PyPI 就像是 google play 或是 app store. &lt;/p&gt;
+&lt;p&gt;在我們使用 pip 安裝套件的時候，下指令 &lt;code&gt;pip install 套件名稱&lt;/code&gt; 預設就是從 PyPI 下載套件。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Python" scheme="https://lukajojo.com/categories/Python/"/>
+    
+    <category term="01 基礎教學" scheme="https://lukajojo.com/categories/Python/01-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>【 Python 資料科學 】書籍推薦</title>
@@ -463,29 +488,6 @@
     
     
     <category term="Database" scheme="https://lukajojo.com/tags/Database/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用 GIT Precommit hooks 防止 Binding.pry 進入 Commit</title>
-    <link href="https://lukajojo.com/2017/12/06/posts/2017-12-06-git-precommit-hooks-copy/"/>
-    <id>https://lukajojo.com/2017/12/06/posts/2017-12-06-git-precommit-hooks-copy/</id>
-    <published>2017-12-06T14:34:00.000Z</published>
-    <updated>2021-10-03T17:05:35.168Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p>如果不小心把 <code>binding.pry</code> commit 進 git 而且不幸的 push 的話, 勢必要使用另一個 commit 來修正。如果要讓這個 commit 不見可能就需要用 <code>git push -f</code> 來修改。這樣做很醜，不優雅。根治的方法是 - <code>根本不應該將 debug code 進入 commit</code> 。但是人總是會有不小心的時候。最近發現一個工具可以做到這件事情: GIT Precommit hooks。</p><h2 id="What-is-GIT-Precommit-hooks"><a href="#What-is-GIT-Precommit-hooks" class="headerlink" title="What is GIT Precommit hooks?"></a>What is GIT Precommit hooks?</h2><p>GIT Precommit hooks 是一種可以在你每次 Commit 之前的 Callback。每次 Commit 前都會執行。我們利用這個特性，可以用來檢查，防止如 <code>Binding.pry</code> 的 Debug Code    進入 Git 中。</p><h2 id="Solution-1-Use-Script"><a href="#Solution-1-Use-Script" class="headerlink" title="Solution 1 - Use Script"></a>Solution 1 - Use Script</h2><p>在你的 git 專案底下，<code>.git/hooks/pre-commit.sample</code> 這是 Precommit hook 編寫的範本。將 <code>.sample</code> 結尾去除掉，就可以真正作用在當前的 Git 專案目錄上。不過因為我們想作用的是在 Rails 專案上，所以需要客製化腳本。</p><p>這邊已經有寫好的腳本: <a href="https://raw.githubusercontent.com/Luka/githooks/master/pre-commit">Source Code</a></p><h3 id="1-1-How-to-Use"><a href="#1-1-How-to-Use" class="headerlink" title="1.1 How to Use"></a>1.1 How to Use</h3><p>切換到專案底下</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">cd project_name<br></code></pre></td></tr></table></figure><p>下載腳本</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">curl https://raw.githubusercontent.com/Luka/githooks/master/pre-commit &gt; .git/hooks/pre-commit<br></code></pre></td></tr></table></figure><p>讓腳本擁有執行的權限</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">chmod +x .git/hooks/pre-commit<br></code></pre></td></tr></table></figure><p>做完這些已經具有自動檢查的功能了</p><h3 id="1-2-Demo"><a href="#1-2-Demo" class="headerlink" title="1.2 Demo"></a>1.2 Demo</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">git commit -m &quot;hello world&quot;<br>File: app/views/company/jobs/new.html.slim:9<br>9:binding.pry<br><br>There are some occurrences of console.log|debugger|binding.pry at your modification.<br>Are you sure want to continue? (y/n)<br></code></pre></td></tr></table></figure><p>looks great!</p><h3 id="1-3-reference"><a href="#1-3-reference" class="headerlink" title="1.3 reference"></a>1.3 reference</h3><p><a href="https://cbabhusal.wordpress.com/2014/10/21/ruby-on-rails-githooks-basics/">GIT Precommit hooks Basics : Block debug command from commit</a></p><h2 id="Solution-2-Use-Gem"><a href="#Solution-2-Use-Gem" class="headerlink" title="Solution 2 - Use Gem"></a>Solution 2 - Use Gem</h2><p>如果嫌上述方法麻煩，不好管理。也可以考慮使用 Gem 來管理 Precommit Hook<br><code>Gem &#39;pre-commit&#39;</code> 可以做到這件事情。把 <code>pre-commit</code> 加入你的開發環境。</p><h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><figure class="highlight rb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs rb">group <span class="hljs-symbol">:development</span> <span class="hljs-keyword">do</span><br>  gem <span class="hljs-string">&quot;pre-commit&quot;</span>, <span class="hljs-symbol">require:</span> <span class="hljs-literal">false</span><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure><p>接著輸入 bundle 更新 Gem Set</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">bundle<br></code></pre></td></tr></table></figure><p>設定需要的 check</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">git config pre-commit.checks &quot;[pry, debugger,yaml]&quot;<br></code></pre></td></tr></table></figure><p>要取消某個設定</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">git config pre-commit.checks &quot;[pry, debugger]&quot;<br></code></pre></td></tr></table></figure><p>可檢查的項目可到 github 查詢</p><p><a href="https://github.com/jish/pre-commit">jish/pre-commit: A slightly improved pre-commit hook for git</a></p>]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;Problem&quot;&gt;&lt;a href=&quot;#Problem&quot; class=&quot;headerlink&quot; title=&quot;Problem&quot;&gt;&lt;/a&gt;Problem&lt;/h2&gt;&lt;p&gt;如果不小心把 &lt;code&gt;binding.pry&lt;/code&gt; commit 進 git 而且不幸的 push 的話, 勢必要使用另一個 commit 來修正。如果要讓這個 commit 不見可能就需要用 &lt;code&gt;git push -f&lt;/code&gt; 來修改。這樣做很醜，不優雅。根治的方法是 - &lt;code&gt;根本不應該將 debug code 進入 commit&lt;/code&gt; 。但是人總是會有不小心的時候。最近發現一個工具可以做到這件事情: GIT Precommit hooks。&lt;/p&gt;
-&lt;h2 id=&quot;What-is-GIT-Precommit-hooks&quot;&gt;&lt;a href=&quot;#What-is-GIT-Precommit-hooks&quot; class=&quot;headerlink&quot; title=&quot;What is GIT Precommit hooks?&quot;&gt;&lt;/a&gt;What is GIT Precommit hooks?&lt;/h2&gt;&lt;p&gt;GIT Precommit hooks 是一種可以在你每次 Commit 之前的 Callback。每次 Commit 前都會執行。我們利用這個特性，可以用來檢查，防止如 &lt;code&gt;Binding.pry&lt;/code&gt; 的 Debug Code    進入 Git 中。&lt;/p&gt;
-&lt;h2 id=&quot;Solution-1-Use-Script&quot;&gt;&lt;a href=&quot;#Solution-1-Use-Script&quot; class=&quot;headerlink&quot; title=&quot;Solution 1 - Use Script&quot;&gt;&lt;/a&gt;Solution 1 - Use Script&lt;/h2&gt;</summary>
-    
-    
-    
-    
-    <category term="Rails" scheme="https://lukajojo.com/tags/Rails/"/>
-    
-    <category term="Time" scheme="https://lukajojo.com/tags/Time/"/>
     
   </entry>
   
