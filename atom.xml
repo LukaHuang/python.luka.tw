@@ -6,7 +6,7 @@
   <link href="https://lukajojo.com/atom.xml" rel="self"/>
   
   <link href="https://lukajojo.com/"/>
-  <updated>2021-11-28T12:36:00.667Z</updated>
+  <updated>2021-11-29T00:23:19.693Z</updated>
   <id>https://lukajojo.com/</id>
   
   <author>
@@ -17,25 +17,79 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>【 Python 教學 】什麼是 PyPI？跟 pip 又有什麼關係呢？</title>
-    <link href="https://lukajojo.com/2021/11/27/python/02-what-is-pypi/"/>
-    <id>https://lukajojo.com/2021/11/27/python/02-what-is-pypi/</id>
-    <published>2021-11-27T15:11:23.000Z</published>
-    <updated>2021-11-28T12:36:00.667Z</updated>
+    <title>【 Python Flask 教學 】五分鐘建立你的第一個 Flask 應用</title>
+    <link href="https://lukajojo.com/2021/11/29/python-flask/01-hello-flask/"/>
+    <id>https://lukajojo.com/2021/11/29/python-flask/01-hello-flask/</id>
+    <published>2021-11-28T22:27:46.000Z</published>
+    <updated>2021-11-29T00:23:19.693Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="什麼是-PyPI？"><a href="#什麼是-PyPI？" class="headerlink" title="什麼是 PyPI？"></a>什麼是 PyPI？</h2><p><img src="/img/python/02/cover.png"></p><p>PyPI（英語 Package Index，簡稱PyPI），是 的官方的第三方套件儲存庫。</p><p><img src="/img/python/02/2021-11-28-05-00-54.png"></p><p>如果用生活的例子來比喻，就像 Android 手機，有 google play 可以安裝軟體。iphone 有 app store 來安裝軟體。在這之中 PyPI 就像是 google play 或是 app store. </p><p>在我們使用 pip 安裝套件的時候，下指令 <code>pip install 套件名稱</code> 預設就是從 PyPI 下載套件。</p><h2 id="在-PyPI-上搜尋套件"><a href="#在-PyPI-上搜尋套件" class="headerlink" title="在 PyPI 上搜尋套件"></a>在 PyPI 上搜尋套件</h2><p><a href="https://pypi.org/">官方網站</a></p><p><img src="/img/python/02/2021-11-28-05-00-25.png"></p><p>我們試著搜尋 web 框架 flask 。看到第一個就是搜尋結果，後方的日期是更新的時間。</p><p><img src="/img/python/02/20211128040736.png"></p><p>點擊進去之後，就可以看到 Flask 的介紹，還有貼心的教學， 在指令列輸入 <code>pip install flask</code> 即可安裝。</p><p><img src="/img/python/02/20211128040929.png"></p><h2 id="在-PyPI-上查看簡易介紹"><a href="#在-PyPI-上查看簡易介紹" class="headerlink" title="在 PyPI 上查看簡易介紹"></a>在 PyPI 上查看簡易介紹</h2><p>下方還有簡單的範例，不過因為這些套件是第三方 (Third-Party) 維護，也就是開發套件的人是自主開發的，因此我們需要到各自的官網看詳細教學。</p><p><img src="/img/python/02/20211128041134.png"></p><h2 id="在-PyPI-找到套件的官方網站，查看詳細文件"><a href="#在-PyPI-找到套件的官方網站，查看詳細文件" class="headerlink" title="在 PyPI 找到套件的官方網站，查看詳細文件"></a>在 PyPI 找到套件的官方網站，查看詳細文件</h2><p>所以我們點擊 documentation</p><p><img src="/img/python/02/20211128041405.png"></p><p>就可以進入到 <a href="https://flask.palletsprojects.com/">Flask 的官方網站</a>，最詳盡的文件可以在這邊找到。</p><p><img src="/img/python/02/20211128041528.png"></p><h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>今天介紹的是從 PyPI 官方網站搜尋到需要的套件 (Flask)，然後使用指令安裝需要的套件，最後是如何查詢 Flask 的使用方式。</p>]]></content>
+    <content type="html"><![CDATA[<p><img src="/img/python-flask/01/cover.png"></p><h2 id="輕量型-Web-框架-Flask"><a href="#輕量型-Web-框架-Flask" class="headerlink" title="輕量型 Web 框架 - Flask"></a>輕量型 Web 框架 - Flask</h2><p><img src="/img/python-flask/01/2021-11-29-07-43-19.png"><br><a href="https://flask.palletsprojects.com/en/2.0.x/">Flask 官方網站 2.0.x 版</a></p><p>Flask 是一款 Python 的網頁開發框架。它的特色就是輕巧！Flask 的官方網站用 Micro 這個字來說明 Flask 的設計哲學。</p><p>Micro 意味著，一開始什麼都沒有，沒有資料庫，沒有好用的表單工具，Flask 就提供給你一個非常非常精簡的 Web 框架。</p><p>如果你需要資料庫功能，那麼你需要找尋套件，例如：你想要連接 MySQL 的話，需要安裝 Flask-SQLAlchemy 套件，來擴展你的 Flask 應用程式。</p><p>這跟 Python 中另一個主流框架，Django 大相逕庭。然而 Flask 與 Django 的市占率大概 50% vs 50%。非常有趣</p><p>瞭解了 Flask 的設計哲學後，接下來我們實作的 Hello World 應用程式，便是只有提供網頁功能，並且只有「一個檔案」的迷你專案。</p><h2 id="Hello-Flask！"><a href="#Hello-Flask！" class="headerlink" title="Hello Flask！"></a>Hello Flask！</h2><p>初學程式的時候發現一個奇特的現象，為什麼第一個程式要輸出 <code>Hello World</code> 呢？因為我們第一件事情就是要確保環境能夠正確執行。</p><h3 id="安裝-Flask"><a href="#安裝-Flask" class="headerlink" title="安裝 Flask"></a>安裝 Flask</h3><p>使用 pip 安裝 Flask</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">pip install flask<br></code></pre></td></tr></table></figure><h3 id="組織專案結構"><a href="#組織專案結構" class="headerlink" title="組織專案結構"></a>組織專案結構</h3><p>安裝完成之後，我們先建立一個乾淨的資料夾明明為 hello_flask。<br>接著在裡面建立一個新檔案命名為 <code>hello.py</code>，內容輸入</p><p>所以現在我們的專案結構就是，</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask<br><br>app = Flask(__name__)<br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&quot;/&quot;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">hello_world</span>():</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&lt;p&gt;Hello, World!&lt;/p&gt;&quot;</span><br><br></code></pre></td></tr></table></figure><h3 id="在本地端運行-Flask-伺服器"><a href="#在本地端運行-Flask-伺服器" class="headerlink" title="在本地端運行 Flask 伺服器"></a>在本地端運行 Flask 伺服器</h3><p>接著下列指令，</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">export FLASK_APP=hello<br>flask run<br></code></pre></td></tr></table></figure><p>就會發現終端機的畫面，Flask Server (伺服器)已經開始在你的本地開發環境，也就是你的電腦上面運轉囉！</p><p><img src="/img/python-flask/01/2021-11-29-07-08-36.png"></p><p>此時我們複製終端機上的顯示的網址 <code>http://127.0.0.1:5000/</code> 到瀏覽器上，打開便會看到 Hello World！。</p>]]></content>
     
     
-    <summary type="html">&lt;h2 id=&quot;什麼是-PyPI？&quot;&gt;&lt;a href=&quot;#什麼是-PyPI？&quot; class=&quot;headerlink&quot; title=&quot;什麼是 PyPI？&quot;&gt;&lt;/a&gt;什麼是 PyPI？&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/img/python/02/cover.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;PyPI（英語 Package Index，簡稱PyPI），是 的官方的第三方套件儲存庫。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/img/python/02/2021-11-28-05-00-54.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;如果用生活的例子來比喻，就像 Android 手機，有 google play 可以安裝軟體。iphone 有 app store 來安裝軟體。在這之中 PyPI 就像是 google play 或是 app store. &lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/img/python-flask/01/cover.png&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;輕量型-Web-框架-Flask&quot;&gt;&lt;a href=&quot;#輕量型-Web-框架-Flask&quot; class=&quot;headerlink&quot; title=&quot;輕量型 Web 框架 - Flask&quot;&gt;&lt;/a&gt;輕量型 Web 框架 - Flask&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/img/python-flask/01/2021-11-29-07-43-19.png&quot;&gt;&lt;br&gt;&lt;a href=&quot;https://flask.palletsprojects.com/en/2.0.x/&quot;&gt;Flask 官方網站 2.0.x 版&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Flask 是一款 Python 的網頁開發框架。它的特色就是輕巧！Flask 的官方網站用 Micro 這個字來說明 Flask 的設計哲學。&lt;/p&gt;
+&lt;p&gt;Micro 意味著，一開始什麼都沒有，沒有資料庫，沒有好用的表單工具，Flask 就提供給你一個非常非常精簡的 Web 框架。&lt;/p&gt;</summary>
     
     
     
     <category term="Python" scheme="https://lukajojo.com/categories/Python/"/>
     
-    <category term="01 基礎教學" scheme="https://lukajojo.com/categories/Python/01-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/"/>
+    <category term="Flask 教學" scheme="https://lukajojo.com/categories/Python/Flask-%E6%95%99%E5%AD%B8/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>【 Python 冷知識 】你知道 PyPI 怎麼唸嘛？</title>
+    <link href="https://lukajojo.com/2021/11/29/python/03-how-to-pronounce-pypi%20copy/"/>
+    <id>https://lukajojo.com/2021/11/29/python/03-how-to-pronounce-pypi%20copy/</id>
+    <published>2021-11-28T18:30:56.000Z</published>
+    <updated>2021-11-29T00:23:38.736Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/img/python/03/cover.png"></p><p>撰寫另一篇文章 <a href="/2021/11/27/python/02-what-is-pypi/">【 Python 教學 】什麼是 PyPI？跟 pip 又有什麼關係呢？</a>的時候，發現 PyPI 的時候，產生了一個疑問，PyPI該怎麼唸？</p><p>可能的答案有：</p><ol><li>拍拍</li><li>批歪批唉</li><li>批批</li><li>拍批埃</li></ol><p>究竟是哪一個，你念對了嘛？答案在下方教學影片：</p><p><a href="https://www.youtube.com/watch?v=I5OUzCAYst8">how to pronounce PyPI (beginner) anthony explains #020 - YouTube</a></p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/img/python/03/cover.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;撰寫另一篇文章 &lt;a href=&quot;/2021/11/27/python/02-what-is-pypi/&quot;&gt;【 Python 教學 】什麼是 PyPI？跟 pip 又有什麼關係呢？&lt;/a&gt;的時候，發現 PyPI 的時候，產生了一個疑問，PyPI該怎麼唸？&lt;/p&gt;
+&lt;p&gt;可能的答案有：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;拍拍&lt;/li&gt;
+&lt;li&gt;批歪批唉&lt;/li&gt;
+&lt;li&gt;批批&lt;/li&gt;
+&lt;li&gt;拍批埃&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;究竟是哪一個，你念對了嘛？答案在下方教學影片：&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Python" scheme="https://lukajojo.com/categories/Python/"/>
+    
+    <category term="基礎教學" scheme="https://lukajojo.com/categories/Python/%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>【 Python 教學 】什麼是 PyPI？跟 pip 又有什麼關係呢？</title>
+    <link href="https://lukajojo.com/2021/11/27/python/02-what-is-pypi/"/>
+    <id>https://lukajojo.com/2021/11/27/python/02-what-is-pypi/</id>
+    <published>2021-11-27T15:11:23.000Z</published>
+    <updated>2021-11-29T00:15:11.664Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="什麼是-PyPI？"><a href="#什麼是-PyPI？" class="headerlink" title="什麼是 PyPI？"></a>什麼是 PyPI？</h2><p><img src="/img/python/02/cover.png"></p><p>PyPI（英語 Package Index，簡稱PyPI），是 的官方的第三方套件儲存庫。</p><p><img src="/img/python/02/2021-11-28-05-00-54.png"></p><p>如果用生活的例子來比喻，就像 Android 手機，有 google play 可以安裝軟體。iphone 有 app store 來安裝軟體。在這之中 PyPI 就像是 google play 或是 app store.</p><p>在我們使用 pip 安裝套件的時候，下指令 <code>pip install 套件名稱</code> 預設就是從 PyPI 下載套件。</p><h2 id="在-PyPI-上搜尋套件"><a href="#在-PyPI-上搜尋套件" class="headerlink" title="在 PyPI 上搜尋套件"></a>在 PyPI 上搜尋套件</h2><p><a href="https://pypi.org/">官方網站</a></p><p><img src="/img/python/02/2021-11-28-05-00-25.png"></p><p>我們試著搜尋 web 框架 flask 。看到第一個就是搜尋結果，後方的日期是更新的時間。</p><p><img src="/img/python/02/20211128040736.png"></p><p>點擊進去之後，就可以看到 Flask 的介紹，還有貼心的教學， 在指令列輸入 <code>pip install flask</code> 即可安裝。</p><p><img src="/img/python/02/20211128040929.png"></p><h2 id="在-PyPI-上查看簡易介紹"><a href="#在-PyPI-上查看簡易介紹" class="headerlink" title="在 PyPI 上查看簡易介紹"></a>在 PyPI 上查看簡易介紹</h2><p>下方還有簡單的範例，不過因為這些套件是第三方 (Third-Party) 維護，也就是開發套件的人是自主開發的，因此我們需要到各自的官網看詳細教學。</p><p><img src="/img/python/02/20211128041134.png"></p><h2 id="在-PyPI-找到套件的官方網站，查看詳細文件"><a href="#在-PyPI-找到套件的官方網站，查看詳細文件" class="headerlink" title="在 PyPI 找到套件的官方網站，查看詳細文件"></a>在 PyPI 找到套件的官方網站，查看詳細文件</h2><p>所以我們點擊 documentation</p><p><img src="/img/python/02/20211128041405.png"></p><p>就可以進入到 <a href="https://flask.palletsprojects.com/">Flask 的官方網站</a>，最詳盡的文件可以在這邊找到。</p><p><img src="/img/python/02/20211128041528.png"></p><h2 id="PyPI-跟-pip-有什麼關係呢？"><a href="#PyPI-跟-pip-有什麼關係呢？" class="headerlink" title="PyPI 跟 pip 有什麼關係呢？"></a>PyPI 跟 pip 有什麼關係呢？</h2><p>最後我們來回答標題上的第二個問題，PyPI 跟 pip 的關係，剛剛在操作過程已經知道了。<code>pip install 某某套件</code> 預設的官方套件商店就是 PyPI。</p><h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>今天介紹的是從 PyPI 官方網站搜尋到需要的套件 (Flask)，然後使用指令安裝需要的套件，最後是如何查詢 Flask 的使用方式。</p>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;什麼是-PyPI？&quot;&gt;&lt;a href=&quot;#什麼是-PyPI？&quot; class=&quot;headerlink&quot; title=&quot;什麼是 PyPI？&quot;&gt;&lt;/a&gt;什麼是 PyPI？&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/img/python/02/cover.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;PyPI（英語 Package Index，簡稱PyPI），是 的官方的第三方套件儲存庫。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/python/02/2021-11-28-05-00-54.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;如果用生活的例子來比喻，就像 Android 手機，有 google play 可以安裝軟體。iphone 有 app store 來安裝軟體。在這之中 PyPI 就像是 google play 或是 app store.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Python" scheme="https://lukajojo.com/categories/Python/"/>
+    
+    <category term="基礎教學" scheme="https://lukajojo.com/categories/Python/%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/"/>
     
     
   </entry>
@@ -45,7 +99,7 @@
     <link href="https://lukajojo.com/2021/11/25/python/01-data-science-book/"/>
     <id>https://lukajojo.com/2021/11/25/python/01-data-science-book/</id>
     <published>2021-11-24T22:23:14.000Z</published>
-    <updated>2021-11-25T22:26:14.404Z</updated>
+    <updated>2021-11-28T23:59:18.161Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Data-Science-from-Scratch-中文版（第二版）：用-Python-學資料科學"><a href="#Data-Science-from-Scratch-中文版（第二版）：用-Python-學資料科學" class="headerlink" title="Data Science from Scratch 中文版（第二版）：用 Python 學資料科學"></a>Data Science from Scratch 中文版（第二版）：用 Python 學資料科學</h3><p><img src="/img/2021-11-25-07-53-06.png"></p><p>這本裡面有大量的名詞幫，適合當工具書來查詢，硬啃的話有點累。名詞如下：</p><p>資料視覺化, 線性代數, 統計學, 機率, 假設與推論, 梯度遞減, 取得資料, 處理資料, 機器學習, k最近鄰, 單純貝氏, 簡單線性迴歸, 多元迴歸, 邏輯迴歸, 決策樹, 神經網路, 深度學習, 集群, 自然語言處理, 網路分析, 推薦系統, 資料庫與SQL, MapReduce</p><h3 id="Python資料分析-第二版"><a href="#Python資料分析-第二版" class="headerlink" title="Python資料分析 第二版"></a>Python資料分析 第二版</h3><p><img src="/img/2021-11-25-07-53-46.png"></p><p>這本是 pandas 的作者寫的書，本書重點在於使用 pandas 與 NumPy 進行資料載入、資料前處理、資料處理、資料視覺化 … 等等的步驟。如果想要學習完整的流程挺推薦。</p><h3 id="Python資料科學學習手冊"><a href="#Python資料科學學習手冊" class="headerlink" title="Python資料科學學習手冊"></a>Python資料科學學習手冊</h3><p><img src="/img/2021-11-26-06-11-45.png"></p><p>本書分為五個章節，從資料科學開始介紹，接著介紹常用的 IPython、NumPy、Pandas 資料處理、Matplotlib 資料視覺化、最後介紹 Sckit-Learn 來學習機器學習。非常完整的介紹資料科學的流程。</p><h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><p><a href="https://www.pttcc.org/bbs/Book/M.1587341470.A.A26">[分享] 2020 推薦 Python資料科學的書</a></p>]]></content>
     
@@ -59,17 +113,17 @@
     
     <category term="Python" scheme="https://lukajojo.com/categories/Python/"/>
     
-    <category term="01 基礎教學" scheme="https://lukajojo.com/categories/Python/01-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/"/>
+    <category term="基礎教學" scheme="https://lukajojo.com/categories/Python/%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/"/>
     
     
   </entry>
   
   <entry>
     <title>【 Python 教學 】什麼是 Pass By Assignment？</title>
-    <link href="https://lukajojo.com/2021/09/21/posts/2021-09-21-is-python-call-by-sharing/"/>
-    <id>https://lukajojo.com/2021/09/21/posts/2021-09-21-is-python-call-by-sharing/</id>
+    <link href="https://lukajojo.com/2021/09/21/past/2021-09-21-is-python-call-by-sharing/"/>
+    <id>https://lukajojo.com/2021/09/21/past/2021-09-21-is-python-call-by-sharing/</id>
     <published>2021-09-21T12:50:00.000Z</published>
-    <updated>2021-11-22T17:25:40.610Z</updated>
+    <updated>2021-11-28T23:59:17.705Z</updated>
     
     <content type="html"><![CDATA[<p><img src="/img/2021-11-23-00-20-05.png"></p><p>常見的語言的求值策略(Evaluation strategy)大概離不開這幾個，例如：JavaScript (Call by Value, Call by Sharing)、Java (Call by Value)、C (Call by Value)、C++ (Call by Value, Call by Reference)</p><p>這次使用使用淺顯易懂的語言，並搭配圖片來說明到底 Python 中是 Pass by Value, Pass by Reference, 還是 Pass Sharing？</p><h2 id="用-C-理解-Pass-by-Value"><a href="#用-C-理解-Pass-by-Value" class="headerlink" title="用 C++ 理解 Pass by Value"></a>用 C++ 理解 Pass by Value</h2><p>C++ 是探討 Pass by Value 與 Pass by Reference 的最佳選擇。我們先來理解 Pass by Value。</p><h3 id="Pass-by-Value-Output"><a href="#Pass-by-Value-Output" class="headerlink" title="Pass by Value (Output)"></a>Pass by Value (Output)</h3><p><img src="https://hackmd.io/_uploads/B1EzC7xrY.png"></p><p>執行結果</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Before: number is 7  <br>Before: the num is 7  <br>After: the num is 3  <br>After: number is 7<br></code></pre></td></tr></table></figure><h3 id="Pass-by-Value-Address"><a href="#Pass-by-Value-Address" class="headerlink" title="Pass by Value (Address)"></a>Pass by Value (Address)</h3><p>可以看到函式內部的數並不會受到影響，遵守作用域( Scope)範圍。我們再執行另一個程式，查看記憶體位址的改變。</p><p><img src="https://hackmd.io/_uploads/rJYMRmlHY.png"></p><p>執行結果:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">The Address of number is 0x7ffd0abe7b74  <br>The Address of num is 0x7ffd0abe7b5c  <br>The Address of num is 0x7ffd0abe7b5c  <br>The Address of number is 0x7ffd0abe7b74<br></code></pre></td></tr></table></figure><p>可以發現 num 的位址遵守作用域 (Scope)，經過這兩個程式之後，可以理解到 Pass by Value 是在呼叫函式的時候，複製一份引數(number)給函式使用。</p><p>Step 1：宣告 number 為 7</p><p><img src="https://hackmd.io/_uploads/H1kNRmxBt.png"></p><p>Step 2：呼叫函式時，複製一份給 number 的值複製一份給 num。</p><p><img src="https://hackmd.io/_uploads/ry1HCXert.png"></p><p>step 3：修改 num 的值時，修改的是複製出來的那一份。因此原本的 number 不受影響。</p><p><img src="https://hackmd.io/_uploads/BJPBCXlBK.png"></p><h2 id="用-C-理解-Pass-by-Reference"><a href="#用-C-理解-Pass-by-Reference" class="headerlink" title="用 C++ 理解 Pass by Reference"></a>用 C++ 理解 Pass by Reference</h2><h3 id="Pass-by-Reference"><a href="#Pass-by-Reference" class="headerlink" title="Pass by Reference"></a>Pass by Reference</h3><p><img src="https://hackmd.io/_uploads/SkHTzExSt.png"></p><p>執行結果：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Before: number is 7  <br>Before: the num is 7  <br>After: the num is 3  <br>After: number is 3<br></code></pre></td></tr></table></figure><h3 id="Pass-by-Reference-Address"><a href="#Pass-by-Reference-Address" class="headerlink" title="Pass by Reference (Address)"></a>Pass by Reference (Address)</h3><p>跟剛剛不同的是，因為 Pass by Reference 傳的是參照，也就是地址，所以裡外等同於是一個變數。接著我們一樣把記憶體位址印出來。看看是不是真的是同樣的記憶體位址。</p><p><img src="https://hackmd.io/_uploads/BkjpfExSY.png"></p><p>執行結果：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">The Address of number is 0x7ffd45470b64  <br>The Address of num is 0x7ffd45470b64  <br>The Address of num is 0x7ffd45470b64  <br>The Address of number is 0x7ffd45470b64<br></code></pre></td></tr></table></figure><p>發現結果如我們推測的，從頭到尾記憶體位址都是 <code>0x7ffd45470b64</code> 。因為我們傳的是記憶體位址嘛。</p><p>Step 1：宣告 number</p><p><img src="https://hackmd.io/_uploads/H1fNm_DrF.jpg"></p><p>Step 2：呼叫 passByReference 時不會複製一份 number 的值，也就是「共用」同一份的值。</p><p><img src="https://hackmd.io/_uploads/H10EQdDHK.jpg"></p><p>Step 3：因為共用一份資料，num 更新時，也更新到了 number。</p><p><img src="https://hackmd.io/_uploads/Skx1XNxrK.png"></p><p>Step 4: 看所以最後得到的結果是 <code>After: number is 3</code> ，因為 number 已經被改變</p><p><img src="https://hackmd.io/_uploads/H1jyQ4lrt.png"></p><h2 id="來看看-Python-是不是-Pass-by-Value"><a href="#來看看-Python-是不是-Pass-by-Value" class="headerlink" title="來看看 Python 是不是 Pass by Value"></a>來看看 Python 是不是 Pass by Value</h2><p>接著我們來看看 Python 是否是 Pass by Value。</p><p><img src="https://hackmd.io/_uploads/ByxlQNxrY.png"></p><p>執行結果</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Before the function starts, the number is 7  <br>Before the function starts, the number is 7  <br>After the function ends, the number is 1  <br>After the function ends, the number is 7<br></code></pre></td></tr></table></figure><p>執行完 function_1 後，發現原本的 number，並<strong>沒有</strong>因為在函式中重新指派而改變成 1，還是維持原本的 7。</p><p>看起來跟 C++ 的 Pass Value 很像，接著我們再做一個實驗，把記憶體位置印出來。</p><p><img src="https://hackmd.io/_uploads/B1deQ4gHK.png"></p><p>執行結果：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Before the function starts, the id is 4321770416  <br>Before assigning, the num is %d 4321770416  <br>After assigning, the num is %d 4321770224  <br>After the function ends, the id is 4321770416<br></code></pre></td></tr></table></figure><p>可以發現，行為雖然像是 Pass by Value，但是記憶體位址變化的時候，並不是執行 function_1 函式的當下，而是在指派 num = 1 之後。這是為什麼呢？</p><p>Step 1：將 7 指派給變數 number，此時 7 存到記憶體中。</p><p><img src="https://hackmd.io/_uploads/rkDiHODSK.jpg"></p><p>Step 2：呼叫函式 pass_by_value() 的時候，將 7 傳了進去。此時函式並不會複製一份值進去。</p><p><img src="https://hackmd.io/_uploads/rkcJU_vBY.jpg"></p><p>Step 3：當執行到 <code>num=1</code>時， num 是整數型別，是 Imuttable Object 不可變物件，值無法改變，因此會新增一塊記憶體來儲存 num。</p><p><img src="https://hackmd.io/_uploads/rJMlUuwSY.jpg"></p><p>Step 4 : 所以最後印出時，不會是 1，而是 7 ，因為 number 與 num 已經沒有共用記憶體位置</p><p><img src="https://hackmd.io/_uploads/rJcg8_PBF.jpg"></p><p>結論：Python 的 function_1 跟 C++的 Call by Value 最後的結果都有分開的記憶體位址。但是從記憶體位址變化的時機可以看得出來，讓 Python 有此現象的，是 Imuttable Object 不可變的特性，而非 Call by Value。</p><h2 id="來看看-Python-是不是Pass-By-Reference"><a href="#來看看-Python-是不是Pass-By-Reference" class="headerlink" title="來看看 Python 是不是Pass By Reference"></a>來看看 Python 是不是Pass By Reference</h2><p>接著我們來看看 Python 是否是 Pass by Reference。</p><p><img src="https://hackmd.io/_uploads/r1LQ7VlBt.png"></p><p>執行結果</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">before the function starts, the object is `&#123;‘name’: ‘Leo’, ‘age’: 25&#125;`  <br>before the variable assign, the obj is `&#123;‘name’: ‘Leo’, ‘age’: 25&#125;`  <br>after the variable assign, the obj is `&#123;‘name’: ‘9m88’, ‘age’: 20&#125;`  <br>after the function ends, the object is `&#123;‘name’: ‘9m88’, ‘age’: 20&#125;`<br></code></pre></td></tr></table></figure><p>哇，外面 object 的內容居然被改變了，跟剛剛的 number 行為完全不一樣，這是怎麼回事？難道這是 Call by Reference？ 可是我們沒有傳地址進去呀。</p><p>一樣，我們先把記憶體位址印出來試試看。</p><p><img src="https://hackmd.io/_uploads/rkaQmEeSY.png"></p><p>執行結果：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Before variable assign, the object id is 4508274560  <br>Before variable assign, the obj id is 4508274560  <br>After variable assign, the obj id is 4508274560  <br>After variable assign, the object id is 4508274560<br></code></pre></td></tr></table></figure><p>記憶體位址完全沒有改變，這是為什麼呢？因為剛剛我們使用字典 (dict) 這種資料型別，是屬於可變物件 (Mutable Object)，內容可以改變</p><h3 id="深入資料型別字典-dict-的記憶體調用"><a href="#深入資料型別字典-dict-的記憶體調用" class="headerlink" title="深入資料型別字典(dict) 的記憶體調用"></a>深入資料型別字典(dict) 的記憶體調用</h3><p>我們來看看這段程式記憶體的調用。這次的圖表將記憶體更精確的分為儲存空間所儲存的「資料 Data」與儲存空間的「地址 Address」。</p><p>因為字典這種物件是 mutable 可變的，代表這種物件的值是可以改變的，所以想要來看看到底是記憶體怎麼儲存，才是可以改變的</p><p>如果不了解 Imuttable 的人可以參考我寫的另外一篇文章。<a href="https://medium.com/starbugs/python-mutable-%E8%88%87-immutable-8ef7804181cd">Python — Mutable vs Immutable</a>。裡面講解了 Python 中可變與不可變的概念。</p><p><img src="https://hackmd.io/_uploads/Hkf7U_DSt.jpg"></p><p>宣告 object 物件的時候，變數 Variable: object，指向一個記憶體位址為 <code>x8</code> 資料為 <code>x7</code>。變數本身不直接儲存資料的，只會儲存資料的記憶體位址。而真正的資料儲存在地址為 <code>x7</code> 資料為 <code>&#123;‘name’: ‘Leo’, ‘age’: 25&#125;</code> 。</p><p><img src="https://hackmd.io/_uploads/HJcQ8OwBF.jpg"></p><p>是呼叫function_2 函式的時候，object 的參照傳進去函式裡面，變數名稱變為 obj 。 變數 obj 將內容的地址，儲存在 x9 記憶體位址，資料為 x7。告訴變數 obj 可以去地址 x7 拿資料，這樣就會找到原本物件內容了。</p><p><img src="https://hackmd.io/_uploads/rJwp8uDBt.jpg"></p><p>接著實際執行 pass_by_reference() 函式，因為之前變數 obj 將資料指向跟變數 dict_object 相同的物件，<strong>所以實際修改到的資料，是原本的資料</strong>。最後印出來的時候發現，原始的物件內容已經被改變。</p><p>回顧一下 function_2 的執行結果，函式內部的改變會改變 object 外部的內容。</p><p>執行結果： </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">before the function starts, the object is &#123;‘name’: ‘Leo’, ‘age’: 25&#125;   <br>before the variable assign, the obj is &#123;‘name’: ‘Leo’, ‘age’: 25&#125;   <br>after the variable assign, the obj is &#123;‘name’: ‘9m88’, ‘age’: 20&#125;   <br>after the function ends, the object is &#123;‘name’: ‘9m88’, ‘age’: 20&#125;<br></code></pre></td></tr></table></figure><h2 id="來看看-Python-是不是-Pass-by-Sharing"><a href="#來看看-Python-是不是-Pass-by-Sharing" class="headerlink" title="來看看 Python 是不是 Pass by Sharing"></a>來看看 Python 是不是 Pass by Sharing</h2><p>接下來我們來看範例 3，將範例 2 稍作改變，來看看會發生什麼事情</p><p><img src="https://hackmd.io/_uploads/HkRuX4xBK.png"></p><p>我們將 function_2() 方法改成 function_3()。並且把將方法的內容改成建立新物件的方式。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">function</span>\<span class="hljs-title">_3</span>(<span class="hljs-params">obj</span>):</span>  <br>    obj = &#123;  <br>      <span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;Amy&#x27;</span>,  <br>      <span class="hljs-string">&#x27;age&#x27;</span>: <span class="hljs-number">50</span>  <br>    &#125;<br></code></pre></td></tr></table></figure><p>執行結果:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">before the function starts, the dict_object is &#123;‘name’: ‘Leo’, ‘age’: 25&#125;<br>before assign, the obj is &#123;‘name’: ‘Leo’, ‘age’: 25&#125;<br>after assign, the obj is &#123;‘name’: ‘Amy’, ‘age’: 50&#125;<br>after the function ends, the dict_object is &#123;‘name’: ‘Leo’, ‘age’: 25&#125;<br></code></pre></td></tr></table></figure><p>輸出結果再度變回跟 function_1 的結果一樣，無法改變外部物件，這是為什麼呢？</p><p>Step 1: 跟 function_2 完全相同。初始化字典物件內容。</p><p><img src="https://hackmd.io/_uploads/B1hPUdvBF.jpg"></p><p>Step 2: 這時就可以看得出來到底發生了什麼事情了，如果是直接使用建立一個新物件的來賦予變數 obj，那麼將不會改變原本變數 dict_obj 的值。</p><p><img src="https://hackmd.io/_uploads/r1M_8_PSK.jpg"></p><p>我們可以得出一個結論，在使用可變物件(Muttable Object)的時候，如果重新指派新的物件給它，它就不會保持共用記憶體，而是建立一個心的物件。</p><h2 id="Python-到底是-Pass-by-Value-Pass-Value-還是-Pass-Sharing-呢？"><a href="#Python-到底是-Pass-by-Value-Pass-Value-還是-Pass-Sharing-呢？" class="headerlink" title="Python 到底是 Pass by Value, Pass Value 還是 Pass Sharing 呢？"></a>Python 到底是 Pass by Value, Pass Value 還是 Pass Sharing 呢？</h2><h3 id="都不是，Python-是-Pass-by-Assignment！"><a href="#都不是，Python-是-Pass-by-Assignment！" class="headerlink" title="都不是，Python 是 Pass by Assignment！"></a>都不是，Python 是 Pass by Assignment！</h3><p>我覺得最清楚的是這篇 Stack Overflow 的回答，簡單解釋，引數傳的是物件的參照(Call by Object Reference)，但此 Reference 是由 Pass by Value 的方式實作。</p><p>可以歸納出兩個結論：</p><ul><li>如果你傳遞的可變物件 (Mutable Object)，傳遞的是物件的參照(記憶體位址)，所以可變物件的值是可以改變的，你可以因此修改到原始的物件的內容。</li><li>可變物件 (Mutable Object) 有一個例外是你重新指派一個新的物件給他，外部的作用域(Scope)將無法得知你做的事情，所以外部作用域會認舊的物件，而不是新指派的物件。</li><li>如果你用的是不可變物件(Imutable Object)，那麼因為每次指派都會是新的物件，但是物件是在函式作用域內部生成的，所以外部作用域無法得知。就變成了兩個物件</li></ul><p><img src="https://hackmd.io/_uploads/S1Bcm4xBF.png"></p><p><a href="https://stackoverflow.com/questions/986006/how-do-i-pass-a-variable-by-reference">https://stackoverflow.com/questions/986006/how-do-i-pass-a-variable-by-reference</a></p><p>最後再回到官方文件的定義，確認一下 Python 真的是 Pass by Assignment，打完收工。</p><p><img src="https://hackmd.io/_uploads/BJ3qm4lrF.png"></p><p><a href="https://docs.python.org/3/faq/programming.html#how-do-i-write-a-function-with-output-parameters-call-by-reference">https://docs.python.org/3/faq/programming.html#how-do-i-write-a-function-with-output-parameters-call-by-reference</a></p>]]></content>
     
@@ -83,15 +137,15 @@
     
     <category term="Python" scheme="https://lukajojo.com/categories/Python/"/>
     
-    <category term="01 基礎教學" scheme="https://lukajojo.com/categories/Python/01-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/"/>
+    <category term="基礎教學" scheme="https://lukajojo.com/categories/Python/%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/"/>
     
     
   </entry>
   
   <entry>
     <title>用 WSL 在 Windows 上打造 Linux 的開發體驗</title>
-    <link href="https://lukajojo.com/2020/11/15/posts/2020-11-15-wsl/"/>
-    <id>https://lukajojo.com/2020/11/15/posts/2020-11-15-wsl/</id>
+    <link href="https://lukajojo.com/2020/11/15/past/2020-11-15-wsl/"/>
+    <id>https://lukajojo.com/2020/11/15/past/2020-11-15-wsl/</id>
     <published>2020-11-15T12:50:00.000Z</published>
     <updated>2021-11-22T17:06:26.028Z</updated>
     
@@ -110,8 +164,8 @@
   
   <entry>
     <title>ArgoCD — 透過 ArgoCD 認識 GitOps</title>
-    <link href="https://lukajojo.com/2020/09/21/posts/2020-09-21-introduction-to-gitops-via-argocd/"/>
-    <id>https://lukajojo.com/2020/09/21/posts/2020-09-21-introduction-to-gitops-via-argocd/</id>
+    <link href="https://lukajojo.com/2020/09/21/past/2020-09-21-introduction-to-gitops-via-argocd/"/>
+    <id>https://lukajojo.com/2020/09/21/past/2020-09-21-introduction-to-gitops-via-argocd/</id>
     <published>2020-09-21T12:50:00.000Z</published>
     <updated>2021-10-23T15:07:00.510Z</updated>
     
@@ -130,8 +184,8 @@
   
   <entry>
     <title>從 Github 開源指南｜學習如何貢獻開源專案</title>
-    <link href="https://lukajojo.com/2020/08/15/posts/2020-08-05-introduction-to-open-source-guild/"/>
-    <id>https://lukajojo.com/2020/08/15/posts/2020-08-05-introduction-to-open-source-guild/</id>
+    <link href="https://lukajojo.com/2020/08/15/past/2020-08-05-introduction-to-open-source-guild/"/>
+    <id>https://lukajojo.com/2020/08/15/past/2020-08-05-introduction-to-open-source-guild/</id>
     <published>2020-08-15T12:50:00.000Z</published>
     <updated>2021-11-22T16:19:36.190Z</updated>
     
@@ -157,8 +211,8 @@
   
   <entry>
     <title>TLDR 命令列神兵｜Linux 入門必裝</title>
-    <link href="https://lukajojo.com/2020/07/28/posts/2020-07-28-tldr/"/>
-    <id>https://lukajojo.com/2020/07/28/posts/2020-07-28-tldr/</id>
+    <link href="https://lukajojo.com/2020/07/28/past/2020-07-28-tldr/"/>
+    <id>https://lukajojo.com/2020/07/28/past/2020-07-28-tldr/</id>
     <published>2020-07-28T08:01:00.000Z</published>
     <updated>2021-10-23T15:07:00.334Z</updated>
     
@@ -182,8 +236,8 @@
   
   <entry>
     <title>Kubernetes IDE | Lens 用圖形化介面管理 K8S</title>
-    <link href="https://lukajojo.com/2020/06/30/posts/2020-06-30-lens-the-ide-for-kubernetes/"/>
-    <id>https://lukajojo.com/2020/06/30/posts/2020-06-30-lens-the-ide-for-kubernetes/</id>
+    <link href="https://lukajojo.com/2020/06/30/past/2020-06-30-lens-the-ide-for-kubernetes/"/>
+    <id>https://lukajojo.com/2020/06/30/past/2020-06-30-lens-the-ide-for-kubernetes/</id>
     <published>2020-06-30T09:01:00.000Z</published>
     <updated>2021-10-23T15:07:00.154Z</updated>
     
@@ -202,8 +256,8 @@
   
   <entry>
     <title>TPM — 套件管理工具 ，讓你的 TMUX 更好用</title>
-    <link href="https://lukajojo.com/2020/06/02/posts/2020-06-02-tmp-let-your-tmux-better/"/>
-    <id>https://lukajojo.com/2020/06/02/posts/2020-06-02-tmp-let-your-tmux-better/</id>
+    <link href="https://lukajojo.com/2020/06/02/past/2020-06-02-tmp-let-your-tmux-better/"/>
+    <id>https://lukajojo.com/2020/06/02/past/2020-06-02-tmp-let-your-tmux-better/</id>
     <published>2020-06-02T11:51:00.000Z</published>
     <updated>2021-10-23T15:06:59.977Z</updated>
     
@@ -222,8 +276,8 @@
   
   <entry>
     <title>Unit Test 中的替身：搞不清楚的 Dummy 、Stub、Spy、Mock、Fake</title>
-    <link href="https://lukajojo.com/2020/05/05/posts/2020-05-05-unit-test/"/>
-    <id>https://lukajojo.com/2020/05/05/posts/2020-05-05-unit-test/</id>
+    <link href="https://lukajojo.com/2020/05/05/past/2020-05-05-unit-test/"/>
+    <id>https://lukajojo.com/2020/05/05/past/2020-05-05-unit-test/</id>
     <published>2020-05-05T11:50:00.000Z</published>
     <updated>2021-10-23T15:06:59.934Z</updated>
     
@@ -246,8 +300,8 @@
   
   <entry>
     <title>Kubernetes 教學 02 — 在 Minikube 上部屬 Python Flask 應用程式</title>
-    <link href="https://lukajojo.com/2020/03/10/posts/2020-03-20-running-flask-on-minikube/"/>
-    <id>https://lukajojo.com/2020/03/10/posts/2020-03-20-running-flask-on-minikube/</id>
+    <link href="https://lukajojo.com/2020/03/10/past/2020-03-20-running-flask-on-minikube/"/>
+    <id>https://lukajojo.com/2020/03/10/past/2020-03-20-running-flask-on-minikube/</id>
     <published>2020-03-10T11:50:00.000Z</published>
     <updated>2021-10-23T15:06:59.878Z</updated>
     
@@ -276,8 +330,8 @@
   
   <entry>
     <title>Kubernetes 教學 01 - 概念與架構</title>
-    <link href="https://lukajojo.com/2020/02/11/posts/2020-02-11-kubernetes-tutorial-01/"/>
-    <id>https://lukajojo.com/2020/02/11/posts/2020-02-11-kubernetes-tutorial-01/</id>
+    <link href="https://lukajojo.com/2020/02/11/past/2020-02-11-kubernetes-tutorial-01/"/>
+    <id>https://lukajojo.com/2020/02/11/past/2020-02-11-kubernetes-tutorial-01/</id>
     <published>2020-02-11T02:32:00.000Z</published>
     <updated>2021-10-23T15:06:59.832Z</updated>
     
@@ -305,8 +359,8 @@
   
   <entry>
     <title>從零開始學 DevOps — 那就選擇最簡單的 Drone CI 開始吧！</title>
-    <link href="https://lukajojo.com/2020/01/14/posts/2020-01-14-drone/"/>
-    <id>https://lukajojo.com/2020/01/14/posts/2020-01-14-drone/</id>
+    <link href="https://lukajojo.com/2020/01/14/past/2020-01-14-drone/"/>
+    <id>https://lukajojo.com/2020/01/14/past/2020-01-14-drone/</id>
     <published>2020-01-14T02:32:00.000Z</published>
     <updated>2021-10-23T15:06:59.770Z</updated>
     
@@ -329,8 +383,8 @@
   
   <entry>
     <title>用 Harbor 架設 Private Docker Registry</title>
-    <link href="https://lukajojo.com/2019/12/17/posts/2019-12-17-harbor/"/>
-    <id>https://lukajojo.com/2019/12/17/posts/2019-12-17-harbor/</id>
+    <link href="https://lukajojo.com/2019/12/17/past/2019-12-17-harbor/"/>
+    <id>https://lukajojo.com/2019/12/17/past/2019-12-17-harbor/</id>
     <published>2019-12-17T02:32:00.000Z</published>
     <updated>2021-10-23T15:06:59.630Z</updated>
     
@@ -353,8 +407,8 @@
   
   <entry>
     <title>駭客是怎麼思考的？｜從 Devcore Conf 學駭客思維</title>
-    <link href="https://lukajojo.com/2019/11/19/posts/2019-11-19/"/>
-    <id>https://lukajojo.com/2019/11/19/posts/2019-11-19/</id>
+    <link href="https://lukajojo.com/2019/11/19/past/2019-11-19/"/>
+    <id>https://lukajojo.com/2019/11/19/past/2019-11-19/</id>
     <published>2019-11-19T02:32:00.000Z</published>
     <updated>2021-10-23T15:06:59.500Z</updated>
     
@@ -377,8 +431,8 @@
   
   <entry>
     <title>Mysql - 如何修改 partition 並還原資料</title>
-    <link href="https://lukajojo.com/2018/03/04/posts/2018-03-04-modify-and-restore-mysql-partition/"/>
-    <id>https://lukajojo.com/2018/03/04/posts/2018-03-04-modify-and-restore-mysql-partition/</id>
+    <link href="https://lukajojo.com/2018/03/04/past/2018-03-04-modify-and-restore-mysql-partition/"/>
+    <id>https://lukajojo.com/2018/03/04/past/2018-03-04-modify-and-restore-mysql-partition/</id>
     <published>2018-03-04T04:50:00.000Z</published>
     <updated>2021-10-03T17:05:35.175Z</updated>
     
@@ -398,8 +452,8 @@
   
   <entry>
     <title>[譯] 使用 AWS Ruby SDK v2 更新 S3 物件 Metadata</title>
-    <link href="https://lukajojo.com/2018/01/25/posts/2018-01-25-use-aws-ruby-sdk-to-update-s3-metadata/"/>
-    <id>https://lukajojo.com/2018/01/25/posts/2018-01-25-use-aws-ruby-sdk-to-update-s3-metadata/</id>
+    <link href="https://lukajojo.com/2018/01/25/past/2018-01-25-use-aws-ruby-sdk-to-update-s3-metadata/"/>
+    <id>https://lukajojo.com/2018/01/25/past/2018-01-25-use-aws-ruby-sdk-to-update-s3-metadata/</id>
     <published>2018-01-25T07:32:00.000Z</published>
     <updated>2021-10-03T17:05:35.173Z</updated>
     
@@ -422,8 +476,8 @@
   
   <entry>
     <title>[譯] Amazon S3 Delimiter and Prefix</title>
-    <link href="https://lukajojo.com/2018/01/03/posts/2018-01-03-aws-s3-delimiter-and-prefix/"/>
-    <id>https://lukajojo.com/2018/01/03/posts/2018-01-03-aws-s3-delimiter-and-prefix/</id>
+    <link href="https://lukajojo.com/2018/01/03/past/2018-01-03-aws-s3-delimiter-and-prefix/"/>
+    <id>https://lukajojo.com/2018/01/03/past/2018-01-03-aws-s3-delimiter-and-prefix/</id>
     <published>2018-01-03T04:50:00.000Z</published>
     <updated>2021-10-03T17:05:35.172Z</updated>
     
@@ -441,52 +495,6 @@
     <category term="AWS" scheme="https://lukajojo.com/tags/AWS/"/>
     
     <category term="S3" scheme="https://lukajojo.com/tags/S3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Web 基本功 - Cookie 與 Session</title>
-    <link href="https://lukajojo.com/2017/12/22/posts/2017-12-22-web-foundation-the-different-of-cookie-and-session/"/>
-    <id>https://lukajojo.com/2017/12/22/posts/2017-12-22-web-foundation-the-different-of-cookie-and-session/</id>
-    <published>2017-12-22T06:11:00.000Z</published>
-    <updated>2021-10-03T17:05:35.169Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h2><h3 id="1-1-什麼是-Cookie"><a href="#1-1-什麼是-Cookie" class="headerlink" title="1.1 什麼是 Cookie ?"></a>1.1 什麼是 Cookie ?</h3><p>Cookie 在使用者第一次進入網站的時候產生。Browser 記錄一些隱私性較低的資料。<br>例如: 使用者第一次進入網站的時候會跳出教學視窗。當使用者點擊[關閉]後，Cookie<br>內記錄使用者已經看過教學了。使用者在下次登入的時候因為 Cookie 內記錄著使用者<br>已經看過教學，所以就不會跳出教學視窗。</p><h3 id="1-2-Cookie-的特性"><a href="#1-2-Cookie-的特性" class="headerlink" title="1.2 Cookie 的特性"></a>1.2 Cookie 的特性</h3><ul><li>每個網站的 Cookie 是分開的, 例如: <a href="http://www.google.com/">www.google.com</a> 無法取得 <a href="http://www.yahoo.com/">www.yahoo.com</a> 的 cookie。</li><li>能夠設定失效的時間。比如說過一段時間你就需要重新登入，就是由設定 Cookie Expired Time 來完成。有時候為了方便，也可能將 Cookie 設定為永久不失效。</li></ul><h3 id="1-3-Server-端如何讓-Browser-儲存-Cookie"><a href="#1-3-Server-端如何讓-Browser-儲存-Cookie" class="headerlink" title="1.3 Server 端如何讓 Browser 儲存 Cookie"></a>1.3 Server 端如何讓 Browser 儲存 Cookie</h3><ol><li>Client 請求 Server 給予頁面</li><li>Server 回 Response 給 Browser 的時候，HTTP Header 帶上 <code>Set-Cookie</code>。Browser 接收到 Set-Cookie 指令時，會將 Cookie 的名稱和值儲存在 Browser 的 Cookie。</li></ol><p><img src="https://lh3.googleusercontent.com/-ivTQRwbrQzs/WjyiAfiRepI/AAAAAAAAK7Y/8pjRBORXGEIKxyP7bjFTiEHjPYroooXQwCHMYCw/I/15139142578413.jpg"></p><h3 id="1-4-Browser-在每次-Request-的時候會帶上-Cookie"><a href="#1-4-Browser-在每次-Request-的時候會帶上-Cookie" class="headerlink" title="1.4 Browser 在每次 Request 的時候會帶上 Cookie"></a>1.4 Browser 在每次 Request 的時候會帶上 Cookie</h3><p>Browser 在每次對 Server 發出 Request 的時候會帶上 <code>Cookie</code> 的 Header，讓 Server 能夠正確的存取當前 Cookie。</p><p><img src="https://lh3.googleusercontent.com/-316qWgn_JFg/WjyiAwnYu4I/AAAAAAAAK7c/jUqct0G-OeIYDDq5DxyM_rR1azOAClRnwCHMYCw/I/15139133853587.jpg"></p><h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h2><h3 id="2-1-什麼是-Session"><a href="#2-1-什麼是-Session" class="headerlink" title="2.1 什麼是 Session"></a>2.1 什麼是 Session</h3><p>Session 就像你進入一個遊樂園，手上先蓋個章，下次進入的時候就知道你是誰。<br>遊樂園就好比是 Server，你就好比是 Client (Browser)。<br>Client 要怎麼儲存這個章呢? 有兩種方法:</p><ol><li>使用 Cookie (set cookie)</li><li>使用 html 儲存，例如: hidden input。</li></ol><p>拿章去 Server 換資料也有兩種方法:</p><ol><li>使用 Cookie</li><li>Query string/POST</li></ol><p>因為實作上的方便程度與效能考量，大部分的網站採用 Cookie 來完成 Session 的實作。</p><h3 id="2-2-Cookie-based-Session-與-Session-Storage"><a href="#2-2-Cookie-based-Session-與-Session-Storage" class="headerlink" title="2.2 Cookie-based Session 與 Session Storage"></a>2.2 Cookie-based Session 與 Session Storage</h3><p>Cookie-based Session 指的 Session 儲存的方式不同，而不是拿章去 Server 換資料的時候有沒有使用 Cookie。</p><p>常見的 Session Storage 有這幾種:</p><ol><li>Database</li><li>Memcached</li><li>Cookie</li></ol><h3 id="2-3-比較-Cookie-based-Session-與-Memcached-Store-Session"><a href="#2-3-比較-Cookie-based-Session-與-Memcached-Store-Session" class="headerlink" title="2.3 比較 Cookie-based Session 與 Memcached Store Session"></a>2.3 比較 Cookie-based Session 與 Memcached Store Session</h3><p>來比較一下這兩者的優缺點。 Cookie-based Session 的優點:</p><ul><li>對伺服器的效能負擔很低</li><li>方便使用</li></ul><p>缺點:</p><ul><li>大小最多存4Kb。</li><li>資料存放在瀏覽器上如果 <code>config/secrets.yml</code> 外流可能存在被破解的風險 (詳見 <a href="http://tech.shaolin.tw/posts/2013/12/17/security-issue-of-rails-cookiestore-mechanism/">Rails CookieStore 的安全議題</a>)。</li></ul><p>Memcached Store Session 的優點:</p><ol><li>memcached 使用記憶體來儲存，讀取速度快。</li><li>可以實現集中式管理。</li><li>不會受到 cookie 4kb 大小的限制。</li></ol><p>缺點：</p><ol><li>儲存方式用記憶體，持久化有疑慮。</li><li>在追求高性能高併發的情景下，cookies 的表現更好，因此很多大網站採用 cookies 作為 session store.</li></ol><h3 id="2-4-Session-傳值"><a href="#2-4-Session-傳值" class="headerlink" title="2.4 Session 傳值"></a>2.4 Session 傳值</h3><p>Session 傳值指的是利用 Session 儲存資料的機制，讓不同頁面間可以互相傳遞資料。</p><ol><li>使用 Query String 或是 POST 把資料往 Server 傳</li><li>Server 將收到的資料存到 Session 中。</li><li>在不同頁面的時候因為你的章是同一個，可以讀取 Session 中儲存的資料也是同一份，達到傳值的目的。</li></ol><h2 id="Rails-中的-Cookie-based-Session-安全性問題"><a href="#Rails-中的-Cookie-based-Session-安全性問題" class="headerlink" title="Rails 中的 Cookie-based Session 安全性問題"></a>Rails 中的 Cookie-based Session 安全性問題</h2><p>Rails 3 以前 cookie-based session 如果不特別設定，可以輕易的被解開:</p><figure class="highlight rb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs rb"><span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;base64&#x27;</span><br>session_cookie = <span class="hljs-string">&#x27;your session cookie&#x27;</span><br>Marshal.load(Base64.decode64(sesson_cookie.split(<span class="hljs-string">&#x27;--&#x27;</span>).first))<br></code></pre></td></tr></table></figure><p>解開後會像這個樣子</p><figure class="highlight rb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs rb">&#123;<br>        <span class="hljs-string">&quot;session_id&quot;</span> =&gt; <span class="hljs-string">&quot;3223668cb4b04296c006e190ce2b1a17&quot;</span>,<br>    <span class="hljs-string">&quot;user_return_to&quot;</span> =&gt; <span class="hljs-string">&quot;/&quot;</span>,<br>             <span class="hljs-string">&quot;flash&quot;</span> =&gt; #&lt;ActionDispatch::Flash::FlashHash:0x007f80d1090250 @used=#&lt;Set: &#123;:alert&#125;&gt;, <span class="hljs-variable">@closed</span>=<span class="hljs-literal">false</span>, <span class="hljs-variable">@flashes</span>=&#123;<span class="hljs-symbol">:alert=&gt;<span class="hljs-string">&quot;You need to sign in or sign up before continuing.&quot;</span></span>, <span class="hljs-symbol">:warning=&gt;nil</span>, <span class="hljs-symbol">:error=&gt;nil</span>, <span class="hljs-symbol">:notice=&gt;nil</span>&#125;, <span class="hljs-variable">@now</span>=<span class="hljs-literal">nil</span>&gt;,<br>       <span class="hljs-string">&quot;_csrf_token&quot;</span> =&gt; <span class="hljs-string">&quot;BxX8rLulhq2v2YSKrLxIIkYeV4IYNTNceT2ib1BrO08=&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure><p>Rails 4 以後的 Cookie-based Session 會經過 Secret 加密。好好保護你的 <code>config/secret.yml</code> 能夠讓 Session 中的隱密資料不會被解開，從下面 code 可以看出要解開的話需要不少的麻煩:</p><figure class="highlight rb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs rb"><span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;rubygems&#x27;</span><br><span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;cgi&#x27;</span><br><span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;active_support&#x27;</span><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decrypt_session_cookie</span><span class="hljs-params">(cookie, key)</span></span><br>  cookie = CGI::unescape(cookie)<br><br>  <span class="hljs-comment"># Default values for Rails 4 apps</span><br>  key_iter_num = <span class="hljs-number">1000</span><br>  key_size     = <span class="hljs-number">64</span><br>  salt         = <span class="hljs-string">&quot;encrypted cookie&quot;</span><br>  signed_salt  = <span class="hljs-string">&quot;signed encrypted cookie&quot;</span><br><br>  key_generator = ActiveSupport::KeyGenerator.new(key, <span class="hljs-symbol">iterations:</span> key_iter_num)<br>  secret = key_generator.generate_key(salt)<br>  sign_secret = key_generator.generate_key(signed_salt)<br><br>  encryptor = ActiveSupport::MessageEncryptor.new(secret, sign_secret)<br>  puts encryptor.decrypt_and_verify(cookie)<br><span class="hljs-keyword">end</span><br><br><br><span class="hljs-comment"># Time to test ... (With data from Arbeit327)</span><br>cookie = <span class="hljs-string">&#x27;WVFQVTFtbmNxWWJPODZNb3NUMVZzZGtDVjZQNXpMYStFMWdiZlJPMkdjRFRBOGZ5T3pOTzBPKzk3NWxvQUJvTlRRU2t4MXZmdG8rT0I0R2M3Ulh0YXpxRVhNMll5UW1xUHhvVXBLbXozZ3ZyNjB4VDU4dWRIUkxBWjBXbDJhci93YkYrZWswUHdFL0hUNDJaUHo2cEpxbXFvdlFZMjJWVU9KTWhHb3NyalFwTkphd0pUQVZSTXRHbkVqRlFnSGpNVTNFQlVxYlRmT3pWbXNjK0JuQ3FydzQvODRhbmtuU29haGNRbXQ4T3o1ZjhqMk53WTRMa0pVd1hPb2NHTVFQY3dvanE2ZElqUk1Mc21HS0k2SHVuZEZ3OWhjdzZPQnRSMEdVVkQwL2IxSVh5QzNSWVlJZms5c1JJV0lzUE1Zb1NHbEtqYm5nTGRKd1ZSdGpOQ1RZZWthR1A2anRFMEluaTcyWTNaNHJBR1N0dklzMkg1RjVmVmY4azEzV3o0N2Z2LS1wQlowRUZ6cjI3SVFQU0F5bGlYSDNnPT0%3D--19650cc5c3e2599fb43b7235ab4de5a1ce8a46ac&#x27;</span><br>key = <span class="hljs-string">&#x27;aeb977de013ade650b97e0aa5246813591104017871a7753fe186e9634c9129b367306606878985c759ca4fddd17d955207011bb855ef01ed414398b4ac8317b&#x27;</span><br><br>decrypt_session_cookie(cookie, key)<br></code></pre></td></tr></table></figure><h2 id="references"><a href="#references" class="headerlink" title="references"></a>references</h2><p><a href="http://blog.hellojcc.tw/2016/01/12/introduce-session-and-cookie/">介紹 Session 及 Cookie 兩者的差別說明</a></p><p><a href="http://fred-zone.blogspot.tw/2014/01/web-session.html">FRED - Web 技術中的 Session 是什麼？</a></p><p><a href="http://tech.shaolin.tw/posts/2013/12/17/security-issue-of-rails-cookiestore-mechanism/">Rails CookieStore 的安全議題 - Shaolin.TW</a></p><p><a href="https://blog.miniasp.com/post/2008/02/22/Explain-HTTP-Cookie-in-Detail.aspx">The Will Will Web - 解釋 Cookie 的特性</a></p><p><a href="https://gist.github.com/profh/e36e5dd0bec124fef04c">A simple script to decode Rails 4 session cookies</a></p>]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;Cookie&quot;&gt;&lt;a href=&quot;#Cookie&quot; class=&quot;headerlink&quot; title=&quot;Cookie&quot;&gt;&lt;/a&gt;Cookie&lt;/h2&gt;&lt;h3 id=&quot;1-1-什麼是-Cookie&quot;&gt;&lt;a href=&quot;#1-1-什麼是-Cookie&quot; class=&quot;headerlink&quot; title=&quot;1.1 什麼是 Cookie ?&quot;&gt;&lt;/a&gt;1.1 什麼是 Cookie ?&lt;/h3&gt;&lt;p&gt;Cookie 在使用者第一次進入網站的時候產生。Browser 記錄一些隱私性較低的資料。&lt;br&gt;例如: 使用者第一次進入網站的時候會跳出教學視窗。當使用者點擊[關閉]後，Cookie&lt;br&gt;內記錄使用者已經看過教學了。使用者在下次登入的時候因為 Cookie 內記錄著使用者&lt;br&gt;已經看過教學，所以就不會跳出教學視窗。&lt;/p&gt;
-&lt;h3 id=&quot;1-2-Cookie-的特性&quot;&gt;&lt;a href=&quot;#1-2-Cookie-的特性&quot; class=&quot;headerlink&quot; title=&quot;1.2 Cookie 的特性&quot;&gt;&lt;/a&gt;1.2 Cookie 的特性&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;每個網站的 Cookie 是分開的, 例如: &lt;a href=&quot;http://www.google.com/&quot;&gt;www.google.com&lt;/a&gt; 無法取得 &lt;a href=&quot;http://www.yahoo.com/&quot;&gt;www.yahoo.com&lt;/a&gt; 的 cookie。&lt;/li&gt;
-&lt;li&gt;能夠設定失效的時間。比如說過一段時間你就需要重新登入，就是由設定 Cookie Expired Time 來完成。有時候為了方便，也可能將 Cookie 設定為永久不失效。&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
-    
-    <category term="Web Foundation" scheme="https://lukajojo.com/tags/Web-Foundation/"/>
-    
-    <category term="Coockie" scheme="https://lukajojo.com/tags/Coockie/"/>
-    
-    <category term="Session" scheme="https://lukajojo.com/tags/Session/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>OLTP 與 OLAP</title>
-    <link href="https://lukajojo.com/2017/12/22/posts/2017-12-29-oltp-vs-olap/"/>
-    <id>https://lukajojo.com/2017/12/22/posts/2017-12-29-oltp-vs-olap/</id>
-    <published>2017-12-22T06:11:00.000Z</published>
-    <updated>2021-10-03T17:05:35.170Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="什麼是-OLTP"><a href="#什麼是-OLTP" class="headerlink" title="什麼是 OLTP?"></a>什麼是 OLTP?</h2><p>最近在讀資料庫文件的時候接觸到 <code>OLTP</code> 這個名詞，大致上理解並比記下來。<br>數據處理大致可以分成兩類: OLTP 與 OLAP。OLTP (Online Analytical Processing)指的就是傳統式關聯式資料庫。用在日常的的事物處理，比如說資料庫的增、刪、查、改。有以下特性:</p><span id="more"></span><ul><li>並發性高</li><li>嚴格要求事務的種安全性</li><li>Realtime 要求高</li></ul><h2 id="什麼是-OLAP"><a href="#什麼是-OLAP" class="headerlink" title="什麼是 OLAP?"></a>什麼是 OLAP?</h2><p>OLAP (On-Line Analytical Processing) - 數據分析處理。是一個以決策為導向的數據處理方式，針對你想要做的決策，動態處理資料，用多種維度來解讀資料，讓高階主管可以做出更好的決策。</p><p>OLAP支援的分析包刮下列幾點:</p><ul><li>階層式維度與資料的模組化</li><li>趨勢分析</li><li>解讀深層資訊</li><li>於視覺範圍內轉換於另一維度以作比較</li></ul><p>個人覺得認為 OLAP 更像一種分析方法論，與現今的資料視覺概念相似，將資料經過加工處理後，由萃取出來的數據來幫助做決策。</p><h2 id="比較表"><a href="#比較表" class="headerlink" title="比較表"></a>比較表</h2><p><img src="https://lh3.googleusercontent.com/-_3M8urfGsMo/Wl8lC5-jcoI/AAAAAAAALBE/YIn4itw9oDAxRkQX0GOwY45PwU-dt4PEgCHMYCw/I/15142609010075.jpg"></p><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://courses.cs.washington.edu/courses/cse592/01sp/lectures/class1/sld025.htm">OLTP vs. OLAP</a><br><a href="http://info.csvs.chc.edu.tw/bbhuang/homework%5C8716ds03.htm">OLAP example</a></p>]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;什麼是-OLTP&quot;&gt;&lt;a href=&quot;#什麼是-OLTP&quot; class=&quot;headerlink&quot; title=&quot;什麼是 OLTP?&quot;&gt;&lt;/a&gt;什麼是 OLTP?&lt;/h2&gt;&lt;p&gt;最近在讀資料庫文件的時候接觸到 &lt;code&gt;OLTP&lt;/code&gt; 這個名詞，大致上理解並比記下來。&lt;br&gt;數據處理大致可以分成兩類: OLTP 與 OLAP。OLTP (Online Analytical Processing)指的就是傳統式關聯式資料庫。用在日常的的事物處理，比如說資料庫的增、刪、查、改。有以下特性:&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="Database" scheme="https://lukajojo.com/tags/Database/"/>
     
   </entry>
   
