@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>程式柴 CodeShiba</title>
+  <title>Luka 的 Python 筆記</title>
   
   
-  <link href="https://lukajojo.com/atom.xml" rel="self"/>
+  <link href="https://luka.tw/atom.xml" rel="self"/>
   
-  <link href="https://lukajojo.com/"/>
+  <link href="https://luka.tw/"/>
   <updated>2021-11-29T17:49:30.396Z</updated>
-  <id>https://lukajojo.com/</id>
+  <id>https://luka.tw/</id>
   
   <author>
     <name>Luka Huang</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>【 Python 教學 】Hello, Flask！五分鐘建立你的第一個 Flask 應用</title>
-    <link href="https://lukajojo.com/2021/11/29/python-flask/01-hello-flask/"/>
-    <id>https://lukajojo.com/2021/11/29/python-flask/01-hello-flask/</id>
+    <link href="https://luka.tw/Python/Flask-%E6%95%99%E5%AD%B8/python-flask/01-hello-flask-794c78ea073a/"/>
+    <id>https://luka.tw/Python/Flask-%E6%95%99%E5%AD%B8/python-flask/01-hello-flask-794c78ea073a/</id>
     <published>2021-11-28T22:27:46.000Z</published>
     <updated>2021-11-29T17:49:30.396Z</updated>
     
@@ -33,17 +33,17 @@
     
     
     
-    <category term="Python" scheme="https://lukajojo.com/categories/Python/"/>
+    <category term="Python" scheme="https://luka.tw/categories/Python/"/>
     
-    <category term="Flask 教學" scheme="https://lukajojo.com/categories/Python/Flask-%E6%95%99%E5%AD%B8/"/>
+    <category term="Flask 教學" scheme="https://luka.tw/categories/Python/Flask-%E6%95%99%E5%AD%B8/"/>
     
     
   </entry>
   
   <entry>
     <title>【 Python 冷知識 】你知道 PyPI 怎麼唸嘛？</title>
-    <link href="https://lukajojo.com/2021/11/29/python/03-how-to-pronounce-pypi/"/>
-    <id>https://lukajojo.com/2021/11/29/python/03-how-to-pronounce-pypi/</id>
+    <link href="https://luka.tw/Python/%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/python/03-how-to-pronounce-pypi-4a9321660029/"/>
+    <id>https://luka.tw/Python/%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/python/03-how-to-pronounce-pypi-4a9321660029/</id>
     <published>2021-11-28T18:30:56.000Z</published>
     <updated>2021-11-29T15:30:49.843Z</updated>
     
@@ -63,17 +63,17 @@
     
     
     
-    <category term="Python" scheme="https://lukajojo.com/categories/Python/"/>
+    <category term="Python" scheme="https://luka.tw/categories/Python/"/>
     
-    <category term="基礎教學" scheme="https://lukajojo.com/categories/Python/%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/"/>
+    <category term="基礎教學" scheme="https://luka.tw/categories/Python/%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/"/>
     
     
   </entry>
   
   <entry>
     <title>【 Python 教學 】什麼是 PyPI？跟 pip 又有什麼關係呢？</title>
-    <link href="https://lukajojo.com/2021/11/27/python/02-what-is-pypi/"/>
-    <id>https://lukajojo.com/2021/11/27/python/02-what-is-pypi/</id>
+    <link href="https://luka.tw/Python/%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/python/02-what-is-pypi-fc0b4fc6ba6b/"/>
+    <id>https://luka.tw/Python/%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/python/02-what-is-pypi-fc0b4fc6ba6b/</id>
     <published>2021-11-27T15:11:23.000Z</published>
     <updated>2021-11-29T00:15:11.664Z</updated>
     
@@ -87,17 +87,17 @@
     
     
     
-    <category term="Python" scheme="https://lukajojo.com/categories/Python/"/>
+    <category term="Python" scheme="https://luka.tw/categories/Python/"/>
     
-    <category term="基礎教學" scheme="https://lukajojo.com/categories/Python/%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/"/>
+    <category term="基礎教學" scheme="https://luka.tw/categories/Python/%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/"/>
     
     
   </entry>
   
   <entry>
     <title>【 Python 資料科學 】書籍推薦</title>
-    <link href="https://lukajojo.com/2021/11/25/python/01-data-science-book/"/>
-    <id>https://lukajojo.com/2021/11/25/python/01-data-science-book/</id>
+    <link href="https://luka.tw/Python/%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/python/01-data-science-book-69b437eb43dc/"/>
+    <id>https://luka.tw/Python/%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/python/01-data-science-book-69b437eb43dc/</id>
     <published>2021-11-24T22:23:14.000Z</published>
     <updated>2021-11-29T17:48:28.551Z</updated>
     
@@ -111,17 +111,17 @@
     
     
     
-    <category term="Python" scheme="https://lukajojo.com/categories/Python/"/>
+    <category term="Python" scheme="https://luka.tw/categories/Python/"/>
     
-    <category term="基礎教學" scheme="https://lukajojo.com/categories/Python/%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/"/>
+    <category term="基礎教學" scheme="https://luka.tw/categories/Python/%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/"/>
     
     
   </entry>
   
   <entry>
     <title>【 Python 教學 】什麼是 Pass By Assignment？</title>
-    <link href="https://lukajojo.com/2021/09/21/past/2021-09-21-is-python-call-by-sharing/"/>
-    <id>https://lukajojo.com/2021/09/21/past/2021-09-21-is-python-call-by-sharing/</id>
+    <link href="https://luka.tw/Python/%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/past/2021-09-21-is-python-call-by-sharing-122a4bf5a956/"/>
+    <id>https://luka.tw/Python/%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/past/2021-09-21-is-python-call-by-sharing-122a4bf5a956/</id>
     <published>2021-09-21T12:50:00.000Z</published>
     <updated>2021-11-29T17:48:11.612Z</updated>
     
@@ -135,17 +135,17 @@
     
     
     
-    <category term="Python" scheme="https://lukajojo.com/categories/Python/"/>
+    <category term="Python" scheme="https://luka.tw/categories/Python/"/>
     
-    <category term="基礎教學" scheme="https://lukajojo.com/categories/Python/%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/"/>
+    <category term="基礎教學" scheme="https://luka.tw/categories/Python/%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8/"/>
     
     
   </entry>
   
   <entry>
     <title>用 WSL 在 Windows 上打造 Linux 的開發體驗</title>
-    <link href="https://lukajojo.com/2020/11/15/past/2020-11-15-wsl/"/>
-    <id>https://lukajojo.com/2020/11/15/past/2020-11-15-wsl/</id>
+    <link href="https://luka.tw/uncategorized/past/2020-11-15-wsl-c4fa84a3a027/"/>
+    <id>https://luka.tw/uncategorized/past/2020-11-15-wsl-c4fa84a3a027/</id>
     <published>2020-11-15T12:50:00.000Z</published>
     <updated>2021-11-22T17:06:26.028Z</updated>
     
@@ -164,8 +164,8 @@
   
   <entry>
     <title>ArgoCD — 透過 ArgoCD 認識 GitOps</title>
-    <link href="https://lukajojo.com/2020/09/21/past/2020-09-21-introduction-to-gitops-via-argocd/"/>
-    <id>https://lukajojo.com/2020/09/21/past/2020-09-21-introduction-to-gitops-via-argocd/</id>
+    <link href="https://luka.tw/uncategorized/past/2020-09-21-introduction-to-gitops-via-argocd-b27fce67e4f9/"/>
+    <id>https://luka.tw/uncategorized/past/2020-09-21-introduction-to-gitops-via-argocd-b27fce67e4f9/</id>
     <published>2020-09-21T12:50:00.000Z</published>
     <updated>2021-10-23T15:07:00.510Z</updated>
     
@@ -184,8 +184,8 @@
   
   <entry>
     <title>從 Github 開源指南｜學習如何貢獻開源專案</title>
-    <link href="https://lukajojo.com/2020/08/15/past/2020-08-05-introduction-to-open-source-guild/"/>
-    <id>https://lukajojo.com/2020/08/15/past/2020-08-05-introduction-to-open-source-guild/</id>
+    <link href="https://luka.tw/uncategorized/past/2020-08-05-introduction-to-open-source-guild-75881cc9ea41/"/>
+    <id>https://luka.tw/uncategorized/past/2020-08-05-introduction-to-open-source-guild-75881cc9ea41/</id>
     <published>2020-08-15T12:50:00.000Z</published>
     <updated>2021-11-22T16:19:36.190Z</updated>
     
@@ -203,16 +203,16 @@
     
     
     
-    <category term="Github" scheme="https://lukajojo.com/tags/Github/"/>
+    <category term="Github" scheme="https://luka.tw/tags/Github/"/>
     
-    <category term="Open Source" scheme="https://lukajojo.com/tags/Open-Source/"/>
+    <category term="Open Source" scheme="https://luka.tw/tags/Open-Source/"/>
     
   </entry>
   
   <entry>
     <title>TLDR 命令列神兵｜Linux 入門必裝</title>
-    <link href="https://lukajojo.com/2020/07/28/past/2020-07-28-tldr/"/>
-    <id>https://lukajojo.com/2020/07/28/past/2020-07-28-tldr/</id>
+    <link href="https://luka.tw/uncategorized/past/2020-07-28-tldr-ec3f4ea68bb3/"/>
+    <id>https://luka.tw/uncategorized/past/2020-07-28-tldr-ec3f4ea68bb3/</id>
     <published>2020-07-28T08:01:00.000Z</published>
     <updated>2021-10-23T15:07:00.334Z</updated>
     
@@ -236,8 +236,8 @@
   
   <entry>
     <title>Kubernetes IDE | Lens 用圖形化介面管理 K8S</title>
-    <link href="https://lukajojo.com/2020/06/30/past/2020-06-30-lens-the-ide-for-kubernetes/"/>
-    <id>https://lukajojo.com/2020/06/30/past/2020-06-30-lens-the-ide-for-kubernetes/</id>
+    <link href="https://luka.tw/uncategorized/past/2020-06-30-lens-the-ide-for-kubernetes-0628841f91d9/"/>
+    <id>https://luka.tw/uncategorized/past/2020-06-30-lens-the-ide-for-kubernetes-0628841f91d9/</id>
     <published>2020-06-30T09:01:00.000Z</published>
     <updated>2021-10-23T15:07:00.154Z</updated>
     
@@ -256,8 +256,8 @@
   
   <entry>
     <title>TPM — 套件管理工具 ，讓你的 TMUX 更好用</title>
-    <link href="https://lukajojo.com/2020/06/02/past/2020-06-02-tmp-let-your-tmux-better/"/>
-    <id>https://lukajojo.com/2020/06/02/past/2020-06-02-tmp-let-your-tmux-better/</id>
+    <link href="https://luka.tw/uncategorized/past/2020-06-02-tmp-let-your-tmux-better-f3ad7ae8d972/"/>
+    <id>https://luka.tw/uncategorized/past/2020-06-02-tmp-let-your-tmux-better-f3ad7ae8d972/</id>
     <published>2020-06-02T11:51:00.000Z</published>
     <updated>2021-10-23T15:06:59.977Z</updated>
     
@@ -276,8 +276,8 @@
   
   <entry>
     <title>Unit Test 中的替身：搞不清楚的 Dummy 、Stub、Spy、Mock、Fake</title>
-    <link href="https://lukajojo.com/2020/05/05/past/2020-05-05-unit-test/"/>
-    <id>https://lukajojo.com/2020/05/05/past/2020-05-05-unit-test/</id>
+    <link href="https://luka.tw/uncategorized/past/2020-05-05-unit-test-3f5ca0b52a12/"/>
+    <id>https://luka.tw/uncategorized/past/2020-05-05-unit-test-3f5ca0b52a12/</id>
     <published>2020-05-05T11:50:00.000Z</published>
     <updated>2021-10-23T15:06:59.934Z</updated>
     
@@ -294,14 +294,14 @@
     
     
     
-    <category term="Unit Test" scheme="https://lukajojo.com/tags/Unit-Test/"/>
+    <category term="Unit Test" scheme="https://luka.tw/tags/Unit-Test/"/>
     
   </entry>
   
   <entry>
     <title>Kubernetes 教學 02 — 在 Minikube 上部屬 Python Flask 應用程式</title>
-    <link href="https://lukajojo.com/2020/03/10/past/2020-03-20-running-flask-on-minikube/"/>
-    <id>https://lukajojo.com/2020/03/10/past/2020-03-20-running-flask-on-minikube/</id>
+    <link href="https://luka.tw/uncategorized/past/2020-03-20-running-flask-on-minikube-0ad6ec86a505/"/>
+    <id>https://luka.tw/uncategorized/past/2020-03-20-running-flask-on-minikube-0ad6ec86a505/</id>
     <published>2020-03-10T11:50:00.000Z</published>
     <updated>2021-10-23T15:06:59.878Z</updated>
     
@@ -318,20 +318,20 @@
     
     
     
-    <category term="Kubernetes" scheme="https://lukajojo.com/tags/Kubernetes/"/>
+    <category term="Kubernetes" scheme="https://luka.tw/tags/Kubernetes/"/>
     
-    <category term="Minikube" scheme="https://lukajojo.com/tags/Minikube/"/>
+    <category term="Minikube" scheme="https://luka.tw/tags/Minikube/"/>
     
-    <category term="Python" scheme="https://lukajojo.com/tags/Python/"/>
+    <category term="Python" scheme="https://luka.tw/tags/Python/"/>
     
-    <category term="Flask" scheme="https://lukajojo.com/tags/Flask/"/>
+    <category term="Flask" scheme="https://luka.tw/tags/Flask/"/>
     
   </entry>
   
   <entry>
     <title>Kubernetes 教學 01 - 概念與架構</title>
-    <link href="https://lukajojo.com/2020/02/11/past/2020-02-11-kubernetes-tutorial-01/"/>
-    <id>https://lukajojo.com/2020/02/11/past/2020-02-11-kubernetes-tutorial-01/</id>
+    <link href="https://luka.tw/uncategorized/past/2020-02-11-kubernetes-tutorial-01-cd76ae4c25e5/"/>
+    <id>https://luka.tw/uncategorized/past/2020-02-11-kubernetes-tutorial-01-cd76ae4c25e5/</id>
     <published>2020-02-11T02:32:00.000Z</published>
     <updated>2021-10-23T15:06:59.832Z</updated>
     
@@ -351,16 +351,16 @@
     
     
     
-    <category term="Kubernetes" scheme="https://lukajojo.com/tags/Kubernetes/"/>
+    <category term="Kubernetes" scheme="https://luka.tw/tags/Kubernetes/"/>
     
-    <category term="Minikube" scheme="https://lukajojo.com/tags/Minikube/"/>
+    <category term="Minikube" scheme="https://luka.tw/tags/Minikube/"/>
     
   </entry>
   
   <entry>
     <title>從零開始學 DevOps — 那就選擇最簡單的 Drone CI 開始吧！</title>
-    <link href="https://lukajojo.com/2020/01/14/past/2020-01-14-drone/"/>
-    <id>https://lukajojo.com/2020/01/14/past/2020-01-14-drone/</id>
+    <link href="https://luka.tw/uncategorized/past/2020-01-14-drone-dc0269ab35d3/"/>
+    <id>https://luka.tw/uncategorized/past/2020-01-14-drone-dc0269ab35d3/</id>
     <published>2020-01-14T02:32:00.000Z</published>
     <updated>2021-10-23T15:06:59.770Z</updated>
     
@@ -375,16 +375,16 @@
     
     
     
-    <category term="DevOps" scheme="https://lukajojo.com/tags/DevOps/"/>
+    <category term="DevOps" scheme="https://luka.tw/tags/DevOps/"/>
     
-    <category term="DroneCI" scheme="https://lukajojo.com/tags/DroneCI/"/>
+    <category term="DroneCI" scheme="https://luka.tw/tags/DroneCI/"/>
     
   </entry>
   
   <entry>
     <title>用 Harbor 架設 Private Docker Registry</title>
-    <link href="https://lukajojo.com/2019/12/17/past/2019-12-17-harbor/"/>
-    <id>https://lukajojo.com/2019/12/17/past/2019-12-17-harbor/</id>
+    <link href="https://luka.tw/uncategorized/past/2019-12-17-harbor-72b38c7ac92f/"/>
+    <id>https://luka.tw/uncategorized/past/2019-12-17-harbor-72b38c7ac92f/</id>
     <published>2019-12-17T02:32:00.000Z</published>
     <updated>2021-10-23T15:06:59.630Z</updated>
     
@@ -399,16 +399,16 @@
     
     
     
-    <category term="Harbor" scheme="https://lukajojo.com/tags/Harbor/"/>
+    <category term="Harbor" scheme="https://luka.tw/tags/Harbor/"/>
     
-    <category term="Docker" scheme="https://lukajojo.com/tags/Docker/"/>
+    <category term="Docker" scheme="https://luka.tw/tags/Docker/"/>
     
   </entry>
   
   <entry>
     <title>駭客是怎麼思考的？｜從 Devcore Conf 學駭客思維</title>
-    <link href="https://lukajojo.com/2019/11/19/past/2019-11-19/"/>
-    <id>https://lukajojo.com/2019/11/19/past/2019-11-19/</id>
+    <link href="https://luka.tw/uncategorized/past/2019-11-19-83c301e5e366/"/>
+    <id>https://luka.tw/uncategorized/past/2019-11-19-83c301e5e366/</id>
     <published>2019-11-19T02:32:00.000Z</published>
     <updated>2021-10-23T15:06:59.500Z</updated>
     
@@ -423,16 +423,16 @@
     
     
     
-    <category term="Security" scheme="https://lukajojo.com/tags/Security/"/>
+    <category term="Security" scheme="https://luka.tw/tags/Security/"/>
     
-    <category term="Hacker" scheme="https://lukajojo.com/tags/Hacker/"/>
+    <category term="Hacker" scheme="https://luka.tw/tags/Hacker/"/>
     
   </entry>
   
   <entry>
     <title>Mysql - 如何修改 partition 並還原資料</title>
-    <link href="https://lukajojo.com/2018/03/04/past/2018-03-04-modify-and-restore-mysql-partition/"/>
-    <id>https://lukajojo.com/2018/03/04/past/2018-03-04-modify-and-restore-mysql-partition/</id>
+    <link href="https://luka.tw/uncategorized/past/2018-03-04-modify-and-restore-mysql-partition-78f4c9f724d6/"/>
+    <id>https://luka.tw/uncategorized/past/2018-03-04-modify-and-restore-mysql-partition-78f4c9f724d6/</id>
     <published>2018-03-04T04:50:00.000Z</published>
     <updated>2021-10-03T17:05:35.175Z</updated>
     
@@ -444,16 +444,16 @@
     
     
     
-    <category term="Database" scheme="https://lukajojo.com/tags/Database/"/>
+    <category term="Database" scheme="https://luka.tw/tags/Database/"/>
     
-    <category term="Mysql" scheme="https://lukajojo.com/tags/Mysql/"/>
+    <category term="Mysql" scheme="https://luka.tw/tags/Mysql/"/>
     
   </entry>
   
   <entry>
     <title>[譯] 使用 AWS Ruby SDK v2 更新 S3 物件 Metadata</title>
-    <link href="https://lukajojo.com/2018/01/25/past/2018-01-25-use-aws-ruby-sdk-to-update-s3-metadata/"/>
-    <id>https://lukajojo.com/2018/01/25/past/2018-01-25-use-aws-ruby-sdk-to-update-s3-metadata/</id>
+    <link href="https://luka.tw/uncategorized/past/2018-01-25-use-aws-ruby-sdk-to-update-s3-metadata-2f40df23db7e/"/>
+    <id>https://luka.tw/uncategorized/past/2018-01-25-use-aws-ruby-sdk-to-update-s3-metadata-2f40df23db7e/</id>
     <published>2018-01-25T07:32:00.000Z</published>
     <updated>2021-10-03T17:05:35.173Z</updated>
     
@@ -468,16 +468,16 @@
     
     
     
-    <category term="AWS" scheme="https://lukajojo.com/tags/AWS/"/>
+    <category term="AWS" scheme="https://luka.tw/tags/AWS/"/>
     
-    <category term="S3" scheme="https://lukajojo.com/tags/S3/"/>
+    <category term="S3" scheme="https://luka.tw/tags/S3/"/>
     
   </entry>
   
   <entry>
     <title>[譯] Amazon S3 Delimiter and Prefix</title>
-    <link href="https://lukajojo.com/2018/01/03/past/2018-01-03-aws-s3-delimiter-and-prefix/"/>
-    <id>https://lukajojo.com/2018/01/03/past/2018-01-03-aws-s3-delimiter-and-prefix/</id>
+    <link href="https://luka.tw/uncategorized/past/2018-01-03-aws-s3-delimiter-and-prefix-78a4099b67a3/"/>
+    <id>https://luka.tw/uncategorized/past/2018-01-03-aws-s3-delimiter-and-prefix-78a4099b67a3/</id>
     <published>2018-01-03T04:50:00.000Z</published>
     <updated>2021-10-03T17:05:35.172Z</updated>
     
@@ -492,9 +492,9 @@
     
     
     
-    <category term="AWS" scheme="https://lukajojo.com/tags/AWS/"/>
+    <category term="AWS" scheme="https://luka.tw/tags/AWS/"/>
     
-    <category term="S3" scheme="https://lukajojo.com/tags/S3/"/>
+    <category term="S3" scheme="https://luka.tw/tags/S3/"/>
     
   </entry>
   
